@@ -1,0 +1,131 @@
+<HTML>
+  <HEAD>
+    <TITLE>Preferences</TITLE>
+    <LINK REL="STYLESHEET" HREF="../book.css" CHARSET="ISO-8859-1" TYPE="text/css">
+  </HEAD>
+  
+  <BODY>
+  <H1>Preferences</H1>
+
+
+
+<h2>Accessing the ConcernMapper preference page</h2><br>
+
+
+<ol>
+<li>Access the eclipse preferences page through <b>Window/Preferences...</b>.</li>
+<li>Select the <b>ConcernMapper</b> preference page from the left pane.</li>
+</ol>
+
+<h2>Filter:</h2>
+
+When enabled, elements below the filtering threshold will not be displayed in the ConcernMapper view,
+altough they will still be part of the concern model.
+
+<h3><a name="EnableFilter">Enable/disable filter</a></h3>
+
+<ol>
+<li>Select/deselect the checkbox to enable/diable the filter.
+</ol>
+
+
+<h3><a name="ThresholdDegree">Set the threshold degree</a></h3>
+<ol>
+<li>Type an integer between 1 and 99 in the <b>Threshold degree</b> textbox.
+</ol>
+
+<h4>Related Tasks:</h4>
+<ul>
+<li><a href="FilterElements.html">Filter Elements below a certain threshold</a>
+<li><a href="ModifyDegreeValue.html">Modify and element's degree</a>
+</ul>
+
+<h2>Saving:</h2>
+
+<h3><a name="CmSave">Always save concern models with a ".cm" file extension</a></h3>
+<ol>
+<li>Check <b>Always save concern model with .cm file extension</b>.
+</ol>
+<i>
+<h4>Notes:</h4>
+<ul>
+<li>When this preference is enabled, if the file name entered by the user is *.cm, the file is saved as *.cm .</li>
+<li>When this preference is enabled, if the file name entered by the user is *.*, the file is saved as *.cm .</li>
+<li>When this preference is enabled, if the file name entered by the user does not have a file extension specified, the file is saved as *.cm .</li>
+<li>When this preference is disabled, the file is always saved as entered by the user.</li>
+<li>Files that do not have a .cm file extension cannot be viewed in the ConcernMapper view.</li>
+</ul>
+</i>
+
+<h3><a name="AutoSave">Automatically save the concern model when the workbench is closed</a></h3>
+<ol>
+<li>Check <b>Automatically save the concern model when the workbench is closed</b>.
+</ol>
+<i>
+<h4>Notes:</h4>
+<ul>
+<li>When this preference is enabled, if a concern model model that has been previously saved contains unsaved changed, the 
+model will be saved to the file it had previously been saved in.</li>
+<li>When this preference is enabled, if a previously unsaved concern model model is active, the Save As dialog will appear before the
+workbench closes.</li>
+<li>If a concern model is empty, the last saved version of that concern model will not be overwritten.
+
+</ul>
+</i>
+
+<h4>Related Tasks:</h4>
+<ul>
+<li><a href="SaveModel.html">Save the concern model</a>
+</ul>
+
+
+
+<h3><a name="AutoLoad">Automatically load the last concern model when the workbench is opened</a></h3>
+<ol>
+<li>Check <b>Automatically load the last concern model when the workbench is opened</b>.
+</ol>
+<i>
+<h4>Notes:</h4>
+<ul>
+<li>When this preference is enabled, the concern model that was previously opened in the ConcernMapper view will be 
+automatically loaded when the workbench is opened.</li>
+</ul>
+</i>
+
+<h4>Related Tasks:</h4>
+<ul>
+<li><a href="LoadModel.html">Load a concern model</a>
+</ul>
+
+
+
+<h2>Decorations:</h2>
+
+
+<h3>Enable suffixes</h3>
+<ol>
+<li>Select/deselect the checkbox to enable adding the names of concerns as suffixes.
+</ol>
+
+<h3>Enable bold font</h3>
+<ol>
+<li>Select/deselect the checkbox to enable displaying concern model elements in bold font.
+</ol>
+
+<h3>Decorate parents</h3>
+<ol>
+<li>Select the radio button to choose to which level parents of concern elements should be decorated.
+</ol>
+
+<i>
+<h4>Note:</h4>
+<ul>
+<li>Decorations are always enabled by default when ConcernMapper view is opened. To disable decorations altogether, 
+access the Eclipse preferences page under General/Appearance/LabelDecorations and disable ConcernMapper Decorator.
+</ul>
+</i>
+
+  
+  </BODY>
+
+<HTML>

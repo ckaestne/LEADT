@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+<title>SEMERU - Feature Location and Textual Tracing Tool</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../semeru_style.css" />
+</head>
+<body>
+<div id="page">
+  <div id="header">
+	<a href="../index.html"><img src="../images/semeru_logo.png" alt="SEMERU" width="101" height="102" class="logo" /></a>
+	<h1>Software Engineering Maintenance and Evolution Research Unit</h1>
+
+	<h3>at the College of William and Mary</h3>
+  </div>
+  <ul id="top_nav">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../people.html">People</a></li>
+    <li><a href="../projects.html">Projects</a></li>
+    <li><a href="../publications.html">Publications</a></li>
+
+    <li><a href="../community.html">Community</a></li>
+    <li><a href="../links.html">Links</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+  </ul>
+  <div id="content" class="clearfix">
+    <div id="col_1">
+
+
+      <ul id="side_menu">
+        <li>Quick Links</li>
+	<li><a href="#walkthrough">Walkthrough</a></li>
+	<li><a href="#installation">Installation</a></li>
+	<li><a href="#acknowledgements">Acknowledgements</a></li>
+	<li><a href="#people">People</a></li>
+      </ul>
+	<br /> <br/>
+      <ul id="side_menu">
+        <li>Downloads</li>
+	<li><a href="edu.wm.flat3_0.2.1.jar">FLAT<sup>3</sup> Plugin v0.2.1</a></li>
+	<li><a href="edu.wm.flat3_0.2.1.tar.gz">FLAT<sup>3</sup> Source v0.2.1</a></li>
+      </ul>
+    </div>
+    <div id="col_2">
+	
+	<a name="introduction"></a><h1>FLAT<sup>3</sup>: Feature Location and Textual Tracing Tool</h1>
+	<p>FLAT<sup>3</sup> is an <a href="http://www.eclipse.org/">Eclipse</a> plugin that integrates static and dynamic <a href="http://en.wikipedia.org/wiki/Feature_%28software_design%29">feature</a> location techniques with a feature annotation function, providing a complete suite of tools to allow developers to locate the code that implements a feature and then save these mappings in a rich format.</p>
+	
+	<p>FLAT<sup>3</sup> provides two feature location tools that can be used together. The first uses the <a href="http://lucene.apache.org/java/docs/index.html">Lucene</a> library's information retrieval technique to locate code that uses words similar to the user query.</p>
+	
+	<p>The second tool uses <a href="http://sourceforge.net/projects/muttracer/">MUTT</a>, a <a href="http://java.sun.com/javase/technologies/core/toolsapis/jpda/">JPDA</a>-based tracing tool, which can be used to capture all of the methods that are invoked during the execution of a particular feature. The Lucene search feature can then be used to filter these results.</p>
+	
+	<p>Finally, the feature mapping functionalities based on <a href="http://www1.cs.columbia.edu/~eaddy/concerntagger/">ConcernTagger</a> and <a href="http://www.cs.mcgill.ca/~martin/cm/">ConcernMapper</a> can be used to easily save the results found with the Lucene and MUTT based tools, combining their expertise with that of the developer themselves. This feature mapping will then be a valuable link between the abstract concepts implemented in a project and the code that actually implements those concepts.</p>
+	
+	<br>
+	<a name="walkthrough"></a><h2>Walkthrough</h2>
+
+	<h3>Textual Feature Location</h3>
+	<ul>
+	<li> Open up the FLAT<sup>3</sup> features view, then click on the search toolbar button (<img class="inline" src="magnifier.png">). </li>
+	<br><img src="ss_search_1.png">
+	<li>A query dialog will be displayed, in which you can type your query. Once you confirm the dialog, Lucene will index your workspace if it hasn't already, and the results view will appear.</li>
+	<br><img src="ss_search_2.png">
+	<li> From this view, you can browse your results and add them to features. Double click a result to view it in your project's source code. Right click a result to access menu items which let you link or unlink the element with a feature. If you wish to refine your search by searching within the results you've already found, use the Refine Search button (<img class="inline" src="magnifier+.png">) on the search view toolbar. To return to your original results, click the Clear Refined Search button (<img class="inline" src="clear.gif">).</li>
+	</ul>
+	<br>
+	<h3>Trace Feature Location</h3>
+	<ul>
+	<img src="ss_trace_1.png">
+	
+	<li>To begin tracing a program, right click java file with the main method in one of Eclipse's exploration views and select "Trace with MUTT" (<img  class="inline" src="chart_line.png">).</li>
+	<br><img src="ss_trace_2.png">
+	<li>The program will launch, along with a start/stop window that will allow you to start and stop the recording of the trace, to allow you to capture only the methods called when a particular feature is executed. Once you're done tracing, close the application.</li>
+	
+	<br><img src="ss_trace_3.png">
+	<li>The search view will be displayed, loaded with the methods called during your trace. Since the trace will likely have found many methods, you will likely want to use the Lucene combinational search to narrow your results. To do this, click the Refine Search button (<img class="inline" src="magnifier+.png">) button on the search view toolbar and enter a query in the dialog. To return to your original trace results, click the Clear Refined Search button (<img class="inline" src="clear.gif">).</li>
+
+	<li>From the search view, you can also double click methods to view them, right click them to add or remove them from features, and also use the toolbar buttons to save the trace (<img  class="inline" src="chart_line_save.png">) so you can load (<img class="inline" src="chart_line_load.png">) and browse it later.</li>
+	</ul>
+	<br>
+	<h3>Feature Mapping</h3>
+	<ul>
+	<img src="ss_features_1.png">
+	<li>Open the feature view to begin managing features. From here, you can add (<img  class="inline" src="lightbulb_add.png">), remove (<img  class="inline" src="delete.png">), and browse the features you've created, as well as do advanced tasks like import or export them from the toolbar menu.</li>
+	<li>You can also add or remove elements from features from other views, like Eclipse's exploration and overview views and FLAT<sup>3</sup>'s search view, by right clicking the correspoding element.</li>
+	</ul>
+	<br>
+	<h3>Visualization</h3>
+	<ul>
+	<img src="ss_visualization_1.png">
+	<li>FLAT<sup>3</sup> also features a rudimentary visualization feature, accessible by right clicking on a feature and selecting "Visualize concern..." or by clicking the Visualize button (<img  class="inline" src="map.png">) when you have search/trace results in the search view</li>
+	<li>This view simply visualizes the files that the feature or search results are distributed throughout, highlighting in red the sections of the files that correspond to elements linked to a feature or listed in search or trace results. If textual search results are visualized, the transparency of the red blocks is mapped to the probability that they match the user's query.</li>
+	<li>This visualization employs the same metaphor that <a href="http://cseweb.ucsd.edu/~wgg/Software/AB/">AspectBrowser</a> uses to visualize the distribution of aspects among files.</li>
+	</ul>
+
+	<br>
+	<a name="installation"></a><h2>Installation</h2>
+	<p>To install the plugin, download the <a href="edu.wm.flat3_0.2.1.jar">JAR file</a> and drop it in your "plugins" folder inside your Eclipse home directory. When you restart Eclipse, the FLAT<sup>3</sup> views should be available under Window -> Show View -> Other -> FLATTT. Open the Features view to get started using FLAT<sup>3</sup>.</p>
+
+	<p>To load the Eclipse project containing the FLAT<sup>3</sup> source code, download  the <a href="FLAT^3.tar.gz">project TAR file</a>. Open the import dialog in Eclipse (File -> Import) and select General -> Existing Projects into Workspace. Click next, then browse and select the tar file you downloaded. Click finish, and the project should be loaded into your workspace.</p>
+	
+	<p>FLAT<sup>3</sup> has been developed and tested primarily on Linux, with Eclipse version 3.4 and Java 1.6. It currently requires Java 1.6, and for this reason you'll need to run it using the 64-bit Cocoa build of Eclipse if you're using Mac OS X.</p>
+
+	<br>
+	<a name="acknowledgements"></a><h2>Acknowledgements</h2>
+	<p>Thanks are due to <a href="http://www1.cs.columbia.edu/~eaddy/concerntagger/">ConcernTagger</a> and <a href="http://www.cs.mcgill.ca/~martin/cm/">ConcernMapper</a>, which provide the feature mapping functionality, <a href="http://sourceforge.net/projects/muttracer/">MUTT</a>, which is used for tracing programs, and <a href="http://lucene.apache.org/java/docs/index.html">Lucene</a>, which provides information retrieval functionality for the textual feature location tool. <a href="http://cseweb.ucsd.edu/~wgg/Software/AB/">AspectBrowser</a> provided useful inspiration for the design of the visualization functionality.</p>
+
+	<br>
+	<a name="people"></a><h2>People</h2>
+	<ul>
+	<li>Trevor Savage (main developer)
+	<p> 
+	<span class="bold">E-mail</span>: tcsava at wm dot edu
+	</p></li>
+	
+	<li><a href="http://www.cs.wm.edu/~denys/">Denys Poshyvanyk</a> 
+	<p> 
+	<span class="bold">E-mail</span>: denys at cs dot wm dot edu
+	</p></li>
+	
+	<li><a href="http://www.cs.wm.edu/~meghan">Meghan Revelle</a>
+	<p> 
+	<span class="bold">E-mail</span>: meghan at cs dot wm dot edu
+	</p></li>
+	</ul>
+	
+    </div>
+  </div>
+  <div id="footer"><small>All content copyright &copy; 2009 SEMERU, all rights reserved.<br /></small></div>
+</div>
+</body>
+</html>

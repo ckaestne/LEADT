@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="edu/wm/flattt/analysis/Actions.java|edu/wm/flattt/analysis/FLATTTTableViewActiveClassFilter.java|edu/wm/flattt/analysis/FLATTTTableViewMarksFilter.java|edu/wm/flat3/analysis/Actions.java|edu/wm/flat3/analysis/FLATTTTableViewActiveClassFilter.java|edu/wm/flat3/analysis/FLATTTTableViewMarksFilter.java" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/hsqldb.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

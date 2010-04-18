@@ -1,0 +1,96 @@
+<HTML>
+  <HEAD>
+    <TITLE>ConcernMapper Release Notes</TITLE>
+    <LINK REL="STYLESHEET" HREF="book.css" CHARSET="ISO-8859-1" TYPE="text/css">
+  </HEAD>
+  
+  <BODY>
+  
+  <H1><A href="http://www.cs.mcgill.ca/~martin/cm">ConcernMapper</A> Release Notes<H1>
+  
+  <H2>Release 1.3.1 (3 January 2007)</H2>
+  
+  <p>
+  <ul>
+  <li><b>ISSUE (#110):</b> Unexported packages cause dependency problems.
+  </ul>
+  
+  <H2>Release 1.3.0 (26 December 2006)</H2>
+  
+  <p>
+  <ul>
+  <li><b>ISSUE (#99):</b> Add elements from pop-up menu. Elements can now be added to the concern model from the 
+  context menu in any view or editor supporting Java elements.
+  <li><b>ISSUE (#104):</b> Model Inconsistency Architecture Refactoring (new ConcernModel API, backward-compatible).
+  <li><b>ISSUE (#93):</b> Port to Eclipse 3.0 plug-in format (OSGi manifest file). 
+  Now only the packages <TT>..cm.model</TT>, <TT>..cm</TT>, and 
+  <TT>..cm.model.io</TT> are exported.
+  <li><b>ENHANCEMENT (#90):</b> Use generics in model package.
+  </ul>
+  
+  <H2>Release 1.2.0 (20 June 2006)</H2>
+  
+  <p>
+  <ul>
+  <li><b>LICENSE:</b> Starting with Release 1.2.0, ConcernMapper is distributed under the terms 
+  of the <A href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License v. 1.0</A>
+  <li><b>ENHANCEMENT (#73):</b> View fully-qualified names
+  <li><b>BUG (#37):</b> Deal with inconsistencies (see <a href="tasks/DealWithInconsistenciesUseCases.html">Manage Inconsistencies Task</A>)
+  </ul>
+  
+  
+  <H2>Release 1.1.3 (5 May 2006)</H2>
+  
+  <p>
+  <ul>
+  <li><b>ENHANCEMENT (#38):</b> Disconnect concern model from plugin
+  <li><b>ENHANCEMENT (#42):</b> Auto Save Concerns
+  <li><b>BUG FIX (#47):</b> Freshly loaded concerns are now clean
+  <li><b>ENHANCEMENT (#48):</b> Auto Load Concerns
+  <li><b>BUG FIX (#66):</b> Saving to an unavailable file now opens the save dialog
+  <li><b>BUG FIX (#67):</b> File extension preference fixed
+  </ul>
+  
+  <H2>Release 1.1.2 (3 March 2006)</H2>
+  
+  <p>
+  <ul>
+  <li><b>ENHANCEMENT (#3):</b> Support JDT actions on JavaElements in the ConcernMapper View
+  <li><b>BUG FIX (#34):</b> Single refresh for multiple additions
+  <li><b>BUG FIX (#36):</b> Progress bar for loading concerns should work
+  <li><b>ENHANCEMENT (#39):</b> Redundancy in the release notes page
+  </ul>
+  
+  <H2>Release 1.1.1 (14 February 2006)</H2>
+  
+  <p>
+  <ul>
+  <li><b>BUG FIX (#2):</b> Problem with the copy on drop
+  </ul>
+  
+  <H2>Release 1.1.0 (19 August 2005)</H2>
+  
+  <p>
+  <ul>
+  <li><b><a href="tasks/FilterElements.html">Filtering:</a></b> It is now possible to filter out elements in a concern model whose membership
+  degree is lower than a certain value.
+  <li><b><a href="tasks/Preferences.html">Preferences:</a></b> ConcernMapper now has a preference page to set a number of preferences including:
+  	<ul>
+  	<li>Decorator preferences.
+  	<li>Automatically save concern models with .cm file extension.
+  	</ul>
+  <li><b><a href="tasks/LoadModel.html">Drop to load:</a></b> It is now possible to load a concern model simply by dropping the file onto the ConcernMapper view.
+  <li><b><a href="tasks/ModifyDegreeValue.html">Set degree of multiple elements:</a></b> It is now possible to set the membership degree of several elements at once.
+  <li><b><a href="tasks/LoadModel.html">Progress bar:</a></b> A progress bar indicates the state of the operation while loading a concern model.
+  <li><b>ConcernMapper Guide:</b> Help documentation accessible through the Eclipse Help table of contents.
+  <li><b>BUG FIX (#1):</b> A bug that created problems while loading concern elements
+   when two types with the same qualified name existed in the workspace was fixed.
+  </ul>
+  
+  <H2>Release 1.0.0 (13 July 2005)</H2>
+  
+  <p>
+  Initial release.
+  </BODY>
+
+</HTML>

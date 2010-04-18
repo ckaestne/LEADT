@@ -1,0 +1,18 @@
+<toc label="Tasks">
+	<topic label="Add objects to the concern model"					href="docs/tasks/DragObjectsIntoModel.html"/>
+	<topic label="Clear View"										href="docs/tasks/ClearView.html"/>
+	<topic label="Collapse all elements"							href="docs/tasks/CollapseAllElements.html"/>
+	<topic label="Create a new concern"								href="docs/tasks/CreateNewConcern.html"/>
+	<topic label="Delete elements"									href="docs/tasks/DeleteElements.html"/>
+	<topic label="Filter elements below a certain threshold"		href="docs/tasks/FilterElements.html"/>
+	<topic label="Load a concern model"								href="docs/tasks/LoadModel.html"/>
+	<topic label="Modify an element's degree"						href="docs/tasks/ModifyDegreeValue.html"/>
+	<topic label="Move elements within the concern model"			href="docs/tasks/MoveElementsInModel.html"/>
+	<topic label="Preferences"										href="docs/tasks/Preferences.html"/>
+	<topic label="Rename a concern"									href="docs/tasks/RenameConcern.html"/>
+	<topic label="Reveal an element in the editor"					href="docs/tasks/RevealElement.html"/>
+	<topic label="Save the concern model"							href="docs/tasks/SaveModel.html"/>
+	<topic label="Search on element"								href="docs/tasks/SearchOnElement.html"/>
+	<topic label="Show the ConcernMapper view"						href="docs/tasks/ShowConcernMapperView.html"/>
+	<topic label="Manage inconsistencies"							href="docs/tasks/DealWithInconsistenciesUseCases.html"/>
+</toc>

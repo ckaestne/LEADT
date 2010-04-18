@@ -1,0 +1,51 @@
+<HTML>
+  <HEAD>
+    <TITLE>Add objects to the concern model</TITLE>
+    <LINK REL="STYLESHEET" HREF="../book.css" CHARSET="ISO-8859-1" TYPE="text/css">
+  </HEAD>
+  
+  <BODY>
+  <H1>Add objects to the concern model</H1>
+<h2>Drag and drop</h2>
+<h3>Actions:</h3>
+<ol>
+<li>Select one or more elements in the Package Explorer, Type Hierarchy, Outline View, or 
+CallHierarchy View and drag them onto a concern in the ConcernMapper view.</li>
+</ol>
+<h2>Context menu</h2>
+
+<h3>Actions:</h3>
+<ol>
+<li>Select one or more elements in the Package Explorer, Type Hierarchy, Outline View,
+CallHierarchy View or a singe element in the Java Editor.
+<li>From the context menu select <b>Add to Concern</b>, and select the concern to add the element
+to from the submenu. To add the element to a new concern select <b>New Concern</b> from the submenu.
+</ol>
+
+<i>
+<h3>Notes:</h3>
+<ul>
+<li>Elements added to the concern model have a defaut degree of 100
+<li>If a selection contains elements that are already in the concern, these elements are not added.
+ This is to prevent overriding elements whose membership degree had been previously modified.
+</ul>
+</i>
+
+<h3>Elements that can be added to a concern</h3>
+<ul>
+<li><tt>IField</tt> elements</li>
+<li><tt>IMethod</tt> elements, as long as they are not local or anonymous.</li>
+</ul>
+
+<h3>Views from which elements can be dragged</h3>
+<ul>
+<li>Package Explorer</li>
+<li>Type Hierarchy</li>
+<li>Outline view</li>
+<li>Call Hierarchy view</li>
+<li>Search view</li>
+<li>Members view</li>
+</ul>
+  </BODY>
+
+<HTML>

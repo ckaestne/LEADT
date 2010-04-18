@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CIDE General AST Framework (gCIDE Model)
+Bundle-SymbolicName: de.ovgu.cide.ast
+Bundle-Version: 2.1.0.qualifier
+Bundle-Vendor: Christian Kaestner, University of Magdeburg
+Export-Package: cide.features,
+ cide.gast,
+ cide.gparser;uses:="cide.gast",
+ cide.languages;uses:="cide.gast"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

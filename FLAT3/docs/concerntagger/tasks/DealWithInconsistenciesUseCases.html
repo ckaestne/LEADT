@@ -1,0 +1,204 @@
+<HTML>
+  <HEAD>
+    <TITLE>Manage Inconsistencies</TITLE>
+    <LINK REL="STYLESHEET" HREF="../book.css" CHARSET="ISO-8859-1" TYPE="text/css">
+  </HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<h1>Manage Inconsistencies</h1>
+
+<h3>Viewing inconsistent elements</h3>
+<br>
+<ul>
+	<li><p>To view the elements that were part of the concern model but that no longer exist in the Java model,
+		Select <code>Show Inconsistent Elements</code> in the ConcernMapper view's toolbar menu. Inconsistent elements
+		are identified with a warning symbol.</p>
+</ul>
+<h3>Hiding inconsistent elements</h3>
+<br>
+<ul>
+	<li><p>To hide the inconsistent elements, uncheck <code>Show Inconsistent Elements</code>.</p>
+</ul>
+<h3>Managing inconsistent elements</h3>
+<br>
+<ul>
+	<li><p>Inconsistent elements have most of the same properties as normal concern elements. It is possible to delete them,
+		reorganize them, filter them, and change their degree in the same way as for normal concern elements.
+	<li>Inconsistent elements cannot be revealed in the editor since they don't exist anymore. Similarly, their context menu
+		does not have options to search for references and declarations of the element.</p>
+</ul>
+
+<p><br>
+</p>
+<p><h2>Use Cases</h2></p>
+<p><br>
+</p>
+<p><h3>Show Inconsistent Elements</h3></p>
+<p><br>
+</p>
+<p>The <code>Show Inconsistent Elements</code> action toggles between two states:</p>
+<ol>
+	<li><p>Showing inconsistencies is disabled.</p>
+	<ul>
+		<li><p>Only elements that exist in the Java model are shown in the view.</p>
+		<li><p>Inconsistent elements are hidden from the user.</p>
+	</ul>
+	<li><p>Showing inconsistencies is enabled.</p>
+	<ul>
+		<li><p>All elements that have been added to the concern model are shown, whether they
+		exist in the Java model or not.</p>
+		<li><p>Elements that do not exist in the Java model are indicated by an icon.</p>
+	</ul>
+</ol>
+<p><br>
+</p>
+<p><h3>On-line</h3></p>
+<p><br>
+</p>
+<p><u>Deletions</u></p>
+<p><br>
+</p>
+<ol>
+	<li><p>A concern element or the parent of a concern element is deleted from the Java model.</p>
+	<ol>
+		<li><p>If showing inconsistencies is disabled.</p>
+		<ul>
+			<li><p>The concern element is removed from the concern model.</p>
+			<li><p>The concern element is set as inconsistent.</p>
+			<li><p>It is removed from the view.</p>
+			<li><p>The dirty flag becomes true.</p>
+		</ul>
+		<li><p>If showing inconsistencies is enabled.</p>
+		<ul>
+			<li><p>The concern element is removed from the concern model</p>
+			<li><p>The concern element is set as inconsistent.</p>
+			<li><p>It is kept displayed in the view.</p>
+			<li><p>The view is refreshed to indicate that the element doesn't exist.</p>
+			<li><p>The dirty flag becomes true.</p>
+		</ul>
+	</ol>
+</ol>
+<p><br>
+</p>
+<p><u>Additions</u></p>
+<p><br>
+</p>
+<ol>
+	<li><p>An element that was previously inconsistent is added to the Java model. 
+	</p>
+	<ol>
+		<li><p>Showing inconsistencies is disabled</p>
+		<ul>
+			<li><p>The element is added to the concern model</p>
+			<li><p>It appears in the view.</p>
+			<li><p>The dirty flag becomes true.</p>
+		</ul>
+		<li><p>Showing inconsistencies is enabled.</p>
+		<ul>
+			<li><p>The view is updated to indicate that the element exists.</p>
+			<li><p>The dirty flag becomes true.</p>
+		</ul>
+	</ol>
+</ol>
+<p><br>
+</p>
+<p><u>Changes</u></p>
+<p><br>
+</p>
+<ol>
+	<li><p>The modifiers of a  field or a method that is part of the concern model are changed.</p>
+	<ol>
+		<ul>
+			<li><p>The view is refreshed to show the new characteristics of the element.</p>
+			<li><p>The dirty flag becomes true.</p>
+			<p></p>
+		</ul>
+	</ol>
+</ol>
+<p><h3>Save</h3></p>
+<p><br>
+</p>
+<ol>
+	<li><p>There are inconsistent elements in the model.</p>
+	<ol>
+		<ul>
+			<li><P>The inconsistent elements are saved as normal concern elements.</p>
+		</ul>
+	</ol>
+</ol>
+<P><br>
+</p>
+<P><br>
+</p>
+<p><h3>Load</h3></p>
+<p><br>
+</p>
+<p><u>Deletions</u></p>
+<p><br>
+</p>
+<ol>
+	<li><p>A concern element does not exist in the Java model.</p>
+	<ol>
+		<li><p>Showing inconsistent elements is disabled.</p>
+		<ul>
+			<li><p>The concern element is set as inconsistent.</p>
+			<li><p>It is not displayed in the view.</p>
+			<li><p>The dirty flag remains false.</p>
+		</ul>
+		<li><p>Showing inconsistent elements is enabled.</p>
+		<ol>
+			<li>The element is part of the Java model.
+			<ul>
+				<li><p>The concern element is set as inconsistent.</p>
+				<li><p>It is displayed in the view with an icon indicating that it does not exist.</p>
+				<li><p>The dirty flag remains false.</p>
+			</ul>
+			<li>The element is not part of the Java model.
+			<ul>
+				<li><p>The concern element is set as inconsistent.</p>
+				<li><p>It is displayed in the view with an icon indicating that it does not exist.</p>
+				<li><p>It is displayed as a child node of the concern instead of a child node of it's parent type.</p>
+				<li><p>It is labeled with its fully qualified name.</p>
+				<li><p>The dirty flag remains false.</p>
+			</ul>
+		</ol>
+	</ol>
+</ol>
+<p><br>
+</p>
+<p><u>Additions</u></p>
+<p><br>
+</p>
+<ol>
+	<li><p>An inconsistent element now exist in the Java model.</p>
+</ol>
+<ol>
+	<ol>
+		<li><p>The element exists as-is in the model.</p>
+	</ol>
+</ol>
+<ol>
+	<ol>
+		<ul>
+			<li><p>The element is restored to the concern model.</p>
+			<li><p>It is displayed in the view.</p>
+			<li><p>The dirty flag remains false.</p>
+			<p></p>
+		</ul>
+	</ol>
+</ol>
+<p><u>Changes</u></p>
+<p><br>
+</p>
+<ol>
+	<li><p>The modifiers of a field or method
+	that is part of the concern model have been changed.</p>
+	<ol>
+		<ul>
+			<li><p>The view shows the appropriate
+			modifiers.</p>
+			<li><p>The dirty flag remains false.</p>
+		</ul>
+	</ol>
+</ol>
+</BODY>
+</HTML>
