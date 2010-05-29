@@ -82,6 +82,6 @@ public abstract class AAbstractFeatureRecommender {
 //		return actualRecom;
 //	}	
 	
-	
+	public abstract String getRecommendationType();
 	public abstract Map<AIElement, ARecommendationContext> getRecommendations(IFeature color);
 }

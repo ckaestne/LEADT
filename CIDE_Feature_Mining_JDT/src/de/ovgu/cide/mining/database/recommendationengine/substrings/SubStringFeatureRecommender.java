@@ -20,10 +20,10 @@ import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContext;
 public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 
 	private static final double TRESHOLD = 0.05;
-	private static final double ATTENUATOR = 0.05;
+	//private static final double ATTENUATOR = 0.05;
 	
 	private static final AICategories[] registerElement = new AICategories[] {
-			AICategories.TYPE, AICategories.METHOD, AICategories.FIELD};
+			AICategories.TYPE, AICategories.METHOD, AICategories.FIELD, AICategories.LOCAL_VARIABLE};
 	
 	private static final AICategories[] primaryElement = new AICategories[] {
 		AICategories.TYPE, AICategories.METHOD, AICategories.FIELD,
@@ -40,6 +40,11 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 
 	}
 
+	@Override
+	public String getRecommendationType() {
+		return "TPF";
+	}
+	
 	private boolean isPrimaryElement(AIElement element) {
 
 		for (int i = 0; i < primaryElement.length; i++) {
@@ -60,16 +65,16 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 		return false;
 	}
 
-	private int matchCount(String source, String substring){
-		if ( source == null || source.isEmpty() || substring == null || substring.isEmpty() )
-			return 0;
-		
-		int count = 0;
-		for ( int pos = 0; (pos = source.indexOf( substring, pos )) != -1; count++ ) 
-			pos += substring.length();    
-		
-		return count; 
-	}
+//	private int matchCount(String source, String substring){
+//		if ( source == null || source.isEmpty() || substring == null || substring.isEmpty() )
+//			return 0;
+//		
+//		int count = 0;
+//		for ( int pos = 0; (pos = source.indexOf( substring, pos )) != -1; count++ ) 
+//			pos += substring.length();    
+//		
+//		return count; 
+//	}
 
 	private List<String> getSubStrings(String source){
 		List<String> substrings = new ArrayList<String>();
@@ -202,7 +207,7 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 
 		//create SubString Register for Feature Elements
 		for (AIElement curElement : featureElements) {
-			if (!isPrimaryElement(curElement))
+			if (!isRegisterElement(curElement))
 				continue;
 			
 			String source = removeNamingConvention(curElement.getShortName());
@@ -225,7 +230,7 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 		
 		//create SubString Register for Non Feature Elements
 		for (AIElement curElement : nonFeatureElements) {
-			if (!isPrimaryElement(curElement))
+			if (!isRegisterElement(curElement))
 				continue;
 			
 			String source = removeNamingConvention(curElement.getShortName());
@@ -331,7 +336,7 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 				support = (double)1;
 			
 			if (support >= TRESHOLD) {
-				ARecommendationContext context = new ARecommendationContext(dummyElement, "Sub String",  support);
+				ARecommendationContext context = new ARecommendationContext(dummyElement, "Text Match", getRecommendationType(), support);
 				recommendations.put(curElement, context);
 			}
 

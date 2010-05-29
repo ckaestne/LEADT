@@ -73,7 +73,7 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 			ReferenceCheck check = new ReferenceCheck(element, accessElement, model);
 			if (!check.evaluate(strategy) && isValidRecommendation(accessElement, color)) {
 				//access element should be recommended
-				ARecommendationContext context = new ARecommendationContext(element, "Typing Error: Check Accesses",1);
+				ARecommendationContext context = new ARecommendationContext(element, "Check Accesses",getRecommendationType(),1);
 				recommendations.put(accessElement, context);
 			}
 			
@@ -83,7 +83,7 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 		Set<AIElement> paramTargetElements = AC.getRange(element, ARelation.REQUIRES);
 		for (AIElement paramTargetElement : paramTargetElements) {
 			
-			Object[] bodyTargetElements = AC.getRange(paramTargetElement, ARelation.T_ACCESS_PARAMETER).toArray();
+			Object[] bodyTargetElements = AC.getRange(paramTargetElement, ARelation.T_DECLARES_PARAMETER).toArray();
 			AIElement bodyTargetElement = null;
 			if (bodyTargetElements.length > 0)
 				bodyTargetElement = (AIElement)bodyTargetElements[0];
@@ -117,7 +117,7 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 				
 				if (solutionsCount > 0) {
 				
-					ARecommendationContext context = new ARecommendationContext(element, "TE:Check Param Access", (double)1/(double)solutionsCount);
+					ARecommendationContext context = new ARecommendationContext(element, "Check Param Access", getRecommendationType(), (double)1/(double)solutionsCount);
 					
 					if (solutions[0])
 						recommendations.put(bodyTargetElement, context);
@@ -134,7 +134,7 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 		if (element.getCategory().equals(AICategories.PARAMETER_ACCESS)) {
 			AIElement paramTargetElement = element;
 			
-			Object[] bodyTargetElements = AC.getRange(paramTargetElement, ARelation.T_ACCESS_PARAMETER).toArray();
+			Object[] bodyTargetElements = AC.getRange(paramTargetElement, ARelation.T_DECLARES_PARAMETER).toArray();
 			AIElement bodyTargetElement = null;
 			if (bodyTargetElements.length > 0)
 				bodyTargetElement = (AIElement)bodyTargetElements[0];
@@ -179,11 +179,11 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 				if (solutionsCount > 0) {
 				
 					if (solutions[0]) {
-						ARecommendationContext context = new ARecommendationContext(element, "TE:Check Param Access", (double)1/(double)solutionsCount);
+						ARecommendationContext context = new ARecommendationContext(element, "Check Param Access", getRecommendationType(), (double)1/(double)solutionsCount);
 						recommendations.put(bodyTargetElement, context);
 					}
 					
-					ARecommendationContext context = new ARecommendationContext(element, "TE:Check Decl.", (double)1 /(double)solutionsCount);
+					ARecommendationContext context = new ARecommendationContext(element, "Check Decl.", getRecommendationType() ,(double)1 /(double)solutionsCount);
 					
 					if (solutions[1])
 						recommendations.put(paramSourceElement, context);
@@ -198,6 +198,12 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 	
 		
 		return recommendations;
+	}
+
+
+	@Override
+	public String getRecommendationType() {
+		return "TC";
 	}
 	
 //	public void addChecks(AIElement element) {

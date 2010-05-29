@@ -108,6 +108,34 @@ public class RecommendationTreeNode implements IAdaptable  {
 		return null;
 	}
 	
+	public int getTypePriority() {
+		
+		switch (element.getCategory()) {
+		
+		case COMPILATION_UNIT:
+			return 0;
+		case TYPE:
+			return 1;
+		case METHOD:
+			return 2;
+		case FIELD:
+			return 3;
+		case LOCAL_VARIABLE:
+			return 4;
+		case IMPORT:
+			return 5;	
+		case METHOD_ACCESS:
+			return 6;					
+		}
+		
+		return 7;
+	}
+	
+	public String getTypePriorityString() {
+		return String.valueOf(getTypePriority());
+	}
+	
+	
 	public double getSupportValue() {
 		switch (kind) {
 		case CONTEXTCOLLECTION:
@@ -150,7 +178,7 @@ public class RecommendationTreeNode implements IAdaptable  {
 		case CONTEXTCOLLECTION:
 			return ((ARecommendationContextCollection)data).getSupportReasons();
 		case CONTEXT:
-			return ((ARecommendationContext)data).getReason();
+			return ((ARecommendationContext)data).getRecommenderType()+":"+((ARecommendationContext)data).getReason();
 		}
 		
 		return "";

@@ -353,7 +353,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 	
 	private void makeActions() {
 		
-		
+		//<-- STATISTICS
 		printInfoAction = new Action() {
 			public void run() {	
 				//print all elements which are assigned to features
@@ -361,18 +361,18 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 				
 				ApplicationController jayFX = ApplicationController.getInstance();
 				
-				//writeElementsCategories(jayFX.getAllElements(),printNbr, "SYSTEM");
-				//writeElements(jayFX.getAllElements(), printNbr, "SYSTEM", false);
+//				Statistics.writeElementsCategories(jayFX.getAllElements(),printNbr, "SYSTEM");
+//				Statistics.writeElements(jayFX.getAllElements(), printNbr, "SYSTEM", false);
 				
 				for (IFeature feature : jayFX.getProjectFeatures()) {
 					Statistics.writeElementsCategories(jayFX.getElementsOfColor(feature),printNbr, "0_"+feature.getName());
-					Statistics.writeElements(jayFX.getElementsOfColor(feature), printNbr, "0_"+feature.getName(), false);
+					Statistics.writeElements(jayFX.getElementsOfColor(feature), printNbr, "0_"+feature.getName(), true);
 				}
 				
 					
 				for (IFeature feature : jayFX.getProjectFeatures()) {
 					Statistics.writeElementsCategories(jayFX.getElementsOfNonColor(feature),printNbr, "1_" +feature.getName());
-					Statistics.writeElements(jayFX.getElementsOfNonColor(feature),  printNbr, "1_" +feature.getName(), false);
+					Statistics.writeElements(jayFX.getElementsOfNonColor(feature),  printNbr, "1_" +feature.getName(), true);
 				}
 
 			}
@@ -381,7 +381,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 		printInfoAction.setToolTipText("Print Feature Information");
 		printInfoAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
 			getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
-
+		//STATISTICS-->
 		
 		doubleClickAction = new Action() {
 			public void run() {		

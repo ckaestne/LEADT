@@ -7,7 +7,7 @@ import java.util.Set;
 
 
 public class ARecommendationContextCollection {
-	//enum Reason {TYPING_ERROR, SUBSTRING_MATCH, OTHER};
+	
 	
 	private Set<ARecommendationContext> contexts;
 	
@@ -36,14 +36,32 @@ public class ARecommendationContextCollection {
 	
 	public double getSupportValue() {
 		double supportValue = 0;
+		Map<String, Double> max4Type = new HashMap<String, Double>();
+		double curMaxValue = 0;
 		
 		for (ARecommendationContext context : contexts) {
 //			//FUZZY STANDARD
-			supportValue = Math.max(supportValue, context.getSupportValue());
+//			supportValue = Math.max(supportValue, context.getSupportValue());
 		
-			//ROB08-ANSATZ
+			//ROB08-ANSATZ - Über alle
 //			supportValue = supportValue + context.getSupportValue() - (supportValue * context.getSupportValue());
 			
+			//ROB08- ANSATZ - zwischen unterschiedlichen Recommendern
+			Double maxValue = max4Type.get(context.getRecommenderType());
+			if (maxValue == null) {
+				curMaxValue = context.getSupportValue();
+			}
+			else {
+				curMaxValue = Math.max(maxValue, context.getSupportValue());
+			}
+			
+			max4Type.put(context.getRecommenderType(),  curMaxValue);
+			
+		}
+	
+		//ROB08- ANSATZ - zwischen unterschiedlichen Recommendern
+		for (String recType : max4Type.keySet()) {
+			supportValue = supportValue + max4Type.get(recType) - (supportValue * max4Type.get(recType));
 		}
 		
 		return supportValue;
@@ -54,11 +72,11 @@ public class ARecommendationContextCollection {
 		Map<String, Integer> reasonMap = new HashMap<String, Integer>();
 		
 		for (ARecommendationContext context : contexts) {
-			Integer value = reasonMap.get(context.getReason());
+			Integer value = reasonMap.get(context.getRecommenderType()+":"+context.getReason());
 			if (value == null)
 				value = 0;
 			
-			reasonMap.put(context.getReason(),  ++value);
+			reasonMap.put(context.getRecommenderType()+":"+context.getReason(),  ++value);
 		
 		}
 

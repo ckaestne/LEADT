@@ -29,6 +29,11 @@ public class SubStringElementRecommender extends AAbstractElementRecommender {
 
 	}
 
+	@Override
+	public String getRecommendationType() {
+		return "TPE";
+	}
+	
 	private boolean isPrimaryElement(AIElement element) {
 
 		for (int i = 0; i < primaryElement.length; i++) {
@@ -148,7 +153,7 @@ public class SubStringElementRecommender extends AAbstractElementRecommender {
 				support = 1;
 			
 			if (support >= TRESHOLD) {
-				ARecommendationContext context = new ARecommendationContext(element, "Sub String",  support );
+				ARecommendationContext context = new ARecommendationContext(element, "Text Match",getRecommendationType(),  support );
 				recommendations.put(curElement, context);
 			}
 

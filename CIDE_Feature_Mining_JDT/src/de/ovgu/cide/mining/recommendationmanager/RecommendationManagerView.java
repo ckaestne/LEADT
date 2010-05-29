@@ -2,7 +2,9 @@ package de.ovgu.cide.mining.recommendationmanager;
 
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.ui.JavaUI;
@@ -41,7 +43,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.texteditor.ITextEditor;
 
+import cide.gast.IASTNode;
+
 import de.ovgu.cide.features.IFeature;
+import de.ovgu.cide.language.jdt.UnifiedASTNode;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
 import de.ovgu.cide.mining.database.model.AIElement;
@@ -49,6 +54,7 @@ import de.ovgu.cide.mining.events.AElementPreviewEvent;
 import de.ovgu.cide.mining.events.AElementsNonColorChangedEvent;
 import de.ovgu.cide.mining.featuremanager.FeatureManagerView;
 import de.ovgu.cide.mining.recommendationmanager.model.RecommendationTreeNode;
+import de.ovgu.cide.util.Statistics;
 
 
 public class RecommendationManagerView extends ViewPart  {
@@ -75,6 +81,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 	private Action deleteElementAction;
 	private Action doubleClickAction;
 	private Action selectionChangedAction;
+	private Action printViewAction;
 	
 	private RecommendationContentProvider contentProvider;
 	private RecommendationSorter sorter;
@@ -153,36 +160,40 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 		tree.setLinesVisible(true);
 		
 		
-		columns = new TreeColumn[7];
+		columns = new TreeColumn[8];
 		
 		columns[0] = new TreeColumn(tree, SWT.LEFT);
 		columns[0].setText("Name");
 		columns[0].setWidth(250);
-	
-		columns[1] = new TreeColumn(tree, SWT.CENTER);
-		columns[1].setText("Value");
-		columns[1].setWidth(50);
 		
+		columns[1] = new TreeColumn(tree, SWT.LEFT);
+		columns[1].setText("Type-Prio.");
+		columns[1].setWidth(50);
+	
 		columns[2] = new TreeColumn(tree, SWT.CENTER);
-		columns[2].setText("Reasons");
-		columns[2].setWidth(200);
+		columns[2].setText("Value");
+		columns[2].setWidth(50);
 		
 		columns[3] = new TreeColumn(tree, SWT.CENTER);
-		columns[3].setText("Supports");
-		columns[3].setWidth(50);
+		columns[3].setText("Reasons");
+		columns[3].setWidth(200);
 		
 		columns[4] = new TreeColumn(tree, SWT.CENTER);
-		columns[4].setText("> Value for");
-		columns[4].setWidth(100);
-		
+		columns[4].setText("Supports");
+		columns[4].setWidth(50);
 		
 		columns[5] = new TreeColumn(tree, SWT.CENTER);
-		columns[5].setText("Range");
-		columns[5].setWidth(80);
+		columns[5].setText("> Value for");
+		columns[5].setWidth(100);
+		
 		
 		columns[6] = new TreeColumn(tree, SWT.CENTER);
-		columns[6].setText("Views");
-		columns[6].setWidth(50);
+		columns[6].setText("Range");
+		columns[6].setWidth(80);
+		
+		columns[7] = new TreeColumn(tree, SWT.CENTER);
+		columns[7].setText("Views");
+		columns[7].setWidth(50);
 		
 	
 		
@@ -207,7 +218,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 	
 	private void createSorter() {
 		
-		Comparator<RecommendationTreeNode>[] comparators = new Comparator[7];
+		Comparator<RecommendationTreeNode>[] comparators = new Comparator[8];
 		
 		comparators[0] = new Comparator<RecommendationTreeNode>() {
 			public int compare(RecommendationTreeNode o1, RecommendationTreeNode o2) {	
@@ -215,8 +226,20 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 			}
 		};
 		
-		//recommendation value
 		comparators[1] = new Comparator<RecommendationTreeNode>() {
+			public int compare(RecommendationTreeNode o1, RecommendationTreeNode o2) {	
+				if (o1.getTypePriority() < o2.getTypePriority())
+					return 1;
+				
+				if (o1.getTypePriority() > o2.getTypePriority())
+					return -1;
+				
+				return 0; 
+			}
+		};
+		
+		//recommendation value
+		comparators[2] = new Comparator<RecommendationTreeNode>() {
 			public int compare(RecommendationTreeNode o1, RecommendationTreeNode o2) {	
 				if (o1.getSupportValue() > o2.getSupportValue())
 					return 1;
@@ -229,14 +252,14 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 		};
 		
 		//recommendation reason
-		comparators[2] = new Comparator<RecommendationTreeNode>() {
+		comparators[3] = new Comparator<RecommendationTreeNode>() {
 			public int compare(RecommendationTreeNode o1, RecommendationTreeNode o2) {	
 				return o1.getReasons().compareTo(o2.getReasons());
 			}
 		};
 		
 		//supports
-		comparators[3] = new Comparator<RecommendationTreeNode>() {
+		comparators[4] = new Comparator<RecommendationTreeNode>() {
 			public int compare(RecommendationTreeNode o1, RecommendationTreeNode o2) {	
 				if (o1.getSupportersCount() > o2.getSupportersCount())
 					return 1;
@@ -250,14 +273,14 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 		
 	
 	
-		comparators[4] = new Comparator<RecommendationTreeNode>() {
+		comparators[5] = new Comparator<RecommendationTreeNode>() {
 			public int compare(RecommendationTreeNode o1, RecommendationTreeNode o2) {	
 				return o1.getMaxSupportFeature().compareTo(o2.getMaxSupportFeature());
 			}
 		};
 
 		//range
-		comparators[5] = new Comparator<RecommendationTreeNode>() {
+		comparators[6] = new Comparator<RecommendationTreeNode>() {
 			public int compare(RecommendationTreeNode o1, RecommendationTreeNode o2) {	
 				if (o1.getStartRange() < o2.getStartRange())
 					return -1;
@@ -276,7 +299,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 		};
 		
 		//views
-		comparators[6] = new Comparator<RecommendationTreeNode>() {
+		comparators[7] = new Comparator<RecommendationTreeNode>() {
 			public int compare(RecommendationTreeNode o1, RecommendationTreeNode o2) {	
 				if (o1.getViewCount() > o2.getViewCount())
 					return 1;
@@ -346,6 +369,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(deleteElementAction);
+		//manager.add(printViewAction);
 		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 	
@@ -355,9 +379,80 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 			"Non Feature Manager",
 			message);
 	}
+	
+//	private Set<AIElement> getElementsInElementRange(AIElement sourceElement) {
+//		
+//		//FIND RELATED ELEMENTS
+//		
+//		int start = sourceElement.getStartPosition();
+//		int end = start + sourceElement.getLength();
+//		int CUHash = sourceElement.getCompelationUnitHash();
+//		
+//		Set<AIElement> elements = new HashSet<AIElement>();
+//		
+//		for(AIElement element : AC.getAllElements()) {
+//			if (element.getCompelationUnitHash() != CUHash)
+//				continue;
+//						
+//			if (element.getStartPosition() < start)
+//				continue;
+//			
+//			if ((element.getStartPosition() + element.getLength()) > end)
+//				continue;
+//				
+//			elements.add(element);
+//		
+//		}
+//		
+//		return elements;
+//		
+//	}
+
 	private void makeActions() {
 		
-
+//		//<-- STATISTICS
+//		final Set<String> featureElements = Statistics.loadFeatureElements();
+//		final ApplicationController aCont = ApplicationController.getInstance();
+//		
+//		printViewAction = new Action() {
+//			public void run() {
+//				
+//				StringBuilder line = new StringBuilder();
+//				
+//				int items = Math.min(viewer.getTree().getItemCount(), 50);
+//				
+//				for (int i = 0; i < items ; i++) {
+//				
+//					RecommendationTreeNode node = (RecommendationTreeNode) viewer.getTree().getItem(i).getData();
+//					
+//					if (i==0) {
+//						line.append(aCont.getElementsOfColor(node.getColor()).size());
+//						line.append("\t");
+//					}
+//					
+//					line.append(node.getSupportValueAsString());
+//					line.append("\t");
+//					line.append(featureElements.contains(node.getElement().getId()));
+//					line.append("\t");
+//						
+//				}
+//				
+//				//print line!
+//				Statistics.writeRecommendationLine(line.toString());				
+//				
+//			}
+//			
+//		};
+//		
+//		printViewAction.setText("Print Current State to File");
+//		printViewAction.setToolTipText("Print Current State to File");
+//		printViewAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
+//			getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
+//		
+//		//STATISTICS -->
+		
+		
+		
 		deleteElementAction = new Action() {
 			public void run() {
 				
@@ -380,7 +475,16 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 					if (((RecommendationTreeNode)obj).getColor() == null)
 						continue;
 					
-					elementsToAdd.put(((RecommendationTreeNode)obj).getElement(),((RecommendationTreeNode)obj).getColor());
+					AIElement sourceElement = ((RecommendationTreeNode)obj).getElement();
+					IFeature feature =  ((RecommendationTreeNode)obj).getColor();
+					elementsToAdd.put(sourceElement,feature);
+					
+					//add also all elements which are included in this element
+//					for (AIElement subElement : getElementsInElementRange(sourceElement)) {
+//						elementsToAdd.put(subElement,feature);
+//					} 
+					
+				
 				}
 				
 				if (elementsToAdd.size()>0)

@@ -51,16 +51,18 @@ public class RecommendationLabelProvider extends LabelProvider  implements ITabl
 			case 0: 
 				return node.getDisplayName();
 			case 1: 
-				return node.getSupportValueAsString();
+				return node.getTypePriorityString();
 			case 2: 
-				return node.getReasons();
+				return node.getSupportValueAsString();
 			case 3: 
-				return node.getSupportersCountString();
+				return node.getReasons();
 			case 4: 
-				return node.getMaxSupportFeature();
+				return node.getSupportersCountString();
 			case 5: 
+				return node.getMaxSupportFeature();
+			case 6: 
 				return node.getRange();
-			case 6:  
+			case 7:  
 				return node.getViewCountAsString();
 			
 			

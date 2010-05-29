@@ -24,10 +24,10 @@ import de.ovgu.cide.typing.internal.manager.EvaluationStrategyManager;
 import de.ovgu.cide.typing.model.IEvaluationStrategy;
 
 
-public class GraphRelationElementRecommender extends AAbstractElementRecommender {
+public class CopyOfGraphRelationElementRecommender extends AAbstractElementRecommender {
 	
 	
-	public GraphRelationElementRecommender() {
+	public CopyOfGraphRelationElementRecommender() {
 		super();
 
 	}
@@ -38,16 +38,9 @@ public class GraphRelationElementRecommender extends AAbstractElementRecommender
 		Map<AIElement, ARecommendationContext> recommendations = new HashMap<AIElement, ARecommendationContext>();
 		
 		Set<ARelation> validTransponseRelations = ARelation.getAllRelations(element.getCategory(), true, false);
-		
-		//ADDED AFTER EVALUATION 
-		//validTransponseRelations.addAll(ARelation.getAllRelations(element.getCategory(), true, true));
-		
 		for (AICategories cat : element.getSubCategories()) {
 			validTransponseRelations.addAll(ARelation.getAllRelations(cat, true, false));
-			//ADDED AFTER EVALUATION 
-			//validTransponseRelations.addAll(ARelation.getAllRelations(cat, true, true));
 		}
-				
 		
 		//check all relations
 		for (ARelation tmpTransRelation : validTransponseRelations) {
@@ -58,73 +51,35 @@ public class GraphRelationElementRecommender extends AAbstractElementRecommender
 				Set<AIElement> validRecommendationElements = new HashSet<AIElement>();
 				
 				
-				int forwardColorElements = 0;
-				int forwardNonColorElements = 0;
-				
-				
 				//check how much of them already in color
 				//int validRecommendationCount = 0;
 				for (AIElement forwardElement : forwardElements) {
 					
-					if (isInColor(forwardElement, color)) {
-						forwardColorElements++;
-						continue;
-					}
-					
-					if (isInNonColor(forwardElement, color)) {
-						forwardNonColorElements++;
-						continue;
-					}
-						
 					if (isValidRecommendation(forwardElement, color))
-						validRecommendationElements.add(forwardElement);			
-					
+						validRecommendationElements.add(forwardElement);
 				}
 				
 				//if they are all already in color or marked as not color elements, skip to next relation
 				if (validRecommendationElements.size() == 0)
 					continue;
 				
-				//int invalidForwardRecommendations = forwardElements.size() - validRecommendationElements.size();
-				
+				int invalidForwardRecommendations = forwardElements.size() - validRecommendationElements.size();
+								
 				for (AIElement validForwardElement : validRecommendationElements) {
 						
 					//get backward elements for transpose 
 					Set<AIElement> backwardElements = AC.getRange(validForwardElement, tmpTransRelation.getInverseRelation());
 
 					//calc how much of backward is already in color
-					int backwardColorElements = 0;
-					int backwardNonColorElements = 0;
-					
+					int invalidBackwardRecommendations = 0;
 					for (AIElement backwardElement : backwardElements) {
-						
-						if (isInColor(backwardElement, color)){
-							backwardColorElements++;
-							continue;
-						}
-						
-						if (isInNonColor(backwardElement, color)) {
-							backwardNonColorElements++;
-							continue;
-						}
-	
+						if (!isValidRecommendation(backwardElement, color))
+							invalidBackwardRecommendations++;
 					}
 					
-//					System.out.println(element.getFullName());
+					//calc the degree
+					double degree = ((double)(1 + invalidForwardRecommendations) / (double)forwardElements.size()) * ((double)invalidBackwardRecommendations / (double)backwardElements.size());
 					
-					//calc color degree
-					double colorDegree = ((double)(1 + forwardColorElements) / (double)forwardElements.size()) * ((double)backwardColorElements / (double)backwardElements.size());
-					
-					//calc non color degree
-					double nonColorDegree = ((double)(1 + forwardNonColorElements) / (double)forwardElements.size()) * ((double)backwardNonColorElements / (double)backwardElements.size());
-					
-					
-					
-					
-					double degree = colorDegree-nonColorDegree;
-					
-					if (degree <= 0)
-						continue;
 					
 					//add / merge recommendation with alreay available ones
 					ARecommendationContext newContext = new ARecommendationContext(element, tmpTransRelation.getName(), getRecommendationType(), degree);

@@ -33,6 +33,8 @@ public enum ARelation
 	DECLARES_METHOD_ACCESS				( Type.ID_DECLARES_METHOD_ACCESS, true),
 	DECLARES_TYPE_ACCESS				( Type.ID_DECLARES_TYPE_ACCESS, true),
 	DECLARES_LOCAL_VARIABLE_ACCESS		( Type.ID_LOCAL_VARIABLE_ACCESS	, true),
+	DECLARES_PARAMETER					( Type.ID_DECLARES_PARAMTER, true),
+	
 	
 	DECLARES							( Type.ID_DECLARES, true),
 	ACCESSES							( Type.ID_ACCESS, true),
@@ -42,7 +44,6 @@ public enum ARelation
 	ACCESS_FIELD						( Type.ID_ACCESS_FIELD, true),
 	ACCESS_LOCAL_VARIABLE				( Type.ID_ACCESS_LOCAL_VARIABLE, true),
 	ACCESS_METHOD						( Type.ID_ACCESS_METHOD, true),
-	ACCESS_PARAMETER					( Type.ID_ACCESS_PARAMTER, true),
 	
 	OVERRIDES_METHOD					( Type.ID_OVERRIDES_METHOD, true),
 	OVERRIDES_METHOD_TRANSITIVE			( Type.ID_OVERRIDES_METHOD_TRANSITIVE, true),
@@ -75,6 +76,7 @@ public enum ARelation
 	T_DECLARES_METHOD_ACCESS			( Type.ID_DECLARES_METHOD_ACCESS, false),
 	T_DECLARES_TYPE_ACCESS				( Type.ID_DECLARES_TYPE_ACCESS, false),
 	T_DECLARES_LOCAL_VARIABLE_ACCESS	( Type.ID_LOCAL_VARIABLE_ACCESS	, false),
+	T_DECLARES_PARAMETER				( Type.ID_DECLARES_PARAMTER, false),
 	
 	T_DECLARES							( Type.ID_DECLARES, false),
 	T_ACCESS							( Type.ID_ACCESS, false),
@@ -84,7 +86,6 @@ public enum ARelation
 	T_ACCESS_FIELD						( Type.ID_ACCESS_FIELD, false),
 	T_ACCESS_LOCAL_VARIABLE				( Type.ID_ACCESS_LOCAL_VARIABLE, false),
 	T_ACCESS_METHOD						( Type.ID_ACCESS_METHOD, false),
-	T_ACCESS_PARAMETER					( Type.ID_ACCESS_PARAMTER, false),
 	
 	
 	T_OVERRIDES_METHOD					( Type.ID_OVERRIDES_METHOD, false),
@@ -432,7 +433,7 @@ public enum ARelation
 		else if( pCategory == AICategories.METHOD_ACCESS )
 		{
 			if( this == T_DECLARES ||
-					this == ACCESSES ||
+					this == DECLARES ||
 					 this == T_ACCESS)
 				lReturn = true;
 		}
@@ -441,9 +442,10 @@ public enum ARelation
 			if( this == T_DECLARES ||
 				this == T_ACCESS)
 				lReturn = true;
+			
 		}else if( pCategory == AICategories.PARAMETER_ACCESS )
 		{
-			if (this == T_ACCESS)
+			if (this == T_DECLARES)
 				lReturn = true;
 		}
 		
@@ -569,7 +571,7 @@ public enum ARelation
 			if( this == BELONGS_TO ||
 					this == T_DECLARES_TYPE_ACCESS ||
 					this == T_BELONGS_TO ||
-					this == ACCESS_PARAMETER ||
+					this == DECLARES_PARAMETER ||
 					this == T_ACCESS_TYPE ||
 					this == T_ACCESS_TYPE_TRANSITIVE)
 				lReturn = true;
@@ -593,21 +595,21 @@ public enum ARelation
 		else if( pCategory == AICategories.PARAMETER_ACCESS )
 		{
 			if( this == T_REQUIRES ||
-					this == T_ACCESS_PARAMETER)
+					this == T_DECLARES_PARAMETER)
 				lReturn = true;
 		}
 		else if(pCategory == AICategories.METHOD_ACCESS )
 		{
 			if( this == BELONGS_TO ||
 					this == T_DECLARES_METHOD_ACCESS ||
-					this == ACCESS_PARAMETER ||
+					this == DECLARES_PARAMETER ||
 					this == T_ACCESS_METHOD ||
 					this == T_ACCESS_METHOD_TRANSITIVE)
 				lReturn = true;
 		}
 		else if( pCategory == AICategories.OUT_OF_CONTEXT )
 		{
-			if( this == ACCESS_PARAMETER)
+			if( this == DECLARES_PARAMETER)
 				lReturn = true;
 		}
 		return lReturn;
@@ -832,8 +834,8 @@ public enum ARelation
 		("accesses local variable", "accessing local variable", "local variable accessed by", "local variable accessed by another element"),
 		ID_ACCESS_METHOD
 		("accesses method", "accessing method", "method accessed by", "method accessed by another element"),
-		ID_ACCESS_PARAMTER
-		("accesses parameter", "accessing parameter", "parameter accessed by", "parameter accessed by method"),
+		ID_DECLARES_PARAMTER
+		("declares parameter", "declares parameter", "parameter declared by", "parameter declared by method"),
 		
 		
 		ID_ACCESS_TYPE_TRANSITIVE

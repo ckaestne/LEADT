@@ -111,7 +111,7 @@ public class AAnalyzer
 			(pRelation == ARelation.OVERRIDES_METHOD_TRANSITIVE) || (pRelation == ARelation.T_OVERRIDES_METHOD_TRANSITIVE ) ||
 			(pRelation == ARelation.IMPLEMENTS_METHOD) || (pRelation == ARelation.T_IMPLEMENTS_METHOD ) ||
 			(pRelation == ARelation.IMPLEMENTS_METHOD_TRANSITIVE) || (pRelation == ARelation.T_IMPLEMENTS_METHOD_TRANSITIVE ) ||
-			(pRelation == ARelation.ACCESS_PARAMETER) || (pRelation == ARelation.T_ACCESS_PARAMETER ) ||
+			(pRelation == ARelation.DECLARES_PARAMETER) || (pRelation == ARelation.T_DECLARES_PARAMETER ) ||
 			(pRelation == ARelation.ACCESS_TYPE) || (pRelation == ARelation.T_ACCESS_TYPE ) ||
 			(pRelation == ARelation.ACCESS_FIELD) || (pRelation == ARelation.T_ACCESS_FIELD ) ||
 			(pRelation == ARelation.ACCESS_LOCAL_VARIABLE) || (pRelation == ARelation.T_ACCESS_LOCAL_VARIABLE) ||
@@ -158,7 +158,9 @@ public class AAnalyzer
 	public Set<AIElement> getT_Access( AIElement pElement) {
 		Set<AIElement> declaresElements = new HashSet<AIElement>();
 		declaresElements.addAll( aDB.getRange( pElement, ARelation.BELONGS_TO ));
-		declaresElements.addAll( aDB.getRange( pElement, ARelation.T_ACCESS_PARAMETER));
+		declaresElements.addAll( aDB.getRange( pElement, ARelation.IMPLEMENTS_METHOD));
+		declaresElements.addAll( aDB.getRange( pElement, ARelation.OVERRIDES_METHOD));
+		
 		
 		return declaresElements;
 	}
@@ -166,7 +168,9 @@ public class AAnalyzer
 	public Set<AIElement> getAccess( AIElement pElement) {
 		Set<AIElement> declaresElements = new HashSet<AIElement>();
 		declaresElements.addAll( aDB.getRange( pElement, ARelation.T_BELONGS_TO ));
-		declaresElements.addAll( aDB.getRange( pElement, ARelation.ACCESS_PARAMETER));
+		declaresElements.addAll( aDB.getRange( pElement, ARelation.T_IMPLEMENTS_METHOD));
+		declaresElements.addAll( aDB.getRange( pElement, ARelation.T_OVERRIDES_METHOD));
+		
 		return declaresElements;
 	}
 	
@@ -182,6 +186,7 @@ public class AAnalyzer
 		declaresElements.addAll( aDB.getRange( pElement, ARelation.DECLARES_LOCAL_VARIABLE_ACCESS ));
 		declaresElements.addAll( aDB.getRange( pElement, ARelation.DECLARES_TYPE_ACCESS ));
 		declaresElements.addAll( aDB.getRange( pElement, ARelation.DECLARES_METHOD_ACCESS ));
+		//declaresElements.addAll( aDB.getRange( pElement, ARelation.DECLARES_PARAMETER));
 		
 		return declaresElements;
 	}
@@ -198,6 +203,7 @@ public class AAnalyzer
 		declaresElements.addAll( aDB.getRange( pElement, ARelation.T_DECLARES_LOCAL_VARIABLE_ACCESS ));
 		declaresElements.addAll( aDB.getRange( pElement, ARelation.T_DECLARES_TYPE_ACCESS ));
 		declaresElements.addAll( aDB.getRange( pElement, ARelation.T_DECLARES_METHOD_ACCESS  ));
+		//declaresElements.addAll( aDB.getRange( pElement, ARelation.T_DECLARES_PARAMETER));
 		
 		return declaresElements;
 	}
@@ -214,7 +220,7 @@ public class AAnalyzer
 		
 		for (AIElement accessElement : accessElements) {
 			referenceElements.addAll( aDB.getRange( accessElement, ARelation.BELONGS_TO ));
-		}
+		}		
 		
 		return referenceElements;
 	}

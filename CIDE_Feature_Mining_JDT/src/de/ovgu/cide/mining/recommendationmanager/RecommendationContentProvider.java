@@ -3,11 +3,15 @@ package de.ovgu.cide.mining.recommendationmanager;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
 
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
@@ -23,6 +27,7 @@ import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent.EVENT_TYPE;
 import de.ovgu.cide.mining.recommendationmanager.RecommendationManagerView.MESSAGE_TYPE;
 import de.ovgu.cide.mining.recommendationmanager.model.RecommendationTreeNode;
 import de.ovgu.cide.mining.recommendationmanager.model.RecommendationTreeNode.NODE_KIND;
+import de.ovgu.cide.util.Statistics;
 
 
 class RecommendationContentProvider implements IStructuredContentProvider, ITreeContentProvider,  Observer  {
@@ -113,7 +118,102 @@ class RecommendationContentProvider implements IStructuredContentProvider, ITree
 	
 		recommendationManager.getTreeViewer().refresh();
 		
+		//STATISTICS!
+		printForStatistics();
+		
+		
 	}
+	
+	
+	
+	//<-- STATISTICS
+	final Set<String> featureExpElements = Statistics.loadFeatureElements(true);
+	final Set<String> featureOrgElements = Statistics.loadFeatureElements(false);
+	
+	
+	private void printForStatistics() {
+		StringBuilder line = new StringBuilder();
+		StringBuilder row = new StringBuilder();
+		
+		
+		int items = Math.min(recommendationManager.getTreeViewer().getTree().getItemCount(), 50);
+		
+		for (int i = 0; i < items ; i++) {
+		
+			RecommendationTreeNode node = (RecommendationTreeNode) recommendationManager.getTreeViewer().getTree().getItem(i).getData();
+			boolean isFeatureExpElement = featureExpElements.contains(node.getElement().getId());
+			boolean isFeatureOrignalElement = featureOrgElements.contains(node.getElement().getId());
+			
+			
+			if (i==0) {
+				recommendationManager.setInfoMessage(node.getDisplayName()+"   +++ "+isFeatureExpElement+ " +++"+"   +++ "+isFeatureOrignalElement+ " +++" , MESSAGE_TYPE.INFO);
+				
+				line.append(AC.getElementsOfColor(node.getColor()).size());
+				line.append("\t");
+				
+				line.append(AC.getElementsOfNonColor(node.getColor()).size());
+				line.append("\t");				
+			
+				if (isFeatureOrignalElement) {
+					line.append("true");
+					line.append("\t");
+					line.append(node.getSupportValueAsString());
+					line.append("\t");
+				}
+				else {
+					line.append("\t\t");
+						
+				}
+				
+				
+				if (!isFeatureOrignalElement && isFeatureExpElement){
+					line.append("true");
+					line.append("\t");
+					line.append(node.getSupportValueAsString());
+					line.append("\t");
+				}
+				else {
+					line.append("\t\t");
+						
+				}
+					
+				if (!isFeatureExpElement){
+					line.append("false");
+					line.append("\t");
+					line.append(node.getSupportValueAsString());
+					line.append("\t");
+				}
+				else {
+					line.append("\t\t");		
+				}
+				
+				row.append(node.getSupportValueAsString());
+				row.append("\t");
+				
+				row.append(isFeatureExpElement);
+				row.append(System.getProperty("line.separator"));
+				
+			}
+			else {
+			
+				line.append(isFeatureExpElement);
+				line.append("\t");
+			
+				line.append(node.getSupportValueAsString());
+				line.append("\t");
+				
+			}
+			
+			
+			
+		}
+		
+		//print line!
+		Statistics.writeRecommendations(line.toString(), row.toString());	
+		
+	}	
+	//STATISTICS-->
+	
 	
 	public void update(Observable o, Object arg) {
 		if (o.equals(AC)) {

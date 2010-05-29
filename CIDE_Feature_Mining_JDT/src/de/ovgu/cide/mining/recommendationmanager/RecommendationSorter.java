@@ -36,6 +36,7 @@ public class RecommendationSorter extends ViewerSorter{
 		
 		//setDefault
 		sortUsing(infos[1]);
+		sortUsing(infos[2]);
 		sortUsing(infos[0]);
 		
 	}
@@ -57,6 +58,7 @@ public class RecommendationSorter extends ViewerSorter{
 			
 			public void widgetSelected(SelectionEvent e) {
 				sortUsing(info);
+				System.out.println("SORTING: " + info.columnIndex);
 				
 			}
 			

@@ -775,10 +775,6 @@ public class AAccessRelationBuilder implements Serializable {
 				if (parent instanceof EnumDeclaration)
 					return;
 
-				ATypeElement typeElement = (ATypeElement)elementFactory.getElement(binding);
-				
-				if (typeElement == null)
-					return;
 								
 				ASTNode elementNode = node;
 				
@@ -790,8 +786,11 @@ public class AAccessRelationBuilder implements Serializable {
 				ATypeAccessElement typeAccessElement = (ATypeAccessElement)elementFactory.createElement(AICategories.TYPE_ACCESS, null ,cuHash, elementNode);
 				aDB.addElement(typeAccessElement);
 				
+				ATypeElement typeElement = (ATypeElement)elementFactory.getElement(binding);
+				
 				//ADD ACCESS TO ACTUAL TYPE
-				aDB.addRelationAndTranspose(typeAccessElement, ARelation.BELONGS_TO, typeElement);
+				if (typeElement != null)
+					aDB.addRelationAndTranspose(typeAccessElement, ARelation.BELONGS_TO, typeElement);
 				
 				AImportElement importElement = importMap.get(binding.getKey());
 				if (importElement != null && !importElement.equals(curImport))
@@ -814,12 +813,12 @@ public class AAccessRelationBuilder implements Serializable {
 				}
 				
 				
-				if (curParameter != null) {
-					for (AIElement paramAccess : curParameter) {
-						aDB.addRelationAndTranspose(typeAccessElement, ARelation.ACCESS_PARAMETER, paramAccess);
-					}
-					curParameter = null;
-				}
+//				if (curParameter != null) {
+//					for (AIElement paramAccess : curParameter) {
+//						aDB.addRelationAndTranspose(typeAccessElement, ARelation.DECLARES_PARAMETER, paramAccess);
+//					}
+//					curParameter = null;
+//				}
 				
 				boolean directRelationAdded = false;
 				
@@ -1083,7 +1082,7 @@ public class AAccessRelationBuilder implements Serializable {
 				//HANDLE CURRENT PARAMS
 				if (curParameter != null) {
 					for (AIElement paramAccess : curParameter) {
-						aDB.addRelationAndTranspose(accessElement, ARelation.ACCESS_PARAMETER, paramAccess);
+						aDB.addRelationAndTranspose(accessElement, ARelation.DECLARES_PARAMETER, paramAccess);
 					}
 					curParameter = null;
 				}

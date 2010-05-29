@@ -37,6 +37,36 @@ public abstract class AAbstractElementRecommender {
 		return true;
 	}
 	
+	protected boolean isInColor(AIElement element, IFeature color) {
+		if (AC.getElementColors(element).contains(color))
+			return true;
+		
+	
+		if (ApplicationController.CHECK_COLOR_RELATIONS) {
+			
+			for (IFeature relColor : AC.getRelatedColors(color)) {
+				if (AC.getElementColors(element).contains(relColor))
+					return true;	
+			} 
+		}
+		
+		return false;
+	}
+	
+	protected boolean isInNonColor(AIElement element, IFeature color) {
+		
+		if (AC.getElementNonColors(element).contains(color))
+			return true;
+	
+		if (ApplicationController.CHECK_COLOR_RELATIONS) {
+			for (IFeature relNonColor : AC.getRelatedNonColors(color)) {
+				if (AC.getElementNonColors(element).contains(relNonColor))
+					return true;	
+			} 
+		}
+		
+		return false;
+	}
 	
 	protected Map<AIElement, ARecommendationContext>  filterValidRecommendations(IFeature color, Map<AIElement, ARecommendationContext> recommendations) {
 		Map<AIElement, ARecommendationContext>  actualRecom = new HashMap<AIElement, ARecommendationContext>();
@@ -82,6 +112,7 @@ public abstract class AAbstractElementRecommender {
 //		return actualRecom;
 //	}	
 	
+	public abstract String getRecommendationType();
 	
 	public abstract Map<AIElement, ARecommendationContext> getRecommendations(AIElement element, IFeature color);
 }

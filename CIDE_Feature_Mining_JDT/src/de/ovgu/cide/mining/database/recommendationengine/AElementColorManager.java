@@ -39,6 +39,7 @@ import de.ovgu.cide.mining.featuremanager.FeatureManagerView.MESSAGE_TYPE;
 import de.ovgu.cide.mining.featuremanager.model.ASTDummy;
 import de.ovgu.cide.mining.featuremanager.model.CUDummy;
 import de.ovgu.cide.mining.featuremanager.model.FeatureTreeNode;
+import de.ovgu.cide.util.Statistics;
 
 public class AElementColorManager implements IColorChangeListener, Observer{
 	
@@ -183,6 +184,12 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 				}
 				//TEST
 				
+				//statistic!!
+	//			loadFeatureElements("0_SMS_Transfer", "SMS_Transfer", true);
+	//			loadFeatureElements("0_SMS_or_Copy", "SMS_or_Copy",true);
+	//			loadFeatureElements("0_View_Photo", "View_Photo", true);
+							
+				
 			} catch (FeatureModelNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -192,6 +199,34 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 		CIDECorePlugin.getDefault().addColorChangeListener(this);
 		AC.addObserver(this);
 	}
+	
+	
+	//STATISTICS!!!!!
+	public void loadFeatureElements(String path, String featureName, boolean exp) {
+		Set<String> depKeys = Statistics.loadDependentFeatureElements(path, exp);
+		
+		IFeature color = null;
+		
+		for (IFeature f : AC.getProjectFeatures()) {
+			if (f.getName().equals(featureName))
+				color = f;
+		} 
+		
+		int i = 0;	
+		for(AIElement element: AC.getAllElements()) {
+			if (depKeys.contains(element.getId())) {
+				addElementToColor(color, element);
+				i++;
+			}
+				
+		}
+							
+		System.out.println("DEP ELEMENTS ADDED: " + i);
+		AC.fireEvent(new AGenerateRecommendationsEvent(this));
+		
+		
+	}
+	//STATISTICS!!!!
 
 	public Set<IFeature> getRelatedColors(IFeature color) {
 		Set<IFeature> result = feature2relatedFeatures.get(color);
