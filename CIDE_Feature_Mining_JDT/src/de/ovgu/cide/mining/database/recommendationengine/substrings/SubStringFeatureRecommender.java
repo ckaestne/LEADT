@@ -307,6 +307,7 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 			List<String> subStrings = getSubStrings(target);
 			double subStringCount = subStrings.size();
 			double support = 0;
+			int unknownStrings = 0;
 			for (String subString : subStrings) {
 				double lenFactor;
 				if (subString.length() >= 6) {
@@ -326,10 +327,13 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 					nonFeatureSubStringCount = 0.0;
 				double nonFeatureIndex = (double)nonFeatureSubStringCount / (double)nonFeatureRegisterSize;
 				
-				
-				support += (1/subStringCount) * (lenFactor *(featureIndex-nonFeatureIndex));
+				if ((featureIndex-nonFeatureIndex) == 0)
+					unknownStrings++;
+				else				
+					support += (lenFactor *(featureIndex-nonFeatureIndex));
 			}
 			
+			support = support * (subStringCount-unknownStrings) / subStringCount; 
 			
 			
 			if (support > 1)

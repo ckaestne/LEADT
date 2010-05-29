@@ -40,12 +40,12 @@ public class GraphRelationElementRecommender extends AAbstractElementRecommender
 		Set<ARelation> validTransponseRelations = ARelation.getAllRelations(element.getCategory(), true, false);
 		
 		//ADDED AFTER EVALUATION 
-		//validTransponseRelations.addAll(ARelation.getAllRelations(element.getCategory(), true, true));
+		validTransponseRelations.addAll(ARelation.getAllRelations(element.getCategory(), true, true));
 		
 		for (AICategories cat : element.getSubCategories()) {
 			validTransponseRelations.addAll(ARelation.getAllRelations(cat, true, false));
 			//ADDED AFTER EVALUATION 
-			//validTransponseRelations.addAll(ARelation.getAllRelations(cat, true, true));
+			validTransponseRelations.addAll(ARelation.getAllRelations(cat, true, true));
 		}
 				
 		

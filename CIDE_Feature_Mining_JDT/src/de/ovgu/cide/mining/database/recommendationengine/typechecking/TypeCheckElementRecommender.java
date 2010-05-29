@@ -104,11 +104,12 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 				//access element should be recommended
 				int solutionsCount = 0;
 				boolean[] solutions = new boolean[2];
-				
-				if (bodyTargetElement != null && isValidRecommendation(bodyTargetElement, color)) {
-					solutionsCount++;
-					solutions[0] = true;
-				}
+			
+//				AFTER EVALUATION	
+//				if (bodyTargetElement != null && isValidRecommendation(bodyTargetElement, color)) {
+//					solutionsCount++;
+//					solutions[0] = true;
+//				}
 				
 				if (paramTargetElement != null && isValidRecommendation(paramTargetElement, color)) {
 					solutionsCount++;
@@ -170,11 +171,12 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 					solutionsCount++;
 					solutions[1] = true;
 				}
-			
-				if (bodySourceElement != null && isValidRecommendation(bodySourceElement, color)) {
-					solutionsCount++;
-					solutions[2] = true;
-				}
+
+//				AFTER EVALUATION
+//				if (bodySourceElement != null && isValidRecommendation(bodySourceElement, color)) {
+//					solutionsCount++;
+//					solutions[2] = true;
+//				}
 				
 				if (solutionsCount > 0) {
 				
