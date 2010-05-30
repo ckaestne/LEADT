@@ -282,8 +282,10 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 				
 			}
 			else {
-				nonFeatureRegisterSize -= nonFeatureSubStringRegister.remove(matchSubString);
-				featureRegisterSize -= featureSubStringRegister.remove(matchSubString);
+				nonFeatureRegisterSize -= nonFeatureSubStringRegister.get(matchSubString);
+				nonFeatureSubStringRegister.put(matchSubString,0.0);
+				featureRegisterSize -= featureSubStringRegister.get(matchSubString);
+				featureSubStringRegister.put(matchSubString,0.0);
 			}
 			
 		}	
