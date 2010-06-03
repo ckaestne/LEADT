@@ -410,48 +410,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 
 	private void makeActions() {
 		
-//		//<-- STATISTICS
-//		final Set<String> featureElements = Statistics.loadFeatureElements();
-//		final ApplicationController aCont = ApplicationController.getInstance();
-//		
-//		printViewAction = new Action() {
-//			public void run() {
-//				
-//				StringBuilder line = new StringBuilder();
-//				
-//				int items = Math.min(viewer.getTree().getItemCount(), 50);
-//				
-//				for (int i = 0; i < items ; i++) {
-//				
-//					RecommendationTreeNode node = (RecommendationTreeNode) viewer.getTree().getItem(i).getData();
-//					
-//					if (i==0) {
-//						line.append(aCont.getElementsOfColor(node.getColor()).size());
-//						line.append("\t");
-//					}
-//					
-//					line.append(node.getSupportValueAsString());
-//					line.append("\t");
-//					line.append(featureElements.contains(node.getElement().getId()));
-//					line.append("\t");
-//						
-//				}
-//				
-//				//print line!
-//				Statistics.writeRecommendationLine(line.toString());				
-//				
-//			}
-//			
-//		};
-//		
-//		printViewAction.setText("Print Current State to File");
-//		printViewAction.setToolTipText("Print Current State to File");
-//		printViewAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-//			getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
-//		
-//		//STATISTICS -->
-		
-		
+	
 		
 		deleteElementAction = new Action() {
 			public void run() {

@@ -335,7 +335,7 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 					support += (lenFactor *(featureIndex-nonFeatureIndex));
 			}
 			
-			support = support * (subStringCount-unknownStrings) / subStringCount; 
+			//support = support * (subStringCount-unknownStrings) / subStringCount; 
 			
 			
 			if (support > 1)

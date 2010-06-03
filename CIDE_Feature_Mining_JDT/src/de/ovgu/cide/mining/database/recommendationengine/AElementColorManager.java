@@ -202,30 +202,30 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 	
 	
 	//STATISTICS!!!!!
-	public void loadFeatureElements(String path, String featureName, boolean exp) {
-		Set<String> depKeys = Statistics.loadDependentFeatureElements(path, exp);
-		
-		IFeature color = null;
-		
-		for (IFeature f : AC.getProjectFeatures()) {
-			if (f.getName().equals(featureName))
-				color = f;
-		} 
-		
-		int i = 0;	
-		for(AIElement element: AC.getAllElements()) {
-			if (depKeys.contains(element.getId())) {
-				addElementToColor(color, element);
-				i++;
-			}
-				
-		}
-							
-		System.out.println("DEP ELEMENTS ADDED: " + i);
-		AC.fireEvent(new AGenerateRecommendationsEvent(this));
-		
-		
-	}
+//	public void loadFeatureElements(String path, String featureName, boolean exp) {
+//		Set<String> depKeys = Statistics.loadDependentFeatureElements(path, exp);
+//		
+//		IFeature color = null;
+//		
+//		for (IFeature f : AC.getProjectFeatures()) {
+//			if (f.getName().equals(featureName))
+//				color = f;
+//		} 
+//		
+//		int i = 0;	
+//		for(AIElement element: AC.getAllElements()) {
+//			if (depKeys.contains(element.getId())) {
+//				addElementToColor(color, element);
+//				i++;
+//			}
+//				
+//		}
+//							
+//		System.out.println("DEP ELEMENTS ADDED: " + i);
+//		AC.fireEvent(new AGenerateRecommendationsEvent(this));
+//		
+//		
+//	}
 	//STATISTICS!!!!
 
 	public Set<IFeature> getRelatedColors(IFeature color) {

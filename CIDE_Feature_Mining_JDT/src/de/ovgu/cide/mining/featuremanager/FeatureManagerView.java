@@ -94,7 +94,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 	
 	private Action doubleClickAction;
 	private Action selectionChangedAction;
-	private Action printInfoAction;
+	//private Action printInfoAction;
 	
 	private FeatureContentProvider contentProvider;
 	private FeatureSorter sorter;
@@ -344,7 +344,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(printInfoAction);
+		//manager.add(printInfoAction);
 	}
 	
 	
@@ -354,33 +354,33 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 	private void makeActions() {
 		
 		//<-- STATISTICS
-		printInfoAction = new Action() {
-			public void run() {	
-				//print all elements which are assigned to features
-				long printNbr = System.currentTimeMillis();
-				
-				ApplicationController jayFX = ApplicationController.getInstance();
-				
-//				Statistics.writeElementsCategories(jayFX.getAllElements(),printNbr, "SYSTEM");
-//				Statistics.writeElements(jayFX.getAllElements(), printNbr, "SYSTEM", false);
-				
-				for (IFeature feature : jayFX.getProjectFeatures()) {
-					Statistics.writeElementsCategories(jayFX.getElementsOfColor(feature),printNbr, "0_"+feature.getName());
-					Statistics.writeElements(jayFX.getElementsOfColor(feature), printNbr, "0_"+feature.getName(), true);
-				}
-				
-					
-				for (IFeature feature : jayFX.getProjectFeatures()) {
-					Statistics.writeElementsCategories(jayFX.getElementsOfNonColor(feature),printNbr, "1_" +feature.getName());
-					Statistics.writeElements(jayFX.getElementsOfNonColor(feature),  printNbr, "1_" +feature.getName(), true);
-				}
-
-			}
-		};
-		
-		printInfoAction.setToolTipText("Print Feature Information");
-		printInfoAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-			getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
+//		printInfoAction = new Action() {
+//			public void run() {	
+//				//print all elements which are assigned to features
+//				long printNbr = System.currentTimeMillis();
+//				
+//				ApplicationController jayFX = ApplicationController.getInstance();
+//				
+////				Statistics.writeElementsCategories(jayFX.getAllElements(),printNbr, "SYSTEM");
+////				Statistics.writeElements(jayFX.getAllElements(), printNbr, "SYSTEM", false);
+//				
+//				for (IFeature feature : jayFX.getProjectFeatures()) {
+//					Statistics.writeElementsCategories(jayFX.getElementsOfColor(feature),printNbr, "0_"+feature.getName());
+//					Statistics.writeElements(jayFX.getElementsOfColor(feature), printNbr, "0_"+feature.getName(), true);
+//				}
+//				
+//					
+//				for (IFeature feature : jayFX.getProjectFeatures()) {
+//					Statistics.writeElementsCategories(jayFX.getElementsOfNonColor(feature),printNbr, "1_" +feature.getName());
+//					Statistics.writeElements(jayFX.getElementsOfNonColor(feature),  printNbr, "1_" +feature.getName(), true);
+//				}
+//
+//			}
+//		};
+//		
+//		printInfoAction.setToolTipText("Print Feature Information");
+//		printInfoAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
+//			getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
 		//STATISTICS-->
 		
 		doubleClickAction = new Action() {
