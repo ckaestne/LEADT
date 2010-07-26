@@ -141,8 +141,6 @@ public class AElementRecommendationManager implements Observer {
 		
 		element2Recommendation = new HashMap<IFeature, Map<AIElement,ARecommendationContextCollection>>();	
 		
-	
-	
 		for (IFeature color : AC.getProjectFeatures()) {
 			
 			//RESET RECOMMENDATIONS

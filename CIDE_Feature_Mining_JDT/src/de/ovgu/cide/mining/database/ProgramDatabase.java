@@ -24,25 +24,18 @@ import de.ovgu.cide.mining.database.model.ARelation;
  */
 public class ProgramDatabase 
 {
-	/**
-	 * Data bundle associated with an element.  Contains modifier 
-	 * flags and a map linking relations to their ranges.
-	 * an IElement instance.
-	 */
-	public static final int NO_MODIFIERS = -1;
-	class Bundle
+	class Relations
 	{
 		private Map<ARelation, Set<AIElement>> aRelations;
-		private int aModifier;
 		
 		/**
 		 * Creates a new, empty information bundle.
 		 * @param pModifier A modifier flag.
 		 */
-		public Bundle( int pModifier )
+		public Relations(  )
 		{
 			aRelations = new HashMap<ARelation, Set<AIElement>>();
-			aModifier = pModifier;
+			
 		}
 		
 		/**
@@ -56,7 +49,7 @@ public class ProgramDatabase
 	
 	// Maps IElements (unique because of the Flyweight pattern
 	// to bundles containing modifiers and relations 
-    private Map<AIElement, Bundle> aElements; 
+    private Map<AIElement, Relations> aElements; 
     private Map<String, AIElement> elementIndexMap;
     
     /**
@@ -64,7 +57,7 @@ public class ProgramDatabase
      */
     public ProgramDatabase() 
     {
-        aElements = new HashMap<AIElement, Bundle>();
+        aElements = new HashMap<AIElement, Relations>();
         elementIndexMap = new HashMap<String, AIElement>();
     }
     
@@ -99,17 +92,13 @@ public class ProgramDatabase
      * @param pElement The element to add.  Should never be null.
      * @param pModifier The modifier flags for this element.
      */
-    public void addElement( AIElement pElement)
-    {
-    	addElement(pElement,NO_MODIFIERS);
-    }
     
-    public void addElement( AIElement pElement, int pModifier )
+    public void addElement( AIElement pElement )
     {
     	assert( pElement != null );
         if( !aElements.containsKey( pElement ))
         {
-            aElements.put( pElement, new Bundle( pModifier ));
+            aElements.put( pElement, new Relations( ));
             elementIndexMap.put(pElement.getId(), pElement);
         }
     }
@@ -206,7 +195,7 @@ public class ProgramDatabase
     	if( !contains( pElement ))
     		throw new ElementNotFoundException( pElement.getId() );
     	
-       Map lRelations = ((Bundle)aElements.get( pElement )).getRelationMap();
+       Map lRelations = ((Relations)aElements.get( pElement )).getRelationMap();
        return !lRelations.isEmpty();
     }
     
@@ -226,7 +215,7 @@ public class ProgramDatabase
     	if( !contains( pTo ))
     		throw new ElementNotFoundException( pTo.getId() );
     	
-    	Map lRelations = ((Bundle)aElements.get( pFrom )).getRelationMap();
+    	Map lRelations = ((Relations)aElements.get( pFrom )).getRelationMap();
         for( Iterator i = lRelations.keySet().iterator(); i.hasNext(); )
         {
             ARelation lNext = (ARelation)i.next();
@@ -259,7 +248,7 @@ public class ProgramDatabase
     	if( !contains( pElement2 ))
     		throw new ElementNotFoundException( pElement2.getId() );
     	
-        Map lRelations = ((Bundle)aElements.get( pElement1 )).getRelationMap();
+        Map lRelations = ((Relations)aElements.get( pElement1 )).getRelationMap();
         if( !lRelations.containsKey( pRelation ))
             return;
         
@@ -280,7 +269,7 @@ public class ProgramDatabase
     	if( !contains( pElement ))
     		throw new ElementNotFoundException( pElement.getId() );
     	
-    	Map lRelations = ((Bundle) aElements.get( pElement )).getRelationMap();
+    	Map lRelations = ((Relations) aElements.get( pElement )).getRelationMap();
         for( Iterator i = lRelations.keySet().iterator(); i.hasNext(); )
         {
         	ARelation lNext = (ARelation)i.next();
@@ -312,7 +301,7 @@ public class ProgramDatabase
             if (obj == null)
             	continue;
             
-            Bundle bundle = (Bundle) obj;
+            Relations bundle = (Relations) obj;
            
             Map lRelations; 
            
@@ -332,18 +321,4 @@ public class ProgramDatabase
         }
     }
     
-    /**
-     * Returns the modifier flag for the element
-     * @return An integer representing the modifier. 0 if the element cannot be found.
-     */
-    public int getModifiers( AIElement pElement )
-    {
-    	int lReturn = 0;
-    	if( aElements.containsKey( pElement ))
-    	{
-    		Bundle lBundle = (Bundle)aElements.get( pElement );
-    		lReturn = lBundle.aModifier;
-    	}
-    	return lReturn;
-    }
 }

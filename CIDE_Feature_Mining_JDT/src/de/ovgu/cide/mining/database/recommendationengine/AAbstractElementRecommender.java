@@ -23,15 +23,16 @@ public abstract class AAbstractElementRecommender {
 			return false;
 	
 		if (ApplicationController.CHECK_COLOR_RELATIONS) {
-			for (IFeature relNonColor : AC.getRelatedNonColors(color)) {
-				if (AC.getElementNonColors(element).contains(relNonColor))
-					return false;	
-			} 
-			
-			for (IFeature relColor : AC.getRelatedColors(color)) {
+			for (IFeature relColor : AC.getRelatedColors(color)) {		
 				if (AC.getElementColors(element).contains(relColor))
 					return false;	
 			} 
+					
+			for (IFeature relNonColor : AC.getRelatedNonColors(color)) {
+				if (AC.getElementColors(element).contains(relNonColor))
+					return false;	
+			} 
+			
 		}
 		
 		return true;
@@ -60,7 +61,7 @@ public abstract class AAbstractElementRecommender {
 	
 		if (ApplicationController.CHECK_COLOR_RELATIONS) {
 			for (IFeature relNonColor : AC.getRelatedNonColors(color)) {
-				if (AC.getElementNonColors(element).contains(relNonColor))
+				if (AC.getElementColors(element).contains(relNonColor))
 					return true;	
 			} 
 		}

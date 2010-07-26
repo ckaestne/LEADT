@@ -227,6 +227,8 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 		hookDoubleClickAction();
 		hookSelectionChangedAction();
 		contributeToActionBars();
+		
+		
 	
 		
 		

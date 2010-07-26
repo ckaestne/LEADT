@@ -119,8 +119,6 @@ public class GraphRelationElementRecommender extends AAbstractElementRecommender
 					double nonColorDegree = ((double)(1 + forwardNonColorElements) / (double)forwardElements.size()) * ((double)backwardNonColorElements / (double)backwardElements.size());
 					
 					
-					
-					
 					double degree = colorDegree-nonColorDegree;
 					
 					if (degree <= 0)

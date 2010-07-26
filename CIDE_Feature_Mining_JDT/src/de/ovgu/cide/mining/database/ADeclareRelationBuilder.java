@@ -114,12 +114,8 @@ public class ADeclareRelationBuilder implements Serializable {
 				ATypeElement oldType = curType;
 								
 				curType = (ATypeElement)elementFactory.createElement(AICategories.TYPE, binding,cuHash, node); 
-				aDB.addElement(curType, binding.getModifiers());
-				
-				
-				
-				
-				
+				aDB.addElement(curType);
+							
 				if (!binding.isTopLevel()) {
 					
 					//ADD DECLARE RELATIONSHIP FOR COMPILTATTION UNIT
@@ -179,7 +175,7 @@ public class ADeclareRelationBuilder implements Serializable {
 				if (binding != null) {
 								
 					curMethod = (AMethodElement)elementFactory.createElement(AICategories.METHOD, binding, cuHash, node); 
-					aDB.addElement(curMethod, binding.getModifiers());
+					aDB.addElement(curMethod);
 					
 					curParamIndex = 0;
 					
@@ -236,7 +232,7 @@ public class ADeclareRelationBuilder implements Serializable {
 				if (binding.isField() || binding.isEnumConstant()) {
 				
 					curElement = (AFieldElement)elementFactory.createElement(AICategories.FIELD, binding,cuHash, node); 
-					aDB.addElement(curElement, binding.getModifiers());
+					aDB.addElement(curElement);
 					curRelation = ARelation.DECLARES_FIELD;
 					curTransitiveRelation = ARelation.DECLARES_FIELD_TRANSITIVE;
 					
@@ -252,7 +248,7 @@ public class ADeclareRelationBuilder implements Serializable {
 				    if (binding.isParameter())
 				    	((ALocalVariableElement)curElement).setParamIndex(curParamIndex++);
 				    
-				    aDB.addElement(curElement, binding.getModifiers());
+				    aDB.addElement(curElement);
 					curRelation = ARelation.DECLARES_LOCAL_VARIABLE;
 					curTransitiveRelation = ARelation.DECLARES_LOCAL_VARIABLE_TRANSITIVE;
 					
