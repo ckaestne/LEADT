@@ -29,8 +29,8 @@ import de.ovgu.cide.mining.database.ConversionException;
 import de.ovgu.cide.mining.database.ElementNotFoundException;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
-import de.ovgu.cide.mining.database.model.ARelation;
+import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.database.model.ARelationKind;
 import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;
 import de.ovgu.cide.mining.events.AInitEvent;
 import de.ovgu.cide.mining.relationmanager.RelationManagerView.MESSAGE_TYPE;
@@ -57,7 +57,7 @@ class RelationContentProvider implements IStructuredContentProvider,
 	private final RelationManagerView relationManager;
 	private final ApplicationController AC;
 
-	private AIElement topElement;
+	private AElement topElement;
 	
 	private boolean isInit;
 	
@@ -158,20 +158,20 @@ class RelationContentProvider implements IStructuredContentProvider,
 		return false;
 	}
 
-	public AIElement getTopElement() {
+	public AElement getTopElement() {
 		return topElement;
 	}
 
 	
-	public void displayItemChanged (AIElement jayElement, boolean logChange) {
+	public void displayItemChanged (AElement jayElement, boolean logChange) {
 		displayItemChanged(jayElement, false, logChange);
 	}		
 	
-	private void displayItemChanged (AIElement jayElement, boolean internal, boolean logChange) {
+	private void displayItemChanged (AElement jayElement, boolean internal, boolean logChange) {
 			
 		//TODO PRÜFEN OB DAS ALTE ELEMENT AUCH DAS NEUE IST!
 		
-		AIElement oldTopElement = topElement;
+		AElement oldTopElement = topElement;
 		
 		if (!internal)
 			relationManager.getTree().deselectAll();
@@ -197,14 +197,14 @@ class RelationContentProvider implements IStructuredContentProvider,
 			invisibleRoot = new RelationTreeNode(NODE_KIND.ROOT,"");
 			invisibleRoot.addChild(new RelationTreeNode(NODE_KIND.ELEMENT, jayElement));
 		
-			Set<ARelation> validDirectRelations = ARelation.getAllRelations(jayElement.getCategory(),false, true);
+			Set<ARelationKind> validDirectRelations = ARelationKind.getAllRelations(jayElement.getCategory(),false, true);
 			for (AICategories cat : jayElement.getSubCategories()) {
-				validDirectRelations.addAll(ARelation.getAllRelations(cat,false, true));
+				validDirectRelations.addAll(ARelationKind.getAllRelations(cat,false, true));
 			}
 			
-			Set<ARelation> validTransponseRelations = ARelation.getAllRelations(jayElement.getCategory(),false, false);
+			Set<ARelationKind> validTransponseRelations = ARelationKind.getAllRelations(jayElement.getCategory(),false, false);
 			for (AICategories cat : jayElement.getSubCategories()) {
-				validTransponseRelations.addAll(ARelation.getAllRelations(cat,false, false));
+				validTransponseRelations.addAll(ARelationKind.getAllRelations(cat,false, false));
 			}
 			
 			//create structure nodes
@@ -215,13 +215,13 @@ class RelationContentProvider implements IStructuredContentProvider,
 			
 			//DIRECT!
 			boolean hasDirectRelations = false;
-			for (ARelation tmpDirectRelation :  validDirectRelations) {
+			for (ARelationKind tmpDirectRelation :  validDirectRelations) {
 			
 				try {
 					tmpStructureNode = new RelationTreeNode(NODE_KIND.FOLDER, tmpDirectRelation.getName());
-					Set<AIElement> elements = AC.getRange(jayElement, tmpDirectRelation);
+					Set<AElement> elements = AC.getRange(jayElement, tmpDirectRelation);
 					
-					for (AIElement iElement : elements) {
+					for (AElement iElement : elements) {
 						tmpStructureNode.addChild(new RelationTreeNode(NODE_KIND.ELEMENT, iElement));
 					}
 					
@@ -244,15 +244,15 @@ class RelationContentProvider implements IStructuredContentProvider,
 			
 			//transpose
 			boolean hasTransRelations = false;
-			for (ARelation tmpTranRelation: validTransponseRelations) {
+			for (ARelationKind tmpTranRelation: validTransponseRelations) {
 				
 				
 				try {
 					tmpStructureNode = new RelationTreeNode(NODE_KIND.FOLDER, tmpTranRelation.getName());
-					Set<AIElement> elements = AC.getRange(jayElement, tmpTranRelation);
+					Set<AElement> elements = AC.getRange(jayElement, tmpTranRelation);
 					
 					
-					for (AIElement iElement : elements) {
+					for (AElement iElement : elements) {
 						tmpStructureNode.addChild(new RelationTreeNode(NODE_KIND.ELEMENT,iElement));
 					}
 					if (elements.size() > 0) {
@@ -368,7 +368,7 @@ class RelationContentProvider implements IStructuredContentProvider,
 		
 		
 		ASTNode astNode = (ASTNode) tSelection.getFirstElement();
-		AIElement jayElement = null;
+		AElement jayElement = null;
 		
 		
 		try {

@@ -19,7 +19,7 @@ import java.util.Vector;
 /**
  * Encapsulate various services related to relations.
  */
-public enum ARelation
+public enum ARelationKind
 {	
 
 //ALEX RELATIONS
@@ -162,27 +162,27 @@ public enum ARelation
 //	T_REFERENCES			( Type.ID_REFERENCES, false );
 
 
-	private static EnumSet<ARelation> aRelationSet;
-	private static EnumSet<ARelation> tRelationSet; 			// Transpose
-	private static EnumMap<Type, ARelation> aRelationMap;
-	private static EnumMap<Type, ARelation> tRelationMap;	// Transpose
+	private static EnumSet<ARelationKind> aRelationSet;
+	private static EnumSet<ARelationKind> tRelationSet; 			// Transpose
+	private static EnumMap<Type, ARelationKind> aRelationMap;
+	private static EnumMap<Type, ARelationKind> tRelationMap;	// Transpose
 	private static final String TRANSPOSE_CODE = "*";
 	private final boolean aDirect;
 	private final Type aId;
 
 	static {
-		aRelationSet = EnumSet.range(ARelation.DECLARES_TYPE , ARelation.DECLARES_LOCAL_VARIABLE_TRANSITIVE);
+		aRelationSet = EnumSet.range(ARelationKind.DECLARES_TYPE , ARelationKind.DECLARES_LOCAL_VARIABLE_TRANSITIVE);
 		tRelationSet = EnumSet.complementOf(aRelationSet);
 		//cRelationSet = EnumSet.range(Relation.T_EXPLICITLY_CALLS, Relation.T_REFERENCES);
 
-		aRelationMap = new EnumMap<Type, ARelation>(Type.class);
-		tRelationMap = new EnumMap<Type, ARelation>(Type.class);
+		aRelationMap = new EnumMap<Type, ARelationKind>(Type.class);
+		tRelationMap = new EnumMap<Type, ARelationKind>(Type.class);
 
-		for (ARelation lRelation : aRelationSet)
+		for (ARelationKind lRelation : aRelationSet)
 		{
 			aRelationMap.put(lRelation.getType(), lRelation);
 		}
-		for (ARelation lTransRelation : tRelationSet)
+		for (ARelationKind lTransRelation : tRelationSet)
 		{
 			tRelationMap.put(lTransRelation.getType(), lTransRelation);
 		}
@@ -197,7 +197,7 @@ public enum ARelation
 	 * @exception AUnsupportedRelationException if the id does not correspond to a 
 	 * recognized relation.
 	 */
-	private ARelation(Type pId, boolean pDirect )
+	private ARelationKind(Type pId, boolean pDirect )
 	{
 		aId = pId;
 		aDirect = pDirect;
@@ -216,7 +216,7 @@ public enum ARelation
 	 * @exception AUnsupportedRelationException if the encoding does not
 	 * resolve to a known exception
 	 */
-	public static ARelation getRelation( String pEncoding ) throws AUnsupportedRelationException
+	public static ARelationKind getRelation( String pEncoding ) throws AUnsupportedRelationException
 	{
 		String lCode = pEncoding;
 		// if 
@@ -310,23 +310,23 @@ public enum ARelation
 	/** 
 	 * @return All relations.
 	 */
-	public static ARelation[] getAllRelations()
+	public static ARelationKind[] getAllRelations()
 	{
 
-		return ARelation.values();
+		return ARelationKind.values();
 	}
 
 	/**
 	 * Returns all the relations for which a domain category is 
 	 * valid.
 	 */
-	public static Set<ARelation> getAllRelations( AICategories pCategory, boolean general,  boolean pDirect )
+	public static Set<ARelationKind> getAllRelations( AICategories pCategory, boolean general,  boolean pDirect )
 	{
-		Set<ARelation> lReturn = new HashSet<ARelation>();
+		Set<ARelationKind> lReturn = new HashSet<ARelationKind>();
 
 		if( pDirect )
 		{
-			for (ARelation r : aRelationSet)
+			for (ARelationKind r : aRelationSet)
 			{
 				if (general) {
 					if (r.hasGeneralizedCategory( pCategory ))
@@ -341,7 +341,7 @@ public enum ARelation
 		}
 		else // get transpose relations
 		{
-			for (ARelation t : tRelationSet)
+			for (ARelationKind t : tRelationSet)
 			{
 				if (general) {
 					if (t.hasGeneralizedCategory( pCategory ))
@@ -357,9 +357,9 @@ public enum ARelation
 		return lReturn;
 	}
 
-	public static ARelation[] getAllRelations( boolean pDirect )
+	public static ARelationKind[] getAllRelations( boolean pDirect )
 	{
-		ARelation[] rArray = new ARelation[aRelationSet.size()];
+		ARelationKind[] rArray = new ARelationKind[aRelationSet.size()];
 		if( pDirect )
 			return aRelationSet.toArray(rArray);
 		else
@@ -714,7 +714,7 @@ public enum ARelation
 	 * @return The direct relation corresponding to this relation, whether
 	 * or not the relation is transpose.
 	 */
-	public ARelation getDirectRelation()
+	public ARelationKind getDirectRelation()
 	{
 		if( isDirect() )
 		{
@@ -731,7 +731,7 @@ public enum ARelation
 	 * the corresponding transpose.  If this is a transpose
 	 * relation, returns the corresponding direct relation.
 	 */
-	public ARelation getInverseRelation()
+	public ARelationKind getInverseRelation()
 	{
 		if( isDirect() )
 			return tRelationMap.get(aId);
@@ -793,7 +793,7 @@ public enum ARelation
 	 * iv. detailed description
 	 * 
 	 * @author	iyuen
-	 * @see 	de.ovgu.cide.mining.ARelation.model.Relation
+	 * @see 	de.ovgu.cide.mining.ARelationKind.model.Relation
 	 */
 	public enum Type 
 	{

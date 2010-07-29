@@ -14,7 +14,7 @@ import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.recommendationengine.graphrelation.GraphRelationElementRecommender;
 import de.ovgu.cide.mining.database.recommendationengine.substrings.SubStringElementRecommender;
 import de.ovgu.cide.mining.database.recommendationengine.substrings.SubStringFeatureRecommender;
@@ -26,7 +26,7 @@ import de.ovgu.cide.mining.nonfeaturemanager.model.NonFeatureTreeNode;
 //TODO: CACHE! RESULTS!
 public class AElementRecommendationManager implements Observer {
 	private ApplicationController AC;
-	private Map<IFeature, Map<AIElement, ARecommendationContextCollection>>element2Recommendation; 
+	private Map<IFeature, Map<AElement, ARecommendationContextCollection>>element2Recommendation; 
 	
 	private Set<AAbstractElementRecommender> elementRecommenders;
 	private Set<AAbstractFeatureRecommender> featureRecommenders;
@@ -35,7 +35,7 @@ public class AElementRecommendationManager implements Observer {
 	
 	public AElementRecommendationManager(ApplicationController AC, AElementColorManager elementColorManager) {
 		this.AC = AC;
-		element2Recommendation = new HashMap<IFeature, Map<AIElement,ARecommendationContextCollection>>();	
+		element2Recommendation = new HashMap<IFeature, Map<AElement,ARecommendationContextCollection>>();	
 		
 		elementRecommenders = new HashSet<AAbstractElementRecommender>();
 		elementRecommenders.add(new TypeCheckElementRecommender());
@@ -49,11 +49,11 @@ public class AElementRecommendationManager implements Observer {
 		AC.addObserver(this);
 	}
 	
-	public Map<IFeature,  ARecommendationContextCollection> getAllRecommendations(AIElement element) {
+	public Map<IFeature,  ARecommendationContextCollection> getAllRecommendations(AElement element) {
 		Map<IFeature,  ARecommendationContextCollection>  result = new HashMap<IFeature, ARecommendationContextCollection>();	
 	
 		for (IFeature color : element2Recommendation.keySet()) {
-			Map<AIElement, ARecommendationContextCollection> recommendations = element2Recommendation.get(color);
+			Map<AElement, ARecommendationContextCollection> recommendations = element2Recommendation.get(color);
 			
 			if (recommendations == null || recommendations.size() == 0)
 				continue;
@@ -67,15 +67,15 @@ public class AElementRecommendationManager implements Observer {
 		return result;
 	}
 	
-	public Map<AIElement, ARecommendationContextCollection> getRecommendations(IFeature color, AIElement element) { 
-		Map<AIElement,ARecommendationContextCollection> colorRecommendations = element2Recommendation.get(color);
+	public Map<AElement, ARecommendationContextCollection> getRecommendations(IFeature color, AElement element) { 
+		Map<AElement,ARecommendationContextCollection> colorRecommendations = element2Recommendation.get(color);
 		
 		if (colorRecommendations == null)
-			return new HashMap<AIElement, ARecommendationContextCollection>();
+			return new HashMap<AElement, ARecommendationContextCollection>();
 		
-		Map<AIElement, ARecommendationContextCollection> resultRecommendations = new HashMap<AIElement, ARecommendationContextCollection>();
+		Map<AElement, ARecommendationContextCollection> resultRecommendations = new HashMap<AElement, ARecommendationContextCollection>();
 		
-		for (AIElement recElement : colorRecommendations.keySet()) {
+		for (AElement recElement : colorRecommendations.keySet()) {
 			ARecommendationContextCollection collection = colorRecommendations.get(recElement);
 			for (ARecommendationContext context : collection.getContexts()) {
 				if (!element.equals(context.getSupporter()))
@@ -89,27 +89,27 @@ public class AElementRecommendationManager implements Observer {
 		return resultRecommendations;
 	}
 	
-	public int getRecommendationsCount(IFeature color, AIElement element) {
+	public int getRecommendationsCount(IFeature color, AElement element) {
 		return getRecommendations(color, element).size();
 	}
 	
 
 	
-	public Map<AIElement, ARecommendationContextCollection> getRecommendations(IFeature color, int start, int end, int cuhash) {
+	public Map<AElement, ARecommendationContextCollection> getRecommendations(IFeature color, int start, int end, int cuhash) {
 		
-		Map<AIElement, ARecommendationContextCollection>  recommendations = new HashMap<AIElement, ARecommendationContextCollection>();
+		Map<AElement, ARecommendationContextCollection>  recommendations = new HashMap<AElement, ARecommendationContextCollection>();
 		
 		
 		if (ApplicationController.CHECK_COLOR_RELATIONS) {
-			Map<AIElement,ARecommendationContextCollection> colorRecommendations = element2Recommendation.get(color);
+			Map<AElement,ARecommendationContextCollection> colorRecommendations = element2Recommendation.get(color);
 			if (colorRecommendations != null && colorRecommendations.size() > 0) {
 				recommendations = colorRecommendations;
 			}
 		}
 		
-		Set<AIElement> elements = AC.getElementsOfColor(color);
+		Set<AElement> elements = AC.getElementsOfColor(color);
 		
-		for (AIElement tmpElement : elements) {
+		for (AElement tmpElement : elements) {
 			
 			if (cuhash != -1 && tmpElement.getCompelationUnitHash() != cuhash)
 				continue;
@@ -120,7 +120,7 @@ public class AElementRecommendationManager implements Observer {
 			if (end > -1 && (tmpElement.getStartPosition() + tmpElement.getLength()) > end)
 				continue;
 				
-			Map<AIElement, ARecommendationContextCollection> tmpRecommendations =  getRecommendations(color, tmpElement);
+			Map<AElement, ARecommendationContextCollection> tmpRecommendations =  getRecommendations(color, tmpElement);
 			
 			if (tmpRecommendations == null)
 				continue;
@@ -139,21 +139,21 @@ public class AElementRecommendationManager implements Observer {
 	
 	private void generateRecommendations() {
 		
-		element2Recommendation = new HashMap<IFeature, Map<AIElement,ARecommendationContextCollection>>();	
+		element2Recommendation = new HashMap<IFeature, Map<AElement,ARecommendationContextCollection>>();	
 		
 		for (IFeature color : AC.getProjectFeatures()) {
 			
 			//RESET RECOMMENDATIONS
-			Map<AIElement, ARecommendationContextCollection>  recommendations = new HashMap<AIElement, ARecommendationContextCollection>();
+			Map<AElement, ARecommendationContextCollection>  recommendations = new HashMap<AElement, ARecommendationContextCollection>();
 			element2Recommendation.put(color, recommendations);
 		
 			
 			//RECOMMENDATION BASED ON LOCAL ELEMENT DATA
-			Set<AIElement> elements = AC.getElementsOfColor(color);
+			Set<AElement> elements = AC.getElementsOfColor(color);
 			
 			if (ApplicationController.CHECK_COLOR_RELATIONS) {
 				
-				Set<AIElement> tmpElements = new HashSet<AIElement>();
+				Set<AElement> tmpElements = new HashSet<AElement>();
 				tmpElements.addAll(elements);
 				
 			
@@ -167,12 +167,12 @@ public class AElementRecommendationManager implements Observer {
 			
 				
 			//generate recommendations for all elements	
-			for (AIElement element : elements) {
+			for (AElement element : elements) {
 				
 				//recommend elements according to recommendation type
 				for (AAbstractElementRecommender recommender : elementRecommenders) {
 					
-					Map<AIElement, ARecommendationContext> tmpRecommendations = recommender.getRecommendations(element, color);
+					Map<AElement, ARecommendationContext> tmpRecommendations = recommender.getRecommendations(element, color);
 					addRecommendations(tmpRecommendations, recommendations);	
 				
 				}				
@@ -183,7 +183,7 @@ public class AElementRecommendationManager implements Observer {
 			//RECOMMENDATION BASED ON GLOBAL FEATURE DATA
 			//recommend elements according to recommendation type
 			for (AAbstractFeatureRecommender recommender : featureRecommenders) {
-				Map<AIElement, ARecommendationContext> tmpRecommendations = recommender.getRecommendations(color);
+				Map<AElement, ARecommendationContext> tmpRecommendations = recommender.getRecommendations(color);
 				addRecommendations(tmpRecommendations, recommendations);	
 			}	
 	
@@ -193,8 +193,8 @@ public class AElementRecommendationManager implements Observer {
 			
 	}
 	
-	private void mergeRecommendations(Map<AIElement, ARecommendationContextCollection> newRecommendations, Map<AIElement, ARecommendationContextCollection> oldRecommendations) {
-		for (AIElement tmpRecElement : newRecommendations.keySet()) {
+	private void mergeRecommendations(Map<AElement, ARecommendationContextCollection> newRecommendations, Map<AElement, ARecommendationContextCollection> oldRecommendations) {
+		for (AElement tmpRecElement : newRecommendations.keySet()) {
 			
 			ARecommendationContextCollection oldCollection = oldRecommendations.get(tmpRecElement);
 			
@@ -205,9 +205,9 @@ public class AElementRecommendationManager implements Observer {
 		}
 	}
 
-	private void addRecommendations(Map<AIElement, ARecommendationContext> newRecommendations, Map<AIElement, ARecommendationContextCollection> oldRecommendations) {
+	private void addRecommendations(Map<AElement, ARecommendationContext> newRecommendations, Map<AElement, ARecommendationContextCollection> oldRecommendations) {
 		
-		for (AIElement tmpRecElement : newRecommendations.keySet()) {
+		for (AElement tmpRecElement : newRecommendations.keySet()) {
 			
 			
 			ARecommendationContextCollection collection = oldRecommendations.get(tmpRecElement);

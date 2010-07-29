@@ -1,16 +1,16 @@
 package de.ovgu.cide.mining.database.recommendationengine;
 
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 
 
 public class ARecommendationContext {
 	
 	private double supportValue;
 	private String reason;
-	private AIElement supporter;
+	private AElement supporter;
 	private String recommenderType;
 	
-	public ARecommendationContext(AIElement supporter, String reason, String recommenderType, double value) {
+	public ARecommendationContext(AElement supporter, String reason, String recommenderType, double value) {
 		this.supportValue = value;
 		this.supporter = supporter;
 		this.reason = reason;
@@ -45,7 +45,7 @@ public class ARecommendationContext {
 		return supportValue;
 	}
 
-	public AIElement getSupporter() {
+	public AElement getSupporter() {
 		return supporter;
 	}
 

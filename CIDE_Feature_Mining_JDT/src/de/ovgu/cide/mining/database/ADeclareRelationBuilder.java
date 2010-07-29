@@ -1,12 +1,9 @@
 package de.ovgu.cide.mining.database;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Stack;
 
 import org.eclipse.jdt.core.ICompilationUnit;
-import org.eclipse.jdt.core.IJavaElement;
-import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -16,7 +13,6 @@ import org.eclipse.jdt.core.dom.IMethodBinding;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.IVariableBinding;
 import org.eclipse.jdt.core.dom.ImportDeclaration;
-import org.eclipse.jdt.core.dom.Initializer;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
@@ -24,16 +20,10 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
 import cide.gparser.ParseException;
 import de.ovgu.cide.language.jdt.JDTParserWrapper;
-import de.ovgu.cide.mining.database.model.ACompilationUnitElement;
-import de.ovgu.cide.mining.database.model.AFieldElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.model.AFlyweightElementFactory;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
-import de.ovgu.cide.mining.database.model.AImportElement;
-import de.ovgu.cide.mining.database.model.ALocalVariableElement;
-import de.ovgu.cide.mining.database.model.AMethodElement;
-import de.ovgu.cide.mining.database.model.ARelation;
-import de.ovgu.cide.mining.database.model.ATypeElement;
+import de.ovgu.cide.mining.database.model.ARelationKind;
 
 /**
  * @author A.Dreiling
@@ -44,22 +34,22 @@ public class ADeclareRelationBuilder implements Serializable {
 	private static final long serialVersionUID = 3L;
 
 
-	private ProgramDatabase aDB;
+	private AbstractProgramDatabase aDB;
 	private AFlyweightElementFactory elementFactory;
 	private int cuHash;
 	
-	private ACompilationUnitElement curCUElement; 
-	private ATypeElement 	curType;
-	private AMethodElement 	curMethod;
+	private AElement curCUElement; 
+	private AElement 	curType;
+	private AElement 	curMethod;
 	private int curParamIndex;
 	
 	
-	private Stack<ATypeElement>	curTypeReminder; 
+	private Stack<AElement>	curTypeReminder; 
 	
-	public ADeclareRelationBuilder(ProgramDatabase aDB, AFlyweightElementFactory elementFactory) {
+	public ADeclareRelationBuilder(AbstractProgramDatabase aDB, AFlyweightElementFactory elementFactory) {
 		this.aDB = aDB;
 		this.elementFactory = elementFactory;
-		curTypeReminder = new Stack<ATypeElement>();
+		curTypeReminder = new Stack<AElement>();
 		curType = null;
 		curMethod = null;
 		curParamIndex = -1;
@@ -72,7 +62,7 @@ public class ADeclareRelationBuilder implements Serializable {
 			@Override
 			public boolean visit(CompilationUnit node) {
 				//create the CU element and store it 
-				curCUElement = (ACompilationUnitElement)elementFactory.createElement(AICategories.COMPILATION_UNIT, null,cuHash, node);
+				curCUElement = (AElement)elementFactory.createElement(AICategories.COMPILATION_UNIT, null,cuHash, node);
 				aDB.addElement(curCUElement);
 				
 				return super.visit(node);
@@ -81,10 +71,10 @@ public class ADeclareRelationBuilder implements Serializable {
 			@Override
 			public boolean visit(ImportDeclaration node) {
 				
-				AImportElement curImport = (AImportElement)elementFactory.createElement(AICategories.IMPORT, null ,cuHash, node); 
+				AElement curImport = (AElement)elementFactory.createElement(AICategories.IMPORT, null ,cuHash, node); 
 				aDB.addElement(curImport);
 				
-				aDB.addRelationAndTranspose(curCUElement, ARelation.DECLARES_IMPORT, curImport);
+				aDB.addRelationAndTranspose(curCUElement, ARelationKind.DECLARES_IMPORT, curImport);
 				
 				return super.visit(node);
 			}
@@ -111,22 +101,26 @@ public class ADeclareRelationBuilder implements Serializable {
 					return;
 			
 				//backup the current type
-				ATypeElement oldType = curType;
+				AElement oldType = curType;
 								
-				curType = (ATypeElement)elementFactory.createElement(AICategories.TYPE, binding,cuHash, node); 
-				aDB.addElement(curType);
-							
+				curType = (AElement)elementFactory.createElement(AICategories.TYPE, binding,cuHash, node); 
+				aDB.addElement(curType/*, binding.getModifiers()*/);
+				
+				
+				
+				
+				
 				if (!binding.isTopLevel()) {
 					
 					//ADD DECLARE RELATIONSHIP FOR COMPILTATTION UNIT
-					aDB.addRelationAndTranspose(curCUElement, ARelation.DECLARES_TYPE_TRANSITIVE, curType);
+					aDB.addRelationAndTranspose(curCUElement, ARelationKind.DECLARES_TYPE_TRANSITIVE, curType);
 					
 					//ADD DECLARE RELATIONSHIP FOR TYPE
-					aDB.addRelationAndTranspose(oldType, ARelation.DECLARES_TYPE, curType);
+					aDB.addRelationAndTranspose(oldType, ARelationKind.DECLARES_TYPE, curType);
 						
 					//ADD TRANSITIVE DECLARE RELATIONSHIP FOR SUPER TYPES
-					for (ATypeElement remType : curTypeReminder) {
-						aDB.addRelationAndTranspose(remType, ARelation.DECLARES_TYPE_TRANSITIVE, curType);	
+					for (AElement remType : curTypeReminder) {
+						aDB.addRelationAndTranspose(remType, ARelationKind.DECLARES_TYPE_TRANSITIVE, curType);	
 					}
 				
 					curTypeReminder.push( oldType );
@@ -134,7 +128,7 @@ public class ADeclareRelationBuilder implements Serializable {
 				} 
 				else {
 					//ADD DECLARE RELATIONSHIP FOR COMPILTATTION UNIT
-					aDB.addRelationAndTranspose(curCUElement, ARelation.DECLARES_TYPE, curType);
+					aDB.addRelationAndTranspose(curCUElement, ARelationKind.DECLARES_TYPE, curType);
 				}
 				
 				
@@ -161,7 +155,7 @@ public class ADeclareRelationBuilder implements Serializable {
 				
 				//restore current type and temp method
 				if( !curTypeReminder.isEmpty() ) {
-					curType = (ATypeElement) curTypeReminder.pop();
+					curType = (AElement) curTypeReminder.pop();
 				}
 				else {
 					curType = null;
@@ -174,20 +168,20 @@ public class ADeclareRelationBuilder implements Serializable {
 				IMethodBinding binding = node.resolveBinding();
 				if (binding != null) {
 								
-					curMethod = (AMethodElement)elementFactory.createElement(AICategories.METHOD, binding, cuHash, node); 
-					aDB.addElement(curMethod);
+					curMethod = (AElement)elementFactory.createElement(AICategories.METHOD, binding, cuHash, node); 
+					aDB.addElement(curMethod/*, binding.getModifiers()*/);
 					
 					curParamIndex = 0;
 					
 					//ADD DECLARE RELATIONSHIP FOR TYPE
-					aDB.addRelationAndTranspose(curType, ARelation.DECLARES_METHOD, curMethod);
+					aDB.addRelationAndTranspose(curType, ARelationKind.DECLARES_METHOD, curMethod);
 					
 					//ADD TRANSITIVE DECLARE RELATIONSHIP FOR COMPILTATTION UNIT
-					aDB.addRelationAndTranspose(curCUElement, ARelation.DECLARES_METHOD_TRANSITIVE, curMethod);
+					aDB.addRelationAndTranspose(curCUElement, ARelationKind.DECLARES_METHOD_TRANSITIVE, curMethod);
 						
 					//ADD TRANSITIVE DECLARE RELATIONSHIP FOR SUPER TYPES
-					for (ATypeElement remType : curTypeReminder) {
-						aDB.addRelationAndTranspose(remType, ARelation.DECLARES_METHOD_TRANSITIVE, curMethod);	
+					for (AElement remType : curTypeReminder) {
+						aDB.addRelationAndTranspose(remType, ARelationKind.DECLARES_METHOD_TRANSITIVE, curMethod);	
 					}
 						
 					
@@ -225,16 +219,16 @@ public class ADeclareRelationBuilder implements Serializable {
 				if (binding == null)
 					return;
 				
-				AIElement curElement = null;
-				ARelation curRelation = null;
-				ARelation curTransitiveRelation = null;
+				AElement curElement = null;
+				ARelationKind curRelation = null;
+				ARelationKind curTransitiveRelation = null;
 				
 				if (binding.isField() || binding.isEnumConstant()) {
 				
-					curElement = (AFieldElement)elementFactory.createElement(AICategories.FIELD, binding,cuHash, node); 
-					aDB.addElement(curElement);
-					curRelation = ARelation.DECLARES_FIELD;
-					curTransitiveRelation = ARelation.DECLARES_FIELD_TRANSITIVE;
+					curElement = (AElement)elementFactory.createElement(AICategories.FIELD, binding,cuHash, node); 
+					aDB.addElement(curElement/*, binding.getModifiers()*/);
+					curRelation = ARelationKind.DECLARES_FIELD;
+					curTransitiveRelation = ARelationKind.DECLARES_FIELD_TRANSITIVE;
 					
 					//ADD  DECLARE RELATIONSHIP FOR TYPE
 					aDB.addRelationAndTranspose(curType, curRelation, curElement);
@@ -243,14 +237,14 @@ public class ADeclareRelationBuilder implements Serializable {
 				}
 				else {
 					//is "Parameter" or "Local Variable"
-				    curElement = (ALocalVariableElement)elementFactory.createElement(AICategories.LOCAL_VARIABLE, binding,cuHash, node); 
+				    curElement = (AElement)elementFactory.createElement(AICategories.LOCAL_VARIABLE, binding,cuHash, node); 
 				    
 				    if (binding.isParameter())
-				    	((ALocalVariableElement)curElement).setParamIndex(curParamIndex++);
+				    	((AElement)curElement).setParamIndex(curParamIndex++);
 				    
-				    aDB.addElement(curElement);
-					curRelation = ARelation.DECLARES_LOCAL_VARIABLE;
-					curTransitiveRelation = ARelation.DECLARES_LOCAL_VARIABLE_TRANSITIVE;
+				    aDB.addElement(curElement/*, binding.getModifiers()*/);
+					curRelation = ARelationKind.DECLARES_LOCAL_VARIABLE;
+					curTransitiveRelation = ARelationKind.DECLARES_LOCAL_VARIABLE_TRANSITIVE;
 					
 					//ADD  DECLARE RELATIONSHIP FOR TYPE
 					aDB.addRelationAndTranspose(curType, curTransitiveRelation, curElement);
@@ -270,7 +264,7 @@ public class ADeclareRelationBuilder implements Serializable {
 				aDB.addRelationAndTranspose(curCUElement, curTransitiveRelation, curElement);
 					
 				//ADD TRANSITIVE DECLARE RELATIONSHIP FOR SUPER TYPES
-				for (ATypeElement remType : curTypeReminder) {
+				for (AElement remType : curTypeReminder) {
 					aDB.addRelationAndTranspose(remType, curTransitiveRelation, curElement);	
 				}
 				

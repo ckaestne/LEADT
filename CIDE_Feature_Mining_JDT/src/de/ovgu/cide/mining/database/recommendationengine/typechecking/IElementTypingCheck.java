@@ -1,6 +1,6 @@
 package de.ovgu.cide.mining.database.recommendationengine.typechecking;
 
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.typing.model.IEvaluationStrategy;
 
 public interface IElementTypingCheck {
@@ -28,7 +28,7 @@ public interface IElementTypingCheck {
 	 * 
 	 * @return
 	 */
-	AIElement getSourceElement();
+	AElement getSourceElement();
 	
 
 

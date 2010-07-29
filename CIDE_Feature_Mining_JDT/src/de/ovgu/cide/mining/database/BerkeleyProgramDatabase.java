@@ -10,15 +10,21 @@
 
 package de.ovgu.cide.mining.database;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.HashMap;
+import java.io.File;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.WeakHashMap;
+
+import com.sleepycat.je.DatabaseException;
+import com.sleepycat.je.Environment;
+import com.sleepycat.je.EnvironmentConfig;
+import com.sleepycat.persist.EntityIndex;
+import com.sleepycat.persist.EntityStore;
+import com.sleepycat.persist.PrimaryIndex;
+import com.sleepycat.persist.SecondaryIndex;
+import com.sleepycat.persist.StoreConfig;
 
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.model.ARelationKind;
@@ -26,40 +32,58 @@ import de.ovgu.cide.mining.database.model.ARelationKind;
 /**
  * A database storing all the relations between different program elements.
  */
-class ProgramDatabase extends AbstractProgramDatabase {
+class BerkeleyProgramDatabase extends AbstractProgramDatabase {
 
-	/**
-	 * Data bundle associated with an element. Contains modifier flags and a map
-	 * linking relations to their ranges. an IElement instance.
-	 */
-	public static final int NO_MODIFIERS = -1;
+	private static BerkeleyProgramDatabase instance = null;
 
-	class Bundle implements Serializable {
-		private static final long serialVersionUID = 1L;
-
-		private final Map<ARelationKind, Set<AElement>> aRelations = new HashMap<ARelationKind, Set<AElement>>();
-
-		// int aModifier;
-
-		/**
-		 * @return The Map of relations to range. never null.
-		 */
-		public Map<ARelationKind, Set<AElement>> getRelationMap() {
-			return aRelations;
-		}
+	public static BerkeleyProgramDatabase getInstance() {
+		if (instance == null)
+			instance = new BerkeleyProgramDatabase();
+		return instance;
 	}
 
 	// Maps IElements (unique because of the Flyweight pattern
 	// to bundles containing modifiers and relations
-	private WeakHashMap<AElement, Bundle> aElements;
-	private Map<String, AElement> elementIndexMap;
+
+	private EntityStore elementStore;
+	private PrimaryIndex<String, AElement> elementById;
+	private PrimaryIndex<Integer, ARelation> relationsByNr;
+	private SecondaryIndex<String, Integer, ARelation> relationsByElement;
 
 	/**
 	 * Creates an empty program database.
 	 */
-	public ProgramDatabase() {
-		aElements = new WeakHashMap<AElement, Bundle>();
-		elementIndexMap = new HashMap<String, AElement>();
+	private BerkeleyProgramDatabase() {
+		Environment myDbEnvironment = null;
+
+		try {
+			EnvironmentConfig envConfig = new EnvironmentConfig();
+			envConfig.setTransactional(false);
+			envConfig.setAllowCreate(true);
+			StoreConfig storeConfig = new StoreConfig();
+			storeConfig.setAllowCreate(true);
+			myDbEnvironment = new Environment(new File("d:/tmp/dbEnv"),
+					envConfig);
+			elementStore = new EntityStore(myDbEnvironment, "Elements",
+					storeConfig);
+			elementStore.truncateClass(AElement.class);
+			elementStore.truncateClass(ARelation.class);
+
+			elementById = elementStore.getPrimaryIndex(String.class,
+					AElement.class);
+			relationsByNr = elementStore.getPrimaryIndex(Integer.class,
+					ARelation.class);
+			relationsByElement = elementStore.getSecondaryIndex(relationsByNr,
+					String.class, "elementId_from");
+
+			// elementInformationById =
+			// elementStore.getPrimaryIndex(String.class,
+			// ARelation.class);
+
+		} catch (DatabaseException dbe) {
+			dbe.printStackTrace();
+		}
+
 	}
 
 	/*
@@ -68,8 +92,8 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	 * @see de.ovgu.cide.mining.database.IProgramDatabase#getAllElements()
 	 */
 	@Override
-	public Set<AElement> getAllElements() {
-		return aElements.keySet();
+	public Iterable<AElement> getAllElements() {
+		return elementById.entities();
 	}
 
 	/*
@@ -81,7 +105,7 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	 */
 	@Override
 	public AElement getElement(String id) {
-		return elementIndexMap.get(id);
+		return elementById.get(id);
 	}
 
 	/*
@@ -94,7 +118,7 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	@Override
 	public boolean contains(AElement pElement) {
 		assert (pElement != null);
-		return aElements.containsKey(pElement);
+		return elementById.contains(pElement.getId());
 	}
 
 	/*
@@ -107,10 +131,7 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	@Override
 	public void addElement(AElement pElement) {
 		assert (pElement != null);
-		if (!aElements.containsKey(pElement)) {
-			aElements.put(pElement, new Bundle());
-			elementIndexMap.put(pElement.getId(), pElement);
-		}
+		elementById.put(pElement);
 	}
 
 	/*
@@ -134,16 +155,9 @@ class ProgramDatabase extends AbstractProgramDatabase {
 		if (!contains(pElement2))
 			throw new ElementNotFoundException(pElement2.getId());
 
-		Map<ARelationKind, Set<AElement>> lRelations = (aElements
-				.get(pElement1)).getRelationMap();
-		assert (lRelations != null);
-
-		Set<AElement> lElements = lRelations.get(pRelation);
-		if (lElements == null) {
-			lElements = new HashSet<AElement>();
-			lRelations.put(pRelation, lElements);
-		}
-		lElements.add(pElement2);
+		// elementStore.
+		relationsByNr.put(new ARelation(pElement1.getId(), pRelation, pElement2
+				.getId()));
 	}
 
 	/*
@@ -154,22 +168,31 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	 * .database.model.AIElement, de.ovgu.cide.mining.database.model.ARelation)
 	 */
 	@Override
-	public Set<AElement> getRange(AElement pElement,
-			ARelationKind... pRelations) throws ElementNotFoundException {
+	public Set<AElement> getRange(AElement pElement, ARelationKind... pKinds)
+			throws ElementNotFoundException {
 		assert (pElement != null);
-		assert (pRelations != null);
+		assert (pKinds != null);
 		if (!contains(pElement))
 			throw new ElementNotFoundException(pElement.getId());
 
 		Set<AElement> lReturn = new HashSet<AElement>();
-		Map<ARelationKind, Set<AElement>> lRelations = (aElements.get(pElement))
-				.getRelationMap();
-
-		for (ARelationKind lRelation : pRelations)
-			if (lRelations.containsKey(lRelation)) {
-				lReturn.addAll(lRelations.get(lRelation));
+		EntityIndex<Integer, ARelation> relations = relationsByElement
+				.subIndex(pElement.getId());
+		for (ARelation relation : relations.entities()) {
+			if (in(relation.kind, pKinds)) {
+				AElement element = getElement(relation.elementId_to);
+				if (element != null)
+					lReturn.add(element);
 			}
+		}
 		return lReturn;
+	}
+
+	private boolean in(ARelationKind kind, ARelationKind[] kinds) {
+		for (ARelationKind akind : kinds)
+			if (akind == kind)
+				return true;
+		return false;
 	}
 
 	/*
@@ -214,8 +237,13 @@ class ProgramDatabase extends AbstractProgramDatabase {
 		if (!contains(pElement))
 			throw new ElementNotFoundException(pElement.getId());
 
-		Map lRelations = ((Bundle) aElements.get(pElement)).getRelationMap();
-		return !lRelations.isEmpty();
+		return relationsByElement.get(pElement.getId()) != null;
+	}
+
+	@Override
+	public void estimateFootprint() {
+		// TODO Auto-generated method stub
+
 	}
 
 	// /*
@@ -238,12 +266,14 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	// if (!contains(pTo))
 	// throw new ElementNotFoundException(pTo.getId());
 	//
-	// Map lRelations = ((Bundle) aElements.get(pFrom)).getRelationMap();
-	// for (Iterator i = lRelations.keySet().iterator(); i.hasNext();) {
+	// Map<ARelationKind, Set<String>> lRelations =
+	// getElementInfo(pFrom).aRelations;
+	// for (Iterator<ARelationKind> i = lRelations.keySet().iterator(); i
+	// .hasNext();) {
 	// ARelationKind lNext = (ARelationKind) i.next();
-	// Set lElements = (Set) lRelations.get(lNext);
-	// for (Iterator j = lElements.iterator(); j.hasNext();) {
-	// addRelationAndTranspose(pTo, lNext, (AElement) j.next());
+	// Set<String> lElements = lRelations.get(lNext);
+	// for (Iterator<String> j = lElements.iterator(); j.hasNext();) {
+	// addRelationAndTranspose(pTo, lNext, getElement(j.next()));
 	// }
 	// }
 	// }
@@ -266,24 +296,9 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	// */
 	// private void removeRelation(AElement pElement1, ARelationKind pRelation,
 	// AElement pElement2) throws ElementNotFoundException {
-	// assert (pElement1 != null);
-	// assert (pElement2 != null);
-	// assert (pRelation != null);
-	//
-	// if (!contains(pElement1))
-	// throw new ElementNotFoundException(pElement1.getId());
-	// if (!contains(pElement2))
-	// throw new ElementNotFoundException(pElement2.getId());
-	//
-	// Map lRelations = ((Bundle) aElements.get(pElement1)).getRelationMap();
-	// if (!lRelations.containsKey(pRelation))
-	// return;
-	//
-	// Set lElements = (Set) lRelations.get(pRelation);
-	// lElements.remove(pElement2);
-	// elementIndexMap.remove(pElement2.getId());
+	// throw new UnsupportedOperationException();
 	// }
-	//
+
 	// /*
 	// * (non-Javadoc)
 	// *
@@ -295,23 +310,7 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	// @Override
 	// public void removeElement(AElement pElement)
 	// throws ElementNotFoundException {
-	// assert (pElement != null);
-	// if (!contains(pElement))
-	// throw new ElementNotFoundException(pElement.getId());
-	//
-	// Map lRelations = ((Bundle) aElements.get(pElement)).getRelationMap();
-	// for (Iterator i = lRelations.keySet().iterator(); i.hasNext();) {
-	// ARelationKind lNext = (ARelationKind) i.next();
-	// Set lElements = (Set) lRelations.get(lNext);
-	// for (Iterator j = lElements.iterator(); j.hasNext();) {
-	// removeRelation((AElement) j.next(), lNext.getInverseRelation(),
-	// pElement);
-	// }
-	// }
-	//
-	// // Remove the element
-	// aElements.remove(pElement);
-	// elementIndexMap.remove(pElement.getId());
+	// throw new UnsupportedOperationException();
 	// }
 	//
 	// /*
@@ -321,40 +320,42 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	// */
 	// @Override
 	// public void dump() {
-	// for (Iterator i = aElements.keySet().iterator(); i.hasNext();) {
-	// AElement lElement1 = (AElement) i.next();
-	// System.out.println(lElement1);
-	//
-	// Object obj = aElements.get(lElement1);
-	//
-	// if (obj == null)
-	// continue;
-	//
-	// Bundle bundle = (Bundle) obj;
-	//
-	// Map lRelations;
-	//
-	// if ((lRelations = bundle.getRelationMap()) == null)
-	// continue;
-	//
-	// for (Iterator j = lRelations.keySet().iterator(); j.hasNext();) {
-	// ARelationKind lRelation = (ARelationKind) j.next();
-	// System.out.println("    " + lRelation);
-	// for (Iterator k = ((Set) lRelations.get(lRelation)).iterator(); k
-	// .hasNext();) {
-	// System.out.println("        " + k.next());
-	// }
-	// }
-	// }
+	// throw new UnsupportedOperationException();
+	// //
+	// // for (Iterator i = aElements.keySet().iterator(); i.hasNext();) {
+	// // AElement lElement1 = (AElement) i.next();
+	// // System.out.println(lElement1);
+	// //
+	// // Object obj = aElements.get(lElement1);
+	// //
+	// // if (obj == null)
+	// // continue;
+	// //
+	// // Bundle bundle = (Bundle) obj;
+	// //
+	// // Map lRelations;
+	// //
+	// // if ((lRelations = bundle.getRelationMap()) == null)
+	// // continue;
+	// //
+	// // for (Iterator j = lRelations.keySet().iterator(); j.hasNext();) {
+	// // ARelationKind lRelation = (ARelationKind) j.next();
+	// // System.out.println("    " + lRelation);
+	// // for (Iterator k = ((Set) lRelations.get(lRelation)).iterator(); k
+	// // .hasNext();) {
+	// // System.out.println("        " + k.next());
+	// // }
+	// // }
+	// // }
 	// }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * de.ovgu.cide.mining.database.IProgramDatabase#getModifiers(de.ovgu.cide
-	 * .mining.database.model.AIElement)
-	 */
+	// /*
+	// * (non-Javadoc)
+	// *
+	// * @see
+	// * de.ovgu.cide.mining.database.IProgramDatabase#getModifiers(de.ovgu.cide
+	// * .mining.database.model.AIElement)
+	// */
 	// @Override
 	// public int getModifiers(AElement pElement) {
 	// int lReturn = 0;
@@ -364,36 +365,4 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	// }
 	// return lReturn;
 	// }
-
-	public void estimateFootprint() {
-
-		System.out.println("elementIndexMap.size(): " + elementIndexMap.size());
-		System.out.println("aElements.size(): " + aElements.size());
-		int s = 0;
-		for (AElement a : elementIndexMap.values()) {
-			s += a.getId().length();
-		}
-		System.out.println("combined size of all IDs: " + s);
-		s = 0;
-		for (AElement a : elementIndexMap.values()) {
-			s += a.getDisplayName().length();
-		}
-		System.out.println("combined size of all displaynames: " + s);
-
-//		FileOutputStream fos = null;
-//		ObjectOutputStream out = null;
-//		try {
-////			fos = new FileOutputStream("d:/tmp/aElements.dat");
-////			out = new ObjectOutputStream(fos);
-////			out.writeObject(aElements);
-////			out.close();
-////			fos = new FileOutputStream("d:/tmp/elementIndexMap.dat");
-////			out = new ObjectOutputStream(fos);
-////			out.writeObject(elementIndexMap);
-////			out.close();
-//		} catch (IOException ex) {
-//			ex.printStackTrace();
-//		}
-	}
-
 }

@@ -7,7 +7,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
 import de.ovgu.cide.language.jdt.UnifiedASTNode;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.featuremanager.model.*;
 import de.ovgu.cide.mining.featuremanager.model.FeatureTreeNode.NODE_KIND;
 

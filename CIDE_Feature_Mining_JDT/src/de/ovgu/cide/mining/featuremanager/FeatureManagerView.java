@@ -55,8 +55,8 @@ import org.eclipse.ui.texteditor.ITextEditor;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
-import de.ovgu.cide.mining.database.model.ARelation.Type;
+import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.database.model.ARelationKind.Type;
 import de.ovgu.cide.mining.events.AElementPreviewEvent;
 import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent;
 import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent.EVENT_TYPE;
@@ -408,7 +408,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 				ApplicationController jayFX = ApplicationController.getInstance();
 				
 				if (node.getKind() == NODE_KIND.ELEMENT) {
-					AIElement jayElement =  (AIElement)node.getDataObject();
+					AElement jayElement =  (AElement)node.getDataObject();
 					cuHash = jayElement.getCompelationUnitHash();
 					start = jayElement.getStartPosition();
 					len = jayElement.getLength();

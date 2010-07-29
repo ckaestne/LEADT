@@ -2,7 +2,7 @@ package de.ovgu.cide.mining.events;
 
 import java.util.EventObject;
 
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
   
 public class AElementPreviewEvent extends EventObject {
 	

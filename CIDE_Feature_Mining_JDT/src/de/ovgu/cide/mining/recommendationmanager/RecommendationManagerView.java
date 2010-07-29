@@ -49,7 +49,7 @@ import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.language.jdt.UnifiedASTNode;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.events.AElementPreviewEvent;
 import de.ovgu.cide.mining.events.AElementsNonColorChangedEvent;
 import de.ovgu.cide.mining.featuremanager.FeatureManagerView;
@@ -419,7 +419,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 				ISelection selection = viewer.getSelection();
 				TreePath[] paths = ((ITreeSelection)selection).getPaths();
 				
-				Map<AIElement, IFeature> elementsToAdd = new HashMap<AIElement, IFeature>();
+				Map<AElement, IFeature> elementsToAdd = new HashMap<AElement, IFeature>();
 			
 				for (TreePath treePath : paths) {
 					if (treePath.getSegmentCount() > 1)
@@ -434,7 +434,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 					if (((RecommendationTreeNode)obj).getColor() == null)
 						continue;
 					
-					AIElement sourceElement = ((RecommendationTreeNode)obj).getElement();
+					AElement sourceElement = ((RecommendationTreeNode)obj).getElement();
 					IFeature feature =  ((RecommendationTreeNode)obj).getColor();
 					elementsToAdd.put(sourceElement,feature);
 					
@@ -447,7 +447,7 @@ public static enum MESSAGE_TYPE { WARNING, ERROR, INFO, ELEMENT, NONE }
 				}
 				
 				if (elementsToAdd.size()>0)
-					AC.fireEvent(new AElementsNonColorChangedEvent(this, elementsToAdd, new HashMap<AIElement, IFeature>()));
+					AC.fireEvent(new AElementsNonColorChangedEvent(this, elementsToAdd, new HashMap<AElement, IFeature>()));
 	
 				
 			}

@@ -1,17 +1,17 @@
 package de.ovgu.cide.mining.database.recommendationengine.typechecking;
 
 import de.ovgu.cide.features.IFeatureModel;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 
 public abstract class AbstractTypingCheck implements IElementTypingCheck {
-	protected final AIElement sourceElement;
-	protected final AIElement targetElement;
+	protected final AElement sourceElement;
+	protected final AElement targetElement;
 	
 	
 
 	IFeatureModel model;
 
-	public AbstractTypingCheck(AIElement sourceElement, AIElement targetElement, IFeatureModel model) {
+	public AbstractTypingCheck(AElement sourceElement, AElement targetElement, IFeatureModel model) {
 		this.sourceElement = sourceElement;
 		this.targetElement = targetElement;
 		
@@ -19,10 +19,10 @@ public abstract class AbstractTypingCheck implements IElementTypingCheck {
 		this.model = model;
 	}
 
-	public AIElement getSourceElement() {
+	public AElement getSourceElement() {
 		return sourceElement;
 	}
-	public AIElement getTargetElement() {
+	public AElement getTargetElement() {
 		return targetElement;
 	}
 	

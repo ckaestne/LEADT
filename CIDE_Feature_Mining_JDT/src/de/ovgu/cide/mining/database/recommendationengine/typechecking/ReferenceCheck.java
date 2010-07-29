@@ -2,12 +2,12 @@ package de.ovgu.cide.mining.database.recommendationengine.typechecking;
 
 import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.typing.model.IEvaluationStrategy;
 
 public class ReferenceCheck extends AbstractTypingCheck {
 
-	public ReferenceCheck(AIElement sourceElement, AIElement targetElement, IFeatureModel model) {
+	public ReferenceCheck(AElement sourceElement, AElement targetElement, IFeatureModel model) {
 		super(sourceElement, targetElement, model);
 	}
 

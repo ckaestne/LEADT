@@ -41,19 +41,11 @@ import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
 import cide.gparser.ParseException;
 import de.ovgu.cide.language.jdt.JDTParserWrapper;
-import de.ovgu.cide.mining.database.model.ACompilationUnitElement;
-import de.ovgu.cide.mining.database.model.AFieldElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.model.AFlyweightElementFactory;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
-import de.ovgu.cide.mining.database.model.AImportElement;
-import de.ovgu.cide.mining.database.model.ALocalVariableElement;
-import de.ovgu.cide.mining.database.model.AMethodElement;
-import de.ovgu.cide.mining.database.model.AOutOfContextElement;
-import de.ovgu.cide.mining.database.model.AParameterAccessElement;
-import de.ovgu.cide.mining.database.model.ARelation;
-import de.ovgu.cide.mining.database.model.ATypeAccessElement;
-import de.ovgu.cide.mining.database.model.ATypeElement;
+import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.database.model.ARelationKind;
 import de.ovgu.cide.util.MethodPathItem;
 import de.ovgu.cide.util.OverridingRelationUtils;
 import de.ovgu.cide.util.TypePathItem;
@@ -68,34 +60,34 @@ public class AAccessRelationBuilder implements Serializable {
 
 	private int cuHash;
 	
-	private ProgramDatabase aDB;
+	private AbstractProgramDatabase aDB;
 	private AFlyweightElementFactory elementFactory;
 
-	private ACompilationUnitElement curCUElement;
-	private AImportElement curImport;
-	private ATypeElement curType;
-	private AMethodElement 	curMethod;
-	private AFieldElement 	curField;
-	private ALocalVariableElement 	curLocalVariable;
-	private ATypeAccessElement 	curExtendsAccess;
+	private AElement curCUElement;
+	private AElement curImport;
+	private AElement curType;
+	private AElement curMethod;
+	private AElement 	curField;
+	private AElement 	curLocalVariable;
+	private AElement 	curExtendsAccess;
 	
 
-	private Stack<ATypeElement>	curTypeReminder; 
+	private Stack<AElement>	curTypeReminder; 
 	
-	private Set<AIElement> curParameter; 
+	private Set<AElement> curParameter; 
 	private LocalContextElement curContext; 
 	private Stack<LocalContextElement> curContextReminder; 
 	
-	private Map<String, AImportElement> importMap;
+	private Map<String, AElement> importMap;
 	
 	private class LocalContextElement {
 		private ASTNode node;
 		
-		private AIElement element;
+		private AElement element;
 		private ASTNode accessNode;
 	
 		
-		public LocalContextElement(ASTNode node, ASTNode accessNode, AIElement element) {
+		public LocalContextElement(ASTNode node, ASTNode accessNode, AElement element) {
 			this.node  =node;
 			this.element = element;
 			this.accessNode = accessNode;
@@ -104,7 +96,7 @@ public class AAccessRelationBuilder implements Serializable {
 		public ASTNode getNode() {
 			return node;
 		}
-		public AIElement getElement() {
+		public AElement getElement() {
 			return element;
 		}
 		public ASTNode getAccessNode() {
@@ -121,11 +113,11 @@ public class AAccessRelationBuilder implements Serializable {
 	{
 		curCUElement = null;
 		curImport = null;
-		curTypeReminder = new Stack<ATypeElement>();
+		curTypeReminder = new Stack<AElement>();
 		
 		curContextReminder = new Stack<LocalContextElement>();
 		
-		importMap = new HashMap<String, AImportElement>();
+		importMap = new HashMap<String, AElement>();
 
 		curType = null;
 		curMethod = null;
@@ -138,7 +130,7 @@ public class AAccessRelationBuilder implements Serializable {
 
 	}
 	
-	public AAccessRelationBuilder(ProgramDatabase aDB, AFlyweightElementFactory elementFactory ) {
+	public AAccessRelationBuilder(AbstractProgramDatabase aDB, AFlyweightElementFactory elementFactory ) {
 		this.aDB = aDB;
 		this. elementFactory = elementFactory;
 	}
@@ -152,14 +144,14 @@ public class AAccessRelationBuilder implements Serializable {
 			@Override
 			public boolean visit(CompilationUnit node) {
 				//create the CU element and store it 
-				curCUElement = (ACompilationUnitElement)elementFactory.getElement(node);			
+				curCUElement = (AElement)elementFactory.getElement(node);			
 				return super.visit(node);
 			}
 			
 			//IMPORT CONTEXT//
 			@Override
 			public boolean visit(ImportDeclaration node) {
-				curImport = (AImportElement)elementFactory.getElement(node);	
+				curImport = (AElement)elementFactory.getElement(node);	
 				
 				
 				IBinding binding = node.resolveBinding();
@@ -201,7 +193,7 @@ public class AAccessRelationBuilder implements Serializable {
 					curTypeReminder.push(curType);
 				}
 							
-				curType = (ATypeElement)elementFactory.getElement(binding); 
+				curType = (AElement)elementFactory.getElement(binding); 
 				
 				if (curType == null) 
 					return;
@@ -218,7 +210,7 @@ public class AAccessRelationBuilder implements Serializable {
 					return;
 				
 			
-				curExtendsAccess = (ATypeAccessElement)elementFactory.createElement(AICategories.TYPE_ACCESS, null, cuHash, (ASTNode)curExtendsType);
+				curExtendsAccess = (AElement)elementFactory.createElement(AICategories.TYPE_ACCESS, null, cuHash, (ASTNode)curExtendsType);
 				
 				
 //					StructuralPropertyDescriptor descriptor = parent.getLocationInParent();
@@ -246,18 +238,18 @@ public class AAccessRelationBuilder implements Serializable {
 				
 				if (collectExtendsAndImplementsTypeRelations(binding, directTypes, transitiveTypes)) {
 			
-					ATypeElement typeElement;
+					AElement typeElement;
 					for (TypePathItem pathItem : directTypes) {
 						
-						typeElement = (ATypeElement)elementFactory.getElement(pathItem.getBinding());
+						typeElement = (AElement)elementFactory.getElement(pathItem.getBinding());
 						
 						if (typeElement != null) {
 							
 							if (pathItem.isInterface()) {
-								aDB.addRelationAndTranspose(curType, ARelation.IMPLEMENTS_TYPE, typeElement);
+								aDB.addRelationAndTranspose(curType, ARelationKind.IMPLEMENTS_TYPE, typeElement);
 							}
 							else {
-								aDB.addRelationAndTranspose(curType, ARelation.EXTENDS_TYPE, typeElement);
+								aDB.addRelationAndTranspose(curType, ARelationKind.EXTENDS_TYPE, typeElement);
 							}
 						}
 						
@@ -265,15 +257,15 @@ public class AAccessRelationBuilder implements Serializable {
 					
 					for (TypePathItem pathItem : transitiveTypes) {
 						
-						typeElement = (ATypeElement)elementFactory.getElement(pathItem.getBinding());
+						typeElement = (AElement)elementFactory.getElement(pathItem.getBinding());
 						
 						if (typeElement != null) {
 							
 							if (pathItem.isInterface()) {
-								aDB.addRelationAndTranspose(curType, ARelation.IMPLEMENTS_TYPE_TRANSITIVE, typeElement);
+								aDB.addRelationAndTranspose(curType, ARelationKind.IMPLEMENTS_TYPE_TRANSITIVE, typeElement);
 							}
 							else {
-								aDB.addRelationAndTranspose(curType, ARelation.EXTENDS_TYPE_TRANSITIVE, typeElement);
+								aDB.addRelationAndTranspose(curType, ARelationKind.EXTENDS_TYPE_TRANSITIVE, typeElement);
 							}
 						}
 						
@@ -334,7 +326,7 @@ public class AAccessRelationBuilder implements Serializable {
 				
 				//restore current type and temp method
 				if( !curTypeReminder.isEmpty() ) {
-					curType = (ATypeElement) curTypeReminder.pop();
+					curType = (AElement) curTypeReminder.pop();
 				}
 				else {
 					curType = null;
@@ -347,7 +339,7 @@ public class AAccessRelationBuilder implements Serializable {
 
 				IMethodBinding binding = node.resolveBinding();
 				if (binding != null) {	
-					curMethod = (AMethodElement)elementFactory.getElement(binding);
+					curMethod = elementFactory.getElement(binding);
 					
 					createInherritedAndOverriddenMethodRelations(binding);
 					
@@ -363,14 +355,14 @@ public class AAccessRelationBuilder implements Serializable {
 				if (collectInherritedOrOverridenMethods(binding, inhMethods)) {
 					
 					boolean first = true;
-					AMethodElement superMethod;
+					AElement superMethod;
 					
-					ARelation overridesRelation = ARelation.OVERRIDES_METHOD;
-					ARelation implementsRelation = ARelation.IMPLEMENTS_METHOD;
+					ARelationKind overridesRelation = ARelationKind.OVERRIDES_METHOD;
+					ARelationKind implementsRelation = ARelationKind.IMPLEMENTS_METHOD;
 					
 					for (MethodPathItem methodPathItem : inhMethods) {
 						
-						superMethod = (AMethodElement)elementFactory.getElement(methodPathItem.getBinding());
+						superMethod = (AElement)elementFactory.getElement(methodPathItem.getBinding());
 						
 						if (superMethod != null) {
 							
@@ -384,8 +376,8 @@ public class AAccessRelationBuilder implements Serializable {
 						
 						if (first) {
 							first = false;
-							overridesRelation = ARelation.OVERRIDES_METHOD_TRANSITIVE;
-							implementsRelation = ARelation.IMPLEMENTS_METHOD_TRANSITIVE;
+							overridesRelation = ARelationKind.OVERRIDES_METHOD_TRANSITIVE;
+							implementsRelation = ARelationKind.IMPLEMENTS_METHOD_TRANSITIVE;
 						}
 						
 					}
@@ -502,7 +494,7 @@ public class AAccessRelationBuilder implements Serializable {
 				if (binding != null) {	
 					
 					//DEFINING CONTEXT FOR METHOD
-					AIElement curElement =  elementFactory.getElement(binding);
+					AElement curElement =  elementFactory.getElement(binding);
 							
 					if (curContext != null) {
 						curContextReminder.push(curContext);
@@ -511,17 +503,17 @@ public class AAccessRelationBuilder implements Serializable {
 					//cur element could also be null!
 					curContext = new LocalContextElement(node, null, curElement);	
 				
-					Set<AIElement> localVars = null;
+					Set<AElement> localVars = null;
 					if (curElement != null) {
-						localVars = aDB.getRange(curElement, ARelation.DECLARES_LOCAL_VARIABLE);
+						localVars = aDB.getRange(curElement, ARelationKind.DECLARES_LOCAL_VARIABLE);
 					}
 					
-					curParameter = new HashSet<AIElement>();
+					curParameter = new HashSet<AElement>();
 					
 					//create param access elements
 					for (int i = 0; i < arguments.size(); i++) {
 						ASTNode tmpArg = (ASTNode)arguments.get(i);
-						AParameterAccessElement paramAccessElement = (AParameterAccessElement)elementFactory.createElement(AICategories.PARAMETER_ACCESS, null, cuHash, tmpArg);
+						AElement paramAccessElement = (AElement)elementFactory.createElement(AICategories.PARAMETER_ACCESS, null, cuHash, tmpArg);
 						aDB.addElement(paramAccessElement);
 						
 						curParameter.add(paramAccessElement);
@@ -531,9 +523,9 @@ public class AAccessRelationBuilder implements Serializable {
 						
 						//aDB.addRelationAndTranspose(curElement, ARelation.ACCESS_PARAMETER, paramAccessElement);
 						
-						for (AIElement localVar : localVars) {
-							if (((ALocalVariableElement)localVar).getParamIndex() == i) {
-								aDB.addRelationAndTranspose(localVar, ARelation.REQUIRES, paramAccessElement);	
+						for (AElement localVar : localVars) {
+							if (((AElement)localVar).getParamIndex() == i) {
+								aDB.addRelationAndTranspose(localVar, ARelationKind.REQUIRES, paramAccessElement);	
 								
 							}			
 						}
@@ -584,10 +576,10 @@ public class AAccessRelationBuilder implements Serializable {
 					return;
 									
 				if (binding.isField() || binding.isEnumConstant()) {			
-					curField = (AFieldElement)elementFactory.getElement(binding); 
+					curField = (AElement)elementFactory.getElement(binding); 
 				}
 				else {							
-					curLocalVariable = (ALocalVariableElement)elementFactory.getElement(binding); 
+					curLocalVariable = (AElement)elementFactory.getElement(binding); 
 					
 				}
 				
@@ -696,7 +688,7 @@ public class AAccessRelationBuilder implements Serializable {
 				if (binding != null && binding instanceof IVariableBinding) {
 					
 					//DEFINING CONTEXT FOR FIELD OR LOCAL VARIABLE!
-					AIElement curElement =  elementFactory.getElement(binding);
+					AElement curElement =  elementFactory.getElement(binding);
 					
 					
 					if (curContext != null) {
@@ -783,33 +775,33 @@ public class AAccessRelationBuilder implements Serializable {
 				}
 				
 				
-				ATypeAccessElement typeAccessElement = (ATypeAccessElement)elementFactory.createElement(AICategories.TYPE_ACCESS, null ,cuHash, elementNode);
+				AElement typeAccessElement = (AElement)elementFactory.createElement(AICategories.TYPE_ACCESS, null ,cuHash, elementNode);
 				aDB.addElement(typeAccessElement);
 				
-				ATypeElement typeElement = (ATypeElement)elementFactory.getElement(binding);
+				AElement typeElement = (AElement)elementFactory.getElement(binding);
 				
 				//ADD ACCESS TO ACTUAL TYPE
 				if (typeElement != null)
-					aDB.addRelationAndTranspose(typeAccessElement, ARelation.BELONGS_TO, typeElement);
+					aDB.addRelationAndTranspose(typeAccessElement, ARelationKind.BELONGS_TO, typeElement);
 				
-				AImportElement importElement = importMap.get(binding.getKey());
+				AElement importElement = importMap.get(binding.getKey());
 				if (importElement != null && !importElement.equals(curImport))
-					aDB.addRelationAndTranspose(typeAccessElement, ARelation.BELONGS_TO, importElement);
+					aDB.addRelationAndTranspose(typeAccessElement, ARelationKind.BELONGS_TO, importElement);
 				
 				//ADD ALL ELEMENTS WHO ACCESS THIS ELEMENT
 				
 				//ADD ALWAYS ACCESS RELATION FOR COMP. UNIT
-				aDB.addRelationAndTranspose(curCUElement, ARelation.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
+				aDB.addRelationAndTranspose(curCUElement, ARelationKind.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
 				
 				//ADD ACCESS ELEMENT TO OTHER ELEMENTS DEPENDING ON CURRENT CONTEXT
 				if (curImport != null)
-					aDB.addRelationAndTranspose(curImport, ARelation.ACCESS_TYPE, typeAccessElement);
+					aDB.addRelationAndTranspose(curImport, ARelationKind.ACCESS_TYPE, typeAccessElement);
 				
 				if (curType != null)
-					aDB.addRelationAndTranspose(curType, ARelation.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
+					aDB.addRelationAndTranspose(curType, ARelationKind.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
 				
-				for (ATypeElement tmpType : curTypeReminder) {
-					aDB.addRelationAndTranspose(tmpType, ARelation.ACCESS_TYPE_TRANSITIVE, typeAccessElement);				
+				for (AElement tmpType : curTypeReminder) {
+					aDB.addRelationAndTranspose(tmpType, ARelationKind.ACCESS_TYPE_TRANSITIVE, typeAccessElement);				
 				}
 				
 				
@@ -841,45 +833,45 @@ public class AAccessRelationBuilder implements Serializable {
 					
 					directRelationAdded = true;
 					if( curContext.getElement()!= null)
-					aDB.addRelationAndTranspose(curContext.getElement(), ARelation.ACCESS_TYPE, typeAccessElement);
+					aDB.addRelationAndTranspose(curContext.getElement(), ARelationKind.ACCESS_TYPE, typeAccessElement);
 					
 				}
 				
 				for (LocalContextElement tmpContext : curContextReminder) {
 					if (tmpContext.getElement() != null)
-						aDB.addRelationAndTranspose(tmpContext.getElement(), ARelation.ACCESS_TYPE_TRANSITIVE, typeAccessElement);				
+						aDB.addRelationAndTranspose(tmpContext.getElement(), ARelationKind.ACCESS_TYPE_TRANSITIVE, typeAccessElement);				
 				}
 				
 				
 				if (curLocalVariable != null) {
 					if (directRelationAdded) {
-						aDB.addRelationAndTranspose(curLocalVariable, ARelation.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
+						aDB.addRelationAndTranspose(curLocalVariable, ARelationKind.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
 					}
 					else {
-						aDB.addRelationAndTranspose(curLocalVariable, ARelation.ACCESS_TYPE, typeAccessElement);
+						aDB.addRelationAndTranspose(curLocalVariable, ARelationKind.ACCESS_TYPE, typeAccessElement);
 						directRelationAdded = true;		
 					}
 				}
 				
 				if (curField != null) {
 					if (directRelationAdded) {
-						aDB.addRelationAndTranspose(curField, ARelation.ACCESS_TYPE_TRANSITIVE, typeAccessElement);	
+						aDB.addRelationAndTranspose(curField, ARelationKind.ACCESS_TYPE_TRANSITIVE, typeAccessElement);	
 					}
 					else {
-						aDB.addRelationAndTranspose(curField, ARelation.ACCESS_TYPE, typeAccessElement);	
+						aDB.addRelationAndTranspose(curField, ARelationKind.ACCESS_TYPE, typeAccessElement);	
 						directRelationAdded = true;
 					}
 				}
 				
 			
 				if (curMethod != null) {
-						aDB.addRelationAndTranspose(curMethod, ARelation.DECLARES_TYPE_ACCESS, typeAccessElement);
+						aDB.addRelationAndTranspose(curMethod, ARelationKind.DECLARES_TYPE_ACCESS, typeAccessElement);
 					
 					if (directRelationAdded) {
-						aDB.addRelationAndTranspose(curMethod, ARelation.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
+						aDB.addRelationAndTranspose(curMethod, ARelationKind.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
 					}
 					else {
-						aDB.addRelationAndTranspose(curMethod, ARelation.ACCESS_TYPE, typeAccessElement);
+						aDB.addRelationAndTranspose(curMethod, ARelationKind.ACCESS_TYPE, typeAccessElement);
 					}
 				}
 			
@@ -911,17 +903,17 @@ public class AAccessRelationBuilder implements Serializable {
 				if (type == null)
 					return;
 				
-				ATypeAccessElement typeAccessElement = (ATypeAccessElement)elementFactory.getElement(type);
+				AElement typeAccessElement = (AElement)elementFactory.getElement(type);
 				
 				if (typeAccessElement == null)
 					return;
 						
 				
 				if (curField != null) 
-					aDB.addRelationAndTranspose(curField, ARelation.ACCESS_TYPE, typeAccessElement);			
+					aDB.addRelationAndTranspose(curField, ARelationKind.ACCESS_TYPE, typeAccessElement);			
 				
 				if (curLocalVariable != null)
-					aDB.addRelationAndTranspose(curLocalVariable, ARelation.ACCESS_TYPE, typeAccessElement);
+					aDB.addRelationAndTranspose(curLocalVariable, ARelationKind.ACCESS_TYPE, typeAccessElement);
 		
 			}		
 			
@@ -942,28 +934,28 @@ public class AAccessRelationBuilder implements Serializable {
 					return;
 
 				
-				AIElement element = elementFactory.getElement(binding);
+				AElement element = elementFactory.getElement(binding);
 				
-				ARelation accessRelation = ARelation.ACCESS_FIELD;
-				ARelation accessTransitiveRelation = ARelation.ACCESS_FIELD_TRANSITIVE;
-				ARelation declaresRelation = ARelation.DECLARES_FIELD_ACCESS;
+				ARelationKind accessRelation = ARelationKind.ACCESS_FIELD;
+				ARelationKind accessTransitiveRelation = ARelationKind.ACCESS_FIELD_TRANSITIVE;
+				ARelationKind declaresRelation = ARelationKind.DECLARES_FIELD_ACCESS;
 				AICategories cat = AICategories.FIELD_ACCESS;
 				boolean isField = true;
 				
 				if(element != null && element.getCategory() != AICategories.FIELD ) {
-					accessRelation = ARelation.ACCESS_LOCAL_VARIABLE;
-					accessTransitiveRelation = ARelation.ACCESS_LOCAL_VARIABLE_TRANSITIVE;
-					declaresRelation = ARelation.DECLARES_LOCAL_VARIABLE_ACCESS;
+					accessRelation = ARelationKind.ACCESS_LOCAL_VARIABLE;
+					accessTransitiveRelation = ARelationKind.ACCESS_LOCAL_VARIABLE_TRANSITIVE;
+					declaresRelation = ARelationKind.DECLARES_LOCAL_VARIABLE_ACCESS;
 					cat = AICategories.LOCAL_VARIABLE_ACCESS;
 				}
 					
-				AIElement accessElement = elementFactory.createElement(cat, null ,cuHash, node);
+				AElement accessElement = elementFactory.createElement(cat, null ,cuHash, node);
 				aDB.addElement(accessElement);
 				
 				
 				//ADD ACCESS TO ACTUAL Element
 				if (element != null)
-					aDB.addRelationAndTranspose(accessElement, ARelation.BELONGS_TO, element);
+					aDB.addRelationAndTranspose(accessElement, ARelationKind.BELONGS_TO, element);
 								
 				//ADD ALL ELEMENTS WHO ACCESS THIS ELEMENT
 				
@@ -980,14 +972,14 @@ public class AAccessRelationBuilder implements Serializable {
 					//check if field access is a super field access
 					if (curExtendsAccess != null && element!= null && isField) {
 					
-						if (isSuperAccess(element, ARelation.T_DECLARES_FIELD)) {
-							aDB.addRelationAndTranspose(accessElement, ARelation.BELONGS_TO, curExtendsAccess);
+						if (isSuperAccess(element, ARelationKind.T_DECLARES_FIELD)) {
+							aDB.addRelationAndTranspose(accessElement, ARelationKind.BELONGS_TO, curExtendsAccess);
 						}
 						
 					}
 				}
 				
-				for (ATypeElement tmpType : curTypeReminder) {
+				for (AElement tmpType : curTypeReminder) {
 					aDB.addRelationAndTranspose(tmpType, accessTransitiveRelation, accessElement);				
 				}
 				
@@ -1067,47 +1059,47 @@ public class AAccessRelationBuilder implements Serializable {
 			
 		
 			//HANDLE METHOD ACCESS
-			private void handleMethodAccess(ASTNode node, AIElement element) {
+			private void handleMethodAccess(ASTNode node, AElement element) {
 				
-				AIElement accessElement = elementFactory.createElement(AICategories.METHOD_ACCESS, null ,cuHash, node);
+				AElement accessElement = elementFactory.createElement(AICategories.METHOD_ACCESS, null ,cuHash, node);
 				aDB.addElement(accessElement);
 				
 				
 				//ADD BELONGS TO RELATION
 				if (element != null)
-					aDB.addRelationAndTranspose(accessElement, ARelation.BELONGS_TO, element);
+					aDB.addRelationAndTranspose(accessElement, ARelationKind.BELONGS_TO, element);
 								
 				//ADD ALL ELEMENTS WHO ACCESS THIS ELEMENT
 				
 				//HANDLE CURRENT PARAMS
 				if (curParameter != null) {
-					for (AIElement paramAccess : curParameter) {
-						aDB.addRelationAndTranspose(accessElement, ARelation.DECLARES_PARAMETER, paramAccess);
+					for (AElement paramAccess : curParameter) {
+						aDB.addRelationAndTranspose(accessElement, ARelationKind.DECLARES_PARAMETER, paramAccess);
 					}
 					curParameter = null;
 				}
 				
 				//ADD ALWAYS TRANS. ACCESS RELATION FOR COMP. UNIT
-				aDB.addRelationAndTranspose(curCUElement, ARelation.ACCESS_METHOD_TRANSITIVE, accessElement);
+				aDB.addRelationAndTranspose(curCUElement, ARelationKind.ACCESS_METHOD_TRANSITIVE, accessElement);
 				
 				//ADD ALWAYS TRANS. ACCESS RELATION FOR TYPE
 				if (curType != null) {
-					aDB.addRelationAndTranspose(curType, ARelation.ACCESS_METHOD_TRANSITIVE, accessElement);
+					aDB.addRelationAndTranspose(curType, ARelationKind.ACCESS_METHOD_TRANSITIVE, accessElement);
 					
 //TODO: CHECK IF IS SUPER ACCESS FOR OUT OF CONTEXT ELEMENTS (element == null)
 					//check if  access is a super  access
 					if (curExtendsAccess != null && element != null) {
 						
-						if (isSuperAccess(element, ARelation.T_DECLARES_METHOD)) {
-							aDB.addRelationAndTranspose(accessElement, ARelation.BELONGS_TO, curExtendsAccess);
+						if (isSuperAccess(element, ARelationKind.T_DECLARES_METHOD)) {
+							aDB.addRelationAndTranspose(accessElement, ARelationKind.BELONGS_TO, curExtendsAccess);
 						}
 						
 					}
 				
 				}
 				
-				for (ATypeElement tmpType : curTypeReminder) {
-					aDB.addRelationAndTranspose(tmpType, ARelation.ACCESS_METHOD_TRANSITIVE, accessElement);				
+				for (AElement tmpType : curTypeReminder) {
+					aDB.addRelationAndTranspose(tmpType, ARelationKind.ACCESS_METHOD_TRANSITIVE, accessElement);				
 				}
 				
 				boolean directRelationAdded = false;		
@@ -1127,7 +1119,7 @@ public class AAccessRelationBuilder implements Serializable {
 						if (tmpContext.getElement() == null)
 							continue;
 						
-						aDB.addRelationAndTranspose(tmpContext.getElement(), ARelation.ACCESS_METHOD, accessElement);		
+						aDB.addRelationAndTranspose(tmpContext.getElement(), ARelationKind.ACCESS_METHOD, accessElement);		
 						
 						continue;
 						
@@ -1137,53 +1129,53 @@ public class AAccessRelationBuilder implements Serializable {
 					if (tmpContext.getElement() == null)
 						continue;
 					
-					aDB.addRelationAndTranspose(tmpContext.getElement(), ARelation.ACCESS_METHOD_TRANSITIVE, accessElement);				
+					aDB.addRelationAndTranspose(tmpContext.getElement(), ARelationKind.ACCESS_METHOD_TRANSITIVE, accessElement);				
 					
 				}	
 				
 				if (curLocalVariable != null) {
 					if (directRelationAdded) {
-						aDB.addRelationAndTranspose(curLocalVariable, ARelation.ACCESS_METHOD_TRANSITIVE, accessElement);
+						aDB.addRelationAndTranspose(curLocalVariable, ARelationKind.ACCESS_METHOD_TRANSITIVE, accessElement);
 					}
 					else {
-						aDB.addRelationAndTranspose(curLocalVariable, ARelation.ACCESS_METHOD, accessElement);
+						aDB.addRelationAndTranspose(curLocalVariable, ARelationKind.ACCESS_METHOD, accessElement);
 						directRelationAdded = true;		
 					}
 				}
 				
 				if (curField != null) {
 					if (directRelationAdded) {
-						aDB.addRelationAndTranspose(curField, ARelation.ACCESS_METHOD_TRANSITIVE, accessElement);	
+						aDB.addRelationAndTranspose(curField, ARelationKind.ACCESS_METHOD_TRANSITIVE, accessElement);	
 					}
 					else {
-						aDB.addRelationAndTranspose(curField, ARelation.ACCESS_METHOD, accessElement);	
+						aDB.addRelationAndTranspose(curField, ARelationKind.ACCESS_METHOD, accessElement);	
 						directRelationAdded = true;
 					}
 				}
 				
 				if (curMethod != null) {
-					aDB.addRelationAndTranspose(curMethod, ARelation.DECLARES_METHOD_ACCESS, accessElement);
+					aDB.addRelationAndTranspose(curMethod, ARelationKind.DECLARES_METHOD_ACCESS, accessElement);
 					
 					if (directRelationAdded) {
-						aDB.addRelationAndTranspose(curMethod, ARelation.ACCESS_METHOD_TRANSITIVE, accessElement);
+						aDB.addRelationAndTranspose(curMethod, ARelationKind.ACCESS_METHOD_TRANSITIVE, accessElement);
 					}
 					else {
-						aDB.addRelationAndTranspose(curMethod, ARelation.ACCESS_METHOD, accessElement);
+						aDB.addRelationAndTranspose(curMethod, ARelationKind.ACCESS_METHOD, accessElement);
 					}
 				}
 				
 			}
 			
-			private boolean isSuperAccess(AIElement declElement, ARelation declRelation) {
+			private boolean isSuperAccess(AElement declElement, ARelationKind declRelation) {
 				
-				Set<AIElement> declareRange = aDB.getRange(declElement, declRelation);
+				Set<AElement> declareRange = aDB.getRange(declElement, declRelation);
 			
 				if (!declareRange.contains(curType)) {
-					Set<AIElement> superTypes = new HashSet<AIElement>();
-					superTypes.addAll(aDB.getRange(curType, ARelation.EXTENDS_TYPE));
-					superTypes.addAll(aDB.getRange(curType, ARelation.EXTENDS_TYPE_TRANSITIVE));
+					Set<AElement> superTypes = new HashSet<AElement>();
+					superTypes.addAll(aDB.getRange(curType, ARelationKind.EXTENDS_TYPE));
+					superTypes.addAll(aDB.getRange(curType, ARelationKind.EXTENDS_TYPE_TRANSITIVE));
 					
-					for (AIElement tmpSuperType : superTypes) {
+					for (AElement tmpSuperType : superTypes) {
 						if (declareRange.contains(tmpSuperType)) {
 							return true;
 						}

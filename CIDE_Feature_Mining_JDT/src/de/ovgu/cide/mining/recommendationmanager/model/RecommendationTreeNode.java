@@ -14,7 +14,7 @@ import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.language.jdt.UnifiedASTNode;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.recommendationengine.AElementViewCountManager;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContext;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContextCollection;
@@ -27,11 +27,11 @@ public class RecommendationTreeNode implements IAdaptable  {
 	private Object data;
 	private ArrayList<RecommendationTreeNode> children;
 	private RecommendationTreeNode parent;
-	private AIElement element;
+	private AElement element;
 	private ApplicationController AC;
 	private IFeature color;
 	
-	public RecommendationTreeNode(NODE_KIND kind, AIElement element, IFeature color, Object data) {
+	public RecommendationTreeNode(NODE_KIND kind, AElement element, IFeature color, Object data) {
 		this.kind = kind;
 		this.data = data;
 		this.element = element;
@@ -92,7 +92,7 @@ public class RecommendationTreeNode implements IAdaptable  {
 		return children.size()>0;
 	}
 	
-	public AIElement getElement() {
+	public AElement getElement() {
 		return element;
 	}
 	

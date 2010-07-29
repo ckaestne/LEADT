@@ -15,7 +15,7 @@ import org.eclipse.ui.PlatformUI;
 
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContext;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContextCollection;
 import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;
@@ -90,17 +90,17 @@ class RecommendationContentProvider implements IStructuredContentProvider, ITree
 			
 		//BUILD TREE TO DISPLAY
 		invisibleRoot = new RecommendationTreeNode(RecommendationTreeNode.NODE_KIND.ROOT,null,null,null);
-		Map<AIElement, ARecommendationContextCollection> recommendations;
+		Map<AElement, ARecommendationContextCollection> recommendations;
 		
 		if (event.getType().equals(EVENT_TYPE.ELEMENT)) {
-			AIElement sourceElement = event.getElement();
+			AElement sourceElement = event.getElement();
 			recommendations = AC.getRecommendations(event.getColor(), sourceElement);
 		}
 		else {
 			recommendations = AC.getRecommendations(event.getColor(), event.getStart(), event.getEnd(), event.getCuHash());
 		}
 		
-		for (AIElement tmpElement : recommendations.keySet()) {
+		for (AElement tmpElement : recommendations.keySet()) {
 			ARecommendationContextCollection collection = recommendations.get(tmpElement);
 			RecommendationTreeNode tmpCollectionNode = new RecommendationTreeNode(NODE_KIND.CONTEXTCOLLECTION, tmpElement, event.getColor(), collection);
 			invisibleRoot.addChild(tmpCollectionNode);

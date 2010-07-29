@@ -4,16 +4,16 @@ import org.eclipse.jdt.core.dom.IMethodBinding;
 
 import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.typing.jdt.BindingProjectColorCache;
 import de.ovgu.cide.typing.model.IEvaluationStrategy;
 
 public class InvocationCheck extends AbstractTypingCheck {
-	private AIElement bodySource;
-	private AIElement bodyTarget;
+	private AElement bodySource;
+	private AElement bodyTarget;
 	
 	
-	public InvocationCheck(AIElement paramSource, AIElement paramTarget, AIElement bodySource,  AIElement bodyTarget,  IFeatureModel model) {
+	public InvocationCheck(AElement paramSource, AElement paramTarget, AElement bodySource,  AElement bodyTarget,  IFeatureModel model) {
 		super(paramSource, paramTarget, model);
 		this.bodySource = bodySource;
 		this.bodyTarget = bodyTarget;

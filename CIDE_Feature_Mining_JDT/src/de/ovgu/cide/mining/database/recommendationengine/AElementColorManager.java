@@ -27,7 +27,7 @@ import de.ovgu.cide.features.source.ColoredSourceFile;
 import de.ovgu.cide.language.jdt.JDTParserWrapper;
 import de.ovgu.cide.language.jdt.UnifiedASTNode;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;
 import de.ovgu.cide.mining.events.AElementsPostNonColorChangedEvent;
 import de.ovgu.cide.mining.events.AGenerateRecommendationsEvent;
@@ -44,10 +44,10 @@ import de.ovgu.cide.util.Statistics;
 public class AElementColorManager implements IColorChangeListener, Observer{
 	
 		
-	private Map<IFeature, Map<AIElement, Integer>> color2Elements;
-	private final Map<AIElement, Set<IFeature>> element2Colors;
-	private final Map<AIElement, Set<IFeature>> element2NonColors;
-	private Map<IFeature, Set<AIElement>> nonColor2Elements;
+	private Map<IFeature, Map<AElement, Integer>> color2Elements;
+	private final Map<AElement, Set<IFeature>> element2Colors;
+	private final Map<AElement, Set<IFeature>> element2NonColors;
+	private Map<IFeature, Set<AElement>> nonColor2Elements;
 
 	private Map<IFeature, Set<IFeature>> feature2relatedFeatures;
 	private Map<IFeature, Set<IFeature>> feature2alternativeFeatures;
@@ -58,11 +58,11 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 	
 	public AElementColorManager(ApplicationController AC)  {
 		this.AC = AC;
-		color2Elements = new HashMap<IFeature, Map<AIElement, Integer>> ();
-		element2Colors = new HashMap<AIElement, Set<IFeature>>();
+		color2Elements = new HashMap<IFeature, Map<AElement, Integer>> ();
+		element2Colors = new HashMap<AElement, Set<IFeature>>();
 		
-		element2NonColors = new HashMap<AIElement, Set<IFeature>>();
-		nonColor2Elements = new HashMap<IFeature, Set<AIElement>>();
+		element2NonColors = new HashMap<AElement, Set<IFeature>>();
+		nonColor2Elements = new HashMap<IFeature, Set<AElement>>();
 		
 		feature2relatedFeatures = new HashMap<IFeature, Set<IFeature>>();
 		feature2alternativeFeatures = new HashMap<IFeature, Set<IFeature>>();
@@ -247,7 +247,7 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 	}
 	
 	
-	public Set<IFeature> getElementColors(AIElement element) {
+	public Set<IFeature> getElementColors(AElement element) {
 		Set<IFeature> colors = element2Colors.get(element);
 		
 		if (colors == null)
@@ -257,7 +257,7 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 		
 	}
 	
-	public Set<IFeature> getElementNonColors(AIElement element) {
+	public Set<IFeature> getElementNonColors(AElement element) {
 		Set<IFeature> colors = element2NonColors.get(element);
 		
 		if (colors == null)
@@ -267,34 +267,34 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 	
 	}
 	
-	public Set<AIElement> getElementsOfColor(IFeature color) {
+	public Set<AElement> getElementsOfColor(IFeature color) {
 
-		Map<AIElement, Integer> map = color2Elements.get(color);
+		Map<AElement, Integer> map = color2Elements.get(color);
 		if (map!=null)
 			return map.keySet();
 		
-		return new HashSet<AIElement>();
+		return new HashSet<AElement>();
 	}
 	
-	public Set<AIElement> getElementsOfNonColor(IFeature color) {
+	public Set<AElement> getElementsOfNonColor(IFeature color) {
 
-		Set<AIElement> set = nonColor2Elements.get(color);
+		Set<AElement> set = nonColor2Elements.get(color);
 		
 		if (set!=null)
 			return set;
 		
-		return new HashSet<AIElement>();
+		return new HashSet<AElement>();
 	}
 	
 	public Set<IFeature> getAvailableColors() {
 		return color2Elements.keySet();
 	}
 	
-	private boolean addElementToColor(IFeature color, AIElement element) {
-		Map<AIElement, Integer> elementRef = color2Elements.get(color);
+	private boolean addElementToColor(IFeature color, AElement element) {
+		Map<AElement, Integer> elementRef = color2Elements.get(color);
 		
 		if (elementRef == null) {
-			elementRef = new HashMap<AIElement, Integer>();
+			elementRef = new HashMap<AElement, Integer>();
 			color2Elements.put(color, elementRef);
 		}
 		
@@ -324,8 +324,8 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 	
 
 	
-	private boolean removeElementFromColor(IFeature color, AIElement element) {
-		Map<AIElement, Integer> elementRef = color2Elements.get(color);
+	private boolean removeElementFromColor(IFeature color, AElement element) {
+		Map<AElement, Integer> elementRef = color2Elements.get(color);
 		
 		if (elementRef == null) 
 			return false;
@@ -354,15 +354,15 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 		
 	}
 
-	private Set<AIElement> getElementsInASTNode(IASTNode sourceNode, int CUHash) {
+	private Set<AElement> getElementsInASTNode(IASTNode sourceNode, int CUHash) {
 		
 		//FIND RELATED ELEMENTS
 		UnifiedASTNode node;
 		int start = sourceNode.getStartPosition();
 		int end = start + sourceNode.getLength();
-		Set<AIElement> elements = new HashSet<AIElement>();
+		Set<AElement> elements = new HashSet<AElement>();
 		
-		for(AIElement element : AC.getAllElements()) {
+		for(AElement element : AC.getAllElements()) {
 			if (element.getCompelationUnitHash() != CUHash)
 				continue;
 						
@@ -392,7 +392,7 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 		
 		Map<IASTNode, Set<IFeature>>  node2AddColors = new HashMap<IASTNode, Set<IFeature>>();
 		Map<IASTNode, Set<IFeature>>  node2RemoveColors = new HashMap<IASTNode, Set<IFeature>>();
-		Map<IASTNode, Set<AIElement>>  node2elements = new HashMap<IASTNode, Set<AIElement>>();
+		Map<IASTNode, Set<AElement>>  node2elements = new HashMap<IASTNode, Set<AElement>>();
 		
 		Collection<IASTNode> nodes = event.getAffectedNodes();
 		
@@ -447,10 +447,10 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 		
 		for (IASTNode node : node2AddColors.keySet()) {
 			Set<IFeature> colors = node2AddColors.get(node);
-			Set<AIElement> elements = node2elements.get(node);
+			Set<AElement> elements = node2elements.get(node);
 			
 			for (IFeature color : colors) {
-				for (AIElement element : elements) {
+				for (AElement element : elements) {
 					addElementToColor(color, element);
 						//addedElements.put(element, color);
 				}
@@ -461,10 +461,10 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 		//Map<AIElement, IFeature> removedElements = new HashMap<AIElement, IFeature>();
 		for (IASTNode node : node2RemoveColors.keySet()) {
 			Set<IFeature> colors = node2RemoveColors.get(node);
-			Set<AIElement> elements = node2elements.get(node);
+			Set<AElement> elements = node2elements.get(node);
 			
 			for (IFeature color : colors) {
-				for (AIElement element : elements) {
+				for (AElement element : elements) {
 					removeElementFromColor(color, element);
 						//removedElements.put(element, color);
 				}
@@ -494,8 +494,8 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 				AElementsNonColorChangedEvent event = (AElementsNonColorChangedEvent) arg;
 				
 				//ADD PART
-				Map<AIElement, IFeature> addedElements = new HashMap<AIElement, IFeature>();
-				for (AIElement elementToAdd : event.getAddedElements().keySet()) {
+				Map<AElement, IFeature> addedElements = new HashMap<AElement, IFeature>();
+				for (AElement elementToAdd : event.getAddedElements().keySet()) {
 					
 					IFeature color = event.getAddedElements().get(elementToAdd);
 					
@@ -509,10 +509,10 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 					colors.add(color);
 					
 					
-					Set<AIElement> elements = nonColor2Elements.get(color);
+					Set<AElement> elements = nonColor2Elements.get(color);
 					
 					if (elements == null) {
-						elements = new HashSet<AIElement>();
+						elements = new HashSet<AElement>();
 						nonColor2Elements.put(color, elements);
 					}
 					
@@ -523,8 +523,8 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 				}	
 				
 				//REMOVE PART
-				Map<AIElement, IFeature> removedElements = new HashMap<AIElement, IFeature>();
-				for (AIElement elementToRemove : event.getRemovedElements().keySet()) {
+				Map<AElement, IFeature> removedElements = new HashMap<AElement, IFeature>();
+				for (AElement elementToRemove : event.getRemovedElements().keySet()) {
 					
 					IFeature color = event.getRemovedElements().get(elementToRemove);
 					Set<IFeature> colors = element2NonColors.get(elementToRemove);
@@ -536,7 +536,7 @@ public class AElementColorManager implements IColorChangeListener, Observer{
 							element2NonColors.remove(elementToRemove);
 					}
 					
-					Set<AIElement> elements = nonColor2Elements.get(color);
+					Set<AElement> elements = nonColor2Elements.get(color);
 					
 					if (elements != null) {
 						if (elements.remove(elementToRemove)) {

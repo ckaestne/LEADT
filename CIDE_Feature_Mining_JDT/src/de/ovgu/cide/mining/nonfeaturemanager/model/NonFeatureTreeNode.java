@@ -15,7 +15,7 @@ import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.language.jdt.UnifiedASTNode;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.recommendationengine.AElementViewCountManager;
 import de.ovgu.cide.mining.featuremanager.model.FeatureTreeNode;
 import de.ovgu.cide.mining.featuremanager.model.FeatureTreeNode.NODE_KIND;
@@ -48,7 +48,7 @@ public class NonFeatureTreeNode implements IAdaptable  {
 		
 		switch (kind) {
 		case ELEMENT:
-			AIElement el = (AIElement)data;
+			AElement el = (AElement)data;
 			//UnifiedASTNode uniNode = el.getUnifiedASTNode();
 			startRange = el.getStartPosition();
 			endRange = startRange + el.getLength();
@@ -122,7 +122,7 @@ public class NonFeatureTreeNode implements IAdaptable  {
 		case COMPILATION_UNIT:
 			return String.valueOf(((CUDummy)data).getHashCode());
 		case ELEMENT:
-			return ((AIElement)data).getId();
+			return ((AElement)data).getId();
 		}
 		
 		return "";
@@ -137,7 +137,7 @@ public class NonFeatureTreeNode implements IAdaptable  {
 		case COMPILATION_UNIT:
 			return ((CUDummy)data).getName();
 		case ELEMENT:
-			return ((AIElement)data).getShortName();
+			return ((AElement)data).getShortName();
 
 		}
 		
@@ -151,9 +151,9 @@ public class NonFeatureTreeNode implements IAdaptable  {
 		case COMPILATION_UNIT:
 			return "";
 		case ELEMENT:
-			String type = ((AIElement)data).getCategory().toString();
+			String type = ((AElement)data).getCategory().toString();
 			
-			for (AICategories cat : ((AIElement)data).getSubCategories()) {
+			for (AICategories cat : ((AElement)data).getSubCategories()) {
 				type += ", " + cat.toString();
 			}
 			
@@ -211,7 +211,7 @@ public class NonFeatureTreeNode implements IAdaptable  {
 		case COMPILATION_UNIT:
 			return viewCount;
 		case ELEMENT:
-			return ApplicationController.getInstance().getViewCountForElement(((AIElement)data));
+			return ApplicationController.getInstance().getViewCountForElement(((AElement)data));
 		}
 		return 0;
 	}

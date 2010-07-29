@@ -3,11 +3,11 @@ package de.ovgu.cide.mining.events;
 import java.util.EventObject;
 
 import de.ovgu.cide.features.IFeature;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
   
 public class ARecommenderElementSelectedEvent extends EventObject {
 	
-	private AIElement element;
+	private AElement element;
 	
 	public enum EVENT_TYPE {FEATURE, COMPILATION_UNIT, AST, ELEMENT}
 	
@@ -17,13 +17,13 @@ public class ARecommenderElementSelectedEvent extends EventObject {
 	
 	
 
-	public AIElement getElement() {
+	public AElement getElement() {
 		return element;
 	}
 	
 	
 
-	public ARecommenderElementSelectedEvent(Object source, IFeature color, AIElement element  ) {
+	public ARecommenderElementSelectedEvent(Object source, IFeature color, AElement element  ) {
 		super(source);
 		this.type = EVENT_TYPE.ELEMENT;
 		this.element = element;

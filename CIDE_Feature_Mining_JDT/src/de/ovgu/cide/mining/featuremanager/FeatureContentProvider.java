@@ -23,7 +23,7 @@ import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;
 import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent;
 import de.ovgu.cide.mining.events.AElementsPostNonColorChangedEvent;
@@ -206,7 +206,7 @@ class FeatureContentProvider implements IStructuredContentProvider,
 	
 	
 	
-	private void addElements(Set<IFeature> addColors, IASTNode node, CUDummy cuDummy, Set<AIElement> elements) {
+	private void addElements(Set<IFeature> addColors, IASTNode node, CUDummy cuDummy, Set<AElement> elements) {
 		
 		
 		for (IFeature color : addColors) {
@@ -219,7 +219,7 @@ class FeatureContentProvider implements IStructuredContentProvider,
 			FeatureTreeNode tmpDummyNode = new FeatureTreeNode(FeatureTreeNode.NODE_KIND.ASTDUMMY, dummy, addCount);
 			tmpCUNode.addChild(tmpDummyNode);
 				
-			for(AIElement element : elements) {		
+			for(AElement element : elements) {		
 				
 				FeatureTreeNode tmpElementNode = new FeatureTreeNode(FeatureTreeNode.NODE_KIND.ELEMENT, element, addCount);
 				tmpDummyNode.addChild(tmpElementNode);
@@ -278,7 +278,7 @@ class FeatureContentProvider implements IStructuredContentProvider,
 		
 		for (IASTNode node : event.getNode2AddColors().keySet()) {
 			Set<IFeature> colors = event.getNode2AddColors().get(node);
-			Set<AIElement> elements = event.getNode2elements().get(node);
+			Set<AElement> elements = event.getNode2elements().get(node);
 			addElements(colors, node, baseCUDummy, elements);
 		}
 		
@@ -304,14 +304,14 @@ class FeatureContentProvider implements IStructuredContentProvider,
 	
 	public void selectElements(AElementViewCountChangedEvent event) {	
 		
-		AIElement elementToSelect = event.getElement();
+		AElement elementToSelect = event.getElement();
 		selections = new ArrayList<TreePath>();
 		
 		for (FeatureTreeNode feature : invisibleRoot.getChildren()) {
 			for (FeatureTreeNode cu : feature.getChildren()) {
 				for (FeatureTreeNode ast : cu.getChildren()) {
 					for (FeatureTreeNode element : ast.getChildren()) {
-						if (((AIElement)element.getDataObject()).equals(elementToSelect)) {
+						if (((AElement)element.getDataObject()).equals(elementToSelect)) {
 							selections.add(new TreePath(new Object[] {feature, cu, ast, element}));
 						}
 					}

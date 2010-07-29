@@ -17,7 +17,7 @@ import java.util.Vector;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 
 public class Statistics {
 	
@@ -29,7 +29,7 @@ public class Statistics {
 //	public static final String depFeatureName = "SMS_Transfer";
 //	
 	
-	public static void writeElementsCategories(Set<AIElement> elements, long printNbr, String filename) {
+	public static void writeElementsCategories(Set<AElement> elements, long printNbr, String filename) {
 		
 		if (elements.size() == 0)
 			return;
@@ -49,7 +49,7 @@ public class Statistics {
 			//count elements
 			HashMap<AICategories, Integer> elementCounter = new HashMap<AICategories, Integer>();
 			
-			for (AIElement element : elements) {
+			for (AElement element : elements) {
 				Integer counter = elementCounter.get(element.getCategory());
 				
 				if (counter == null)
@@ -84,7 +84,7 @@ public class Statistics {
 		
 	}
 
-	public static void writeElements(Set<AIElement> elements, long printNbr, String filename, boolean isFeature) {
+	public static void writeElements(Set<AElement> elements, long printNbr, String filename, boolean isFeature) {
 		if (elements.size() == 0)
 			return;
 		
@@ -100,7 +100,7 @@ public class Statistics {
 			out = new BufferedWriter(new OutputStreamWriter(
 					new FileOutputStream(f.getAbsolutePath()+"/Elements_"+printNbr+".txt", true), "ISO-8859-1"));
 			
-			for (AIElement element : elements) {
+			for (AElement element : elements) {
 				content = element.getId();
 				
 				if (!isFeature) {

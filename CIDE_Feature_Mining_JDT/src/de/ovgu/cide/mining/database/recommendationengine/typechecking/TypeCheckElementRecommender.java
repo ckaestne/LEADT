@@ -13,8 +13,8 @@ import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
-import de.ovgu.cide.mining.database.model.ARelation;
+import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.database.model.ARelationKind;
 import de.ovgu.cide.mining.database.recommendationengine.AAbstractElementRecommender;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContext;
 import de.ovgu.cide.typing.internal.manager.EvaluationStrategyManager;
@@ -61,14 +61,14 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 	}
 	
 	
-	public Map<AIElement, ARecommendationContext> getRecommendations(AIElement element, IFeature color) {
+	public Map<AElement, ARecommendationContext> getRecommendations(AElement element, IFeature color) {
 		
 
-		Map<AIElement, ARecommendationContext> recommendations = new HashMap<AIElement, ARecommendationContext>();
+		Map<AElement, ARecommendationContext> recommendations = new HashMap<AElement, ARecommendationContext>();
 		
 		//CHECK REFERENCE CHECK		
-		Set<AIElement> accessElements = AC.getRange(element, ARelation.T_BELONGS_TO);
-		for (AIElement accessElement : accessElements) {
+		Set<AElement> accessElements = AC.getRange(element, ARelationKind.T_BELONGS_TO);
+		for (AElement accessElement : accessElements) {
 				
 			ReferenceCheck check = new ReferenceCheck(element, accessElement, model);
 			if (!check.evaluate(strategy) && isValidRecommendation(accessElement, color)) {
@@ -80,17 +80,17 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 		}
 				
 		//CHECK PARAM ACCESS - VIEWPOINT PARAM DECLARATION		 
-		Set<AIElement> paramTargetElements = AC.getRange(element, ARelation.REQUIRES);
-		for (AIElement paramTargetElement : paramTargetElements) {
+		Set<AElement> paramTargetElements = AC.getRange(element, ARelationKind.REQUIRES);
+		for (AElement paramTargetElement : paramTargetElements) {
 			
-			Object[] bodyTargetElements = AC.getRange(paramTargetElement, ARelation.T_DECLARES_PARAMETER).toArray();
-			AIElement bodyTargetElement = null;
+			Object[] bodyTargetElements = AC.getRange(paramTargetElement, ARelationKind.T_DECLARES_PARAMETER).toArray();
+			AElement bodyTargetElement = null;
 			if (bodyTargetElements.length > 0)
-				bodyTargetElement = (AIElement)bodyTargetElements[0];
+				bodyTargetElement = (AElement)bodyTargetElements[0];
 			
-			Set<AIElement> bodySourceElements = AC.getRange(bodyTargetElement, ARelation.BELONGS_TO);
-			AIElement bodySourceElement = null;
-			for (AIElement tmpElement : bodySourceElements) {
+			Set<AElement> bodySourceElements = AC.getRange(bodyTargetElement, ARelationKind.BELONGS_TO);
+			AElement bodySourceElement = null;
+			for (AElement tmpElement : bodySourceElements) {
 				if (tmpElement.getCategory() == AICategories.METHOD) {
 					bodySourceElement= tmpElement;
 					break;
@@ -133,21 +133,21 @@ public class TypeCheckElementRecommender extends AAbstractElementRecommender {
 		
 		//CHECK PARAM ACCESS	 
 		if (element.getCategory().equals(AICategories.PARAMETER_ACCESS)) {
-			AIElement paramTargetElement = element;
+			AElement paramTargetElement = element;
 			
-			Object[] bodyTargetElements = AC.getRange(paramTargetElement, ARelation.T_DECLARES_PARAMETER).toArray();
-			AIElement bodyTargetElement = null;
+			Object[] bodyTargetElements = AC.getRange(paramTargetElement, ARelationKind.T_DECLARES_PARAMETER).toArray();
+			AElement bodyTargetElement = null;
 			if (bodyTargetElements.length > 0)
-				bodyTargetElement = (AIElement)bodyTargetElements[0];
+				bodyTargetElement = (AElement)bodyTargetElements[0];
 			
-			Object[] paramSourceElements = AC.getRange(paramTargetElement, ARelation.T_REQUIRES).toArray();
-			AIElement paramSourceElement = null;
+			Object[] paramSourceElements = AC.getRange(paramTargetElement, ARelationKind.T_REQUIRES).toArray();
+			AElement paramSourceElement = null;
 			if (paramSourceElements.length > 0)
-				paramSourceElement = (AIElement)paramSourceElements[0];
+				paramSourceElement = (AElement)paramSourceElements[0];
 			
-			Set<AIElement> bodySourceElements = AC.getRange(bodyTargetElement, ARelation.BELONGS_TO);
-			AIElement bodySourceElement = null;
-			for (AIElement tmpElement : bodySourceElements) {
+			Set<AElement> bodySourceElements = AC.getRange(bodyTargetElement, ARelationKind.BELONGS_TO);
+			AElement bodySourceElement = null;
+			for (AElement tmpElement : bodySourceElements) {
 				if (tmpElement.getCategory() == AICategories.METHOD) {
 					bodySourceElement= tmpElement;
 					break;

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 
 public abstract class AAbstractFeatureRecommender {
 	
@@ -15,7 +15,7 @@ public abstract class AAbstractFeatureRecommender {
 		AC = ApplicationController.getInstance();
 	}
 	
-	protected boolean isValidRecommendation(AIElement element, IFeature color) {
+	protected boolean isValidRecommendation(AElement element, IFeature color) {
 		if (AC.getElementColors(element).contains(color))
 			return false;
 		
@@ -83,5 +83,5 @@ public abstract class AAbstractFeatureRecommender {
 //	}	
 	
 	public abstract String getRecommendationType();
-	public abstract Map<AIElement, ARecommendationContext> getRecommendations(IFeature color);
+	public abstract Map<AElement, ARecommendationContext> getRecommendations(IFeature color);
 }

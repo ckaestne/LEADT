@@ -11,6 +11,7 @@
 package de.ovgu.cide.mining.database;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,54 +28,43 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.swt.widgets.Display;
 
 import cide.gast.ASTNode;
-import cide.gast.IASTNode;
-
 import de.ovgu.cide.features.FeatureModelManager;
 import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.model.AFlyweightElementFactory;
-import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
-import de.ovgu.cide.mining.database.model.ARelation;
+import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.database.model.ARelationKind;
 import de.ovgu.cide.mining.database.recommendationengine.AElementColorManager;
 import de.ovgu.cide.mining.database.recommendationengine.AElementRecommendationManager;
 import de.ovgu.cide.mining.database.recommendationengine.AElementViewCountManager;
-import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContext;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContextCollection;
-import de.ovgu.cide.mining.database.recommendationengine.typechecking.TypeCheckElementRecommender;
-import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;
-import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent;
 import de.ovgu.cide.mining.events.AInitEvent;
-import de.ovgu.cide.mining.nonfeaturemanager.model.NonFeatureTreeNode;
-import de.ovgu.cide.typing.internal.manager.EvaluationStrategyManager;
-import de.ovgu.cide.typing.model.IEvaluationStrategy;
-import de.ovgu.cide.typing.model.ITypingCheck;
 
 /**
  * Facade for the JavaDB component. This component takes in a Java projects and
  * produces a database of the program relations between all the source element
  * in the input project and dependent projects.
  */
-public class ApplicationController extends Observable{
+public class ApplicationController extends Observable {
 
 	IProject initializedProject = null;
 	public static final boolean CHECK_COLOR_RELATIONS = true;
 
 	// The database object should be used for building the database
-	private ProgramDatabase aDB;
+	private AbstractProgramDatabase aDB;
 	private AElementColorManager elementColorManager;
 	private AElementViewCountManager viewCountManager;
-	//private TypeCheckManager typingManager;
+	// private TypeCheckManager typingManager;
 	private AElementRecommendationManager elementRecommendationManager;
-	
-//	private IEvaluationStrategy evaluationStrategy;
-	
-	private AFlyweightElementFactory elementFactory ;
+
+	// private IEvaluationStrategy evaluationStrategy;
+
+	private AFlyweightElementFactory elementFactory;
 	private Set<IFeature> projectFeatures;
-	
 
 	private Map<Integer, ICompilationUnit> compUnitMap;
 
@@ -82,65 +72,70 @@ public class ApplicationController extends Observable{
 	// to the database.
 	private AAnalyzer aAnalyzer;
 
-
 	private static ApplicationController AC = null;
 
 	private ApplicationController() {
 		AC = null;
 		initializedProject = null;
 	}
-	
-	public int getViewCountForElement(AIElement element) {
+
+	public int getViewCountForElement(AElement element) {
 		return viewCountManager.getViewCountForElement(element);
 	}
-	
-	public Set<IFeature> getElementNonColors(AIElement element) {
+
+	public Set<IFeature> getElementNonColors(AElement element) {
 		return elementColorManager.getElementNonColors(element);
 	}
-	
-	public Set<IFeature> getElementColors(AIElement element) {
+
+	public Set<IFeature> getElementColors(AElement element) {
 		return elementColorManager.getElementColors(element);
 	}
-	
-	public Set<AIElement> getElementsOfColor(IFeature color) {
+
+	public Set<AElement> getElementsOfColor(IFeature color) {
 		return elementColorManager.getElementsOfColor(color);
 	}
-	public Set<AIElement> getElementsOfNonColor(IFeature color) {
+
+	public Set<AElement> getElementsOfNonColor(IFeature color) {
 		return elementColorManager.getElementsOfNonColor(color);
 	}
-	
+
 	public Set<IFeature> getRelatedColors(IFeature color) {
 		return elementColorManager.getRelatedColors(color);
 	}
-	
+
 	public Set<IFeature> getRelatedNonColors(IFeature color) {
 		return elementColorManager.getRelatedNonColors(color);
 	}
-	
-	
+
 	public Set<IFeature> getAvailableColors() {
 		return elementColorManager.getAvailableColors();
 	}
-	
-	public Map<IFeature,  ARecommendationContextCollection> getAllRecommendations(AIElement element) {
+
+	public Map<IFeature, ARecommendationContextCollection> getAllRecommendations(
+			AElement element) {
 		return elementRecommendationManager.getAllRecommendations(element);
 	}
-	
-	
-	public Map<AIElement, ARecommendationContextCollection> getRecommendations(IFeature color, AIElement element) {
+
+	public Map<AElement, ARecommendationContextCollection> getRecommendations(
+			IFeature color, AElement element) {
 		return elementRecommendationManager.getRecommendations(color, element);
 	}
-	
-	public int getRecommendationsCount(IFeature color, AIElement element) {
-		return elementRecommendationManager.getRecommendationsCount(color, element);
+
+	public int getRecommendationsCount(IFeature color, AElement element) {
+		return elementRecommendationManager.getRecommendationsCount(color,
+				element);
 	}
-	
-	public int getRecommendationsCount(IFeature color, int start, int end, int cuhash) {
-		return elementRecommendationManager.getRecommendationsCount(color, start, end, cuhash);
+
+	public int getRecommendationsCount(IFeature color, int start, int end,
+			int cuhash) {
+		return elementRecommendationManager.getRecommendationsCount(color,
+				start, end, cuhash);
 	}
-	
-	public Map<AIElement, ARecommendationContextCollection> getRecommendations(IFeature color, int start, int end, int cuhash) {
-		return elementRecommendationManager.getRecommendations(color, start, end, cuhash);
+
+	public Map<AElement, ARecommendationContextCollection> getRecommendations(
+			IFeature color, int start, int end, int cuhash) {
+		return elementRecommendationManager.getRecommendations(color, start,
+				end, cuhash);
 	}
 
 	public static ApplicationController getInstance() {
@@ -159,14 +154,14 @@ public class ApplicationController extends Observable{
 	 * @throws ConversionException
 	 *             if the element cannot be converted.
 	 */
-	public AIElement convertToElement(ASTNode astNode)
+	public AElement convertToElement(ASTNode astNode)
 			throws ConversionException {
 
 		return aDB.getElement(astNode.getId());
 
 	}
 
-	public Set<AIElement> getRange(AIElement pElement, ARelation pRelation) {
+	public Set<AElement> getRange(AElement pElement, ARelationKind pRelation) {
 
 		return aAnalyzer.getRange(pElement, pRelation);
 	}
@@ -177,8 +172,7 @@ public class ApplicationController extends Observable{
 	 * @return A Set of IElement objects representing all the elements in the
 	 *         program database.
 	 */
-	public Set<AIElement> getAllElements() {
-
+	public Iterable<AElement> getAllElements() {
 		return aDB.getAllElements();
 	}
 
@@ -192,7 +186,7 @@ public class ApplicationController extends Observable{
 	 * @throws ElementNotFoundException
 	 *             If either pFrom or pTo is not indexed in the database.
 	 */
-	public boolean hasRelations(AIElement pElement)
+	public boolean hasRelations(AElement pElement)
 			throws ElementNotFoundException {
 
 		return aDB.hasRelations(pElement);
@@ -201,10 +195,10 @@ public class ApplicationController extends Observable{
 	public ICompilationUnit getICompilationUnit(int hash) {
 		return compUnitMap.get(hash);
 	}
-	
-//	public AElementColorManager getElementColorManager() {
-//		return elementColorManager;
-//	}
+
+	// public AElementColorManager getElementColorManager() {
+	// return elementColorManager;
+	// }
 
 	/**
 	 * Initializes the program database with information about relations between
@@ -224,8 +218,10 @@ public class ApplicationController extends Observable{
 	public void initialize(IProject pProject, IProgressMonitor pProgress)
 			throws ApplicationControllerException {
 		assert (pProject != null);
+		assert (pProgress != null);
 
 		// The database object should be used for building the database
+//		 aDB = BerkeleyProgramDatabase.getInstance();
 		aDB = new ProgramDatabase();
 		elementFactory = new AFlyweightElementFactory();
 
@@ -243,89 +239,104 @@ public class ApplicationController extends Observable{
 			lTargets.addAll(getCompilationUnits(lNext));
 		}
 
-		if (pProgress != null)
-			pProgress.beginTask("Building program database", lTargets.size());
+		int units = lTargets.size();
+		pProgress.beginTask("Building program database", units * 3);
 
-		ADeclareRelationBuilder loader = new ADeclareRelationBuilder(aDB, elementFactory);
+		ADeclareRelationBuilder loader = new ADeclareRelationBuilder(aDB,
+				elementFactory);
 
+		int i = 0;
 		for (ICompilationUnit lCU : lTargets) {
+			if (pProgress.isCanceled())
+				return;
+			pProgress.subTask("Creating elements in " + lCU.getElementName()
+					+ " (" + (++i) + "/" + units + ")");
 
 			int lCUHash = lCU.hashCode();
 			compUnitMap.put(lCUHash, lCU);
 
 			loader.createElementsAndDeclareRelations(lCU, lCUHash);
 
-			if (pProgress != null)
-				pProgress.worked(1);
+			pProgress.worked(1);
 		}
 
-		AAccessRelationBuilder relationBuilder = new AAccessRelationBuilder(aDB, elementFactory);
+		i = 0;
+		AAccessRelationBuilder relationBuilder = new AAccessRelationBuilder(
+				aDB, elementFactory);
 		for (ICompilationUnit lCU : lTargets) {
+			if (pProgress.isCanceled())
+				return;
+			pProgress.subTask("Creating relations in " + lCU.getElementName()
+					+ " (" + (++i) + "/" + units + ")");
+
 			int lCUHash = lCU.hashCode();
 			relationBuilder.buildRelations(lCU, lCUHash);
 
-			if (pProgress != null)
-				pProgress.worked(1);
-		}	
-				
-//		try {
-//			evaluationStrategy = EvaluationStrategyManager.getInstance()
-//					.getEvaluationStrategy(pProject);
-//			
-//	
-//			
-//		} catch (FeatureModelNotFoundException e1) {
-//			e1.printStackTrace();
-//		}
-//	
-		
-		try {
-			IFeatureModel model = FeatureModelManager.getInstance()
-				.getFeatureModel(initializedProject);
-			
-			projectFeatures = model.getFeatures();
-		
-				
-		} catch (FeatureModelNotFoundException e) {
-				// TODO Auto-generated catch block
-				projectFeatures = new HashSet<IFeature>();
+			pProgress.worked(2);
 		}
-		
+
+		// try {
+		// evaluationStrategy = EvaluationStrategyManager.getInstance()
+		// .getEvaluationStrategy(pProject);
+		//
+		//
+		//
+		// } catch (FeatureModelNotFoundException e1) {
+		// e1.printStackTrace();
+		// }
+		//
+
+		aDB.estimateFootprint();
+
+		try {
+			if (pProgress.isCanceled())
+				return;
+			pProgress.subTask("Parsing features");
+
+			IFeatureModel model = FeatureModelManager.getInstance()
+					.getFeatureModel(initializedProject);
+
+			projectFeatures = model.getFeatures();
+
+		} catch (FeatureModelNotFoundException e) {
+			// TODO Auto-generated catch block
+			projectFeatures = new HashSet<IFeature>();
+		}
+
 		elementColorManager = new AElementColorManager(this);
-		elementRecommendationManager = new AElementRecommendationManager(this, elementColorManager);
-		viewCountManager = new AElementViewCountManager(this);
-	
-		
-		
-		
-		fireEvent(new AInitEvent(this, initializedProject));
-		
+		elementRecommendationManager = new AElementRecommendationManager(this,
+				elementColorManager);
+
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				viewCountManager = new AElementViewCountManager(
+						ApplicationController.this);
+				fireEvent(new AInitEvent(this, initializedProject));
+			}
+		});
+
 		pProgress.done();
-		
-		
 
 	}
-	
-//	public IEvaluationStrategy getEvaluationStrategy() {
-//		return evaluationStrategy;
-//	}
-	
+
+	// public IEvaluationStrategy getEvaluationStrategy() {
+	// return evaluationStrategy;
+	// }
+
 	public IProject getInitializedProject() {
 		return initializedProject;
 	}
-	
+
 	public Set<IFeature> getProjectFeatures() {
 		return projectFeatures;
 	}
-	
 
-	
 	public void fireEvent(EventObject event) {
 		setChanged();
 		notifyObservers(event);
 	}
 
-	
 	/**
 	 * Returns all projects to analyze in IJavaProject form, including the
 	 * dependent projects.
@@ -350,8 +361,8 @@ public class ApplicationController extends Observable{
 				lReturn.add(JavaCore.create(lReferencedProjects[i]));
 			}
 		} catch (CoreException pException) {
-			throw new ApplicationControllerException("Could not extract project information",
-					pException);
+			throw new ApplicationControllerException(
+					"Could not extract project information", pException);
 		}
 		return lReturn;
 	}

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 
 public abstract class AAbstractElementRecommender {
 	
@@ -15,7 +15,7 @@ public abstract class AAbstractElementRecommender {
 		AC = ApplicationController.getInstance();
 	}
 	
-	protected boolean isValidRecommendation(AIElement element, IFeature color) {
+	protected boolean isValidRecommendation(AElement element, IFeature color) {
 		if (AC.getElementColors(element).contains(color))
 			return false;
 		
@@ -38,7 +38,7 @@ public abstract class AAbstractElementRecommender {
 		return true;
 	}
 	
-	protected boolean isInColor(AIElement element, IFeature color) {
+	protected boolean isInColor(AElement element, IFeature color) {
 		if (AC.getElementColors(element).contains(color))
 			return true;
 		
@@ -54,7 +54,7 @@ public abstract class AAbstractElementRecommender {
 		return false;
 	}
 	
-	protected boolean isInNonColor(AIElement element, IFeature color) {
+	protected boolean isInNonColor(AElement element, IFeature color) {
 		
 		if (AC.getElementNonColors(element).contains(color))
 			return true;
@@ -69,13 +69,13 @@ public abstract class AAbstractElementRecommender {
 		return false;
 	}
 	
-	protected Map<AIElement, ARecommendationContext>  filterValidRecommendations(IFeature color, Map<AIElement, ARecommendationContext> recommendations) {
-		Map<AIElement, ARecommendationContext>  actualRecom = new HashMap<AIElement, ARecommendationContext>();
+	protected Map<AElement, ARecommendationContext>  filterValidRecommendations(IFeature color, Map<AElement, ARecommendationContext> recommendations) {
+		Map<AElement, ARecommendationContext>  actualRecom = new HashMap<AElement, ARecommendationContext>();
 		
 			if (recommendations == null)
 				return actualRecom;	
 			
-			for (AIElement curElement : recommendations.keySet()) {
+			for (AElement curElement : recommendations.keySet()) {
 				if (isValidRecommendation(curElement, color))
 					actualRecom.put(curElement,recommendations.get(curElement));
 			}
@@ -115,5 +115,5 @@ public abstract class AAbstractElementRecommender {
 	
 	public abstract String getRecommendationType();
 	
-	public abstract Map<AIElement, ARecommendationContext> getRecommendations(AIElement element, IFeature color);
+	public abstract Map<AElement, ARecommendationContext> getRecommendations(AElement element, IFeature color);
 }

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.recommendationengine.AAbstractElementRecommender;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContext;
 
@@ -20,12 +20,12 @@ public class SubStringElementRecommender extends AAbstractElementRecommender {
 			AICategories.TYPE, AICategories.METHOD, AICategories.FIELD,
 			AICategories.LOCAL_VARIABLE };
 
-	Map<AIElement, Map<AIElement, ARecommendationContext>> cache;
+	Map<AElement, Map<AElement, ARecommendationContext>> cache;
 
 	public SubStringElementRecommender() {
 		super();
 		
-		cache = new HashMap<AIElement, Map<AIElement,ARecommendationContext>>();
+		cache = new HashMap<AElement, Map<AElement,ARecommendationContext>>();
 
 	}
 
@@ -34,7 +34,7 @@ public class SubStringElementRecommender extends AAbstractElementRecommender {
 		return "TPE";
 	}
 	
-	private boolean isPrimaryElement(AIElement element) {
+	private boolean isPrimaryElement(AElement element) {
 
 		for (int i = 0; i < primaryElement.length; i++) {
 			if (primaryElement[i] == element.getCategory())
@@ -102,10 +102,10 @@ public class SubStringElementRecommender extends AAbstractElementRecommender {
 	
 
 	
-	public Map<AIElement, ARecommendationContext> getRecommendations(
-			AIElement element, IFeature color) {
+	public Map<AElement, ARecommendationContext> getRecommendations(
+			AElement element, IFeature color) {
 
-		Map<AIElement, ARecommendationContext> recommendations;
+		Map<AElement, ARecommendationContext> recommendations;
 
 		if (cache.keySet().contains(element)) {
 
@@ -114,13 +114,13 @@ public class SubStringElementRecommender extends AAbstractElementRecommender {
 			if (recommendations != null)
 				return filterValidRecommendations(color, recommendations);
 
-			return new HashMap<AIElement, ARecommendationContext>();
+			return new HashMap<AElement, ARecommendationContext>();
 
 		}
 
 		// mark element as handled
 		cache.put(element, null);
-		recommendations = new HashMap<AIElement, ARecommendationContext>();
+		recommendations = new HashMap<AElement, ARecommendationContext>();
 
 		if (!isPrimaryElement(element))
 			return recommendations;
@@ -129,7 +129,7 @@ public class SubStringElementRecommender extends AAbstractElementRecommender {
 		String source = removeNamingConvention(element.getShortName());
 		List<String> subStrings = getSubStrings(source);
 		
-		for (AIElement curElement : AC.getAllElements()) {
+		for (AElement curElement : AC.getAllElements()) {
 
 			//do not check with itself
 			if (curElement.equals(element))

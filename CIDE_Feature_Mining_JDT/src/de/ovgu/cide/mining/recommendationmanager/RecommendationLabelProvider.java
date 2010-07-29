@@ -7,7 +7,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.nonfeaturemanager.model.NonFeatureTreeNode;
 import de.ovgu.cide.mining.recommendationmanager.model.RecommendationTreeNode;
 
@@ -28,7 +28,7 @@ public class RecommendationLabelProvider extends LabelProvider  implements ITabl
 			switch (((RecommendationTreeNode)element).getKind()) {
 			case CONTEXT:
 				
-				AIElement supporter = ((RecommendationTreeNode)element).getElement();
+				AElement supporter = ((RecommendationTreeNode)element).getElement();
 				if (supporter.getCategory() == AICategories.FEATURE)
 					imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 				break;

@@ -14,8 +14,8 @@ import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AICategories;
-import de.ovgu.cide.mining.database.model.AIElement;
-import de.ovgu.cide.mining.database.model.ARelation;
+import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.database.model.ARelationKind;
 import de.ovgu.cide.mining.database.recommendationengine.AAbstractElementRecommender;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContext;
 import de.ovgu.cide.mining.relationmanager.model.RelationTreeNode;
@@ -32,30 +32,30 @@ public class GraphRelationElementRecommender extends AAbstractElementRecommender
 
 	}
 	
-	public Map<AIElement, ARecommendationContext> getRecommendations(AIElement element, IFeature color) {
+	public Map<AElement, ARecommendationContext> getRecommendations(AElement element, IFeature color) {
 		
 
-		Map<AIElement, ARecommendationContext> recommendations = new HashMap<AIElement, ARecommendationContext>();
+		Map<AElement, ARecommendationContext> recommendations = new HashMap<AElement, ARecommendationContext>();
 		
-		Set<ARelation> validTransponseRelations = ARelation.getAllRelations(element.getCategory(), true, false);
+		Set<ARelationKind> validTransponseRelations = ARelationKind.getAllRelations(element.getCategory(), true, false);
 		
 		//ADDED AFTER EVALUATION 
-		validTransponseRelations.addAll(ARelation.getAllRelations(element.getCategory(), true, true));
+		validTransponseRelations.addAll(ARelationKind.getAllRelations(element.getCategory(), true, true));
 		
 		for (AICategories cat : element.getSubCategories()) {
-			validTransponseRelations.addAll(ARelation.getAllRelations(cat, true, false));
+			validTransponseRelations.addAll(ARelationKind.getAllRelations(cat, true, false));
 			//ADDED AFTER EVALUATION 
-			validTransponseRelations.addAll(ARelation.getAllRelations(cat, true, true));
+			validTransponseRelations.addAll(ARelationKind.getAllRelations(cat, true, true));
 		}
 				
 		
 		//check all relations
-		for (ARelation tmpTransRelation : validTransponseRelations) {
+		for (ARelationKind tmpTransRelation : validTransponseRelations) {
 			try {
 				
 				//get the forward elements
-				Set<AIElement> forwardElements = AC.getRange(element, tmpTransRelation);
-				Set<AIElement> validRecommendationElements = new HashSet<AIElement>();
+				Set<AElement> forwardElements = AC.getRange(element, tmpTransRelation);
+				Set<AElement> validRecommendationElements = new HashSet<AElement>();
 				
 				
 				int forwardColorElements = 0;
@@ -64,7 +64,7 @@ public class GraphRelationElementRecommender extends AAbstractElementRecommender
 				
 				//check how much of them already in color
 				//int validRecommendationCount = 0;
-				for (AIElement forwardElement : forwardElements) {
+				for (AElement forwardElement : forwardElements) {
 					
 					if (isInColor(forwardElement, color)) {
 						forwardColorElements++;
@@ -87,16 +87,16 @@ public class GraphRelationElementRecommender extends AAbstractElementRecommender
 				
 				//int invalidForwardRecommendations = forwardElements.size() - validRecommendationElements.size();
 				
-				for (AIElement validForwardElement : validRecommendationElements) {
+				for (AElement validForwardElement : validRecommendationElements) {
 						
 					//get backward elements for transpose 
-					Set<AIElement> backwardElements = AC.getRange(validForwardElement, tmpTransRelation.getInverseRelation());
+					Set<AElement> backwardElements = AC.getRange(validForwardElement, tmpTransRelation.getInverseRelation());
 
 					//calc how much of backward is already in color
 					int backwardColorElements = 0;
 					int backwardNonColorElements = 0;
 					
-					for (AIElement backwardElement : backwardElements) {
+					for (AElement backwardElement : backwardElements) {
 						
 						if (isInColor(backwardElement, color)){
 							backwardColorElements++;

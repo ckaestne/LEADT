@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.IAdaptable;
 
 import de.ovgu.cide.language.jdt.UnifiedASTNode;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AIElement;
+import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.recommendationengine.AElementViewCountManager;
 
 public class RelationTreeNode implements IAdaptable  {
@@ -31,7 +31,7 @@ public class RelationTreeNode implements IAdaptable  {
 		
 
 		if (kind == NODE_KIND.ELEMENT)  {
-			AIElement el = (AIElement)data;
+			AElement el = (AElement)data;
 			//UnifiedASTNode uniNode = el.getUnifiedASTNode();
 			startRange = el.getStartPosition();
 			endRange = startRange + el.getLength();
@@ -96,7 +96,7 @@ public class RelationTreeNode implements IAdaptable  {
 		case FOLDER:
 			return (String)data;
 		case ELEMENT:
-			return ((AIElement)data).getShortName();
+			return ((AElement)data).getShortName();
 
 		}
 		
@@ -118,7 +118,7 @@ public class RelationTreeNode implements IAdaptable  {
 		case FOLDER:
 			return String.valueOf(viewCount);
 		case ELEMENT:
-			return String.valueOf(ApplicationController.getInstance().getViewCountForElement(((AIElement)data)));
+			return String.valueOf(ApplicationController.getInstance().getViewCountForElement(((AElement)data)));
 		}
 		return "";
 	}
@@ -128,7 +128,7 @@ public class RelationTreeNode implements IAdaptable  {
 		case FOLDER:
 			return viewCount;
 		case ELEMENT:
-			return ApplicationController.getInstance().getViewCountForElement(((AIElement)data));
+			return ApplicationController.getInstance().getViewCountForElement(((AElement)data));
 		}
 		return 0;
 	}
