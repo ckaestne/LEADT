@@ -74,12 +74,12 @@ class NonFeatureContentProvider implements IStructuredContentProvider,
 
 		if (project == null) {
 			nonFeatureManager.setInfoMessage(
-					"Data base has not been created for Feature Mining",
+					"Database has not been created for Feature Mining",
 					MESSAGE_TYPE.ERROR);
 			return false;
 		}
 
-		nonFeatureManager.setInfoMessage("Data base been created for "
+		nonFeatureManager.setInfoMessage("Database created for "
 				+ project.getName(), MESSAGE_TYPE.INFO);
 		isInit = true;
 
@@ -298,7 +298,7 @@ class NonFeatureContentProvider implements IStructuredContentProvider,
 
 					if (arg instanceof AInitEvent) {
 						nonFeatureManager.setInfoMessage(
-								"Data base been created for "
+								"Database created for "
 										+ ((AInitEvent) arg).getProject()
 												.getName(), MESSAGE_TYPE.INFO);
 						isInit = true;

@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Set;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -35,6 +36,7 @@ import de.ovgu.cide.features.FeatureModelManager;
 import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.IFeatureModel;
+import de.ovgu.cide.features.source.ColoredSourceFile;
 import de.ovgu.cide.mining.database.model.AFlyweightElementFactory;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.model.ARelationKind;
@@ -42,6 +44,7 @@ import de.ovgu.cide.mining.database.recommendationengine.AElementColorManager;
 import de.ovgu.cide.mining.database.recommendationengine.AElementRecommendationManager;
 import de.ovgu.cide.mining.database.recommendationengine.AElementViewCountManager;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContextCollection;
+import de.ovgu.cide.mining.events.AGenerateRecommendationsEvent;
 import de.ovgu.cide.mining.events.AInitEvent;
 
 /**
@@ -221,7 +224,7 @@ public class ApplicationController extends Observable {
 		assert (pProgress != null);
 
 		// The database object should be used for building the database
-//		 aDB = BerkeleyProgramDatabase.getInstance();
+		// aDB = BerkeleyProgramDatabase.getInstance();
 		aDB = new ProgramDatabase();
 		elementFactory = new AFlyweightElementFactory();
 
@@ -240,7 +243,28 @@ public class ApplicationController extends Observable {
 		}
 
 		int units = lTargets.size();
-		pProgress.beginTask("Building program database", units * 3);
+		pProgress.beginTask("Building program database", (int) (units * 3.1));
+
+		pProgress.subTask("Loading feature model...");
+		try {
+			if (pProgress.isCanceled())
+				return;
+			pProgress.subTask("Parsing features");
+
+			IFeatureModel model = FeatureModelManager.getInstance()
+					.getFeatureModel(initializedProject);
+
+			projectFeatures = model.getFeatures();
+
+		} catch (FeatureModelNotFoundException e) {
+			// TODO Auto-generated catch block
+			projectFeatures = new HashSet<IFeature>();
+		}
+
+		elementRecommendationManager = new AElementRecommendationManager(this,
+				elementColorManager);
+		elementColorManager = new AElementColorManager(this);
+		pProgress.worked(units / 10);
 
 		ADeclareRelationBuilder loader = new ADeclareRelationBuilder(aDB,
 				elementFactory);
@@ -252,10 +276,13 @@ public class ApplicationController extends Observable {
 			pProgress.subTask("Creating elements in " + lCU.getElementName()
 					+ " (" + (++i) + "/" + units + ")");
 
+			ColoredSourceFile coloredSourceFile = getColoredSourcefile(lCU);
+
 			int lCUHash = lCU.hashCode();
 			compUnitMap.put(lCUHash, lCU);
 
-			loader.createElementsAndDeclareRelations(lCU, lCUHash);
+			loader.createElementsAndDeclareRelations(lCU, lCUHash,
+					elementColorManager, coloredSourceFile.getColorManager());
 
 			pProgress.worked(1);
 		}
@@ -269,8 +296,11 @@ public class ApplicationController extends Observable {
 			pProgress.subTask("Creating relations in " + lCU.getElementName()
 					+ " (" + (++i) + "/" + units + ")");
 
+			ColoredSourceFile coloredSourceFile = getColoredSourcefile(lCU);
+
 			int lCUHash = lCU.hashCode();
-			relationBuilder.buildRelations(lCU, lCUHash);
+			relationBuilder.buildRelations(lCU, lCUHash, elementColorManager,
+					coloredSourceFile.getColorManager());
 
 			pProgress.worked(2);
 		}
@@ -288,36 +318,29 @@ public class ApplicationController extends Observable {
 
 		aDB.estimateFootprint();
 
-		try {
-			if (pProgress.isCanceled())
-				return;
-			pProgress.subTask("Parsing features");
-
-			IFeatureModel model = FeatureModelManager.getInstance()
-					.getFeatureModel(initializedProject);
-
-			projectFeatures = model.getFeatures();
-
-		} catch (FeatureModelNotFoundException e) {
-			// TODO Auto-generated catch block
-			projectFeatures = new HashSet<IFeature>();
-		}
-
-		elementColorManager = new AElementColorManager(this);
-		elementRecommendationManager = new AElementRecommendationManager(this,
-				elementColorManager);
-
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
 				viewCountManager = new AElementViewCountManager(
 						ApplicationController.this);
 				fireEvent(new AInitEvent(this, initializedProject));
+				fireEvent(new AGenerateRecommendationsEvent(this));
 			}
 		});
 
 		pProgress.done();
 
+	}
+
+	private ColoredSourceFile getColoredSourcefile(ICompilationUnit lCU) {
+		ColoredSourceFile coloredSourceFile = null;
+		try {
+			coloredSourceFile = ColoredSourceFile
+					.getColoredSourceFile((IFile) lCU.getResource());
+		} catch (FeatureModelNotFoundException e) {
+			e.printStackTrace();
+		}
+		return coloredSourceFile;
 	}
 
 	// public IEvaluationStrategy getEvaluationStrategy() {

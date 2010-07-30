@@ -93,11 +93,11 @@ class RelationContentProvider implements IStructuredContentProvider,
 		IProject project = AC.getInitializedProject();
 		
 		if (project == null) {
-			relationManager.setInfoMessage("Data base has not been created for Feature Mining", MESSAGE_TYPE.ERROR);
+			relationManager.setInfoMessage("Database has not been created for Feature Mining", MESSAGE_TYPE.ERROR);
 			return false;
 		}
 		
-		relationManager.setInfoMessage("Data base been created for " + project.getName(), MESSAGE_TYPE.INFO);
+		relationManager.setInfoMessage("Database created for " + project.getName(), MESSAGE_TYPE.INFO);
 		isInit = true;
 		
 		return true;
@@ -386,7 +386,7 @@ class RelationContentProvider implements IStructuredContentProvider,
 	public void update(Observable o, Object arg) {
 		if (o.equals(AC)) {
 			if (arg instanceof AInitEvent) {
-				relationManager.setInfoMessage("Data base been created for " + ((AInitEvent)arg).getProject().getName(), MESSAGE_TYPE.INFO);
+				relationManager.setInfoMessage("Database created for " + ((AInitEvent)arg).getProject().getName(), MESSAGE_TYPE.INFO);
 				isInit = true;
 			}
 			else if (arg instanceof AElementViewCountChangedEvent) {

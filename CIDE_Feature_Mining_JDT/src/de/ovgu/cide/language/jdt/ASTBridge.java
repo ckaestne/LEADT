@@ -33,7 +33,6 @@ import org.eclipse.jdt.core.dom.TextElement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
-
 import cide.gast.ASTNode;
 import cide.gast.ASTTextNode;
 import cide.gast.ASTVisitor;
@@ -126,9 +125,9 @@ public class ASTBridge {
 			// fake a property with a single child
 			c_props.add(new PropertyZeroOrOne<ASTNode>(e_prop.getId(), c_node));
 
-			c_node = new UnifiedASTNode(getDisplayName(e_parent), ASTID
-					.id(e_parent), c_props, c_firstToken, c_lastToken, null,
-					getKind(e_parent));
+			c_node = new UnifiedASTNode(getDisplayName(e_parent),
+					ASTID.id(e_parent), c_props, c_firstToken, c_lastToken,
+					null, getKind(e_parent));
 
 			e_node = e_parent;
 		}
@@ -229,9 +228,14 @@ public class ASTBridge {
 		assert o != null;
 		if (o instanceof org.eclipse.jdt.core.dom.ASTNode)
 			child = bridgeASTNode((org.eclipse.jdt.core.dom.ASTNode) o);
-		else if (e_node instanceof Modifier ||e_node instanceof PrimitiveType|| e_node instanceof SimpleName|| e_node instanceof NumberLiteral|| e_node instanceof CharacterLiteral || e_node instanceof StringLiteral || e_node instanceof TextElement)
-			child = new ASTTextNode(o.toString(), new SimpleToken(e_node
-					.getStartPosition(), e_node.getLength()));
+		else if (e_node instanceof Modifier || e_node instanceof PrimitiveType
+				|| e_node instanceof SimpleName
+				|| e_node instanceof NumberLiteral
+				|| e_node instanceof CharacterLiteral
+				|| e_node instanceof StringLiteral
+				|| e_node instanceof TextElement)
+			child = new ASTTextNode(o.toString(), new SimpleToken(
+					e_node.getStartPosition(), e_node.getLength()));
 		else
 			return null;
 
@@ -248,8 +252,8 @@ public class ASTBridge {
 		else if (o instanceof org.eclipse.jdt.core.dom.ASTNode)
 			child = bridgeASTNode((org.eclipse.jdt.core.dom.ASTNode) o);
 		else
-			child = new ASTTextNode(o.toString(), new SimpleToken(e_node
-					.getStartPosition(), e_node.getLength()));
+			child = new ASTTextNode(o.toString(), new SimpleToken(
+					e_node.getStartPosition(), e_node.getLength()));
 		return new PropertyZeroOrOne<ASTNode>(prop.getId(), child);
 
 	}
@@ -270,56 +274,59 @@ public class ASTBridge {
 		return new PropertyZeroOrMore<ASTNode>(prop.getId(), c_children);
 	}
 
-	
-//    private int aFlags = JavaElementLabelProvider.SHOW_SMALL_ICONS | JavaElementLabelProvider.SHOW_PARAMETERS;
-//	private JavaElementLabelProvider aProvider = new JavaElementLabelProvider( aFlags );
+	// private int aFlags = JavaElementLabelProvider.SHOW_SMALL_ICONS |
+	// JavaElementLabelProvider.SHOW_PARAMETERS;
+	// private JavaElementLabelProvider aProvider = new
+	// JavaElementLabelProvider( aFlags );
 
 	private String getDisplayName(org.eclipse.jdt.core.dom.ASTNode node) {
-		
-		
-		//ALEX
+
+		// ALEX
 		if (node instanceof ImportDeclaration)
-			return "ImpDec: " + ((ImportDeclaration) node).getName().getFullyQualifiedName();
-			
-		if (node instanceof SimpleType) 
-			return "SimTyp: " + ((SimpleType) node).getName().getFullyQualifiedName();
-		
-		if (node instanceof PrimitiveType) 
-			return "PrimTyp: " + ((PrimitiveType) node).toString();
-		
-		if (node instanceof TypeDeclaration) 
-			return "TypDec: " + ((TypeDeclaration) node).getName().getFullyQualifiedName();
-		
-		if (node instanceof EnumDeclaration) 
-			return "EnmDec: " + ((EnumDeclaration) node).getName().getFullyQualifiedName();
-		
+			return ((ImportDeclaration) node).getName().getFullyQualifiedName();
+
+		if (node instanceof SimpleType)
+			return ((SimpleType) node).getName().getFullyQualifiedName();
+
+		if (node instanceof PrimitiveType)
+			return ((PrimitiveType) node).toString();
+
+		if (node instanceof TypeDeclaration)
+			return ((TypeDeclaration) node).getName().getFullyQualifiedName();
+
+		if (node instanceof EnumDeclaration)
+			return ((EnumDeclaration) node).getName().getFullyQualifiedName();
+
 		if (node instanceof MethodDeclaration)
-			return "MetDec: " + ((MethodDeclaration) node).getName().getFullyQualifiedName();
-	
+			return ((MethodDeclaration) node).getName().getFullyQualifiedName();
+
 		if (node instanceof MethodInvocation)
-			return "MetInv: " + ((MethodInvocation) node).getName().getFullyQualifiedName();
-		
+			return ((MethodInvocation) node).getName().getFullyQualifiedName();
+
 		if (node instanceof SuperMethodInvocation)
-			return "SuMeIn: " + ((SuperMethodInvocation) node).getName().getFullyQualifiedName();
-		
+			return ((SuperMethodInvocation) node).getName()
+					.getFullyQualifiedName();
+
 		if (node instanceof ClassInstanceCreation)
-			return "InsCre: " + ((ClassInstanceCreation) node).getType().toString();
-		
-		if (node instanceof VariableDeclarationFragment) 
-			return "VaDeFa: " + ((VariableDeclarationFragment) node).getName().getFullyQualifiedName();
-		
-		if (node instanceof EnumConstantDeclaration) 
-			return "EnCoDe: " + ((EnumConstantDeclaration) node).getName().getFullyQualifiedName();
-		
-		if (node instanceof SingleVariableDeclaration) 
-			return "SiVaDe: " + ((SingleVariableDeclaration) node).getName().getFullyQualifiedName();
-		
-		if (node instanceof SimpleName) 
-			return "SimNam: " + ((SimpleName) node).getFullyQualifiedName();
-		
-		//ALEX
-		
-		
+			return ((ClassInstanceCreation) node).getType().toString();
+
+		if (node instanceof VariableDeclarationFragment)
+			return ((VariableDeclarationFragment) node).getName()
+					.getFullyQualifiedName();
+
+		if (node instanceof EnumConstantDeclaration)
+			return ((EnumConstantDeclaration) node).getName()
+					.getFullyQualifiedName();
+
+		if (node instanceof SingleVariableDeclaration)
+			return ((SingleVariableDeclaration) node).getName()
+					.getFullyQualifiedName();
+
+		if (node instanceof SimpleName)
+			return ((SimpleName) node).getFullyQualifiedName();
+
+		// ALEX
+
 		return org.eclipse.jdt.core.dom.ASTNode.nodeClassForType(
 				node.getNodeType()).getSimpleName();
 	}

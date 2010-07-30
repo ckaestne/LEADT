@@ -26,7 +26,7 @@ import de.ovgu.cide.mining.database.HashUtil;
 @Entity
 public class AElement implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	// protected UnifiedASTNode node;
 	@PrimaryKey
 	private String id;
@@ -67,8 +67,13 @@ public class AElement implements Serializable {
 
 	protected AElement(UnifiedASTNode node, int compUnitHash,
 			AICategories category) {
-		this(HashUtil.hashId(node.getId()), node.getStartPosition(), node.getLength(), node
-				.getDisplayName(), compUnitHash, category);
+		this(node.getId(), node.getStartPosition(), node.getLength(),
+				getDisplay(node.getDisplayName(), category), compUnitHash,
+				category);
+	}
+
+	private static String getDisplay(String name, AICategories cat) {
+		return name + " - " + cat;
 	}
 
 	public void addSubcategory(AICategories category) {
@@ -138,6 +143,7 @@ public class AElement implements Serializable {
 	public String getFullName() {
 		return displayName + " (" + getCategory() + ")";
 	}
+
 	public String getDisplayName() {
 		return displayName;
 	}

@@ -7,27 +7,42 @@ import java.util.Set;
 import cide.gast.IASTNode;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent.ColorUpdate;
 
 public class AElementsPostColorChangedEvent extends EventObject {
 
-
 	private static final long serialVersionUID = 1L;
 
-	private String cuName;
-	private int cuHashCode;
-	private Map<IASTNode, Set<IFeature>>  node2AddColors;
-	private Map<IASTNode, Set<IFeature>>  node2RemoveColors;
-	private Map<IASTNode, Set<AElement>>  node2elements;
+	private final String cuName;
+	private final int cuHashCode;
 
+	private final Set<ColorUpdate> addedColors;
 
-	public AElementsPostColorChangedEvent(Object source, String cuName, int cuHashCode,  Map<IASTNode, Set<IFeature>>  node2AddColors, Map<IASTNode, Set<IFeature>>  node2RemoveColors, Map<IASTNode, Set<AElement>>  node2elements ) {
+	private final Set<ColorUpdate> removedColors;
+
+	public static class ColorUpdate {
+		public ColorUpdate(Set<IFeature> colors, Set<AElement> elements,
+				IASTNode node) {
+			this.colors = colors;
+			this.elements = elements;
+			this.node = node;
+		}
+
+		public final Set<IFeature> colors;
+		public final Set<AElement> elements;
+		public final IASTNode node;
+
+	}
+
+	public AElementsPostColorChangedEvent(Object source, String cuName,
+			int cuHashCode, Set<ColorUpdate> addedColors,
+			Set<ColorUpdate> removedColors) {
 		super(source);
-		
+
 		this.cuName = cuName;
 		this.cuHashCode = cuHashCode;
-		this.node2AddColors = node2AddColors;
-		this.node2RemoveColors = node2RemoveColors;
-		this.node2elements = node2elements;
+		this.addedColors = addedColors;
+		this.removedColors = removedColors;
 	}
 
 	public static long getSerialversionuid() {
@@ -42,17 +57,12 @@ public class AElementsPostColorChangedEvent extends EventObject {
 		return cuHashCode;
 	}
 
-	public Map<IASTNode, Set<IFeature>> getNode2AddColors() {
-		return node2AddColors;
+	public Set<ColorUpdate> getAddedColors() {
+		return addedColors;
 	}
 
-	public Map<IASTNode, Set<IFeature>> getNode2RemoveColors() {
-		return node2RemoveColors;
+	public Set<ColorUpdate> getRemovedColors() {
+		return removedColors;
 	}
-
-	public Map<IASTNode, Set<AElement>> getNode2elements() {
-		return node2elements;
-	}
-
 
 }

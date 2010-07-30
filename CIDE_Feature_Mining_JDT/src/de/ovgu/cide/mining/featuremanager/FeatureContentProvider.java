@@ -28,6 +28,7 @@ import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;
 import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent;
 import de.ovgu.cide.mining.events.AElementsPostNonColorChangedEvent;
 import de.ovgu.cide.mining.events.AInitEvent;
+import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent.ColorUpdate;
 import de.ovgu.cide.mining.featuremanager.FeatureManagerView.MESSAGE_TYPE;
 import de.ovgu.cide.mining.featuremanager.model.ASTDummy;
 import de.ovgu.cide.mining.featuremanager.model.CUDummy;
@@ -87,11 +88,11 @@ class FeatureContentProvider implements IStructuredContentProvider,
 		IProject project = AC.getInitializedProject();
 		
 		if (project == null) {
-			featureManager.setInfoMessage("Data base has not been created for Feature Mining", MESSAGE_TYPE.ERROR);
+			featureManager.setInfoMessage("Database has not been created for Feature Mining", MESSAGE_TYPE.ERROR);
 			return false;
 		}
 		
-		featureManager.setInfoMessage("Data base been created for " + project.getName(), MESSAGE_TYPE.INFO);
+		featureManager.setInfoMessage("Database created for " + project.getName(), MESSAGE_TYPE.INFO);
 		isInit = true;
 		
 		return true;
@@ -273,20 +274,15 @@ class FeatureContentProvider implements IStructuredContentProvider,
 		
 		CUDummy baseCUDummy = new CUDummy(event.getCuName(), event.getCuHashCode());
 		
-		if (event.getNode2AddColors().size() > 0)
+		if (event.getAddedColors().size() >0 || event.getRemovedColors().size() > 0)
 			addCount++;
 		
-		for (IASTNode node : event.getNode2AddColors().keySet()) {
-			Set<IFeature> colors = event.getNode2AddColors().get(node);
-			Set<AElement> elements = event.getNode2elements().get(node);
-			addElements(colors, node, baseCUDummy, elements);
+		for (ColorUpdate update : event.getAddedColors()) {
+			addElements(update.colors, update.node, baseCUDummy, update.elements);
 		}
-		
-		for (IASTNode node : event.getNode2RemoveColors().keySet()) {
-			Set<IFeature> colors = event.getNode2RemoveColors().get(node);
-			removeElements(colors, node, baseCUDummy);
+		for (ColorUpdate update : event.getRemovedColors()) {
+			removeElements(update.colors, update.node, baseCUDummy);
 		}
-	
 		
 		
 		featureManager.getTreeViewer().refresh();
@@ -342,7 +338,7 @@ class FeatureContentProvider implements IStructuredContentProvider,
 		if (o.equals(AC)) {
 			
 			if (arg instanceof AInitEvent) {
-				featureManager.setInfoMessage("Data base been created for " + ((AInitEvent)arg).getProject().getName(), MESSAGE_TYPE.INFO);
+				featureManager.setInfoMessage("Database created for " + ((AInitEvent)arg).getProject().getName(), MESSAGE_TYPE.INFO);
 				isInit = true;
 				
 				//CREATE FEATURES
