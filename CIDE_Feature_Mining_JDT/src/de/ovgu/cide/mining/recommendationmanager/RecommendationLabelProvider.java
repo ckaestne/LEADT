@@ -62,7 +62,9 @@ public class RecommendationLabelProvider extends LabelProvider  implements ITabl
 				return node.getMaxSupportFeature();
 			case 6: 
 				return node.getRange();
-			case 7:  
+			case 7: 
+				return ""+node.getLength();
+			case 8:  
 				return node.getViewCountAsString();
 			
 			
