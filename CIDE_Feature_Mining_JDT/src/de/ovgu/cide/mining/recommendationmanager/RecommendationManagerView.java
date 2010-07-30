@@ -1,11 +1,19 @@
 package de.ovgu.cide.mining.recommendationmanager;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Observable;
+import java.util.Observer;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.action.Action;
@@ -22,18 +30,19 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreePath;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ISharedImages;
@@ -43,20 +52,21 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-import cide.gast.IASTNode;
-
 import de.ovgu.cide.features.IFeature;
-import de.ovgu.cide.language.jdt.UnifiedASTNode;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AICategories;
 import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.database.model.AICategories;
+import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContextCollection;
 import de.ovgu.cide.mining.events.AElementPreviewEvent;
+import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;
 import de.ovgu.cide.mining.events.AElementsNonColorChangedEvent;
-import de.ovgu.cide.mining.featuremanager.FeatureManagerView;
-import de.ovgu.cide.mining.recommendationmanager.model.RecommendationTreeNode;
-import de.ovgu.cide.util.Statistics;
+import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent;
+import de.ovgu.cide.mining.events.AElementsPostNonColorChangedEvent;
+import de.ovgu.cide.mining.events.AInitEvent;
+import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent;
+import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent.EVENT_TYPE;
 
-public class RecommendationManagerView extends ViewPart {
+public class RecommendationManagerView extends ViewPart implements Observer {
 
 	/**
 	 * The ID of the view as specified by the extension.
@@ -72,9 +82,9 @@ public class RecommendationManagerView extends ViewPart {
 	Image imgInfo;
 	Image imgElment;
 
-	private TreeViewer viewer;
-	private Tree tree;
-	private TreeColumn[] columns;
+	private TableViewer viewer;
+	private Table tree;
+	private TableColumn[] columns;
 
 	private Label infoLabel;
 	private Label infoIconLabel;
@@ -86,7 +96,7 @@ public class RecommendationManagerView extends ViewPart {
 
 	private RecommendationContentProvider contentProvider;
 	private RecommendationSorter sorter;
-	private ApplicationController AC;
+	ApplicationController AC;
 
 	/**
 	 * This is a callback that will allow us to create the viewer and initialize
@@ -158,48 +168,48 @@ public class RecommendationManagerView extends ViewPart {
 		viewerArea.setLayoutData(data);
 		viewerArea.setLayout(new FillLayout());
 
-		viewer = new TreeViewer(viewerArea, SWT.MULTI | SWT.H_SCROLL
-				| SWT.V_SCROLL);
-
-		tree = viewer.getTree();
+		tree = new Table(viewerArea, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL
+				| SWT.VIRTUAL);
+		viewer = new TableViewer(tree);
+		viewer.setUseHashlookup(true);
 
 		tree.setHeaderVisible(true);
 		tree.setLinesVisible(true);
 
-		columns = new TreeColumn[9];
+		columns = new TableColumn[9];
 
-		columns[0] = new TreeColumn(tree, SWT.LEFT);
+		columns[0] = new TableColumn(tree, SWT.LEFT);
 		columns[0].setText("Name");
 		columns[0].setWidth(250);
 
-		columns[1] = new TreeColumn(tree, SWT.LEFT);
+		columns[1] = new TableColumn(tree, SWT.LEFT);
 		columns[1].setText("Type-Prio.");
 		columns[1].setWidth(50);
 
-		columns[2] = new TreeColumn(tree, SWT.CENTER);
+		columns[2] = new TableColumn(tree, SWT.CENTER);
 		columns[2].setText("Value");
 		columns[2].setWidth(50);
 
-		columns[3] = new TreeColumn(tree, SWT.CENTER);
+		columns[3] = new TableColumn(tree, SWT.CENTER);
 		columns[3].setText("Reasons");
 		columns[3].setWidth(200);
 
-		columns[4] = new TreeColumn(tree, SWT.CENTER);
+		columns[4] = new TableColumn(tree, SWT.CENTER);
 		columns[4].setText("Supports");
 		columns[4].setWidth(50);
 
-		columns[5] = new TreeColumn(tree, SWT.CENTER);
+		columns[5] = new TableColumn(tree, SWT.CENTER);
 		columns[5].setText("> Value for");
 		columns[5].setWidth(100);
 
-		columns[6] = new TreeColumn(tree, SWT.CENTER);
+		columns[6] = new TableColumn(tree, SWT.CENTER);
 		columns[6].setText("Range");
 		columns[6].setWidth(80);
-		columns[7] = new TreeColumn(tree, SWT.CENTER);
+		columns[7] = new TableColumn(tree, SWT.CENTER);
 		columns[7].setText("Length");
 		columns[7].setWidth(80);
 
-		columns[8] = new TreeColumn(tree, SWT.CENTER);
+		columns[8] = new TableColumn(tree, SWT.CENTER);
 		columns[8].setText("Views");
 		columns[8].setWidth(50);
 
@@ -207,11 +217,12 @@ public class RecommendationManagerView extends ViewPart {
 		// columns[2].setWidth(155);
 		// columns[2].setText("Type");
 
-		viewer.setContentProvider(contentProvider = new RecommendationContentProvider(
-				this));
-		viewer.setLabelProvider(new RecommendationLabelProvider());
+		contentProvider = new RecommendationContentProvider();
+		viewer.setContentProvider(contentProvider);
+		viewer.setLabelProvider(new RecommendationLabelProvider(this));
 		createSorter();
-		viewer.setInput(getViewSite());
+		tree.setItemCount(recommendations.size());
+		viewer.setInput(new Recommendation[0]);
 
 		makeActions();
 
@@ -220,40 +231,38 @@ public class RecommendationManagerView extends ViewPart {
 		hookSelectionChangedAction();
 		contributeToActionBars();
 
+		isInit = false;
+		checkIsIntialized();
+
+		AC.addObserver(this);
+
 	}
 
 	private void createSorter() {
 
-		Comparator<RecommendationTreeNode>[] comparators = new Comparator[9];
+		Comparator<Recommendation>[] comparators = new Comparator[9];
 
-		comparators[0] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				return o1.getDisplayName().compareTo(o2.getDisplayName());
+		comparators[0] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
+				return o1.element.getDisplayName().compareTo(
+						o2.element.getDisplayName());
 			}
 		};
 
-		comparators[1] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				if (o1.getTypePriority() < o2.getTypePriority())
-					return 1;
-
-				if (o1.getTypePriority() > o2.getTypePriority())
-					return -1;
-
-				return 0;
+		comparators[1] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
+				return RecommendationLabelProvider.getTypePriority(o1)
+						- RecommendationLabelProvider.getTypePriority(o2);
 			}
 		};
 
 		// recommendation value
-		comparators[2] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				if (o1.getSupportValue() > o2.getSupportValue())
+		comparators[2] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
+				if (o1.context.getSupportValue() > o2.context.getSupportValue())
 					return 1;
 
-				if (o1.getSupportValue() < o2.getSupportValue())
+				if (o1.context.getSupportValue() < o2.context.getSupportValue())
 					return -1;
 
 				return 0;
@@ -261,73 +270,59 @@ public class RecommendationManagerView extends ViewPart {
 		};
 
 		// recommendation reason
-		comparators[3] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				return o1.getReasons().compareTo(o2.getReasons());
+		comparators[3] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
+				return o1.context.getSupportReasons().compareTo(
+						o2.context.getSupportReasons());
 			}
 		};
 
 		// supports
-		comparators[4] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				if (o1.getSupportersCount() > o2.getSupportersCount())
-					return 1;
+		comparators[4] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
+				return (o1.context.getContexts().size() - o2.context
+						.getContexts().size());
+			}
+		};
 
-				if (o1.getSupportersCount() < o2.getSupportersCount())
-					return -1;
-
+		comparators[5] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
 				return 0;
 			}
 		};
 
-		comparators[5] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				return o1.getMaxSupportFeature().compareTo(
-						o2.getMaxSupportFeature());
-			}
-		};
-
 		// range
-		comparators[6] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				if (o1.getStartRange() < o2.getStartRange())
+		comparators[6] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
+				if (o1.element.getStartPosition() < o2.element
+						.getStartPosition())
 					return -1;
 
-				if (o1.getStartRange() > o2.getStartRange())
+				if (o1.element.getStartPosition() > o2.element
+						.getStartPosition())
 					return 1;
 
-				if (o1.getEndRange() < o2.getEndRange())
+				if (o1.element.getLength() < o2.element.getLength())
 					return -1;
 
-				if (o1.getEndRange() > o2.getEndRange())
+				if (o1.element.getLength() > o2.element.getLength())
 					return 1;
 
 				return 0;
 			}
-		};	
+		};
 		// range
-		comparators[7] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				return o1.getLength()-o2.getLength();
+		comparators[7] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
+				return o1.element.getLength() - o2.element.getLength();
 			}
 		};
 
 		// views
-		comparators[8] = new Comparator<RecommendationTreeNode>() {
-			public int compare(RecommendationTreeNode o1,
-					RecommendationTreeNode o2) {
-				if (o1.getViewCount() > o2.getViewCount())
-					return 1;
-
-				if (o1.getViewCount() < o2.getViewCount())
-					return -1;
-
-				return 0;
+		comparators[8] = new Comparator<Recommendation>() {
+			public int compare(Recommendation o1, Recommendation o2) {
+				return RecommendationLabelProvider.getViewCount(o1)
+						- RecommendationLabelProvider.getViewCount(o2);
 			}
 		};
 
@@ -352,11 +347,11 @@ public class RecommendationManagerView extends ViewPart {
 		infoLabel.setText(msg);
 	}
 
-	public Tree getTree() {
+	public Table getTree() {
 		return tree;
 	}
 
-	public TreeViewer getTreeViewer() {
+	public TableViewer getTreeViewer() {
 		return viewer;
 	}
 
@@ -440,16 +435,14 @@ public class RecommendationManagerView extends ViewPart {
 
 					Object obj = treePath.getFirstSegment();
 
-					if (!(obj instanceof RecommendationTreeNode))
+					if (!(obj instanceof Recommendation))
 						continue;
 
-					if (((RecommendationTreeNode) obj).getColor() == null)
+					if (currentColor == null)
 						continue;
 
-					AElement sourceElement = ((RecommendationTreeNode) obj)
-							.getElement();
-					IFeature feature = ((RecommendationTreeNode) obj)
-							.getColor();
+					AElement sourceElement = ((Recommendation) obj).element;
+					IFeature feature = currentColor;
 					elementsToAdd.put(sourceElement, feature);
 
 					// add also all elements which are included in this element
@@ -487,21 +480,21 @@ public class RecommendationManagerView extends ViewPart {
 				Object obj = ((IStructuredSelection) selection)
 						.getFirstElement();
 
-				if (!(obj instanceof RecommendationTreeNode))
+				if (!(obj instanceof Recommendation))
 					return;
 
-				RecommendationTreeNode node = (RecommendationTreeNode) obj;
+				Recommendation node = (Recommendation) obj;
 
-				if (node.getElement().getCategory() == AICategories.FEATURE)
+				if (node.element.getCategory() == AICategories.FEATURE)
 					return;
 
 				deleteElementAction.setEnabled(true);
 
 				int cuHash, start, len;
 
-				cuHash = node.getElement().getCompelationUnitHash();
-				start = node.getElement().getStartPosition();
-				len = node.getElement().getLength();
+				cuHash = node.element.getCompelationUnitHash();
+				start = node.element.getStartPosition();
+				len = node.element.getLength();
 
 				try {
 
@@ -557,4 +550,138 @@ public class RecommendationManagerView extends ViewPart {
 		viewer.getControl().setFocus();
 	}
 
+	private ARecommenderElementSelectedEvent curEvent;
+
+	public void update(Observable o, Object arg) {
+		if (o.equals(AC)) {
+
+			if (arg instanceof AInitEvent) {
+				setInfoMessage("Database created for "
+						+ ((AInitEvent) arg).getProject().getName(),
+						MESSAGE_TYPE.INFO);
+				isInit = true;
+
+			} else if (arg instanceof AElementViewCountChangedEvent) {
+				getTreeViewer().refresh();
+			} else if (arg instanceof ARecommenderElementSelectedEvent) {
+				curEvent = (ARecommenderElementSelectedEvent) arg;
+				updateRecommendations(curEvent);
+			} else if (arg instanceof AElementsPostColorChangedEvent) {
+				updateRecommendations(curEvent);
+			} else if (arg instanceof AElementsPostNonColorChangedEvent) {
+				updateRecommendations(curEvent);
+			}
+
+		}
+
+	}
+
+	private void updateRecommendations(
+			final ARecommenderElementSelectedEvent event) {
+		Job update = new Job("Update recommendations") {
+
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
+				calculateRecommendations(event);
+
+				Display.getDefault().syncExec(new Runnable() {
+
+					@Override
+					public void run() {
+						if (!recommendations.isEmpty()) {
+							setInfoMessage(
+									"Recommendations for selected element",
+									MESSAGE_TYPE.INFO);
+						} else {
+							setInfoMessage(
+									"There are no recommendations for the selected element.",
+									MESSAGE_TYPE.WARNING);
+						}
+
+						getTreeViewer().getTable().setItemCount(
+								recommendations.size());
+						getTreeViewer().setInput(
+								recommendations.toArray(new Recommendation[0]));
+					}
+				});
+
+				return Status.OK_STATUS;
+			}
+
+		};
+		update.setPriority(Job.SHORT);
+		update.schedule();
+	}
+
+	private boolean checkIsIntialized() {
+
+		if (isInit)
+			return true;
+
+		IProject project = AC.getInitializedProject();
+
+		if (project == null) {
+			setInfoMessage("Database has not been created for Feature Mining",
+					MESSAGE_TYPE.ERROR);
+			return false;
+		}
+
+		setInfoMessage("Database created for " + project.getName(),
+				MESSAGE_TYPE.INFO);
+		isInit = true;
+
+		return true;
+	}
+
+	static class Recommendation implements IAdaptable {
+		public Recommendation(AElement e, ARecommendationContextCollection c) {
+			element = e;
+			context = c;
+		}
+
+		AElement element;
+		ARecommendationContextCollection context;
+
+		@Override
+		public Object getAdapter(Class adapter) {
+			return null;
+		}
+	}
+
+	List<Recommendation> recommendations = new ArrayList<Recommendation>();
+	IFeature currentColor;
+
+	public void calculateRecommendations(ARecommenderElementSelectedEvent event) {
+		if (event == null) {
+			recommendations = new ArrayList<Recommendation>();
+
+		} else {
+
+			// BUILD TREE TO DISPLAY
+			Map<AElement, ARecommendationContextCollection> providedRecommendations;
+
+			if (event.getType().equals(EVENT_TYPE.ELEMENT)) {
+				AElement sourceElement = event.getElement();
+				providedRecommendations = AC.getRecommendations(
+						event.getColor(), sourceElement);
+			} else {
+				providedRecommendations = AC.getRecommendations(
+						event.getColor(), event.getStart(), event.getEnd(),
+						event.getCuHash());
+			}
+			this.currentColor = event.getColor();
+			recommendations = new ArrayList<Recommendation>();
+
+			for (AElement tmpElement : providedRecommendations.keySet()) {
+				ARecommendationContextCollection collection = providedRecommendations
+						.get(tmpElement);
+
+				recommendations.add(new Recommendation(tmpElement, collection));
+			}
+
+		}
+
+	}
+
+	private boolean isInit;
 }
