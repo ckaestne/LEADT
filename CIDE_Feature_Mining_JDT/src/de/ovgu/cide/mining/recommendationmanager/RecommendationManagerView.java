@@ -586,7 +586,6 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 
 				Display.getDefault().syncExec(new Runnable() {
 
-					@Override
 					public void run() {
 						if (!recommendations.isEmpty()) {
 							setInfoMessage(
@@ -642,7 +641,6 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 		AElement element;
 		ARecommendationContextCollection context;
 
-		@Override
 		public Object getAdapter(Class adapter) {
 			return null;
 		}

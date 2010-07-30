@@ -324,7 +324,6 @@ public class RelationManagerView extends ViewPart {
 	public void setInfoMessage(final String msg, final MESSAGE_TYPE type) {
 		Display.getDefault().syncExec(new Runnable() {
 
-			@Override
 			public void run() {
 				if (type == MESSAGE_TYPE.NONE)
 					infoIconLabel.setImage(null);

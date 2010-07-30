@@ -319,7 +319,6 @@ public class ApplicationController extends Observable {
 		aDB.estimateFootprint();
 
 		Display.getDefault().syncExec(new Runnable() {
-			@Override
 			public void run() {
 				viewCountManager = new AElementViewCountManager(
 						ApplicationController.this);
