@@ -32,7 +32,7 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	 * Data bundle associated with an element. Contains modifier flags and a map
 	 * linking relations to their ranges. an IElement instance.
 	 */
-	public static final int NO_MODIFIERS = -1;
+	
 
 	class Bundle implements Serializable {
 		private static final long serialVersionUID = 1L;
