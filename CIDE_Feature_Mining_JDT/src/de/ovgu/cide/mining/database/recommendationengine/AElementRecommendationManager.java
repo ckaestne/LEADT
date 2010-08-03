@@ -1,5 +1,6 @@
 package de.ovgu.cide.mining.database.recommendationengine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -7,21 +8,13 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
 
-import org.eclipse.core.resources.IProject;
-
-import de.ovgu.cide.features.FeatureModelManager;
-import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
-import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.recommendationengine.graphrelation.GraphRelationElementRecommender;
-import de.ovgu.cide.mining.database.recommendationengine.substrings.SubStringElementRecommender;
 import de.ovgu.cide.mining.database.recommendationengine.substrings.SubStringFeatureRecommender;
 import de.ovgu.cide.mining.database.recommendationengine.typechecking.TypeCheckElementRecommender;
 import de.ovgu.cide.mining.events.AGenerateRecommendationsEvent;
-import de.ovgu.cide.mining.events.AInitEvent;
-import de.ovgu.cide.mining.nonfeaturemanager.model.NonFeatureTreeNode;
 
 //TODO: CACHE! RESULTS!
 public class AElementRecommendationManager implements Observer {
@@ -109,7 +102,7 @@ public class AElementRecommendationManager implements Observer {
 		
 		Set<AElement> elements = AC.getElementsOfColor(color);
 		
-		for (AElement tmpElement : elements) {
+		for (AElement tmpElement : new ArrayList<AElement>(elements)) {
 			
 			if (cuhash != -1 && tmpElement.getCompelationUnitHash() != cuhash)
 				continue;

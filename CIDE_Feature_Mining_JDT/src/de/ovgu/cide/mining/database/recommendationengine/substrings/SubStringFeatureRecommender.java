@@ -211,7 +211,8 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 		double tmpFeatureRegisterSize = featureRegisterSize;
 		double tmpNonFeatureRegisterSize = nonFeatureRegisterSize;
 
-		for (String matchSubString : nonFeatureSubStringRegister.keySet()) {
+		for (String matchSubString : new ArrayList<String>(
+				nonFeatureSubStringRegister.keySet())) {
 			// check if non feature string is also feature string
 			if (!featureSubStringRegister.containsKey(matchSubString))
 				continue;

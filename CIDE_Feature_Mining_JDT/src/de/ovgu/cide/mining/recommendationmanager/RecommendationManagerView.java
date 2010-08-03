@@ -425,33 +425,26 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 			public void run() {
 
 				ISelection selection = viewer.getSelection();
-				TreePath[] paths = ((ITreeSelection) selection).getPaths();
+				Object selectedRecommendation = ((IStructuredSelection) selection)
+						.getFirstElement();
 
 				Map<AElement, IFeature> elementsToAdd = new HashMap<AElement, IFeature>();
 
-				for (TreePath treePath : paths) {
-					if (treePath.getSegmentCount() > 1)
-						continue;
+				if (!(selectedRecommendation instanceof Recommendation))
+					return;
 
-					Object obj = treePath.getFirstSegment();
+				if (currentColor == null)
+					return;
 
-					if (!(obj instanceof Recommendation))
-						continue;
+				AElement sourceElement = ((Recommendation) selectedRecommendation).element;
+				IFeature feature = currentColor;
+				elementsToAdd.put(sourceElement, feature);
 
-					if (currentColor == null)
-						continue;
-
-					AElement sourceElement = ((Recommendation) obj).element;
-					IFeature feature = currentColor;
-					elementsToAdd.put(sourceElement, feature);
-
-					// add also all elements which are included in this element
-					// for (AIElement subElement :
-					// getElementsInElementRange(sourceElement)) {
-					// elementsToAdd.put(subElement,feature);
-					// }
-
-				}
+				// add also all elements which are included in this element
+				// for (AIElement subElement :
+				// getElementsInElementRange(sourceElement)) {
+				// elementsToAdd.put(subElement,feature);
+				// }
 
 				if (elementsToAdd.size() > 0)
 					AC.fireEvent(new AElementsNonColorChangedEvent(this,
@@ -526,7 +519,7 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 	private void hookDoubleClickAction() {
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
-				doubleClickAction.run();
+				// doubleClickAction.run();
 			}
 		});
 

@@ -70,7 +70,7 @@ public class FeatureLabelProvider extends LabelProvider  implements ITableLabelP
 				case 4:  
 					return node.getViewCountString();
 				case 5:  
-					return node.getRecommendationCountString();
+					return "";//node.getRecommendationCountString();
 					
 				//case 1: return String.valueOf(obj.getViewCount());
 			} 
