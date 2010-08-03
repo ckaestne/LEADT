@@ -1,6 +1,7 @@
 package de.ovgu.cide.mining.recommendationmanager;
 
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -82,8 +83,8 @@ public class RecommendationLabelProvider extends LabelProvider implements
 	}
 
 	static int getViewCount(Recommendation node) {
-		return ApplicationController.getInstance()
-				.getViewCountForElement(node.element);
+		return ApplicationController.getInstance().getViewCountForElement(
+				node.element);
 	}
 
 	static int getTypePriority(Recommendation node) {
@@ -124,13 +125,13 @@ public class RecommendationLabelProvider extends LabelProvider implements
 
 		Map<IFeature, ARecommendationContextCollection> recommendationMap = manager.AC
 				.getAllRecommendations(node.element);
-		for (IFeature color : recommendationMap.keySet()) {
-
+		for (Entry<IFeature, ARecommendationContextCollection> entry : recommendationMap
+				.entrySet()) {
+			IFeature color = entry.getKey();
 			if (color.equals(manager.currentColor))
 				continue;
 
-			ARecommendationContextCollection collection = recommendationMap
-					.get(color);
+			ARecommendationContextCollection collection = entry.getValue();
 			double tmpSupportValue = collection.getSupportValue();
 
 			if (tmpSupportValue > supportValue) {

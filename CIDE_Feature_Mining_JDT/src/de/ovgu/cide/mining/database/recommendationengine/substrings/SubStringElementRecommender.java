@@ -107,7 +107,7 @@ public class SubStringElementRecommender extends AAbstractElementRecommender {
 
 		Map<AElement, ARecommendationContext> recommendations;
 
-		if (cache.keySet().contains(element)) {
+		if (cache.containsKey(element)) {
 
 			recommendations = cache.get(element);
 

@@ -46,6 +46,7 @@ import de.ovgu.cide.mining.database.recommendationengine.AElementViewCountManage
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContextCollection;
 import de.ovgu.cide.mining.events.AGenerateRecommendationsEvent;
 import de.ovgu.cide.mining.events.AInitEvent;
+import de.ovgu.cide.mining.logging.EvalLogging;
 
 /**
  * Facade for the JavaDB component. This component takes in a Java projects and
@@ -317,6 +318,7 @@ public class ApplicationController extends Observable {
 		//
 
 		aDB.estimateFootprint();
+		EvalLogging.getInstance().init(pProject,aDB);
 
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {

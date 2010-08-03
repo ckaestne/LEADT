@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,6 +15,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.action.Action;
@@ -28,10 +30,8 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
@@ -65,6 +65,7 @@ import de.ovgu.cide.mining.events.AElementsPostNonColorChangedEvent;
 import de.ovgu.cide.mining.events.AInitEvent;
 import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent;
 import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent.EVENT_TYPE;
+import de.ovgu.cide.mining.logging.EvalLogging;
 
 public class RecommendationManagerView extends ViewPart implements Observer {
 
@@ -486,8 +487,12 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 				int cuHash, start, len;
 
 				cuHash = node.element.getCompelationUnitHash();
+				ICompilationUnit cu = AC.getICompilationUnit(cuHash);
 				start = node.element.getStartPosition();
 				len = node.element.getLength();
+
+				EvalLogging.getInstance().selectRecommendation(cu, start, len,
+						node.context.getSupportValue());
 
 				try {
 
@@ -495,8 +500,7 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 							RecommendationManagerView.this));
 
 					IEditorPart javaEditor;
-					javaEditor = JavaUI.openInEditor(AC
-							.getICompilationUnit(cuHash));
+					javaEditor = JavaUI.openInEditor(cu);
 
 					if ((start >= 0) && (javaEditor instanceof ITextEditor)) {
 						((ITextEditor) javaEditor).selectAndReveal(start, len);
@@ -576,6 +580,8 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				calculateRecommendations(event);
+				EvalLogging.getInstance()
+						.updateRecommendations(recommendations);
 
 				Display.getDefault().syncExec(new Runnable() {
 
@@ -663,11 +669,10 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 			this.currentColor = event.getColor();
 			recommendations = new ArrayList<Recommendation>();
 
-			for (AElement tmpElement : providedRecommendations.keySet()) {
-				ARecommendationContextCollection collection = providedRecommendations
-						.get(tmpElement);
-
-				recommendations.add(new Recommendation(tmpElement, collection));
+			for (Entry<AElement, ARecommendationContextCollection> entry : providedRecommendations
+					.entrySet()) {
+				recommendations.add(new Recommendation(entry.getKey(), entry
+						.getValue()));
 			}
 
 		}

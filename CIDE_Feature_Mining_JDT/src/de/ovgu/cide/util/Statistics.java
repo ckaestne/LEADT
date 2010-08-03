@@ -36,7 +36,7 @@ public class Statistics {
 		
 		BufferedWriter out = null;
 		String content;
-		ApplicationController jayFX = ApplicationController.getInstance();
+//		ApplicationController jayFX = ApplicationController.getInstance();
 		
 		try {
 			File f = new File(exportPath +filename+"/");

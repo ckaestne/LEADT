@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
@@ -37,6 +38,7 @@ import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent;
 import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent.ColorUpdate;
 import de.ovgu.cide.mining.events.AElementsPostNonColorChangedEvent;
 import de.ovgu.cide.mining.events.AGenerateRecommendationsEvent;
+import de.ovgu.cide.mining.logging.EvalLogging;
 
 public class AElementColorManager implements IColorChangeListener, Observer {
 
@@ -373,6 +375,7 @@ public class AElementColorManager implements IColorChangeListener, Observer {
 	private Map<String, Set<IFeature>> keys2colors = new HashMap<String, Set<IFeature>>();
 
 	public void astColorChanged(ASTColorChangedEvent event) {
+		EvalLogging.getInstance().astColorChanged(event);
 		updateElementColors(event.getColoredSourceFile(),
 				event.getAffectedNodes());
 	}
@@ -475,6 +478,8 @@ public class AElementColorManager implements IColorChangeListener, Observer {
 	}
 
 	public void fileColorChanged(FileColorChangedEvent event) {
+		EvalLogging.getInstance().fileColorChanged(event);
+
 		Collection<IContainer> folders = event.getAffectedFolders();
 		// get all files
 		List<ColoredSourceFile> files = new ArrayList<ColoredSourceFile>();
@@ -527,9 +532,10 @@ public class AElementColorManager implements IColorChangeListener, Observer {
 
 				// ADD PART
 				Map<AElement, IFeature> addedElements = new HashMap<AElement, IFeature>();
-				for (AElement elementToAdd : event.getAddedElements().keySet()) {
-
-					IFeature color = event.getAddedElements().get(elementToAdd);
+				for (Entry<AElement, IFeature> entry : event.getAddedElements()
+						.entrySet()) {
+					AElement elementToAdd = entry.getKey();
+					IFeature color = entry.getValue();
 
 					Set<IFeature> colors = element2NonColors.get(elementToAdd);
 
@@ -555,11 +561,12 @@ public class AElementColorManager implements IColorChangeListener, Observer {
 
 				// REMOVE PART
 				Map<AElement, IFeature> removedElements = new HashMap<AElement, IFeature>();
-				for (AElement elementToRemove : event.getRemovedElements()
-						.keySet()) {
+				for (Entry<AElement, IFeature> entry : event
+						.getRemovedElements().entrySet()) {
 
-					IFeature color = event.getRemovedElements().get(
-							elementToRemove);
+					AElement elementToRemove = entry.getKey();
+
+					IFeature color = entry.getValue();
 					Set<IFeature> colors = element2NonColors
 							.get(elementToRemove);
 
