@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
@@ -60,6 +61,8 @@ public class CollectStatisticsAndInteractionsJob extends
 
 	public final Map<Derivative, Set<InteractionPosition>> derivatives = new HashMap<Derivative, Set<InteractionPosition>>();
 
+	public final Map<IFeature, Map<IFile, Set<Integer>>> locCounter = new HashMap<IFeature, Map<IFile, Set<Integer>>>();
+
 	private Tree tree;
 
 	private int annoationsCount = 0;
@@ -112,8 +115,8 @@ public class CollectStatisticsAndInteractionsJob extends
 				@Override
 				public boolean visit(IASTNode node) {
 					// own colors cleared by parent colors, in case they overlap
-					Set<IFeature> ownColors = new HashSet<IFeature>(source.getColorManager()
-							.getOwnColors(node));
+					Set<IFeature> ownColors = new HashSet<IFeature>(source
+							.getColorManager().getOwnColors(node));
 					if (node.getParent() != null)
 						ownColors.removeAll(source.getColorManager().getColors(
 								node.getParent()));
@@ -122,6 +125,11 @@ public class CollectStatisticsAndInteractionsJob extends
 						if (previousSibling == null
 								|| !sameColors(previousSibling, node))
 							annoationsCount++;
+					}
+					Set<IFeature> allColors = new HashSet<IFeature>(source
+							.getColorManager().getColors(node));
+					if (!allColors.isEmpty()) {
+						countLoc(source, allColors, node);
 					}
 
 					return super.visit(node);
@@ -143,15 +151,37 @@ public class CollectStatisticsAndInteractionsJob extends
 
 				private boolean sameColors(IASTNode previousSibling,
 						IASTNode node) {
-					return source.getColorManager().getColors(node)
-							.equals(
-									source.getColorManager().getColors(
-											previousSibling));
+					return source
+							.getColorManager()
+							.getColors(node)
+							.equals(source.getColorManager().getColors(
+									previousSibling));
 				}
 			});
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	protected void countLoc(ColoredSourceFile source, Set<IFeature> allColors,
+			IASTNode node) {
+		for (IFeature feature : allColors) {
+			Map<IFile, Set<Integer>> locPerFeature = locCounter.get(feature);
+			if (locPerFeature == null) {
+				locPerFeature = new HashMap<IFile, Set<Integer>>();
+				locCounter.put(feature, locPerFeature);
+			}
+
+			Set<Integer> locPerFile = locPerFeature.get(source.getResource());
+			if (locPerFile == null) {
+				locPerFile = new HashSet<Integer>();
+				locPerFeature.put(source.getResource(), locPerFile);
+			}
+
+			for (int i = node.getStartLine(); i <= node.getEndLine(); i++) {
+				locPerFile.add(i);
+			}
 		}
 	}
 
@@ -166,7 +196,9 @@ public class CollectStatisticsAndInteractionsJob extends
 				printDerivatives();
 				printAllOccurrences();
 				printAnnotationCount();
+				printFeatureLOC();
 			}
+
 		});
 	}
 
@@ -181,6 +213,30 @@ public class CollectStatisticsAndInteractionsJob extends
 			createItem2(allOccurrences, f.getName(), occurencesByFeature.get(f));
 		}
 		setCountingCaption(allOccurrences);
+	}
+
+	private void printFeatureLOC() {
+		TreeItem featureLoc = new TreeItem(tree, SWT.DEFAULT);
+		featureLoc.setText("Feature LOC");
+		for (Entry<IFeature, Map<IFile, Set<Integer>>> entry : locCounter
+				.entrySet()) {
+
+			TreeItem featureItem = new TreeItem(featureLoc, SWT.DEFAULT);
+			featureItem.setText(entry.getKey().getName() + ": "
+					+ countLoc(entry.getValue()) + " LOC");
+			for (Entry<IFile, Set<Integer>> files : entry.getValue().entrySet()) {
+				TreeItem fileItem = new TreeItem(featureItem, SWT.DEFAULT);
+				fileItem.setText(files.getKey().getName() + ": "
+						+ files.getValue().size() + " LOC");
+			}
+		}
+	}
+
+	private int countLoc(Map<IFile, Set<Integer>> map) {
+		int result = 0;
+		for (Set<Integer> v : map.values())
+			result += v.size();
+		return result;
 	}
 
 	/**
@@ -242,8 +298,8 @@ public class CollectStatisticsAndInteractionsJob extends
 				derivatives.keySet());
 		Collections.sort(derivativeList);
 		for (Derivative d : derivativeList) {
-			createItem2(allDerivatives, d.getDerivativeStr(), derivatives
-					.get(d));
+			createItem2(allDerivatives, d.getDerivativeStr(),
+					derivatives.get(d));
 		}
 		setCountingCaption(allDerivatives);
 	}
