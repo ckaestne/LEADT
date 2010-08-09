@@ -115,9 +115,10 @@ public class ASTBridge {
 		while (e_node.getParent() != null) {
 			org.eclipse.jdt.core.dom.ASTNode e_parent = e_node.getParent();
 
-			IToken c_firstToken = new PosToken(e_parent.getStartPosition());
+			IToken c_firstToken = new PosToken(e_parent.getStartPosition(),
+					getStartLine(e_parent));
 			IToken c_lastToken = new PosToken(e_parent.getStartPosition()
-					+ e_node.getLength());
+					+ e_node.getLength(), getEndLine(e_parent));
 
 			StructuralPropertyDescriptor e_prop = e_node.getLocationInParent();
 			List<Property> c_props = new ArrayList<Property>();
@@ -134,6 +135,22 @@ public class ASTBridge {
 
 	}
 
+	private int getStartLine(org.eclipse.jdt.core.dom.ASTNode eNode) {
+		return getLineNumber(eNode, eNode.getStartPosition());
+	}
+
+	private int getEndLine(org.eclipse.jdt.core.dom.ASTNode eNode) {
+		return getLineNumber(eNode,
+				eNode.getStartPosition() + eNode.getLength()-1);
+	}
+
+	private int getLineNumber(org.eclipse.jdt.core.dom.ASTNode eNode, int offset) {
+		assert eNode.getRoot() instanceof CompilationUnit;
+
+		CompilationUnit cunit = (CompilationUnit) eNode.getRoot();
+		return cunit.getLineNumber(offset);
+	}
+
 	private static final Map<org.eclipse.jdt.core.dom.ASTNode, cide.gast.ASTNode> bridgeCache = Collections
 			.synchronizedMap(new WeakHashMap<org.eclipse.jdt.core.dom.ASTNode, cide.gast.ASTNode>());
 
@@ -142,9 +159,10 @@ public class ASTBridge {
 		if (result != null)
 			return result;
 
-		IToken c_firstToken = new PosToken(e_node.getStartPosition());
+		IToken c_firstToken = new PosToken(e_node.getStartPosition(),
+				getStartLine(e_node));
 		IToken c_lastToken = new PosToken(e_node.getStartPosition()
-				+ e_node.getLength());
+				+ e_node.getLength(), getEndLine(e_node));
 
 		IASTNode[] wrappee = null;
 		List<StructuralPropertyDescriptor> e_props = e_node
@@ -235,7 +253,8 @@ public class ASTBridge {
 				|| e_node instanceof StringLiteral
 				|| e_node instanceof TextElement)
 			child = new ASTTextNode(o.toString(), new SimpleToken(
-					e_node.getStartPosition(), e_node.getLength()));
+					e_node.getStartPosition(), e_node.getLength(),
+					getStartLine(e_node)));
 		else
 			return null;
 
@@ -253,7 +272,8 @@ public class ASTBridge {
 			child = bridgeASTNode((org.eclipse.jdt.core.dom.ASTNode) o);
 		else
 			child = new ASTTextNode(o.toString(), new SimpleToken(
-					e_node.getStartPosition(), e_node.getLength()));
+					e_node.getStartPosition(), e_node.getLength(),
+					getStartLine(e_node)));
 		return new PropertyZeroOrOne<ASTNode>(prop.getId(), child);
 
 	}

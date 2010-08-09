@@ -4,18 +4,24 @@ import cide.gast.IToken;
 
 public class PosToken implements IToken {
 
-	private int pos;
+	private final int pos, line;
 
-	PosToken(int pos){
-		this.pos=pos;
+	PosToken(int pos, int line) {
+		this.pos = pos;
+		this.line = line;
 	}
-	
+
 	public int getLength() {
 		return 0;
 	}
 
 	public int getOffset() {
 		return pos;
+	}
+
+	@Override
+	public int getLine() {
+		return line;
 	}
 
 }

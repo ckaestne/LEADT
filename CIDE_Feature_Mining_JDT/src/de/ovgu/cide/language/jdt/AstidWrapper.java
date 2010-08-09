@@ -27,7 +27,8 @@ public class AstidWrapper implements IASTNode {
 
 	public AstidWrapper(String astid) {
 		this.astid = astid;
-	}	
+	}
+
 	public AstidWrapper(ASTNode node) {
 		this.astid = ASTID.id(node);
 	}
@@ -118,6 +119,14 @@ public class AstidWrapper implements IASTNode {
 
 	public void setParentProperty(Property parentProperty) {
 
+	}
+
+	public int getStartLine() {
+		return 0;
+	}
+
+	public int getEndLine() {
+		return 0;
 	}
 
 }
