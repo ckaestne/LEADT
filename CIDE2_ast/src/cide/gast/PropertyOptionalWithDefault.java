@@ -26,6 +26,10 @@ public class PropertyOptionalWithDefault<T extends IASTNode> extends Property {
 			public int getOffset() {
 				return -1;
 			}
+
+			public int getLine() {
+				return -1;
+			}
 		};
 	}
 

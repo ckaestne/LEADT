@@ -23,4 +23,8 @@ public class NoToken implements IToken {
 		return offset;
 	}
 
+	public int getLine() {
+		return -1;
+	}
+
 }

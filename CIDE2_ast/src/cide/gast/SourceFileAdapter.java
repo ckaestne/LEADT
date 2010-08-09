@@ -109,4 +109,12 @@ public class SourceFileAdapter implements ISourceFile {
 	public boolean isWrapper() {
 		return false;
 	}
+
+	public int getStartLine() {
+		return ast.getStartLine();
+	}
+
+	public int getEndLine() {
+		return ast.getEndLine();
+	}
 }

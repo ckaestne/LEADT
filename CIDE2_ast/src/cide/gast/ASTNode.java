@@ -31,6 +31,10 @@ public abstract class ASTNode implements IASTNode {
 
 	private int length;
 
+	private int startLine;
+
+	private int endLine;
+
 	protected ASTNode(List<Property> properties, IToken firstToken,
 			IToken lastToken) {
 		this.properties = properties;
@@ -38,6 +42,8 @@ public abstract class ASTNode implements IASTNode {
 		this.lastToken = lastToken;
 		this.offset = firstToken.getOffset();
 		this.length = calcLength();
+		this.startLine = firstToken.getLine();
+		this.endLine = lastToken.getLine();
 
 		for (Property p : properties)
 			p.setParent(this);
@@ -258,4 +264,11 @@ public abstract class ASTNode implements IASTNode {
 
 	}
 
+	public int getStartLine() {
+		return startLine;
+	}
+
+	public int getEndLine() {
+		return endLine;
+	}
 }

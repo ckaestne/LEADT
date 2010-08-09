@@ -92,7 +92,6 @@ public interface IASTNode {
 	 */
 	public boolean isWrapper();
 
-
 	/**
 	 * returns the wrapped object. must be not null if isWrapper==true and null
 	 * otherwise
@@ -130,5 +129,15 @@ public interface IASTNode {
 	 * @param newNode
 	 */
 	public void replaceSubtreeWith(IASTNode newNode);
+
+	/**
+	 * gets line number of the node (first line)
+	 */
+	public int getStartLine();
+
+	/**
+	 * gets line number of the node (last line)
+	 */
+	public int getEndLine();
 
 }
