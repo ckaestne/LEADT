@@ -46,7 +46,6 @@ import org.eclipse.ui.texteditor.ITextEditor;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.events.AElementPreviewEvent;
-import de.ovgu.cide.mining.events.AInitEvent;
 import de.ovgu.cide.mining.relationmanager.model.RelationTreeNode;
 import de.ovgu.cide.mining.relationmanager.model.RelationTreeNode.NODE_KIND;
 
@@ -113,14 +112,14 @@ public class RelationManagerView extends ViewPart {
 	 */
 	public void createPartControl(Composite parent) {
 
-		imgWarning = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_WARN_TSK);
-		imgError = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_ERROR_TSK);
-		imgInfo = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_INFO_TSK);
-		imgElment = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJ_FILE);
+		imgWarning = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_WARN_TSK);
+		imgError = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_ERROR_TSK);
+		imgInfo = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_INFO_TSK);
+		imgElment = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJ_FILE);
 
 		Composite workArea = new Composite(parent, SWT.NONE);
 
@@ -157,8 +156,8 @@ public class RelationManagerView extends ViewPart {
 		infoLabel.setLayoutData(data);
 
 		Composite line = new Composite(workArea, SWT.NONE);
-		line.setBackground(parent.getShell().getDisplay()
-				.getSystemColor(SWT.COLOR_GRAY));
+		line.setBackground(parent.getShell().getDisplay().getSystemColor(
+				SWT.COLOR_GRAY));
 		data = new GridData();
 		data.horizontalAlignment = SWT.FILL;
 		data.verticalAlignment = SWT.TOP;
@@ -199,8 +198,9 @@ public class RelationManagerView extends ViewPart {
 		columns[2].setText("Views");
 		columns[2].setWidth(50);
 
-		viewer.setContentProvider(contentProvider = new RelationContentProvider(
-				this));
+		viewer
+				.setContentProvider(contentProvider = new RelationContentProvider(
+						this));
 		viewer.setLabelProvider(new RelationLabelProvider());
 		createSorter();
 		viewer.setInput(getViewSite());
@@ -460,9 +460,8 @@ public class RelationManagerView extends ViewPart {
 						jayFX.fireEvent(new AElementPreviewEvent(
 								RelationManagerView.this));
 						// UnifiedASTNode node = jayElement.getUnifiedASTNode();
-						((ITextEditor) javaEditor).selectAndReveal(
-								jayElement.getStartPosition(),
-								jayElement.getLength());
+						((ITextEditor) javaEditor).selectAndReveal(jayElement
+								.getStartPosition(), jayElement.getLength());
 						// ((ITextEditor)javaEditor).etHighlightRange(node.getStartPosition(),
 						// node.getLength(),true);
 

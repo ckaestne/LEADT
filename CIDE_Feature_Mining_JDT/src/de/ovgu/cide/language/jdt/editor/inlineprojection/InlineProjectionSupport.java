@@ -50,7 +50,9 @@ public class InlineProjectionSupport {
 		}
 
 		/*
-		 * @see org.eclipse.jface.text.source.AnnotationPainter#findAnnotationModel(org.eclipse.jface.text.source.ISourceViewer)
+		 * @see
+		 * org.eclipse.jface.text.source.AnnotationPainter#findAnnotationModel
+		 * (org.eclipse.jface.text.source.ISourceViewer)
 		 */
 		protected IAnnotationModel findAnnotationModel(
 				ISourceViewer sourceViewer) {
@@ -62,7 +64,9 @@ public class InlineProjectionSupport {
 		}
 
 		/*
-		 * @see org.eclipse.jface.text.source.AnnotationPainter#skip(org.eclipse.jface.text.source.Annotation)
+		 * @see
+		 * org.eclipse.jface.text.source.AnnotationPainter#skip(org.eclipse.
+		 * jface.text.source.Annotation)
 		 */
 		protected boolean skip(Annotation annotation) {
 			if (annotation instanceof InlineProjectionAnnotation)
@@ -75,9 +79,10 @@ public class InlineProjectionSupport {
 	private static class InlineProjectionDrawingStrategy implements
 			AnnotationPainter.IDrawingStrategy {
 		/*
-		 * @see org.eclipse.jface.text.source.AnnotationPainter.IDrawingStrategy#draw(org.eclipse.swt.graphics.GC,
-		 *      org.eclipse.swt.custom.StyledText, int, int,
-		 *      org.eclipse.swt.graphics.Color)
+		 * @see
+		 * org.eclipse.jface.text.source.AnnotationPainter.IDrawingStrategy#
+		 * draw(org.eclipse.swt.graphics.GC, org.eclipse.swt.custom.StyledText,
+		 * int, int, org.eclipse.swt.graphics.Color)
 		 */
 		public void draw(Annotation annotation, GC gc, StyledText textWidget,
 				int offset, int length, Color color) {
@@ -138,16 +143,19 @@ public class InlineProjectionSupport {
 		}
 	}
 
-	private class ProjectionListener implements IProjectionListener, IInlineProjectionListener {
+	private class ProjectionListener implements IProjectionListener,
+			IInlineProjectionListener {
 
 		/*
-		 * @see org.eclipse.jface.text.source.projection.IProjectionListener#projectionEnabled()
+		 * @seeorg.eclipse.jface.text.source.projection.IProjectionListener#
+		 * projectionEnabled()
 		 */
 		public void projectionEnabled() {
 		}
 
 		/*
-		 * @see org.eclipse.jface.text.source.projection.IProjectionListener#projectionDisabled()
+		 * @seeorg.eclipse.jface.text.source.projection.IProjectionListener#
+		 * projectionDisabled()
 		 */
 		public void projectionDisabled() {
 		}
@@ -257,8 +265,8 @@ public class InlineProjectionSupport {
 	/**
 	 * Sets the drawing strategy that the projection support's annotation
 	 * painter uses to draw the indication of collapsed regions onto the
-	 * projection viewer's text widget. When <code>null</code> is passed in,
-	 * the drawing strategy is reset to the default. In order to avoid any
+	 * projection viewer's text widget. When <code>null</code> is passed in, the
+	 * drawing strategy is reset to the default. In order to avoid any
 	 * representation use
 	 * {@link org.eclipse.jface.text.source.AnnotationPainter.NullStrategy}.
 	 * 
@@ -351,17 +359,18 @@ public class InlineProjectionSupport {
 			fColumn = null;
 		}
 	}
-//
-//	private InlineProjectionSummary createProjectionSummary() {
-//		InlineProjectionSummary summary = new InlineProjectionSummary(fViewer,
-//				fAnnotationAccess);
-//		if (fSummarizableTypes != null) {
-//			int size = fSummarizableTypes.size();
-//			for (int i = 0; i < size; i++)
-//				summary.addAnnotationType((String) fSummarizableTypes.get(i));
-//		}
-//		return summary;
-//	}
+
+	//
+	// private InlineProjectionSummary createProjectionSummary() {
+	// InlineProjectionSummary summary = new InlineProjectionSummary(fViewer,
+	// fAnnotationAccess);
+	// if (fSummarizableTypes != null) {
+	// int size = fSummarizableTypes.size();
+	// for (int i = 0; i < size; i++)
+	// summary.addAnnotationType((String) fSummarizableTypes.get(i));
+	// }
+	// return summary;
+	// }
 
 	private IAnnotationHover createProjectionAnnotationHover() {
 		InlineProjectionAnnotationHover hover = new InlineProjectionAnnotationHover();

@@ -29,8 +29,6 @@ public interface IElementTypingCheck {
 	 * @return
 	 */
 	AElement getSourceElement();
-	
-
 
 	/**
 	 * returns whether this typing check is ok (well-typed).

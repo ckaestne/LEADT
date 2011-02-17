@@ -44,8 +44,7 @@ public class RecommendationSorter extends ViewerSorter {
 
 	public int compare(Viewer viewer, Object entry1, Object entry2) {
 		for (int i = 0; i < infos.length; i++) {
-			int result = infos[i].comparator.compare(
-					(Recommendation) entry1,
+			int result = infos[i].comparator.compare((Recommendation) entry1,
 					(Recommendation) entry2);
 			if (result != 0) {
 				if (infos[i].descending)

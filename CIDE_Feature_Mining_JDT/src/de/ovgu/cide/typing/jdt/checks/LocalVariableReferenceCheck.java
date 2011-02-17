@@ -32,8 +32,7 @@ public class LocalVariableReferenceCheck extends AbstractJDTTypingCheck {
 	}
 
 	public String getErrorMessage() {
-		return "Variable used which is not present in some variants: "
-				+ name;
+		return "Variable used which is not present in some variants: " + name;
 	}
 
 	public String getProblemType() {

@@ -11,22 +11,21 @@ import de.ovgu.cide.typing.model.IEvaluationStrategy;
 import de.ovgu.cide.util.MethodPathItem;
 
 /**
- * checks colors between method declaration / implementation and related or rather
- * inherited (abstract) method declarations in interfaces and super classes.
- * as necessary, throws according to the strategy an error that method is not 
- * implemented in some variants.
- *  
+ * checks colors between method declaration / implementation and related or
+ * rather inherited (abstract) method declarations in interfaces and super
+ * classes. as necessary, throws according to the strategy an error that method
+ * is not implemented in some variants.
+ * 
  * @author adreilin
  * 
  */
-public class MethodImplementationNameCheck extends
-		AbstractJDTTypingCheck {
+public class MethodImplementationNameCheck extends AbstractJDTTypingCheck {
 
 	private final List<MethodPathItem> inherMethods;
 	private final String name;
 
 	public MethodImplementationNameCheck(ColoredSourceFile file,
-			JDTTypingProvider typingProvider, IASTNode source, 
+			JDTTypingProvider typingProvider, IASTNode source,
 			IMethodBinding sourceBinding, List<MethodPathItem> inherMethods) {
 		super(file, typingProvider, source);
 		this.inherMethods = inherMethods;
@@ -37,16 +36,15 @@ public class MethodImplementationNameCheck extends
 
 		// checks "AND" condition for all found methods
 		for (MethodPathItem tmpItem : inherMethods) {
-			
+
 			if (!tmpItem.isDeclaringClassAbstract())
 				return true;
-			
+
 			// check relationship between each declaring and implemented method
 			if (strategy.implies(file.getFeatureModel(), typingProvider
 					.getBindingColors().getColors(tmpItem.getKey()), file
 					.getColorManager().getColors(source)))
 				continue;
-				
 
 			// we have found one overriden method for which "target -> source"
 			// is false
@@ -66,7 +64,9 @@ public class MethodImplementationNameCheck extends
 	}
 
 	public String getErrorMessage() {
-		return "Declaring method " +name+ " does not implement inherited abstract methods in some variants";
+		return "Declaring method "
+				+ name
+				+ " does not implement inherited abstract methods in some variants";
 	}
 
 	public String getProblemType() {

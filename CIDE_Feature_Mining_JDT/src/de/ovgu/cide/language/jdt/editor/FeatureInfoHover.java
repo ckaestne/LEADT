@@ -12,7 +12,7 @@ public class FeatureInfoHover extends ColoredTextHover implements
 
 	public FeatureInfoHover() {
 		super(null);
-		NL="<BR>";
+		NL = "<BR>";
 	}
 
 	public void setEditor(IEditorPart editor) {

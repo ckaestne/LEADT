@@ -1,7 +1,6 @@
 package de.ovgu.cide.mining.featuremanager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -10,17 +9,12 @@ import java.util.Set;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.ITreeSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.Viewer;
 
 import cide.gast.IASTNode;
-import de.ovgu.cide.features.FeatureModelManager;
-import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
-import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;
@@ -86,8 +80,8 @@ class FeatureContentProvider implements IStructuredContentProvider,
 			return false;
 		}
 
-		featureManager.setInfoMessage(
-				"Database created for " + project.getName(), MESSAGE_TYPE.INFO);
+		featureManager.setInfoMessage("Database created for "
+				+ project.getName(), MESSAGE_TYPE.INFO);
 		isInit = true;
 
 		return true;
@@ -267,8 +261,8 @@ class FeatureContentProvider implements IStructuredContentProvider,
 
 		selections = new ArrayList<TreePath>();
 
-		CUDummy baseCUDummy = new CUDummy(event.getCuName(),
-				event.getCuHashCode());
+		CUDummy baseCUDummy = new CUDummy(event.getCuName(), event
+				.getCuHashCode());
 
 		if (event.getAddedColors().size() > 0
 				|| event.getRemovedColors().size() > 0)

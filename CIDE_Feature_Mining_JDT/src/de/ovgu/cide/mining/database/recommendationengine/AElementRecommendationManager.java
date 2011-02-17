@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
@@ -199,8 +199,8 @@ public class AElementRecommendationManager implements Observer {
 					.get(tmpRecElement);
 
 			if (oldCollection == null) {
-				oldRecommendations.put(tmpRecElement,
-						newRecommendations.get(tmpRecElement));
+				oldRecommendations.put(tmpRecElement, newRecommendations
+						.get(tmpRecElement));
 			}
 
 		}

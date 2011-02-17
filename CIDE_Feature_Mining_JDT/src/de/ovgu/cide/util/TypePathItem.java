@@ -2,7 +2,6 @@ package de.ovgu.cide.util;
 
 import org.eclipse.jdt.core.dom.ITypeBinding;
 
-
 public class TypePathItem {
 
 	final private String key;
@@ -22,7 +21,6 @@ public class TypePathItem {
 
 	}
 
-
 	public String getKey() {
 		return key;
 	}
@@ -30,7 +28,5 @@ public class TypePathItem {
 	public boolean isInterface() {
 		return isInterface;
 	}
-
-
 
 }

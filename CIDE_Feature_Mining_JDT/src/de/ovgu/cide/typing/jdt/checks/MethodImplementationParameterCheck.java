@@ -11,10 +11,10 @@ import de.ovgu.cide.typing.model.IEvaluationStrategy;
 import de.ovgu.cide.util.MethodPathItem;
 
 /**
- * checks colors of parameters between method declaration /
- * implementation and related or rather inherited (abstract) method declarations
- * in interfaces and super classes. as necessary, throws according to the strategy an
- * error that method is not implemented in some variants. 
+ * checks colors of parameters between method declaration / implementation and
+ * related or rather inherited (abstract) method declarations in interfaces and
+ * super classes. as necessary, throws according to the strategy an error that
+ * method is not implemented in some variants.
  * 
  * @author adreilin
  * 
@@ -27,7 +27,8 @@ public class MethodImplementationParameterCheck extends AbstractJDTTypingCheck {
 
 	public MethodImplementationParameterCheck(ColoredSourceFile file,
 			JDTTypingProvider typingProvider, IASTNode source,
-			IMethodBinding methodBinding, int paramIndex, List<MethodPathItem> inherMethods) {
+			IMethodBinding methodBinding, int paramIndex,
+			List<MethodPathItem> inherMethods) {
 		super(file, typingProvider, source);
 		this.paramIndex = paramIndex;
 		this.inherMethods = inherMethods;
@@ -38,15 +39,15 @@ public class MethodImplementationParameterCheck extends AbstractJDTTypingCheck {
 
 		// checks "AND" condition for all found methods
 		for (MethodPathItem tmpItem : inherMethods) {
-			
+
 			if (!tmpItem.isDeclaringClassAbstract())
 				return true;
 
 			if (strategy.equal(file.getFeatureModel(), typingProvider
-					.getBindingColors().getColors(tmpItem.getInheritedParamKeys().get(paramIndex)),
-									file.getColorManager().getColors(source))) 
+					.getBindingColors().getColors(
+							tmpItem.getInheritedParamKeys().get(paramIndex)),
+					file.getColorManager().getColors(source)))
 				continue;
-							
 
 			// we have found one overridden method for which "target -> source"
 			// is false
@@ -66,7 +67,9 @@ public class MethodImplementationParameterCheck extends AbstractJDTTypingCheck {
 	}
 
 	public String getErrorMessage() {
-		return "Declaring method " + name + "does not implement inherited abstract methods in some variants. "
+		return "Declaring method "
+				+ name
+				+ "does not implement inherited abstract methods in some variants. "
 				+ "Check param list.";
 	}
 

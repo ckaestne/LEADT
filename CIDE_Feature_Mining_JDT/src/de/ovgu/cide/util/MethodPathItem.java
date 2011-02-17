@@ -77,7 +77,7 @@ public class MethodPathItem {
 
 		exceptionKeys = new HashMap<String, List<String>>();
 
-		// add cast compatible exception 
+		// add cast compatible exception
 		for (ITypeBinding tmpExBinding : sourceBinding.getExceptionTypes()) {
 
 			ArrayList<String> tmpExceKeys = new ArrayList<String>();

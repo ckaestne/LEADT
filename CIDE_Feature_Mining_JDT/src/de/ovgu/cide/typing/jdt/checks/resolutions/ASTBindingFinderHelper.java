@@ -48,6 +48,7 @@ public class ASTBindingFinderHelper {
 
 		return ASTBridge.bridge(result);
 	}
+
 	public static IASTNode getTypeDecl(ITypeBinding binding) {
 		CompilationUnit ast = getAST(binding);
 		if (ast == null)

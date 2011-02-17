@@ -7,22 +7,32 @@ import de.ovgu.cide.typing.model.IEvaluationStrategy;
 
 public class ReferenceCheck extends AbstractTypingCheck {
 
-	public ReferenceCheck(AElement sourceElement, AElement targetElement, IFeatureModel model) {
+	public ReferenceCheck(AElement sourceElement, AElement targetElement,
+			IFeatureModel model) {
 		super(sourceElement, targetElement, model);
 	}
 
 	public boolean evaluate(IEvaluationStrategy strategy) {
 		ApplicationController jayFX = ApplicationController.getInstance();
-		
-//		System.out.println("::: CHECK :::" );
-//		System.out.println(" ==> MODEL:" + getFeatureModel() );
-//		System.out.println(" ==> SOURCE:" + jayFX.getElementColors(getSourceElement()) );
-//		System.out.println(" ==> TARGET:" + jayFX.getElementColors(targetElement));
-//		System.out.println(" ===> VAR1: " + strategy.implies(getFeatureModel(), jayFX.getElementColors(getSourceElement()), jayFX.getElementColors(targetElement)));
-//		System.out.println(" ===> VAR2 - X: " + strategy.implies(getFeatureModel(),  jayFX.getElementColors(targetElement), jayFX.getElementColors(getSourceElement())));
-		
-		
-		return strategy.implies(getFeatureModel(), jayFX.getElementColors(targetElement), jayFX.getElementColors(sourceElement));
+
+		// System.out.println("::: CHECK :::" );
+		// System.out.println(" ==> MODEL:" + getFeatureModel() );
+		// System.out.println(" ==> SOURCE:" +
+		// jayFX.getElementColors(getSourceElement()) );
+		// System.out.println(" ==> TARGET:" +
+		// jayFX.getElementColors(targetElement));
+		// System.out.println(" ===> VAR1: " +
+		// strategy.implies(getFeatureModel(),
+		// jayFX.getElementColors(getSourceElement()),
+		// jayFX.getElementColors(targetElement)));
+		// System.out.println(" ===> VAR2 - X: " +
+		// strategy.implies(getFeatureModel(),
+		// jayFX.getElementColors(targetElement),
+		// jayFX.getElementColors(getSourceElement())));
+
+		return strategy.implies(getFeatureModel(), jayFX
+				.getElementColors(targetElement), jayFX
+				.getElementColors(sourceElement));
 	}
 
 	public String getErrorMessage() {

@@ -6,8 +6,6 @@ import org.eclipse.jface.text.Position;
 
 import de.ovgu.cide.features.IFeature;
 
-
-
 public class ColoredInlineProjectionAnnotation extends
 		InlineProjectionAnnotation {
 

@@ -33,7 +33,7 @@ public class SimplePrintVisitor extends AbstractPrintVisitor {
 			printToken(((ASTStringNode) node).getValue());
 			return false;
 		}
-		if (node instanceof ASTTextNode){
+		if (node instanceof ASTTextNode) {
 			printToken(((ASTTextNode) node).getValue());
 			return false;
 		}
@@ -79,7 +79,7 @@ public class SimplePrintVisitor extends AbstractPrintVisitor {
 				printToken("}");
 				hintNewLine();
 			}
-			
+
 			printToken(unode.getEclipseASTNodeClass());
 		}
 		return false;

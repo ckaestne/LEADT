@@ -5,9 +5,9 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IAdaptable;
@@ -107,14 +107,14 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 
 		AC = ApplicationController.getInstance();
 
-		imgWarning = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_WARN_TSK);
-		imgError = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_ERROR_TSK);
-		imgInfo = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_INFO_TSK);
-		imgElment = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJ_FILE);
+		imgWarning = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_WARN_TSK);
+		imgError = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_ERROR_TSK);
+		imgInfo = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_INFO_TSK);
+		imgElment = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJ_FILE);
 
 		Composite workArea = new Composite(parent, SWT.NONE);
 
@@ -150,8 +150,8 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 		infoLabel.setLayoutData(data);
 
 		Composite line = new Composite(workArea, SWT.NONE);
-		line.setBackground(parent.getShell().getDisplay()
-				.getSystemColor(SWT.COLOR_GRAY));
+		line.setBackground(parent.getShell().getDisplay().getSystemColor(
+				SWT.COLOR_GRAY));
 		data = new GridData();
 		data.horizontalAlignment = SWT.FILL;
 		data.verticalAlignment = SWT.TOP;
@@ -458,11 +458,11 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 		deleteElementAction
 				.setToolTipText("Mark as - recommendation does not belong to feature.");
 		deleteElementAction.setImageDescriptor(PlatformUI.getWorkbench()
-				.getSharedImages()
-				.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
+				.getSharedImages().getImageDescriptor(
+						ISharedImages.IMG_TOOL_DELETE));
 		deleteElementAction.setDisabledImageDescriptor(PlatformUI
-				.getWorkbench().getSharedImages()
-				.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
+				.getWorkbench().getSharedImages().getImageDescriptor(
+						ISharedImages.IMG_TOOL_DELETE_DISABLED));
 		deleteElementAction.setEnabled(false);
 
 		selectionChangedAction = new Action() {
@@ -659,12 +659,12 @@ public class RecommendationManagerView extends ViewPart implements Observer {
 
 			if (event.getType().equals(EVENT_TYPE.ELEMENT)) {
 				AElement sourceElement = event.getElement();
-				providedRecommendations = AC.getRecommendations(
-						event.getColor(), sourceElement);
+				providedRecommendations = AC.getRecommendations(event
+						.getColor(), sourceElement);
 			} else {
-				providedRecommendations = AC.getRecommendations(
-						event.getColor(), event.getStart(), event.getEnd(),
-						event.getCuHash());
+				providedRecommendations = AC.getRecommendations(event
+						.getColor(), event.getStart(), event.getEnd(), event
+						.getCuHash());
 			}
 			this.currentColor = event.getColor();
 			recommendations = new ArrayList<Recommendation>();

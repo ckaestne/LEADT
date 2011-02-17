@@ -1,8 +1,5 @@
 package de.ovgu.cide.mining.database;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 import de.ovgu.cide.mining.database.model.AElement;
@@ -10,8 +7,6 @@ import de.ovgu.cide.mining.database.model.ARelationKind;
 
 public abstract class AbstractProgramDatabase {
 
-	
-	
 	/**
 	 * Returns all the elements indexed in the database.
 	 * 
@@ -39,7 +34,6 @@ public abstract class AbstractProgramDatabase {
 	 */
 	public abstract void addElement(AElement pElement);
 
-
 	/**
 	 * Adds a relation pRelation between pElement1 and pElement2. If pElement1
 	 * or pElement2 does not exist in the database, an exception is raised, so
@@ -54,8 +48,9 @@ public abstract class AbstractProgramDatabase {
 	 * @throws ElementNotFoundException
 	 *             If pElement1 or pElement2 is not found in the database.
 	 */
-	public abstract void addRelation(AElement pElement1, ARelationKind pRelation,
-			AElement pElement2) throws ElementNotFoundException;
+	public abstract void addRelation(AElement pElement1,
+			ARelationKind pRelation, AElement pElement2)
+			throws ElementNotFoundException;
 
 	/**
 	 * Returns the set of elements related to the domain element through the
@@ -105,46 +100,47 @@ public abstract class AbstractProgramDatabase {
 
 	public abstract void estimateFootprint();
 
-//	/**
-//	 * Copies all the relations associated with pFrom to pTo, including its
-//	 * transposes
-//	 * 
-//	 * @param pFrom
-//	 *            The source element. Must not be null and must exist in the
-//	 *            database.
-//	 * @param pTo
-//	 *            The target element. Must not be null and must exist in the
-//	 *            database.
-//	 * @throws ElementNotFoundException
-//	 *             If either pFrom or pTo is not indexed in the database.
-//	 **/
-//	public abstract void copyRelations(AElement pFrom, AElement pTo)
-//			throws ElementNotFoundException;
-//
-//	/**
-//	 * Remove an element and all its direct and transpose relations.
-//	 * 
-//	 * @param pElement
-//	 *            The element to remove. Must not be null and must exist in the
-//	 *            database.
-//	 * @throws ElementNotFoundException
-//	 *             If pElement is not indexed in the database.
-//	 */
-//	public abstract void removeElement(AElement pElement)
-//			throws ElementNotFoundException;
-//
-//	/**
-//	 * Dumps an image of the database to System.out. For testing purposes. Can
-//	 * be removed from stable releases.
-//	 */
-//	public abstract void dump();
+	// /**
+	// * Copies all the relations associated with pFrom to pTo, including its
+	// * transposes
+	// *
+	// * @param pFrom
+	// * The source element. Must not be null and must exist in the
+	// * database.
+	// * @param pTo
+	// * The target element. Must not be null and must exist in the
+	// * database.
+	// * @throws ElementNotFoundException
+	// * If either pFrom or pTo is not indexed in the database.
+	// **/
+	// public abstract void copyRelations(AElement pFrom, AElement pTo)
+	// throws ElementNotFoundException;
+	//
+	// /**
+	// * Remove an element and all its direct and transpose relations.
+	// *
+	// * @param pElement
+	// * The element to remove. Must not be null and must exist in the
+	// * database.
+	// * @throws ElementNotFoundException
+	// * If pElement is not indexed in the database.
+	// */
+	// public abstract void removeElement(AElement pElement)
+	// throws ElementNotFoundException;
+	//
+	// /**
+	// * Dumps an image of the database to System.out. For testing purposes. Can
+	// * be removed from stable releases.
+	// */
+	// public abstract void dump();
 
-//	/**
-//	 * Returns the modifier flag for the element
-//	 * 
-//	 * @return An integer representing the modifier. 0 if the element cannot be
-//	 *         found.
-//	 */
-//	public abstract int getModifiers(AElement pElement);
+	// /**
+	// * Returns the modifier flag for the element
+	// *
+	// * @return An integer representing the modifier. 0 if the element cannot
+	// be
+	// * found.
+	// */
+	// public abstract int getModifiers(AElement pElement);
 
 }

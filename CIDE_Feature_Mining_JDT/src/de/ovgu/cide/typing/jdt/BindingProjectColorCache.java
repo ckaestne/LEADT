@@ -54,7 +54,7 @@ public class BindingProjectColorCache implements Serializable {
 	private static final long serialVersionUID = 3L;
 
 	private final HashMap<String, Set<IFeature>> bindingKeys2colors = new HashMap<String, Set<IFeature>>();
-	
+
 	private IJavaProject project;
 
 	public BindingProjectColorCache(IJavaProject project) {
@@ -77,35 +77,37 @@ public class BindingProjectColorCache implements Serializable {
 					IJavaElement javaElement = binding.getJavaElement();
 					if (javaElement instanceof IMethod)
 						key = ((IMethod) javaElement).getKey();
-						
+
 				}
 				if (key != null) {
 					Set<IFeature> colors = getColor(file, node);
 					update(bindingKeys2colors, key, colors);
 
-					//add param keys
+					// add param keys
 					for (int paramIdx = 0; paramIdx < node.parameters().size(); paramIdx++) {
 						ASTNode param = (ASTNode) node.parameters().get(
 								paramIdx);
-						
+
 						update(bindingKeys2colors, getParamKey(key, paramIdx),
 								getColor(file, param));
-						
+
 					}
-					
-					//add exception keys
-					for (int excIdx = 0; excIdx < node.thrownExceptions().size(); excIdx++) {
+
+					// add exception keys
+					for (int excIdx = 0; excIdx < node.thrownExceptions()
+							.size(); excIdx++) {
 						Name exception = (Name) node.thrownExceptions().get(
 								excIdx);
-						
-						ITypeBinding excBinding = exception.resolveTypeBinding();
-						
+
+						ITypeBinding excBinding = exception
+								.resolveTypeBinding();
+
 						if (excBinding == null)
 							continue;
-						
-						update(bindingKeys2colors, getExceptionKey(key, excBinding.getKey()),
-								getColor(file, exception));
-						
+
+						update(bindingKeys2colors, getExceptionKey(key,
+								excBinding.getKey()), getColor(file, exception));
+
 					}
 
 				}
@@ -119,7 +121,7 @@ public class BindingProjectColorCache implements Serializable {
 
 			private void update(HashMap<String, Set<IFeature>> map, String key,
 					Set<IFeature> colors) {
-				
+
 				if (colors != null && colors.size() > 0)
 					map.put(key, colors);
 				else
@@ -195,13 +197,13 @@ public class BindingProjectColorCache implements Serializable {
 	public static String getExceptionKey(String methodKey, String exceptionKey) {
 		return methodKey + "/" + exceptionKey;
 	}
-	
+
 	public Set<IFeature> getColors(ITypeBinding type) {
 		return getColors(type.getKey());
 
 	}
 
-	 /**
+	/**
 	 * rebuilds the cache for the entire java project
 	 * 
 	 * @throws JavaModelException

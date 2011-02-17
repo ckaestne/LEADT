@@ -10,8 +10,9 @@ import de.ovgu.cide.mining.database.model.ARelationKind;
 
 /**
  * used only for the BerkeleyProgramDatabase
+ * 
  * @author kaestner
- *
+ * 
  */
 @Entity
 public class ARelation {

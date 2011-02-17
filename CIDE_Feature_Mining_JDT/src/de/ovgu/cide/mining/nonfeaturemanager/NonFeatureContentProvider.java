@@ -14,10 +14,7 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Display;
 
-import de.ovgu.cide.features.FeatureModelManager;
-import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
-import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.events.AElementViewCountChangedEvent;

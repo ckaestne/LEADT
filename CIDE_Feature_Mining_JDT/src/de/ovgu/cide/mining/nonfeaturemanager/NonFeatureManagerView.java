@@ -12,7 +12,6 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -22,7 +21,6 @@ import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeViewer;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
@@ -40,23 +38,17 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.part.DrillDownAdapter;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.texteditor.ITextEditor;
 
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AElement;
-import de.ovgu.cide.mining.database.model.ARelationKind.Type;
 import de.ovgu.cide.mining.events.AElementPreviewEvent;
 import de.ovgu.cide.mining.events.AElementsNonColorChangedEvent;
-import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent;
-import de.ovgu.cide.mining.events.ARecommenderElementSelectedEvent.EVENT_TYPE;
-import de.ovgu.cide.mining.featuremanager.model.FeatureTreeNode;
 import de.ovgu.cide.mining.nonfeaturemanager.model.CUDummy;
 import de.ovgu.cide.mining.nonfeaturemanager.model.NonFeatureTreeNode;
 import de.ovgu.cide.mining.nonfeaturemanager.model.NonFeatureTreeNode.NODE_KIND;
-import de.ovgu.cide.mining.relationmanager.RelationManagerView;
 
 public class NonFeatureManagerView extends ViewPart {
 
@@ -103,14 +95,14 @@ public class NonFeatureManagerView extends ViewPart {
 	public void createPartControl(Composite parent) {
 		AC = ApplicationController.getInstance();
 
-		imgWarning = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_WARN_TSK);
-		imgError = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_ERROR_TSK);
-		imgInfo = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJS_INFO_TSK);
-		imgElment = PlatformUI.getWorkbench().getSharedImages()
-				.getImage(ISharedImages.IMG_OBJ_FILE);
+		imgWarning = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_WARN_TSK);
+		imgError = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_ERROR_TSK);
+		imgInfo = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJS_INFO_TSK);
+		imgElment = PlatformUI.getWorkbench().getSharedImages().getImage(
+				ISharedImages.IMG_OBJ_FILE);
 
 		Composite workArea = new Composite(parent, SWT.NONE);
 
@@ -146,8 +138,8 @@ public class NonFeatureManagerView extends ViewPart {
 		infoLabel.setLayoutData(data);
 
 		Composite line = new Composite(workArea, SWT.NONE);
-		line.setBackground(parent.getShell().getDisplay()
-				.getSystemColor(SWT.COLOR_GRAY));
+		line.setBackground(parent.getShell().getDisplay().getSystemColor(
+				SWT.COLOR_GRAY));
 		data = new GridData();
 		data.horizontalAlignment = SWT.FILL;
 		data.verticalAlignment = SWT.TOP;
@@ -199,8 +191,9 @@ public class NonFeatureManagerView extends ViewPart {
 		columns[5].setText("Ele's");
 		columns[5].setWidth(60);
 
-		viewer.setContentProvider(contentProvider = new NonFeatureContentProvider(
-				this));
+		viewer
+				.setContentProvider(contentProvider = new NonFeatureContentProvider(
+						this));
 		viewer.setLabelProvider(new NonFeatureLabelProvider());
 		createSorter();
 		viewer.setInput(getViewSite());
@@ -381,9 +374,10 @@ public class NonFeatureManagerView extends ViewPart {
 				}
 
 				if (elementsToRemove.size() > 0)
-					AC.fireEvent(new AElementsNonColorChangedEvent(this,
-							new HashMap<AElement, IFeature>(),
-							elementsToRemove));
+					AC
+							.fireEvent(new AElementsNonColorChangedEvent(this,
+									new HashMap<AElement, IFeature>(),
+									elementsToRemove));
 
 			}
 		};
@@ -391,11 +385,11 @@ public class NonFeatureManagerView extends ViewPart {
 		deleteElementAction
 				.setToolTipText("Mark as - possible recommendation for features.");
 		deleteElementAction.setImageDescriptor(PlatformUI.getWorkbench()
-				.getSharedImages()
-				.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
+				.getSharedImages().getImageDescriptor(
+						ISharedImages.IMG_TOOL_DELETE));
 		deleteElementAction.setDisabledImageDescriptor(PlatformUI
-				.getWorkbench().getSharedImages()
-				.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
+				.getWorkbench().getSharedImages().getImageDescriptor(
+						ISharedImages.IMG_TOOL_DELETE_DISABLED));
 		deleteElementAction.setEnabled(false);
 
 		selectionChangedAction = new Action() {

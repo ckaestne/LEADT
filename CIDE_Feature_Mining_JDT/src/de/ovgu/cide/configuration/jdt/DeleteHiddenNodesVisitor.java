@@ -48,9 +48,7 @@ public class DeleteHiddenNodesVisitor extends ASTVisitor {
 					.getResource());
 			assert ast != null;
 
-			return hideCode(
-					compUnit.getBuffer().getContents(),
-					ast,
+			return hideCode(compUnit.getBuffer().getContents(), ast,
 					new JDTColorManagerBridge(source.getColorManager(), source
 							.getResource()), selectedColors);
 		} catch (Exception e) {
@@ -110,9 +108,11 @@ public class DeleteHiddenNodesVisitor extends ASTVisitor {
 				if (ASTColorInheritance.notInheritedProperties.contains(prop)) {
 					Object replace = rewrite.get(node,
 							(StructuralPropertyDescriptor) prop);
-					Object originalValue = node.getStructuralProperty((StructuralPropertyDescriptor) prop);
+					Object originalValue = node
+							.getStructuralProperty((StructuralPropertyDescriptor) prop);
 					if (replace instanceof ASTNode)
-						if (!(originalValue instanceof ASTNode) || !shouldHide((ASTNode) originalValue))
+						if (!(originalValue instanceof ASTNode)
+								|| !shouldHide((ASTNode) originalValue))
 							replacements.add((ASTNode) replace);
 				}
 			}

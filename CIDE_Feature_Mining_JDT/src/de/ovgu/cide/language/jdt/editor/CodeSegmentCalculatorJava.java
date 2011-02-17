@@ -14,7 +14,6 @@ import de.ovgu.cide.configuration.jdt.JDTColorManagerBridge;
 import de.ovgu.cide.editor.CodeSegment;
 import de.ovgu.cide.features.IFeature;
 
-
 public class CodeSegmentCalculatorJava {
 	protected static final Set<IFeature> NOCOLORS = new HashSet<IFeature>();
 
@@ -25,7 +24,7 @@ public class CodeSegmentCalculatorJava {
 
 		stack.push(new CodeSegment(ast.getStartPosition(), ast
 				.getStartPosition()
-				+ ast.getLength(), NOCOLORS,false));
+				+ ast.getLength(), NOCOLORS, false));
 
 		ASTVisitor visitor = new ASTVisitor() {
 			private ASTNode last;
@@ -44,20 +43,28 @@ public class CodeSegmentCalculatorJava {
 				Set<IFeature> colors = colorManager.getColors(node);
 				if (stack.peek().getColors().equals(colors)) {
 					// colors did not change, ignore
-//					stack.peek().containingNodes.add(node);
+					// stack.peek().containingNodes.add(node);
 				} else {
 					CodeSegment old = stack.pop();
 					// finished previous segment
 					list.add(new CodeSegment(old.getOffset(), node
-							.getStartPosition(), old.getColors(),false/*,
-							old.containingNodes*/));
+							.getStartPosition(), old.getColors(), false/*
+																		 * ,
+																		 * old.
+																		 * containingNodes
+																		 */));
 					stack.push(new CodeSegment(node.getStartPosition()
-							+ node.getLength(), old.endPosition(), old.getColors(),false/*,
-							old.containingNodes*/));
+							+ node.getLength(), old.endPosition(), old
+							.getColors(), false/*
+												 * , old.containingNodes
+												 */));
 					stack.push(new CodeSegment(node.getStartPosition(), node
 							.getStartPosition()
-							+ node.getLength(), colors,false/*, old.containingNodes*/));
-//					stack.peek().containingNodes.add(node);
+							+ node.getLength(), colors, false/*
+															 * ,
+															 * old.containingNodes
+															 */));
+					// stack.peek().containingNodes.add(node);
 				}
 
 				super.preVisit(node);

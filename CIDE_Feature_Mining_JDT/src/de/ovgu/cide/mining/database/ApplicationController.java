@@ -11,7 +11,6 @@
 package de.ovgu.cide.mining.database;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -37,8 +36,8 @@ import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.IFeatureModel;
 import de.ovgu.cide.features.source.ColoredSourceFile;
-import de.ovgu.cide.mining.database.model.AFlyweightElementFactory;
 import de.ovgu.cide.mining.database.model.AElement;
+import de.ovgu.cide.mining.database.model.AFlyweightElementFactory;
 import de.ovgu.cide.mining.database.model.ARelationKind;
 import de.ovgu.cide.mining.database.recommendationengine.AElementColorManager;
 import de.ovgu.cide.mining.database.recommendationengine.AElementRecommendationManager;
@@ -318,7 +317,7 @@ public class ApplicationController extends Observable {
 		//
 
 		aDB.estimateFootprint();
-		EvalLogging.getInstance().init(pProject,aDB);
+		EvalLogging.getInstance().init(pProject, aDB);
 
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {

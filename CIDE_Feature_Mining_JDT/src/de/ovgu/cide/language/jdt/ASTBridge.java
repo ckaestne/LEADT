@@ -126,9 +126,9 @@ public class ASTBridge {
 			// fake a property with a single child
 			c_props.add(new PropertyZeroOrOne<ASTNode>(e_prop.getId(), c_node));
 
-			c_node = new UnifiedASTNode(getDisplayName(e_parent),
-					ASTID.id(e_parent), c_props, c_firstToken, c_lastToken,
-					null, getKind(e_parent));
+			c_node = new UnifiedASTNode(getDisplayName(e_parent), ASTID
+					.id(e_parent), c_props, c_firstToken, c_lastToken, null,
+					getKind(e_parent));
 
 			e_node = e_parent;
 		}
@@ -140,8 +140,8 @@ public class ASTBridge {
 	}
 
 	private int getEndLine(org.eclipse.jdt.core.dom.ASTNode eNode) {
-		return getLineNumber(eNode,
-				eNode.getStartPosition() + eNode.getLength()-1);
+		return getLineNumber(eNode, eNode.getStartPosition()
+				+ eNode.getLength() - 1);
 	}
 
 	private int getLineNumber(org.eclipse.jdt.core.dom.ASTNode eNode, int offset) {
@@ -252,8 +252,8 @@ public class ASTBridge {
 				|| e_node instanceof CharacterLiteral
 				|| e_node instanceof StringLiteral
 				|| e_node instanceof TextElement)
-			child = new ASTTextNode(o.toString(), new SimpleToken(
-					e_node.getStartPosition(), e_node.getLength(),
+			child = new ASTTextNode(o.toString(), new SimpleToken(e_node
+					.getStartPosition(), e_node.getLength(),
 					getStartLine(e_node)));
 		else
 			return null;
@@ -271,8 +271,8 @@ public class ASTBridge {
 		else if (o instanceof org.eclipse.jdt.core.dom.ASTNode)
 			child = bridgeASTNode((org.eclipse.jdt.core.dom.ASTNode) o);
 		else
-			child = new ASTTextNode(o.toString(), new SimpleToken(
-					e_node.getStartPosition(), e_node.getLength(),
+			child = new ASTTextNode(o.toString(), new SimpleToken(e_node
+					.getStartPosition(), e_node.getLength(),
 					getStartLine(e_node)));
 		return new PropertyZeroOrOne<ASTNode>(prop.getId(), child);
 

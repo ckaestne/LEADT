@@ -13,9 +13,9 @@ import de.ovgu.cide.util.MethodPathItem;
 /**
  * checks colors of exception in throws clause between method declaration /
  * implementation and related or rather inherited (abstract) method declarations
- * in interfaces and super classes. as necessary, throws according to the strategy an
- * error that method is not implemented in some variants. 
- *  
+ * in interfaces and super classes. as necessary, throws according to the
+ * strategy an error that method is not implemented in some variants.
+ * 
  * @author adreilin
  * 
  */

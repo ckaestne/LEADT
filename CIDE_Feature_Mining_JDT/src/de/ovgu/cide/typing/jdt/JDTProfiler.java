@@ -11,7 +11,7 @@ public class JDTProfiler extends CompilationParticipant {
 	public JDTProfiler() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public boolean isActive(IJavaProject project) {
 		return true;
@@ -20,8 +20,8 @@ public class JDTProfiler extends CompilationParticipant {
 	@Override
 	public void buildFinished(IJavaProject project) {
 		super.buildFinished(project);
-		System.out.println("Compiled " + project.getProject().getName() + " in "
-				+ (System.currentTimeMillis() - start) + " ms");
+		System.out.println("Compiled " + project.getProject().getName()
+				+ " in " + (System.currentTimeMillis() - start) + " ms");
 	}
 
 	@Override

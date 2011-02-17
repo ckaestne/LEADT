@@ -3,8 +3,8 @@ package de.ovgu.cide.mining.database.recommendationengine;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Map.Entry;
 
 public class ARecommendationContextCollection {
 
@@ -74,9 +74,8 @@ public class ARecommendationContextCollection {
 			if (value == null)
 				value = 0;
 
-			reasonMap.put(
-					context.getRecommenderType() + ":" + context.getReason(),
-					++value);
+			reasonMap.put(context.getRecommenderType() + ":"
+					+ context.getReason(), ++value);
 
 		}
 

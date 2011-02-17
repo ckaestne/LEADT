@@ -5,9 +5,8 @@ import cide.gast.IASTNode;
 public class ASTDummy {
 
 	private int start, length, hashCode;
-	private String name,id;
-	
-	
+	private String name, id;
+
 	public ASTDummy(IASTNode node, int hashCode) {
 		start = node.getStartPosition();
 		length = node.getLength();
@@ -15,12 +14,11 @@ public class ASTDummy {
 		id = node.getId();
 		this.hashCode = hashCode;
 	}
-	
 
 	public int getEnd() {
-		return start+length;
+		return start + length;
 	}
-		
+
 	public int getStart() {
 		return start;
 	}
@@ -33,15 +31,12 @@ public class ASTDummy {
 		return name;
 	}
 
-	
 	public String getId() {
 		return id;
 	}
-	
+
 	public int getHashCode() {
 		return hashCode;
 	}
 
-
 }
-

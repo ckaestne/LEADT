@@ -30,7 +30,6 @@ public class ChangeNodeColorResolution extends AbstractTypingMarkerResolution {
 
 	private String nodeType = null;
 
-
 	public ChangeNodeColorResolution(ColoredSourceFile source,
 			IASTNode targetNode, Set<IFeature> colorDiff, boolean add) {
 		this.targetNode = targetNode;
@@ -99,7 +98,5 @@ public class ChangeNodeColorResolution extends AbstractTypingMarkerResolution {
 	public Image getImage() {
 		return null;
 	}
-
-
 
 }

@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -35,9 +35,9 @@ import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.events.AElementsNonColorChangedEvent;
 import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent;
-import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent.ColorUpdate;
 import de.ovgu.cide.mining.events.AElementsPostNonColorChangedEvent;
 import de.ovgu.cide.mining.events.AGenerateRecommendationsEvent;
+import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent.ColorUpdate;
 import de.ovgu.cide.mining.logging.EvalLogging;
 
 public class AElementColorManager implements IColorChangeListener, Observer {
@@ -376,8 +376,8 @@ public class AElementColorManager implements IColorChangeListener, Observer {
 
 	public void astColorChanged(ASTColorChangedEvent event) {
 		EvalLogging.getInstance().astColorChanged(event);
-		updateElementColors(event.getColoredSourceFile(),
-				event.getAffectedNodes());
+		updateElementColors(event.getColoredSourceFile(), event
+				.getAffectedNodes());
 	}
 
 	/**
@@ -409,9 +409,9 @@ public class AElementColorManager implements IColorChangeListener, Observer {
 			Set<IFeature> oldColors = keys2colors.get(key);
 			Set<IFeature> newColors = file.getColorManager().getOwnColors(node);
 
-			Set<AElement> elements = getElementsInASTNode(
-					node.getStartPosition(),
-					node.getStartPosition() + node.getLength(), cuHashCode);
+			Set<AElement> elements = getElementsInASTNode(node
+					.getStartPosition(), node.getStartPosition()
+					+ node.getLength(), cuHashCode);
 			Set<IFeature> addColors = new HashSet<IFeature>();
 			Set<IFeature> removeColors = new HashSet<IFeature>();
 
@@ -491,8 +491,8 @@ public class AElementColorManager implements IColorChangeListener, Observer {
 		// update all files
 		for (ColoredSourceFile file : files)
 			try {
-				updateElementColors(file,
-						Collections.singleton((IASTNode) file.getAST()));
+				updateElementColors(file, Collections.singleton((IASTNode) file
+						.getAST()));
 			} catch (CoreException e) {
 				e.printStackTrace();
 			} catch (ParseException e) {

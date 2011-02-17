@@ -18,7 +18,6 @@ import com.sleepycat.persist.model.Entity;
 import com.sleepycat.persist.model.PrimaryKey;
 
 import de.ovgu.cide.language.jdt.UnifiedASTNode;
-import de.ovgu.cide.mining.database.HashUtil;
 
 /**
  * class for the various program elements in the model.

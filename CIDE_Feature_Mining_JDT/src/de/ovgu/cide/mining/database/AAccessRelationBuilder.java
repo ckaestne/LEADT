@@ -43,7 +43,6 @@ import cide.gparser.ParseException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.source.SourceFileColorManager;
 import de.ovgu.cide.language.jdt.ASTBridge;
-import de.ovgu.cide.language.jdt.AstidWrapper;
 import de.ovgu.cide.language.jdt.JDTParserWrapper;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.model.AFlyweightElementFactory;
@@ -274,8 +273,10 @@ public class AAccessRelationBuilder implements Serializable {
 										ARelationKind.IMPLEMENTS_TYPE,
 										typeElement);
 							} else {
-								aDB.addRelationAndTranspose(curType,
-										ARelationKind.EXTENDS_TYPE, typeElement);
+								aDB
+										.addRelationAndTranspose(curType,
+												ARelationKind.EXTENDS_TYPE,
+												typeElement);
 							}
 						}
 
@@ -289,10 +290,11 @@ public class AAccessRelationBuilder implements Serializable {
 						if (typeElement != null) {
 
 							if (pathItem.isInterface()) {
-								aDB.addRelationAndTranspose(
-										curType,
-										ARelationKind.IMPLEMENTS_TYPE_TRANSITIVE,
-										typeElement);
+								aDB
+										.addRelationAndTranspose(
+												curType,
+												ARelationKind.IMPLEMENTS_TYPE_TRANSITIVE,
+												typeElement);
 							} else {
 								aDB.addRelationAndTranspose(curType,
 										ARelationKind.EXTENDS_TYPE_TRANSITIVE,
@@ -826,8 +828,10 @@ public class AAccessRelationBuilder implements Serializable {
 				// ADD ALL ELEMENTS WHO ACCESS THIS ELEMENT
 
 				// ADD ALWAYS ACCESS RELATION FOR COMP. UNIT
-				aDB.addRelationAndTranspose(curCUElement,
-						ARelationKind.ACCESS_TYPE_TRANSITIVE, typeAccessElement);
+				aDB
+						.addRelationAndTranspose(curCUElement,
+								ARelationKind.ACCESS_TYPE_TRANSITIVE,
+								typeAccessElement);
 
 				// ADD ACCESS ELEMENT TO OTHER ELEMENTS DEPENDING ON CURRENT
 				// CONTEXT
@@ -1230,8 +1234,10 @@ public class AAccessRelationBuilder implements Serializable {
 				}
 
 				if (curMethod != null) {
-					aDB.addRelationAndTranspose(curMethod,
-							ARelationKind.DECLARES_METHOD_ACCESS, accessElement);
+					aDB
+							.addRelationAndTranspose(curMethod,
+									ARelationKind.DECLARES_METHOD_ACCESS,
+									accessElement);
 
 					if (directRelationAdded) {
 						aDB.addRelationAndTranspose(curMethod,

@@ -9,43 +9,44 @@
  */
 
 package de.ovgu.cide.mining.database;
+
 /**
- * Represents problems converting a element from the model
- * to the Eclipse workspace, and vice versa.
+ * Represents problems converting a element from the model to the Eclipse
+ * workspace, and vice versa.
  */
-public class ConversionException extends Exception
-{
+public class ConversionException extends Exception {
 	/**
 	 * Constructor for ConversionException.
 	 */
-	public ConversionException()
-	{
+	public ConversionException() {
 		super();
 	}
+
 	/**
 	 * Constructor for ConversionException.
+	 * 
 	 * @param arg0
 	 */
-	public ConversionException(String arg0)
-	{
+	public ConversionException(String arg0) {
 		super(arg0);
 	}
+
 	/**
 	 * Constructor for ConversionException.
+	 * 
 	 * @param arg0
 	 * @param arg1
 	 */
-	public ConversionException(String arg0, Throwable arg1)
-	{
+	public ConversionException(String arg0, Throwable arg1) {
 		super(arg0, arg1);
 	}
+
 	/**
 	 * Constructor for ConversionException.
+	 * 
 	 * @param arg0
 	 */
-	public ConversionException(Throwable arg0)
-	{
+	public ConversionException(Throwable arg0) {
 		super(arg0);
 	}
 }
-

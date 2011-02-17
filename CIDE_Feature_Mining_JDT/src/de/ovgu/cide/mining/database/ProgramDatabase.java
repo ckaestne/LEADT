@@ -10,9 +10,6 @@
 
 package de.ovgu.cide.mining.database;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,7 +29,6 @@ class ProgramDatabase extends AbstractProgramDatabase {
 	 * Data bundle associated with an element. Contains modifier flags and a map
 	 * linking relations to their ranges. an IElement instance.
 	 */
-	
 
 	class Bundle implements Serializable {
 		private static final long serialVersionUID = 1L;
@@ -380,20 +376,20 @@ class ProgramDatabase extends AbstractProgramDatabase {
 		}
 		System.out.println("combined size of all displaynames: " + s);
 
-//		FileOutputStream fos = null;
-//		ObjectOutputStream out = null;
-//		try {
-////			fos = new FileOutputStream("d:/tmp/aElements.dat");
-////			out = new ObjectOutputStream(fos);
-////			out.writeObject(aElements);
-////			out.close();
-////			fos = new FileOutputStream("d:/tmp/elementIndexMap.dat");
-////			out = new ObjectOutputStream(fos);
-////			out.writeObject(elementIndexMap);
-////			out.close();
-//		} catch (IOException ex) {
-//			ex.printStackTrace();
-//		}
+		// FileOutputStream fos = null;
+		// ObjectOutputStream out = null;
+		// try {
+		// // fos = new FileOutputStream("d:/tmp/aElements.dat");
+		// // out = new ObjectOutputStream(fos);
+		// // out.writeObject(aElements);
+		// // out.close();
+		// // fos = new FileOutputStream("d:/tmp/elementIndexMap.dat");
+		// // out = new ObjectOutputStream(fos);
+		// // out.writeObject(elementIndexMap);
+		// // out.close();
+		// } catch (IOException ex) {
+		// ex.printStackTrace();
+		// }
 	}
 
 }

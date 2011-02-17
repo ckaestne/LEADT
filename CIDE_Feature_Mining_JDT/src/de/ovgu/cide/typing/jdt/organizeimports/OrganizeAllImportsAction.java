@@ -14,7 +14,7 @@ import de.ovgu.cide.features.source.ColoredSourceFileIteratorAction;
  * 
  * @see IWorkbenchWindowActionDelegate
  */
-public class OrganizeAllImportsAction extends  ColoredSourceFileIteratorAction {
+public class OrganizeAllImportsAction extends ColoredSourceFileIteratorAction {
 	/**
 	 * The constructor.
 	 */

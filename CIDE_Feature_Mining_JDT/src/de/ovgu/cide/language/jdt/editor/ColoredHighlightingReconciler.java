@@ -32,7 +32,7 @@ import de.ovgu.cide.language.jdt.editor.inlineprojection.ColoredInlineProjection
 import de.ovgu.cide.language.jdt.editor.inlineprojection.InlineProjectionAnnotationModel;
 import de.ovgu.cide.language.jdt.editor.inlineprojection.InlineProjectionJavaViewer;
 
-@SuppressWarnings(value={"restriction","unchecked"})
+@SuppressWarnings(value = { "restriction", "unchecked" })
 public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 		ITextInputListener {
 
@@ -56,7 +56,7 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 	private List fRemovedPositions = new ArrayList();
 
 	/** Number of removed positions */
-//	private int fNOfRemovedPositions;
+	// private int fNOfRemovedPositions;
 
 	/** Background job */
 	private Job fJob;
@@ -99,15 +99,17 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 	 */
 	// private Highlighting[] fJobHighlightings;
 	/*
-	 * @see org.eclipse.jdt.internal.ui.text.java.IJavaReconcilingListener#aboutToBeReconciled()
+	 * @seeorg.eclipse.jdt.internal.ui.text.java.IJavaReconcilingListener#
+	 * aboutToBeReconciled()
 	 */
 	public void aboutToBeReconciled() {
 		// Do nothing
 	}
 
 	/*
-	 * @see org.eclipse.jdt.internal.ui.text.java.IJavaReconcilingListener#reconciled(CompilationUnit,
-	 *      boolean, IProgressMonitor)
+	 * @see
+	 * org.eclipse.jdt.internal.ui.text.java.IJavaReconcilingListener#reconciled
+	 * (CompilationUnit, boolean, IProgressMonitor)
 	 */
 	public void reconciled(CompilationUnit ast, boolean forced,
 			IProgressMonitor progressMonitor) {
@@ -178,7 +180,7 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 	 */
 	private void startReconcilingPositions() {
 		fJobPresenter.addAllPositions(fRemovedPositions);
-//		fNOfRemovedPositions = fRemovedPositions.size();
+		// fNOfRemovedPositions = fRemovedPositions.size();
 	}
 
 	/**
@@ -237,7 +239,7 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 	// }
 	// }
 
-	private List<ColoredInlineProjectionAnnotation> oldAnnotations=new ArrayList<ColoredInlineProjectionAnnotation>();
+	private List<ColoredInlineProjectionAnnotation> oldAnnotations = new ArrayList<ColoredInlineProjectionAnnotation>();
 
 	/**
 	 * Update the presentation.
@@ -251,8 +253,8 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 	 */
 	private void updatePresentation(TextPresentation textPresentation,
 			List<CodeSegment> addedPositions, List<CodeSegment> removedPositions) {
-//		System.out.println("Reconciled: " + textPresentation + " "
-//				+ addedPositions + " " + removedPositions);
+		// System.out.println("Reconciled: " + textPresentation + " "
+		// + addedPositions + " " + removedPositions);
 		Runnable runnable = fJobPresenter.createUpdateRunnable(
 				textPresentation, addedPositions, removedPositions);
 		if (runnable == null)
@@ -262,8 +264,8 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 		if (editor == null)
 			return;
 
-		
-//		updateInlineProjectionAnnotations(addedPositions, editor);TODO disabled inline projection
+		// updateInlineProjectionAnnotations(addedPositions, editor);TODO
+		// disabled inline projection
 
 		IWorkbenchPartSite site = editor.getSite();
 		if (site == null)
@@ -280,7 +282,9 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 		display.asyncExec(runnable);
 	}
 
-	protected void updateInlineProjectionAnnotations(List<CodeSegment> addedPositions, ColoredCompilationUnitEditor editor) {
+	protected void updateInlineProjectionAnnotations(
+			List<CodeSegment> addedPositions,
+			ColoredCompilationUnitEditor editor) {
 		InlineProjectionAnnotationModel annotationModel = ((InlineProjectionJavaViewer) editor
 				.getViewer()).getInlineProjectionAnnotationModel();
 
@@ -318,7 +322,8 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 			Position pos = new Position(addedPositions.get(i).offset,
 					addedPositions.get(i).length);
 			annotation.setPosition(pos);
-			annotation.adjustCollapsing(editor.getProjectionColorManager().getExpandedColors());
+			annotation.adjustCollapsing(editor.getProjectionColorManager()
+					.getExpandedColors());
 			newAnnotations.put(annotation, pos);
 
 			annotations[i] = annotation;
@@ -340,7 +345,7 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 	 */
 	private void stopReconcilingPositions() {
 		fRemovedPositions.clear();
-//		fNOfRemovedPositions = 0;
+		// fNOfRemovedPositions = 0;
 		fAddedPositions.clear();
 	}
 
@@ -428,7 +433,8 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 						if (monitor.isCanceled())
 							return Status.CANCEL_STATUS;
 						CompilationUnit ast = JavaPlugin.getDefault()
-								.getASTProvider().getAST((ICompilationUnit)element,
+								.getASTProvider().getAST(
+										(ICompilationUnit) element,
 										SharedASTProvider.WAIT_YES, monitor);
 						reconciled(ast, false, monitor);
 						synchronized (fJobLock) {
@@ -447,8 +453,9 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 	}
 
 	/*
-	 * @see org.eclipse.jface.text.ITextInputListener#inputDocumentAboutToBeChanged(org.eclipse.jface.text.IDocument,
-	 *      org.eclipse.jface.text.IDocument)
+	 * @see
+	 * org.eclipse.jface.text.ITextInputListener#inputDocumentAboutToBeChanged
+	 * (org.eclipse.jface.text.IDocument, org.eclipse.jface.text.IDocument)
 	 */
 	public void inputDocumentAboutToBeChanged(IDocument oldInput,
 			IDocument newInput) {
@@ -461,8 +468,9 @@ public class ColoredHighlightingReconciler implements IJavaReconcilingListener,
 	}
 
 	/*
-	 * @see org.eclipse.jface.text.ITextInputListener#inputDocumentChanged(org.eclipse.jface.text.IDocument,
-	 *      org.eclipse.jface.text.IDocument)
+	 * @see
+	 * org.eclipse.jface.text.ITextInputListener#inputDocumentChanged(org.eclipse
+	 * .jface.text.IDocument, org.eclipse.jface.text.IDocument)
 	 */
 	public void inputDocumentChanged(IDocument oldInput, IDocument newInput) {
 		if (newInput != null)

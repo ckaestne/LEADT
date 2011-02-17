@@ -79,7 +79,7 @@ public class ColoredHighlightingManager implements IPropertyChangeListener {
 	private JavaSourceViewer fSourceViewer;
 
 	/** The color manager */
-//	private IColorManager fColorManager;
+	// private IColorManager fColorManager;
 
 	/** The preference store */
 	private IPreferenceStore fPreferenceStore;
@@ -111,7 +111,7 @@ public class ColoredHighlightingManager implements IPropertyChangeListener {
 			JDTColorManagerBridge compUnitColorManager) {
 		fEditor = editor;
 		fSourceViewer = sourceViewer;
-//		fColorManager = colorManager;
+		// fColorManager = colorManager;
 		fPreferenceStore = preferenceStore;
 		this.compUnitColorManager = compUnitColorManager;
 		if (fEditor != null) {
@@ -162,7 +162,7 @@ public class ColoredHighlightingManager implements IPropertyChangeListener {
 
 		fEditor = null;
 		fSourceViewer = null;
-//		fColorManager = null;
+		// fColorManager = null;
 		fConfiguration = null;
 		fPresentationReconciler = null;
 	}
@@ -193,7 +193,9 @@ public class ColoredHighlightingManager implements IPropertyChangeListener {
 	}
 
 	/*
-	 * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
+	 * @see
+	 * org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse
+	 * .jface.util.PropertyChangeEvent)
 	 */
 	public void propertyChange(PropertyChangeEvent event) {
 		handlePropertyChangeEvent(event);
@@ -250,16 +252,17 @@ public class ColoredHighlightingManager implements IPropertyChangeListener {
 		 * refreshNeeded= true; continue; }
 		 * 
 		 * String strikethroughKey=
-		 * SemanticHighlightings.getStrikethroughPreferenceKey(semanticHighlighting);
-		 * if (strikethroughKey.equals(event.getProperty())) {
+		 * SemanticHighlightings.getStrikethroughPreferenceKey
+		 * (semanticHighlighting); if
+		 * (strikethroughKey.equals(event.getProperty())) {
 		 * adaptToTextStyleChange(fHighlightings[i], event,
 		 * TextAttribute.STRIKETHROUGH);
 		 * fPresenter.highlightingStyleChanged(fHighlightings[i]);
 		 * refreshNeeded= true; continue; }
 		 * 
 		 * String underlineKey=
-		 * SemanticHighlightings.getUnderlinePreferenceKey(semanticHighlighting);
-		 * if (underlineKey.equals(event.getProperty())) {
+		 * SemanticHighlightings.getUnderlinePreferenceKey(semanticHighlighting
+		 * ); if (underlineKey.equals(event.getProperty())) {
 		 * adaptToTextStyleChange(fHighlightings[i], event,
 		 * TextAttribute.UNDERLINE);
 		 * fPresenter.highlightingStyleChanged(fHighlightings[i]);

@@ -12,7 +12,6 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.TypeParameter;
 import org.eclipse.jdt.core.dom.VariableDeclaration;
 
-
 public class ASTBindingFinder extends ASTVisitor {
 
 	ASTBindingFinder(String bindingKey) {
@@ -67,6 +66,7 @@ public class ASTBindingFinder extends ASTVisitor {
 			result = node;
 		return super.visit(node);
 	}
+
 	public void preVisit(ASTNode node) {
 		if (node instanceof Type) {
 			if (result != null)
@@ -85,7 +85,8 @@ public class ASTBindingFinder extends ASTVisitor {
 		if (node instanceof AbstractTypeDeclaration) {
 			if (result != null)
 				return;
-			IBinding binding = ((AbstractTypeDeclaration) node).resolveBinding();
+			IBinding binding = ((AbstractTypeDeclaration) node)
+					.resolveBinding();
 			if (binding != null && binding.getKey().equals(target))
 				result = node;
 		}

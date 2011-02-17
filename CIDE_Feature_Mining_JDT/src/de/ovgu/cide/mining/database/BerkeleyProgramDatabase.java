@@ -11,10 +11,7 @@
 package de.ovgu.cide.mining.database;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 import com.sleepycat.je.DatabaseException;

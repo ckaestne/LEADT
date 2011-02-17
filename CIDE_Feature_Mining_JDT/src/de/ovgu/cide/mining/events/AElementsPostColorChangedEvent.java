@@ -1,13 +1,11 @@
 package de.ovgu.cide.mining.events;
 
 import java.util.EventObject;
-import java.util.Map;
 import java.util.Set;
 
 import cide.gast.IASTNode;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.model.AElement;
-import de.ovgu.cide.mining.events.AElementsPostColorChangedEvent.ColorUpdate;
 
 public class AElementsPostColorChangedEvent extends EventObject {
 

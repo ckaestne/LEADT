@@ -2,18 +2,16 @@ package de.ovgu.cide.mining.relationmanager.model;
 
 import java.util.ArrayList;
 
-import javax.swing.text.Element;
-
 import org.eclipse.core.runtime.IAdaptable;
 
-import de.ovgu.cide.language.jdt.UnifiedASTNode;
 import de.ovgu.cide.mining.database.ApplicationController;
 import de.ovgu.cide.mining.database.model.AElement;
-import de.ovgu.cide.mining.database.recommendationengine.AElementViewCountManager;
 
-public class RelationTreeNode implements IAdaptable  {
-	
-	public static enum NODE_KIND {ROOT, FOLDER, ELEMENT};
+public class RelationTreeNode implements IAdaptable {
+
+	public static enum NODE_KIND {
+		ROOT, FOLDER, ELEMENT
+	};
 
 	private NODE_KIND kind;
 	private Object data;
@@ -22,47 +20,41 @@ public class RelationTreeNode implements IAdaptable  {
 	private int viewCount;
 	private int startRange, endRange;
 
-	
 	public RelationTreeNode(NODE_KIND kind, Object data) {
 		this.kind = kind;
 		this.data = data;
 		children = new ArrayList<RelationTreeNode>();
 		viewCount = 0;
-		
 
-		if (kind == NODE_KIND.ELEMENT)  {
-			AElement el = (AElement)data;
-			//UnifiedASTNode uniNode = el.getUnifiedASTNode();
+		if (kind == NODE_KIND.ELEMENT) {
+			AElement el = (AElement) data;
+			// UnifiedASTNode uniNode = el.getUnifiedASTNode();
 			startRange = el.getStartPosition();
 			endRange = startRange + el.getLength();
-		}
-		else {
+		} else {
 			startRange = endRange = 0;
-		
+
 		}
-		
-		
+
 	}
-	
-		
+
 	public void setParent(RelationTreeNode parent) {
 		this.parent = parent;
 	}
-	
-	
+
 	public RelationTreeNode getParent() {
 		return parent;
 	}
-	
-	//inherited...
+
+	// inherited...
 	public Object getAdapter(Class key) {
 		return null;
 	}
-	
+
 	public NODE_KIND getKind() {
 		return kind;
 	}
-	
+
 	public Object getDataObject() {
 		return data;
 	}
@@ -71,38 +63,37 @@ public class RelationTreeNode implements IAdaptable  {
 		children.add(child);
 		child.setParent(this);
 	}
-	
+
 	public void removeChild(RelationTreeNode child) {
 		children.remove(child);
 		child.setParent(null);
 	}
-	
+
 	public RelationTreeNode[] getChildren() {
-		return (RelationTreeNode [])children.toArray(new RelationTreeNode[children.size()]);
+		return (RelationTreeNode[]) children
+				.toArray(new RelationTreeNode[children.size()]);
 	}
-	
+
 	public int getChildrenCount() {
 		return children.size();
 	}
-	
-	public boolean hasChildren() {
-		return children.size()>0;
-	}
-	
 
-	
+	public boolean hasChildren() {
+		return children.size() > 0;
+	}
+
 	public String getDisplayName() {
 		switch (kind) {
 		case FOLDER:
-			return (String)data;
+			return (String) data;
 		case ELEMENT:
-			return ((AElement)data).getShortName();
+			return ((AElement) data).getShortName();
 
 		}
-		
+
 		return "";
 	}
-	
+
 	public String getRange() {
 		switch (kind) {
 		case FOLDER:
@@ -112,41 +103,43 @@ public class RelationTreeNode implements IAdaptable  {
 		}
 		return "";
 	}
-	
+
 	public String getViewCountString() {
 		switch (kind) {
 		case FOLDER:
 			return String.valueOf(viewCount);
 		case ELEMENT:
-			return String.valueOf(ApplicationController.getInstance().getViewCountForElement(((AElement)data)));
+			return String.valueOf(ApplicationController.getInstance()
+					.getViewCountForElement(((AElement) data)));
 		}
 		return "";
 	}
-	
+
 	public int getViewCount() {
 		switch (kind) {
 		case FOLDER:
 			return viewCount;
 		case ELEMENT:
-			return ApplicationController.getInstance().getViewCountForElement(((AElement)data));
+			return ApplicationController.getInstance().getViewCountForElement(
+					((AElement) data));
 		}
 		return 0;
 	}
-	
+
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
-	
-	private String getRangeString(){
-		return  startRange + "-" + endRange;
+
+	private String getRangeString() {
+		return startRange + "-" + endRange;
 	}
-	
+
 	public int getStartRange() {
 		return startRange;
 	}
-	
+
 	public int getEndRange() {
 		return endRange;
 	}
-	
+
 }

@@ -7,7 +7,6 @@ import de.ovgu.cide.typing.model.ITypingProvider;
 
 public class JDTTypingExtension implements ITypingExtension {
 
-	
 	public ITypingProvider createTypingProvider(IProject project) {
 		return new JDTTypingProvider(project);
 	}

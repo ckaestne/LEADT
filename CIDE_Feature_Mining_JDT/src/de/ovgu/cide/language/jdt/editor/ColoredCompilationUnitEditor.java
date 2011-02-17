@@ -91,7 +91,7 @@ public class ColoredCompilationUnitEditor extends CompilationUnitEditor
 	}
 
 	private void installCodeColoring() {
-		if (fCodeColorManager == null && getSourceViewer()!=null) {
+		if (fCodeColorManager == null && getSourceViewer() != null) {
 
 			ColoredSourceFile source = getSourceFile();
 			assert source.isColored();
@@ -256,7 +256,7 @@ public class ColoredCompilationUnitEditor extends CompilationUnitEditor
 
 		editorExtension.afterSave(wasDirty);
 	}
-	
+
 	@Override
 	protected void doSetInput(IEditorInput input) throws CoreException {
 		super.doSetInput(input);

@@ -1,6 +1,5 @@
 package de.ovgu.cide.typing.jdt.checks.resolutions;
 
-
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.graphics.Image;
@@ -33,7 +32,8 @@ public class OrganizeImportColorsResolution extends
 
 	public void run(IMarker marker) {
 		try {
-			OrganizeAllImportsJob.organizeImports(source, bindingProjectColorCache);
+			OrganizeAllImportsJob.organizeImports(source,
+					bindingProjectColorCache);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (CoreException e) {

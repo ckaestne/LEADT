@@ -4,9 +4,9 @@ import java.util.EventObject;
 
 import org.eclipse.core.resources.IProject;
 
-public class AInitEvent  extends EventObject{
+public class AInitEvent extends EventObject {
 	final IProject project;
-	
+
 	public IProject getProject() {
 		return project;
 	}
@@ -15,5 +15,5 @@ public class AInitEvent  extends EventObject{
 		super(source);
 		this.project = project;
 	}
-	
+
 }

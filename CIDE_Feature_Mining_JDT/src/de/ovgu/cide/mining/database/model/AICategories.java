@@ -11,23 +11,9 @@
 package de.ovgu.cide.mining.database.model;
 
 /**
- * The various categories of elements supported by the
- * Concern Graph model for the Java language.
+ * The various categories of elements supported by the Concern Graph model for
+ * the Java language.
  */
-public enum AICategories
-{
-	TYPE,
-	FIELD,
-	METHOD,
-	LOCAL_VARIABLE,
-	IMPORT,
-	COMPILATION_UNIT,
-	TYPE_ACCESS,
-	FIELD_ACCESS,
-	LOCAL_VARIABLE_ACCESS,
-	PARAMETER_ACCESS,
-	METHOD_ACCESS,
-	OUT_OF_CONTEXT,
-	FEATURE
+public enum AICategories {
+	TYPE, FIELD, METHOD, LOCAL_VARIABLE, IMPORT, COMPILATION_UNIT, TYPE_ACCESS, FIELD_ACCESS, LOCAL_VARIABLE_ACCESS, PARAMETER_ACCESS, METHOD_ACCESS, OUT_OF_CONTEXT, FEATURE
 }
-

@@ -15,7 +15,6 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Display;
 
-
 public class InlineProjectionAnnotation extends Annotation implements
 		IAnnotationPresentation {
 
@@ -45,7 +44,6 @@ public class InlineProjectionAnnotation extends Annotation implements
 	/** The state of this annotation */
 	private boolean fIsCollapsed = false;
 
-
 	/**
 	 * Creates a new expanded projection annotation.
 	 */
@@ -54,8 +52,8 @@ public class InlineProjectionAnnotation extends Annotation implements
 	}
 
 	/**
-	 * Creates a new projection annotation. When <code>isCollapsed</code>
-	 * is <code>true</code> the annotation is initially collapsed.
+	 * Creates a new projection annotation. When <code>isCollapsed</code> is
+	 * <code>true</code> the annotation is initially collapsed.
 	 * 
 	 * @param isCollapsed
 	 *            <code>true</code> if the annotation should initially be
@@ -66,20 +64,18 @@ public class InlineProjectionAnnotation extends Annotation implements
 		fIsCollapsed = isCollapsed;
 	}
 
-
-
-
 	/*
-	 * @see org.eclipse.jface.text.source.IAnnotationPresentation#paint(org.eclipse.swt.graphics.GC,
-	 *      org.eclipse.swt.widgets.Canvas,
-	 *      org.eclipse.swt.graphics.Rectangle)
+	 * @see
+	 * org.eclipse.jface.text.source.IAnnotationPresentation#paint(org.eclipse
+	 * .swt.graphics.GC, org.eclipse.swt.widgets.Canvas,
+	 * org.eclipse.swt.graphics.Rectangle)
 	 */
 	public void paint(GC gc, Canvas canvas, Rectangle rectangle) {
 		Image image = getImage(canvas.getDisplay());
 		if (image != null) {
-			ImageUtilities.drawImage(image, gc, canvas, rectangle,
-					SWT.CENTER, SWT.TOP);
-			
+			ImageUtilities.drawImage(image, gc, canvas, rectangle, SWT.CENTER,
+					SWT.TOP);
+
 		}
 	}
 

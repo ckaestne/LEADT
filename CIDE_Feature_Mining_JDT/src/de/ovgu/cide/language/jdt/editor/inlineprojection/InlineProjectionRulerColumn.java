@@ -23,11 +23,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 
-
 /**
  * A ruler column for controlling the behavior of a
  * {@link org.eclipse.jface.text.source.projection.ProjectionViewer}.
- *
+ * 
  * @since 3.0
  */
 class InlineProjectionRulerColumn extends AnnotationRulerColumn {
@@ -36,75 +35,85 @@ class InlineProjectionRulerColumn extends AnnotationRulerColumn {
 
 	/**
 	 * Creates a new projection ruler column.
-	 *
-	 * @param model the column's annotation model
-	 * @param width the width in pixels
-	 * @param annotationAccess the annotation access
+	 * 
+	 * @param model
+	 *            the column's annotation model
+	 * @param width
+	 *            the width in pixels
+	 * @param annotationAccess
+	 *            the annotation access
 	 */
-	public InlineProjectionRulerColumn(IAnnotationModel model, int width, IAnnotationAccess annotationAccess) {
+	public InlineProjectionRulerColumn(IAnnotationModel model, int width,
+			IAnnotationAccess annotationAccess) {
 		super(model, width, annotationAccess);
 	}
 
 	/**
 	 * Creates a new projection ruler column.
-	 *
-	 * @param width the width in pixels
-	 * @param annotationAccess the annotation access
+	 * 
+	 * @param width
+	 *            the width in pixels
+	 * @param annotationAccess
+	 *            the annotation access
 	 */
-	public InlineProjectionRulerColumn(int width, IAnnotationAccess annotationAccess) {
+	public InlineProjectionRulerColumn(int width,
+			IAnnotationAccess annotationAccess) {
 		super(width, annotationAccess);
 	}
 
 	/*
-	 * @see org.eclipse.jface.text.source.AnnotationRulerColumn#mouseClicked(int)
+	 * @see
+	 * org.eclipse.jface.text.source.AnnotationRulerColumn#mouseClicked(int)
 	 */
 	protected void mouseClicked(int line) {
 		clearCurrentAnnotation();
-		ProjectionAnnotation annotation= findAnnotation(line, true);
+		ProjectionAnnotation annotation = findAnnotation(line, true);
 		if (annotation != null) {
-			ProjectionAnnotationModel model= (ProjectionAnnotationModel) getModel();
+			ProjectionAnnotationModel model = (ProjectionAnnotationModel) getModel();
 			model.toggleExpansionState(annotation);
 		}
 	}
 
 	/**
-	 * Returns the projection annotation of the column's annotation
-	 * model that contains the given line.
-	 *
-	 * @param line the line
-	 * @param exact <code>true</code> if the annotation range must match exactly
+	 * Returns the projection annotation of the column's annotation model that
+	 * contains the given line.
+	 * 
+	 * @param line
+	 *            the line
+	 * @param exact
+	 *            <code>true</code> if the annotation range must match exactly
 	 * @return the projection annotation containing the given line
 	 */
 	private ProjectionAnnotation findAnnotation(int line, boolean exact) {
 
-		ProjectionAnnotation previousAnnotation= null;
+		ProjectionAnnotation previousAnnotation = null;
 
-		IAnnotationModel model= getModel();
+		IAnnotationModel model = getModel();
 		if (model != null) {
-			IDocument document= getCachedTextViewer().getDocument();
+			IDocument document = getCachedTextViewer().getDocument();
 
-			int previousDistance= Integer.MAX_VALUE;
+			int previousDistance = Integer.MAX_VALUE;
 
-			Iterator<?> e= model.getAnnotationIterator();
+			Iterator<?> e = model.getAnnotationIterator();
 			while (e.hasNext()) {
-				Object next= e.next();
+				Object next = e.next();
 				if (next instanceof ProjectionAnnotation) {
-					ProjectionAnnotation annotation= (ProjectionAnnotation) next;
-					Position p= model.getPosition(annotation);
+					ProjectionAnnotation annotation = (ProjectionAnnotation) next;
+					Position p = model.getPosition(annotation);
 					if (p == null)
 						continue;
 
-					int distance= getDistance(annotation, p, document, line);
+					int distance = getDistance(annotation, p, document, line);
 					if (distance == -1)
 						continue;
 
 					if (!exact) {
 						if (distance < previousDistance) {
-							previousAnnotation= annotation;
-							previousDistance= distance;
+							previousAnnotation = annotation;
+							previousDistance = distance;
 						}
 					} else if (distance == 0) {
-						previousAnnotation= annotation;
+						previousAnnotation = annotation;
 					}
 				}
 			}
@@ -114,29 +123,40 @@ class InlineProjectionRulerColumn extends AnnotationRulerColumn {
 	}
 
 	/**
-	 * Returns the distance of the given line to the start line of the given position in the given document. The distance is
-	 * <code>-1</code> when the line is not included in the given position.
-	 *
-	 * @param annotation the annotation
-	 * @param position the position
-	 * @param document the document
-	 * @param line the line
-	 * @return <code>-1</code> if line is not contained, a position number otherwise
+	 * Returns the distance of the given line to the start line of the given
+	 * position in the given document. The distance is <code>-1</code> when the
+	 * line is not included in the given position.
+	 * 
+	 * @param annotation
+	 *            the annotation
+	 * @param position
+	 *            the position
+	 * @param document
+	 *            the document
+	 * @param line
+	 *            the line
+	 * @return <code>-1</code> if line is not contained, a position number
+	 *         otherwise
 	 */
-	private int getDistance(ProjectionAnnotation annotation, Position position, IDocument document, int line) {
+	private int getDistance(ProjectionAnnotation annotation, Position position,
+			IDocument document, int line) {
 		if (position.getOffset() > -1 && position.getLength() > -1) {
 			try {
-				int startLine= document.getLineOfOffset(position.getOffset());
-				int endLine= document.getLineOfOffset(position.getOffset() + position.getLength());
+				int startLine = document.getLineOfOffset(position.getOffset());
+				int endLine = document.getLineOfOffset(position.getOffset()
+						+ position.getLength());
 				if (startLine <= line && line < endLine) {
 					if (annotation.isCollapsed()) {
 						int captionOffset;
 						if (position instanceof IProjectionPosition)
-							captionOffset= ((IProjectionPosition) position).computeCaptionOffset(document);
+							captionOffset = ((IProjectionPosition) position)
+									.computeCaptionOffset(document);
 						else
-							captionOffset= 0;
+							captionOffset = 0;
 
-						int captionLine= document.getLineOfOffset(position.getOffset() + captionOffset);
+						int captionLine = document.getLineOfOffset(position
+								.getOffset()
+								+ captionOffset);
 						if (startLine <= captionLine && captionLine < endLine)
 							return Math.abs(line - captionLine);
 					}
@@ -151,21 +171,25 @@ class InlineProjectionRulerColumn extends AnnotationRulerColumn {
 	private boolean clearCurrentAnnotation() {
 		if (fCurrentAnnotation != null) {
 			fCurrentAnnotation.setRangeIndication(false);
-			fCurrentAnnotation= null;
+			fCurrentAnnotation = null;
 			return true;
 		}
 		return false;
 	}
 
 	/*
-	 * @see org.eclipse.jface.text.source.IVerticalRulerColumn#createControl(org.eclipse.jface.text.source.CompositeRuler, org.eclipse.swt.widgets.Composite)
+	 * @see
+	 * org.eclipse.jface.text.source.IVerticalRulerColumn#createControl(org.
+	 * eclipse.jface.text.source.CompositeRuler,
+	 * org.eclipse.swt.widgets.Composite)
 	 */
-	public Control createControl(CompositeRuler parentRuler, Composite parentControl) {
-		Control control= super.createControl(parentRuler, parentControl);
+	public Control createControl(CompositeRuler parentRuler,
+			Composite parentControl) {
+		Control control = super.createControl(parentRuler, parentControl);
 
 		// set background
-		Display display= parentControl.getDisplay();
-		Color background= display.getSystemColor(SWT.COLOR_LIST_BACKGROUND);
+		Display display = parentControl.getDisplay();
+		Color background = display.getSystemColor(SWT.COLOR_LIST_BACKGROUND);
 		control.setBackground(background);
 
 		// install hover listener
@@ -179,17 +203,19 @@ class InlineProjectionRulerColumn extends AnnotationRulerColumn {
 		// install mouse move listener
 		control.addMouseMoveListener(new MouseMoveListener() {
 			public void mouseMove(MouseEvent e) {
-				boolean redraw= false;
-				ProjectionAnnotation annotation= findAnnotation(toDocumentLineNumber(e.y), false);
+				boolean redraw = false;
+				ProjectionAnnotation annotation = findAnnotation(
+						toDocumentLineNumber(e.y), false);
 				if (annotation != fCurrentAnnotation) {
 					if (fCurrentAnnotation != null) {
 						fCurrentAnnotation.setRangeIndication(false);
-						redraw= true;
+						redraw = true;
 					}
-					fCurrentAnnotation= annotation;
-					if (fCurrentAnnotation != null && !fCurrentAnnotation.isCollapsed()) {
+					fCurrentAnnotation = annotation;
+					if (fCurrentAnnotation != null
+							&& !fCurrentAnnotation.isCollapsed()) {
 						fCurrentAnnotation.setRangeIndication(true);
-						redraw= true;
+						redraw = true;
 					}
 				}
 				if (redraw)
@@ -200,25 +226,29 @@ class InlineProjectionRulerColumn extends AnnotationRulerColumn {
 	}
 
 	/*
-	 * @see org.eclipse.jface.text.source.AnnotationRulerColumn#setModel(org.eclipse.jface.text.source.IAnnotationModel)
+	 * @see
+	 * org.eclipse.jface.text.source.AnnotationRulerColumn#setModel(org.eclipse
+	 * .jface.text.source.IAnnotationModel)
 	 */
 	public void setModel(IAnnotationModel model) {
 		if (model instanceof IAnnotationModelExtension) {
-			IAnnotationModelExtension extension= (IAnnotationModelExtension) model;
-			model= extension.getAnnotationModel(ProjectionSupport.PROJECTION);
+			IAnnotationModelExtension extension = (IAnnotationModelExtension) model;
+			model = extension.getAnnotationModel(ProjectionSupport.PROJECTION);
 		}
 		super.setModel(model);
 	}
 
 	/*
-	 * @see org.eclipse.jface.text.source.AnnotationRulerColumn#isPropagatingMouseListener()
+	 * @seeorg.eclipse.jface.text.source.AnnotationRulerColumn#
+	 * isPropagatingMouseListener()
 	 */
 	protected boolean isPropagatingMouseListener() {
 		return false;
 	}
 
 	/*
-	 * @see org.eclipse.jface.text.source.AnnotationRulerColumn#hasAnnotation(int)
+	 * @see
+	 * org.eclipse.jface.text.source.AnnotationRulerColumn#hasAnnotation(int)
 	 */
 	protected boolean hasAnnotation(int lineNumber) {
 		return findAnnotation(lineNumber, true) != null;

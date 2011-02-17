@@ -23,7 +23,6 @@ import cide.gparser.ParseException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.source.SourceFileColorManager;
 import de.ovgu.cide.language.jdt.ASTBridge;
-import de.ovgu.cide.language.jdt.AstidWrapper;
 import de.ovgu.cide.language.jdt.JDTParserWrapper;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.model.AFlyweightElementFactory;
@@ -141,8 +140,10 @@ public class ADeclareRelationBuilder implements Serializable {
 
 					// ADD TRANSITIVE DECLARE RELATIONSHIP FOR SUPER TYPES
 					for (AElement remType : curTypeReminder) {
-						aDB.addRelationAndTranspose(remType,
-								ARelationKind.DECLARES_TYPE_TRANSITIVE, curType);
+						aDB
+								.addRelationAndTranspose(remType,
+										ARelationKind.DECLARES_TYPE_TRANSITIVE,
+										curType);
 					}
 
 					curTypeReminder.push(oldType);
@@ -199,8 +200,10 @@ public class ADeclareRelationBuilder implements Serializable {
 
 					// ADD TRANSITIVE DECLARE RELATIONSHIP FOR COMPILTATTION
 					// UNIT
-					aDB.addRelationAndTranspose(curCUElement,
-							ARelationKind.DECLARES_METHOD_TRANSITIVE, curMethod);
+					aDB
+							.addRelationAndTranspose(curCUElement,
+									ARelationKind.DECLARES_METHOD_TRANSITIVE,
+									curMethod);
 
 					// ADD TRANSITIVE DECLARE RELATIONSHIP FOR SUPER TYPES
 					for (AElement remType : curTypeReminder) {
@@ -267,7 +270,7 @@ public class ADeclareRelationBuilder implements Serializable {
 					if (binding.isParameter())
 						((AElement) curElement).setParamIndex(curParamIndex++);
 
-					addElement(curElement,getColor(node));
+					addElement(curElement, getColor(node));
 					curRelation = ARelationKind.DECLARES_LOCAL_VARIABLE;
 					curTransitiveRelation = ARelationKind.DECLARES_LOCAL_VARIABLE_TRANSITIVE;
 

@@ -20,14 +20,14 @@ public class ElementNotFoundException extends RuntimeException {
 	 */
 	public ElementNotFoundException() {
 		super();
-		}
+	}
 
 	/**
 	 * @param arg0
 	 */
 	public ElementNotFoundException(String arg0) {
 		super(arg0);
-		
+
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class ElementNotFoundException extends RuntimeException {
 	 */
 	public ElementNotFoundException(String arg0, Throwable arg1) {
 		super(arg0, arg1);
-		
+
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class ElementNotFoundException extends RuntimeException {
 	 */
 	public ElementNotFoundException(Throwable arg0) {
 		super(arg0);
-		
+
 	}
 
 }

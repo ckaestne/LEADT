@@ -1,19 +1,16 @@
 package de.ovgu.cide.mining.database.recommendationengine.substrings;
 
-import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.mining.database.ApplicationController;
-import de.ovgu.cide.mining.database.model.AICategories;
 import de.ovgu.cide.mining.database.model.AElement;
-import de.ovgu.cide.mining.database.recommendationengine.AAbstractElementRecommender;
+import de.ovgu.cide.mining.database.model.AICategories;
 import de.ovgu.cide.mining.database.recommendationengine.AAbstractFeatureRecommender;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContext;
 
@@ -124,8 +121,8 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 			final IFeature color) {
 		// PREPARATION PART!
 
-		AElement dummyElement = new AElement(color.getName(), 0, 0,
-				color.getName(), 0, AICategories.FEATURE);
+		AElement dummyElement = new AElement(color.getName(), 0, 0, color
+				.getName(), 0, AICategories.FEATURE);
 
 		Set<AElement> featureElements = AC.getElementsOfColor(color);
 		Map<String, Double> featureSubStringRegister = new HashMap<String, Double>();
@@ -220,7 +217,8 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 			double featureValue = featureSubStringRegister.get(matchSubString)
 					/ tmpFeatureRegisterSize;
 			double nonFeatureValue = nonFeatureSubStringRegister
-					.get(matchSubString) / tmpNonFeatureRegisterSize;
+					.get(matchSubString)
+					/ tmpNonFeatureRegisterSize;
 			double normValue;
 
 			if (featureValue > nonFeatureValue) {
@@ -277,8 +275,9 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 				if (subString.length() >= 6) {
 					lenFactor = (double) 1.0;
 				} else {
-					lenFactor = Math.max((double) 1.0,
-							Math.log10(subString.length()) / Math.log10(6));
+					lenFactor = Math.max((double) 1.0, Math.log10(subString
+							.length())
+							/ Math.log10(6));
 				}
 
 				Double featureSubStringCount = featureSubStringRegister

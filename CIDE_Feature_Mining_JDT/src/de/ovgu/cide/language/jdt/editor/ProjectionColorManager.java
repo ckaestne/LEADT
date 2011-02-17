@@ -28,8 +28,8 @@ public class ProjectionColorManager implements IProjectionColorManager {
 
 	public Set<IFeature> getExpandedColors() {
 		ColoredSourceFile source = editor.getSourceFile();
-		Set<IFeature> visibleFeatures = new HashSet<IFeature>(source.getFeatureModel()
-				.getVisibleFeatures());
+		Set<IFeature> visibleFeatures = new HashSet<IFeature>(source
+				.getFeatureModel().getVisibleFeatures());
 		visibleFeatures.removeAll(collapsedColors);
 
 		return visibleFeatures;
@@ -49,11 +49,11 @@ public class ProjectionColorManager implements IProjectionColorManager {
 		collapsedColors.clear();
 		updateProjectionAnnotations();
 	}
+
 	public void collapseAllColors() {
 		ColoredSourceFile source = editor.getSourceFile();
-		
-		collapsedColors.addAll(source.getFeatureModel()
-				.getVisibleFeatures());
+
+		collapsedColors.addAll(source.getFeatureModel().getVisibleFeatures());
 		updateProjectionAnnotations();
 	}
 
@@ -65,8 +65,8 @@ public class ProjectionColorManager implements IProjectionColorManager {
 		Set<IFeature> visibleColors = getExpandedColors();
 
 		List<Annotation> changedAnnotations = new ArrayList<Annotation>();
-		for (Iterator<Annotation> iter = annotationModel.getAnnotationIterator(); iter
-				.hasNext();) {
+		for (Iterator<Annotation> iter = annotationModel
+				.getAnnotationIterator(); iter.hasNext();) {
 			ColoredInlineProjectionAnnotation annotation = (ColoredInlineProjectionAnnotation) iter
 					.next();
 			boolean changed = annotation.adjustCollapsing(visibleColors);

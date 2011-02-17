@@ -15,17 +15,18 @@ public class JDTLanguageExtension implements ILanguageExtension {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ILanguageParser getParser(InputStream inputStream,String filePath) {
-		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(filePath));
+	public ILanguageParser getParser(InputStream inputStream, String filePath) {
+		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(
+				new Path(filePath));
 		assert file.exists();
-		
+
 		return new JDTParserWrapper(file);
 	}
 
-	public static final String LANGUAGE_EXTENSION_ID="de.ovgu.cide.language.jdtmining";
+	public static final String LANGUAGE_EXTENSION_ID = "de.ovgu.cide.language.jdtmining";
+
 	public String getId() {
 		return LANGUAGE_EXTENSION_ID;
 	}
-	
 
 }

@@ -89,7 +89,8 @@ public class JDTTypingProvider extends AbstractFileBasedTypingProvider
 		}
 	}
 
-	public void prepareReevaluation(Collection<ColoredSourceFile> files, IProgressMonitor monitor) {
+	public void prepareReevaluation(Collection<ColoredSourceFile> files,
+			IProgressMonitor monitor) {
 		updateFileColorCache(files);
 	}
 

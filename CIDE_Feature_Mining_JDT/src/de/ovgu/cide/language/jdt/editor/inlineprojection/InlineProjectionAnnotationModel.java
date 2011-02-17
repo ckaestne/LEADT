@@ -8,7 +8,7 @@ import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.source.Annotation;
 import org.eclipse.jface.text.source.AnnotationModel;
 
-@SuppressWarnings(value={"restriction","unchecked"})
+@SuppressWarnings(value = { "restriction", "unchecked" })
 public class InlineProjectionAnnotationModel extends AnnotationModel {
 
 	/**
@@ -109,13 +109,14 @@ public class InlineProjectionAnnotationModel extends AnnotationModel {
 			if (!annotation.isCollapsed()) {
 				Position position = getPosition(annotation);
 				if (position != null && position.overlapsWith(offset, length) /*
-																				 * ||
-																				 * is a
-																				 * delete
-																				 * at
-																				 * the
-																				 * boundary
-																				 */) {
+																			 * ||
+																			 * is
+																			 * a
+																			 * delete
+																			 * at
+																			 * the
+																			 * boundary
+																			 */) {
 					annotation.markCollapsed();
 					modifyAnnotation(annotation, false);
 					collapsing = true;
@@ -154,13 +155,14 @@ public class InlineProjectionAnnotationModel extends AnnotationModel {
 			if (annotation.isCollapsed()) {
 				Position position = getPosition(annotation);
 				if (position != null && position.overlapsWith(offset, length) /*
-																				 * ||
-																				 * is a
-																				 * delete
-																				 * at
-																				 * the
-																				 * boundary
-																				 */) {
+																			 * ||
+																			 * is
+																			 * a
+																			 * delete
+																			 * at
+																			 * the
+																			 * boundary
+																			 */) {
 					annotation.markExpanded();
 					modifyAnnotation(annotation, false);
 					expanding = true;

@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,7 +14,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.ICompilationUnit;
 
 import cide.gast.IASTNode;
-
 import de.ovgu.cide.ASTColorChangedEvent;
 import de.ovgu.cide.FileColorChangedEvent;
 import de.ovgu.cide.mining.database.AbstractProgramDatabase;
@@ -75,8 +73,8 @@ public class EvalLogging {
 					+ ";"
 					+ node.getLength()
 					+ ";"
-					+ event.getColoredSourceFile().getColorManager()
-							.getColors(node));
+					+ event.getColoredSourceFile().getColorManager().getColors(
+							node));
 
 	}
 

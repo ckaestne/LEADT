@@ -9,44 +9,44 @@
  */
 
 package de.ovgu.cide.mining.database.model;
+
 /**
- * Describes a problem creating a relation not supported 
- * by the model.
+ * Describes a problem creating a relation not supported by the model.
  */
 
-public class AUnsupportedRelationException extends Exception
-{
+public class AUnsupportedRelationException extends Exception {
 	/**
 	 * Constructor for UnsupportedRelationException.
 	 */
-	public AUnsupportedRelationException()
-	{
+	public AUnsupportedRelationException() {
 		super();
 	}
+
 	/**
 	 * Constructor for UnsupportedRelationException.
+	 * 
 	 * @param arg0
 	 */
-	public AUnsupportedRelationException(String arg0)
-	{
+	public AUnsupportedRelationException(String arg0) {
 		super(arg0);
 	}
+
 	/**
 	 * Constructor for UnsupportedRelationException.
+	 * 
 	 * @param arg0
 	 * @param arg1
 	 */
-	public AUnsupportedRelationException(String arg0, Throwable arg1)
-	{
+	public AUnsupportedRelationException(String arg0, Throwable arg1) {
 		super(arg0, arg1);
 	}
+
 	/**
 	 * Constructor for UnsupportedRelationException.
+	 * 
 	 * @param arg0
 	 */
-	public AUnsupportedRelationException(Throwable arg0)
-	{
+	public AUnsupportedRelationException(Throwable arg0) {
 		super(arg0);
 	}
 }
-

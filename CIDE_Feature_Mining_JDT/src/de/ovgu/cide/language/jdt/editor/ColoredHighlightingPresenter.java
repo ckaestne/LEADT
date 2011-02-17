@@ -27,7 +27,7 @@ import org.eclipse.swt.graphics.Color;
 import de.ovgu.cide.editor.CodeSegment;
 import de.ovgu.cide.utils.ColorHelper;
 
-@SuppressWarnings(value={"restriction","unchecked"})
+@SuppressWarnings(value = { "restriction", "unchecked" })
 public class ColoredHighlightingPresenter implements ITextPresentationListener,
 		ITextInputListener, IDocumentListener {
 
