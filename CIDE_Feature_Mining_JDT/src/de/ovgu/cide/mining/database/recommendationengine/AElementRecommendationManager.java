@@ -68,6 +68,8 @@ public class AElementRecommendationManager implements Observer {
 
 		if (colorRecommendations == null)
 			return new HashMap<AElement, ARecommendationContextCollection>();
+		colorRecommendations = new HashMap<AElement, ARecommendationContextCollection>(
+				colorRecommendations);
 
 		Map<AElement, ARecommendationContextCollection> resultRecommendations = new HashMap<AElement, ARecommendationContextCollection>();
 

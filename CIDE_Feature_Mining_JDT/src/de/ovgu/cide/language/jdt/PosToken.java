@@ -19,7 +19,6 @@ public class PosToken implements IToken {
 		return pos;
 	}
 
-	@Override
 	public int getLine() {
 		return line;
 	}
