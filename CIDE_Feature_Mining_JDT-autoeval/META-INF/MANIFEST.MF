@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: AutoEval
+Bundle-SymbolicName: de.ovgu.cide.mining.autoeval;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Fragment-Host: de.ovgu.cide.language.jdtmining;bundle-version="2.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.junit4

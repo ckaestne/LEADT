@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<fragment>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="mining.projectContributions"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="de.ovgu.cide.mining.autoeval.SaveAnnotationAction"
+               id="saveAnnotationAction"
+               label="Save Annotations"
+               menubarPath="coloride.menu1/cideGroup">
+         </action>
+         <action
+               class="de.ovgu.cide.mining.autoeval.LoadSeedsAction"
+               id="saveAnnotationAction"
+               label="Load Seeds"
+               menubarPath="coloride.menu1/cideGroup">
+         </action>
+      </objectContribution>
+   </extension>
+
+</fragment>
