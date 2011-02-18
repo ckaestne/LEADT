@@ -141,6 +141,15 @@ public class ApplicationController extends Observable {
 				end, cuhash);
 	}
 
+	public Map<AElement, ARecommendationContextCollection> getRecommendations(
+			IFeature color) {
+		return elementRecommendationManager.getRecommendations(color);
+	}
+	
+	public void __script_updateRecommendations() {
+		elementRecommendationManager.__script_updateRecommendations();
+	}
+
 	public static ApplicationController getInstance() {
 		if (AC == null)
 			AC = new ApplicationController();

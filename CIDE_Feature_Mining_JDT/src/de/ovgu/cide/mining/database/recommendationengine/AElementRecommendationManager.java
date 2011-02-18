@@ -94,6 +94,11 @@ public class AElementRecommendationManager implements Observer {
 	}
 
 	public Map<AElement, ARecommendationContextCollection> getRecommendations(
+			IFeature color) {
+		return getRecommendations(color, -1, -1, -1);
+	}
+
+	public Map<AElement, ARecommendationContextCollection> getRecommendations(
 			IFeature color, int start, int end, int cuhash) {
 
 		Map<AElement, ARecommendationContextCollection> recommendations = new HashMap<AElement, ARecommendationContextCollection>();
@@ -235,5 +240,9 @@ public class AElementRecommendationManager implements Observer {
 
 		}
 
+	}
+	
+	public void __script_updateRecommendations() {
+		generateRecommendations();
 	}
 }
