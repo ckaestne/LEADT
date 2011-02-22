@@ -22,6 +22,10 @@ public class AElementRecommendationManager implements Observer {
 	private ApplicationController AC;
 	private Map<IFeature, Map<AElement, ARecommendationContextCollection>> element2Recommendation;
 
+	public static boolean USE_TYPESYSTEM = true;
+	public static boolean USE_TOPOLOGYANALYSIS = true;
+	public static boolean USE_SUBSTRINGCOMP = false;
+
 	private Set<AAbstractElementRecommender> elementRecommenders;
 	private Set<AAbstractFeatureRecommender> featureRecommenders;
 
@@ -31,12 +35,15 @@ public class AElementRecommendationManager implements Observer {
 		element2Recommendation = new HashMap<IFeature, Map<AElement, ARecommendationContextCollection>>();
 
 		elementRecommenders = new HashSet<AAbstractElementRecommender>();
-		elementRecommenders.add(new TypeCheckElementRecommender());
-		elementRecommenders.add(new GraphRelationElementRecommender());
+		if (USE_TYPESYSTEM)
+			elementRecommenders.add(new TypeCheckElementRecommender());
+		if (USE_TOPOLOGYANALYSIS)
+			elementRecommenders.add(new GraphRelationElementRecommender());
 		// recommenders.add(new SubStringElementRecommender());
 
 		featureRecommenders = new HashSet<AAbstractFeatureRecommender>();
-		featureRecommenders.add(new SubStringFeatureRecommender());
+		if (USE_SUBSTRINGCOMP)
+			featureRecommenders.add(new SubStringFeatureRecommender());
 
 		AC.addObserver(this);
 	}
@@ -241,7 +248,7 @@ public class AElementRecommendationManager implements Observer {
 		}
 
 	}
-	
+
 	public void __script_updateRecommendations() {
 		generateRecommendations();
 	}

@@ -121,7 +121,7 @@ public class SubStringFeatureRecommender extends AAbstractFeatureRecommender {
 			final IFeature color) {
 		// PREPARATION PART!
 
-		AElement dummyElement = new AElement(color.getName(), 0, 0, color
+		AElement dummyElement = new AElement(color.getName(), 0, 0, 0, 0, color
 				.getName(), 0, AICategories.FEATURE);
 
 		Set<AElement> featureElements = AC.getElementsOfColor(color);

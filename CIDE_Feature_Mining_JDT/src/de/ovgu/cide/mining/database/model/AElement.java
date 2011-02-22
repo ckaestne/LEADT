@@ -36,6 +36,10 @@ public class AElement implements Serializable {
 	private AICategories category;
 	private int paramIndex = -1;
 
+	private int startLine;
+
+	private int endLine;
+
 	/**
 	 * Builds an abstract element.
 	 * 
@@ -46,12 +50,15 @@ public class AElement implements Serializable {
 	 *            for fields, and the name and signature appended to the
 	 *            fully-qualified name of the declaring class for methods.
 	 */
-	public AElement(String id, int start, int length, String displayName,
-			int compUnitHash, AICategories category) {
+	public AElement(String id, int start, int length, int startLine,
+			int endLine, String displayName, int compUnitHash,
+			AICategories category) {
 		this.id = id;
 		this.start = start;
 		this.length = length;
 		this.displayName = displayName;
+		this.startLine = startLine;
+		this.endLine = endLine;
 
 		// this.node = node;
 		this.cuHash = compUnitHash;
@@ -66,9 +73,9 @@ public class AElement implements Serializable {
 
 	protected AElement(UnifiedASTNode node, int compUnitHash,
 			AICategories category) {
-		this(node.getId(), node.getStartPosition(), node.getLength(),
-				getDisplay(node.getDisplayName(), category), compUnitHash,
-				category);
+		this(node.getId(), node.getStartPosition(), node.getLength(), node
+				.getStartLine(), node.getEndLine(), getDisplay(node
+				.getDisplayName(), category), compUnitHash, category);
 	}
 
 	private static String getDisplay(String name, AICategories cat) {
@@ -202,5 +209,13 @@ public class AElement implements Serializable {
 	 */
 	public void setParamIndex(int paramIndex) {
 		this.paramIndex = paramIndex;
+	}
+
+	public int getStartLine() {
+		return startLine;
+	}
+
+	public int getEndLine() {
+		return endLine;
 	}
 }
