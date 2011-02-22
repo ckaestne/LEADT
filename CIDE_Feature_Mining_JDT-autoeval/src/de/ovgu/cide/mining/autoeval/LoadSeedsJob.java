@@ -1,9 +1,11 @@
 package de.ovgu.cide.mining.autoeval;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 
 import cide.gast.ASTVisitor;
@@ -11,24 +13,27 @@ import cide.gast.IASTNode;
 import cide.gparser.ParseException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.source.ColoredSourceFile;
-import de.ovgu.cide.features.source.ColoredSourceFileIteratorAction;
 import de.ovgu.cide.features.source.ColoredSourceFileIteratorJob;
 import de.ovgu.cide.features.source.SourceFileColorManager;
 
-public class LoadSeedsAction extends ColoredSourceFileIteratorAction {
-
-	@Override
-	protected WorkspaceJob createJob(IProject[] p) {
-
-		return new LoadSeedsJob(p);
-	}
-
-}
-
 class LoadSeedsJob extends ColoredSourceFileIteratorJob {
 
-	public LoadSeedsJob(IProject[] p) {
-		super(p, "Loading seeds", "loadseed");
+	private Map<IFeature, Set<String>> seeds;
+
+	public LoadSeedsJob(IProject p, Set<SeedInfo> seedInfos) {
+		super(new IProject[] { p }, "Loading seeds", "loadseed");
+		this.seeds = new HashMap<IFeature, Set<String>>();
+
+		for (SeedInfo seedInfo : seedInfos) {
+			Set<String> elements = AutoEval.readElements(p
+					.getFile(seedInfo.filename));
+			if (!elements.isEmpty())
+				if (seeds.get(seedInfo.feature) != null)
+					seeds.get(seedInfo.feature).addAll(elements);
+				else
+					seeds.put(seedInfo.feature, elements);
+		}
+
 	}
 
 	@Override
@@ -46,22 +51,17 @@ class LoadSeedsJob extends ColoredSourceFileIteratorJob {
 				}
 			});
 			// then load seeds
-			for (final IFeature feature : source.getFeatureModel()
-					.getFeatures()) {
+			for (final Entry<IFeature, Set<String>> entry : seeds.entrySet()) {
 
-				final Set<String> elements = AutoEval.readElements(source
-						.getProject().getFile(
-								"seed_" + feature.getName() + ".log"));
-				if (!elements.isEmpty())
-					source.getAST().accept(new ASTVisitor() {
-						@Override
-						public boolean visit(IASTNode node) {
-							if (elements.contains(node.getId()))
-								source.getColorManager()
-										.addColor(node, feature);
-							return super.visit(node);
-						}
-					});
+				source.getAST().accept(new ASTVisitor() {
+					@Override
+					public boolean visit(IASTNode node) {
+						if (entry.getValue().contains(node.getId()))
+							source.getColorManager().addColor(node,
+									entry.getKey());
+						return super.visit(node);
+					}
+				});
 			}
 
 		} catch (ParseException e) {

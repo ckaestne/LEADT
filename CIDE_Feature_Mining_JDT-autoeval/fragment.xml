@@ -14,12 +14,21 @@
                menubarPath="coloride.menu1/cideGroup">
          </action>
          <action
-               class="de.ovgu.cide.mining.autoeval.LoadSeedsAction"
-               id="saveAnnotationAction"
-               label="Load Seeds"
+               class="de.ovgu.cide.mining.autoeval.ClearAnnotationsAction"
+               id="clearAnnotationAction"
+               label="Clear Annotations"
                menubarPath="coloride.menu1/cideGroup">
          </action>
       </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="de.ovgu.cide.mining.autoeval.MissingAnnotationView"
+            id="missingannotations"
+            name="Missing Annotations"
+            restorable="true">
+      </view>
    </extension>
 
 </fragment>

@@ -6,3 +6,5 @@ Bundle-Version: 0.1.0.qualifier
 Fragment-Host: de.ovgu.cide.language.jdtmining;bundle-version="2.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.junit4
+Bundle-ClassPath: lib/postgresql-9.0-801.jdbc4.jar,
+ .
