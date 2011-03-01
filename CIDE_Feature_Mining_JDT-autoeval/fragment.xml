@@ -19,6 +19,12 @@
                label="Clear Annotations"
                menubarPath="coloride.menu1/cideGroup">
          </action>
+         <action
+               class="de.ovgu.cide.mining.autoeval.LoadNotFoundAction"
+               id="clearAnnotationAction"
+               label="Load NotFound and IncorrectRecommend"
+               menubarPath="coloride.menu1/cideGroup">
+         </action>
       </objectContribution>
    </extension>
    <extension

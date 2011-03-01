@@ -42,28 +42,34 @@ class LoadSeedsJob extends ColoredSourceFileIteratorJob {
 		try {
 			final SourceFileColorManager colorManager = source
 					.getColorManager();
-			// clear all colors
-			source.getAST().accept(new ASTVisitor() {
-				@Override
-				public boolean visit(IASTNode node) {
-					colorManager.clearColor(node);
-					return super.visit(node);
-				}
-			});
-			// then load seeds
-			for (final Entry<IFeature, Set<String>> entry : seeds.entrySet()) {
-
+			colorManager.beginBatch();
+			try {
+				// clear all colors
 				source.getAST().accept(new ASTVisitor() {
 					@Override
 					public boolean visit(IASTNode node) {
-						if (entry.getValue().contains(node.getId()))
-							source.getColorManager().addColor(node,
-									entry.getKey());
+						colorManager.clearColor(node);
 						return super.visit(node);
 					}
 				});
-			}
+				// then load seeds
+				for (final Entry<IFeature, Set<String>> entry : seeds
+						.entrySet()) {
 
+					source.getAST().accept(new ASTVisitor() {
+						@Override
+						public boolean visit(IASTNode node) {
+							if (entry.getValue().contains(node.getId()))
+								source.getColorManager().addColor(node,
+										entry.getKey());
+							return super.visit(node);
+						}
+					});
+				}
+
+			} finally {
+				colorManager.endBatch();
+			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

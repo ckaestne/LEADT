@@ -1,7 +1,6 @@
 package de.ovgu.cide.mining.autoeval;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,15 +9,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Set;
 import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -34,11 +31,11 @@ import cide.gast.PropertyZeroOrMore;
 import cide.gparser.ParseException;
 import de.ovgu.cide.ASTColorChangedEvent;
 import de.ovgu.cide.CIDECorePlugin;
-import de.ovgu.cide.features.FeatureModelManager;
 import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
 import de.ovgu.cide.features.source.ColoredSourceFile;
 import de.ovgu.cide.mining.database.ApplicationController;
+import de.ovgu.cide.mining.database.ApplicationControllerException;
 import de.ovgu.cide.mining.database.model.AElement;
 import de.ovgu.cide.mining.database.recommendationengine.AElementRecommendationManager;
 import de.ovgu.cide.mining.database.recommendationengine.ARecommendationContextCollection;
@@ -49,58 +46,206 @@ public class RunAutoEval {
 	static final String PRIORITYSETTING_NAME = (AElementRecommendationManager.USE_TYPESYSTEM ? "TS"
 			: "")
 			+ (AElementRecommendationManager.USE_TOPOLOGYANALYSIS ? "TA" : "")
-			+ (AElementRecommendationManager.USE_SUBSTRINGCOMP ? "SS" : "");
+			+ (AElementRecommendationManager.USE_SUBSTRINGCOMP ? "SS" : "")
+			+ ".9";
 
 	static final boolean ISGREEDY = true;
 	static final int MAX_FAILURE = 50;
 
+	// @Test
+	// @Ignore
+	// public void run1() throws Exception {
+	// String projectName = "MobileMedia_Eval";
+	// String featureName = "Play_Music";
+	// IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(
+	// projectName);
+	// project.refreshLocal(IResource.DEPTH_INFINITE,
+	// new NullProgressMonitor());
+	// Set<IFeature> features = FeatureModelManager.getInstance()
+	// .getFeatureModel(project).getFeatures();
+	//
+	// IFeature color = getFeature(featureName, features);
+	// measureOneFeatureDefault(project, color);
+	// }
+
+	String[] features = new String[] { "Copy_Media", "Count_and_Sort",
+			"Favourites", "SMS_Transfer", "Play_Music" };
+	String[] featuresAll = new String[] { "Copy_Media", "Count_and_Sort",
+			"Favourites", "SMS_Transfer", "Play_Music", "View_Photo",
+			"SMS_or_Copy" };
+
+	Map<String, String[]> seeds = new HashMap<String, String[]>();
+	{
+		seeds.put("Copy_Media", new String[] { "seed_Copy_Media_1_1.log",
+				"seed_Copy_Media_2_0961.log", "seed_Copy_Media_3_0694.log",
+				"seed_Copy_Media_4_0579.log", "seed_Copy_Media_5_0507.log",
+				"seed_Copy_Media_domain.log" });
+		seeds.put("Count_and_Sort", new String[] {
+				"seed_Count_and_Sort_1_1.log",
+				"seed_Count_and_Sort_2_0707.log",
+				"seed_Count_and_Sort_3_066.log",
+				"seed_Count_and_Sort_4_0577.log",
+				"seed_Count_and_Sort_5_0412.log",
+				"seed_Count_and_Sort_domain.log" });
+		seeds.put("Favourites", new String[] { "seed_Favourites_1_1.log",
+				"seed_Favourites_2_0875.log", "seed_Favourites_3_075.log",
+				"seed_Favourites_4_0438.log", "seed_Favourites_5_025.log",
+				"seed_Favourites_domain.log" });
+		seeds.put("Play_Music", new String[] { "seed_Play_Music_1_1.log",
+				"seed_Play_Music_2_08.log", "seed_Play_Music_3_08.log",
+				"seed_Play_Music_4_0707.log", "seed_Play_Music_5_0707.log",
+				"seed_Play_Music_domain.log" });
+		seeds
+				.put("SMS_Transfer", new String[] {
+						"seed_SMS_Transfer_2_0373.log",
+						"seed_SMS_Transfer_3_0323.log",
+						"seed_SMS_Transfer_4_0311.log",
+						"seed_SMS_Transfer_5_0308.log",
+						"seed_SMS_Transfer_6_308.log",
+						"seed_SMS_Transfer_domain.log" });
+
+	}
+
+	private Set<SeedInfo> getSeeds(int nr) throws CoreException,
+			FeatureModelNotFoundException {
+		Set<SeedInfo> seedInfos = new HashSet<SeedInfo>();
+		for (String f : features) {
+			seedInfos.add(new SeedInfo(EvalHelper.getFeatureByName(f), seeds
+					.get(f)[nr]));
+		}
+		return seedInfos;
+	}
+
 	@Test
 	@Ignore
-	public void run1() throws Exception {
-		String projectName = "MobileMedia_Eval";
-		String featureName = "Play_Music";
-		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(
-				projectName);
-		project.refreshLocal(IResource.DEPTH_INFINITE,
-				new NullProgressMonitor());
-		Set<IFeature> features = FeatureModelManager.getInstance()
-				.getFeatureModel(project).getFeatures();
+	public void runDefault() throws Exception {
+		Set<SeedInfo> seedInfos = getSeeds(0);
 
-		IFeature color = getFeature(featureName, features);
-		measureOneFeatureDefault(project, color);
+		IProject project = EvalHelper.getProject();
+		ApplicationController lDB = setupWorkspace(project, seedInfos);
+
+		for (String f : featuresAll) {
+			IFeature color = EvalHelper.getFeatureByName(f);
+			String targetAnnotationFile = getTargetFilename(color);
+			measureFeature(lDB, project, color, targetAnnotationFile,
+					seedInfos, ISGREEDY);
+		}
+
 	}
 
 	@Test
-	public void runPlayMusic1_Greedy() throws Exception {
-		measureMobileMedia("Play_Music", "seed_Play_Music_1_1.log", ISGREEDY);
+	public void loadTargetStatistics() throws Exception {
+		// Set<SeedInfo> seedInfo = new HashSet<SeedInfo>();
+		// for (String f : featuresAll) {
+		// IFeature color = EvalHelper.getFeatureByName(f);
+		// seedInfo.add(new SeedInfo(color, getTargetFilename(color)));
+		// }
+		IProject project = EvalHelper.getProject();
+		ApplicationController lDB = setupWorkspace(project,
+				new HashSet<SeedInfo>());
+
+		for (String f : featuresAll) {
+			IFeature color = EvalHelper.getFeatureByName(f);
+			String targetAnnotationFile = getTargetFilename(color);
+			Set<String> targetNodes = AutoEval.readElements(project
+					.getFile(targetAnnotationFile));
+			Set<AElement> targetElements = getTargetElements(lDB, color,
+					targetNodes);
+			calcTargetStatistics(color, targetElements);
+		}
 	}
 
-	@Test
-	public void runPlayMusic2_Greedy() throws Exception {
-		measureMobileMedia("Play_Music", "seed_Play_Music_2_08.log", ISGREEDY);
+	// @Test
+	// public void runAllFirst() throws Exception {
+	// for (String f : features) {
+	// measureMobileMedia(f, seeds.get(f)[0], ISGREEDY);
+	// }
+	// }
+	// @Test
+	// public void loadTargetAnnotations() throws Exception {
+	// Set<SeedInfo> seedInfo = new HashSet<SeedInfo>();
+	// for (String f : featuresAll) {
+	// IFeature color = EvalHelper.getFeatureByName(f);
+	// seedInfo.add(new SeedInfo(color, getTargetFilename(color)));
+	// }
+	// measureMobileMedia("SMS_Transfer", seedInfo, ISGREEDY);
+	// }
+
+	//
+	// @Test
+	// public void runPhoto() throws Exception {
+	// Set<SeedInfo> seedInfo = new HashSet<SeedInfo>();
+	// for (String f : features) {
+	// IFeature color = EvalHelper.getFeatureByName(f);
+	// seedInfo.add(new SeedInfo(color, getTargetFilename(color)));
+	// }
+	// measureMobileMedia("View_Photo", seedInfo, ISGREEDY);
+	// }
+
+	private static class Line implements Comparable<Line> {
+		final int file, line;
+
+		public Line(int file, int line) {
+			this.file = file;
+			this.line = line;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (obj instanceof Line)
+				return ((Line) obj).file == file && ((Line) obj).line == line;
+			return super.equals(obj);
+		}
+
+		@Override
+		public int hashCode() {
+			return file + line * 177;
+		}
+
+		@Override
+		public int compareTo(Line o) {
+			if (this.file < o.file)
+				return -1;
+			if (this.file > o.file)
+				return 1;
+			if (this.line < o.line)
+				return -1;
+			if (this.line > o.line)
+				return 1;
+			return 0;
+		}
 	}
 
-	@Test
-	public void runPlayMusic3_Greedy() throws Exception {
-		measureMobileMedia("Play_Music", "seed_Play_Music_3_08.log", ISGREEDY);
-	}
+	private void calcTargetStatistics(IFeature color,
+			Set<AElement> targetElements) {
+		System.out.println("Feature " + color.getName());
 
-	@Test
-	public void runPlayMusic4_Greedy() throws Exception {
-		measureMobileMedia("Play_Music", "seed_Play_Music_4_0707.log", ISGREEDY);
-	}
+		Set<Line> lines = new HashSet<Line>();
+		Set<Integer> files = new HashSet<Integer>();
 
-	@Test
-	public void runPlayMusic5_Greedy() throws Exception {
-		measureMobileMedia("Play_Music", "seed_Play_Music_5_0707.log", ISGREEDY);
-	}
+		for (AElement element : targetElements) {
 
-	@Test
-	public void runPlayMusic15_Greedy() throws Exception {
-		measureMobileMedia("Play_Music", new String[] {
-				"seed_Play_Music_1_1.log", "seed_Play_Music_2_08.log",
-				"seed_Play_Music_3_08.log", "seed_Play_Music_4_0707.log",
-				"seed_Play_Music_5_0707.log" }, ISGREEDY);
+			int hash = element.getCompelationUnitHash();
+			files.add(hash);
+			for (int line = element.getStartLine(); line <= element
+					.getEndLine(); line++)
+				lines.add(new Line(hash, line));
+		}
+
+		System.out.println("LOC " + lines.size());
+		System.out.println("affected files " + files.size());
+
+		List<Line> fragments = new ArrayList<Line>(lines);
+		Collections.sort(fragments);
+
+		// delete consecutive lines in one file (=1 fragment)
+		for (int i = fragments.size() - 1; i > 0; i--) {
+			if (fragments.get(i).file == fragments.get(i - 1).file)
+				if (Math.abs(fragments.get(i).line - fragments.get(i - 1).line) == 1)
+					fragments.remove(i);
+		}
+		System.out.println("fragments " + fragments.size());
+
 	}
 
 	private void measureMobileMedia(String featureName, String seedFileName,
@@ -110,62 +255,37 @@ public class RunAutoEval {
 
 	private void measureMobileMedia(String featureName, String[] seedFileNames,
 			boolean isGreedy) throws Exception {
-		String projectName = "MobileMedia_Eval";
-		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(
-				projectName);
-		if (!project.isOpen())
-			project.open(new NullProgressMonitor());
-		project.refreshLocal(IResource.DEPTH_INFINITE,
-				new NullProgressMonitor());
-		Set<IFeature> features = FeatureModelManager.getInstance()
-				.getFeatureModel(project).getFeatures();
-		IFeature color = getFeature(featureName, features);
-
-		String targetAnnotationFile = "target_" + color.getName() + ".log";
+		IFeature color = EvalHelper.getFeatureByName(featureName);
 		Set<SeedInfo> seeds = new HashSet<SeedInfo>();
 		for (String seedFileName : seedFileNames)
 			seeds.add(new SeedInfo(color, seedFileName));
-		measureFeature(project, color, targetAnnotationFile, seeds, isGreedy);
+		measureMobileMedia(featureName, seeds, isGreedy);
 	}
 
-	private void measureOneFeatureDefault(IProject project, IFeature color)
-			throws Exception {
+	private void measureMobileMedia(String featureName, Set<SeedInfo> seeds,
+			boolean isGreedy) throws Exception {
+		IProject project = EvalHelper.getProject();
+		IFeature color = EvalHelper.getFeatureByName(featureName);
+
+		String targetAnnotationFile = getTargetFilename(color);
+		ApplicationController lDB = setupWorkspace(project, seeds);
+		measureFeature(lDB, project, color, targetAnnotationFile, seeds,
+				isGreedy);
+	}
+
+	private String getTargetFilename(IFeature color) {
 		String targetAnnotationFile = "target_" + color.getName() + ".log";
-		Set<SeedInfo> seeds = new HashSet<SeedInfo>();
-		seeds.add(new SeedInfo(color));
-
-		measureFeature(project, color, targetAnnotationFile, seeds, false);
+		return targetAnnotationFile;
 	}
 
-	private void measureFeature(IProject project, IFeature color,
-			String targetAnnotationFile, Set<SeedInfo> seeds, boolean isGreedy)
-			throws Exception {
-		Connection database = connectToDatabase();
+	private void measureFeature(ApplicationController lDB, IProject project,
+			IFeature color, String targetAnnotationFile, Set<SeedInfo> seeds,
+			boolean isGreedy) throws Exception {
+		Connection database = EvalHelper.getDBConnection();
 
 		Set<String> targetNodes = AutoEval.readElements(project
 				.getFile(targetAnnotationFile));
 		Assert.assertTrue("no target elements found", targetNodes.size() > 0);
-
-		// BufferedWriter csv = new BufferedWriter(new FileWriter(project
-		// .getName()
-		// + ","
-		// + color.getName()
-		// + ","
-		// + seedsStr
-		// + ","
-		// + (isGreedy ? "greedy" : "conserv")
-		// + ","
-		// + PRIORITYSETTING_NAME + ".csv"));
-		// csv
-		// .write("nr;isCorrect;priority;completenessElem;LOC;completenessLOC;failuresInARow\n");
-
-		// load seeds
-		new LoadSeedsJob(project, seeds)
-				.runInWorkspace(new NullProgressMonitor());
-
-		// init recommender
-		ApplicationController lDB = ApplicationController.getInstance();
-		lDB.initialize(project, new NullProgressMonitor());
 
 		Set<AElement> targetElements = getTargetElements(lDB, color,
 				targetNodes);
@@ -176,9 +296,10 @@ public class RunAutoEval {
 		System.out.println("Feature LOC Total: " + targetLOC);
 		System.out.println("complete: "
 				+ getCompleteRate(lDB, color, targetElements));
-		createRow(database, runId, 0, false, 0, getCompleteRate(lDB, color,
-				targetElements), getCompleteLOC(lDB, color, targetElements),
-				targetLOC, 0);
+		createRow(database, runId, 0, false,
+				new ARecommendationContextCollection(), getCompleteRate(lDB,
+						color, targetElements), getCompleteLOC(lDB, color,
+						targetElements), targetLOC, 0, "seeds");
 
 		// find top recommendation
 		int errorCounter = 0;
@@ -192,10 +313,9 @@ public class RunAutoEval {
 				&& errorCounter < MAX_FAILURE) {
 			match = targetNodes.contains(topRecommendation.element.getId());
 			nr++;
-			double supportValue = topRecommendation.context.getSupportValue();
 
-			System.out.println("next recommendation (" + nr + "; "
-					+ errorCounter + ") =================");
+			System.out.println("next recommendation " + color.getName() + " ("
+					+ nr + "; " + errorCounter + ") =================");
 
 			if (match) {
 				errorCounter = 0;
@@ -220,9 +340,11 @@ public class RunAutoEval {
 						elementsToIgnore, new HashMap<AElement, IFeature>()));
 			}
 
-			createRow(database, runId, nr, match, supportValue, completeRate,
-					completeLOC, targetLOC, errorCounter);
-			String csvLine = (nr + ";" + match + ";" + supportValue + ";"
+			createRow(database, runId, nr, match, topRecommendation.context,
+					completeRate, completeLOC, targetLOC, errorCounter,
+					topRecommendation.element.getId());
+			String csvLine = (nr + ";" + match + ";"
+					+ topRecommendation.context.getSupportValue() + ";"
 					+ completeRate + ";" + completeLOC + ";"
 					+ (((double) completeLOC) / targetLOC) + ";" + errorCounter + "\n")
 					.replace('.', ',');
@@ -231,22 +353,66 @@ public class RunAutoEval {
 			// csv.flush();
 		}
 
-		// csv.close();
+		writeMissingElements(targetElements, color, lDB, database, runId);
+
+	}
+
+	private ApplicationController setupWorkspace(IProject project,
+			Set<SeedInfo> seeds) throws CoreException,
+			ApplicationControllerException {
+		// load seeds
+		new LoadSeedsJob(project, seeds)
+				.runInWorkspace(new NullProgressMonitor());
+
+		// init recommender
+		ApplicationController lDB = ApplicationController.getInstance();
+		lDB.initialize(project, new NullProgressMonitor());
+		return lDB;
+	}
+
+	private void writeMissingElements(Set<AElement> targetElements,
+			IFeature color, ApplicationController lDB, Connection database,
+			int runId) throws SQLException {
+		for (AElement element : targetElements)
+			if (!lDB.getElementColors(element).contains(color)) {
+				Statement statement2 = database.createStatement();
+				statement2.executeUpdate("INSERT INTO notfound (run, astid)"
+						+ " VALUES (" + runId + ",'" + element.getId() + "')");
+			}
+
 	}
 
 	private void createRow(Connection database, int runId, int nr,
-			boolean match, double supportValue, double completeRate,
-			int completeLOC, int targetLOC, int errorCounter)
-			throws SQLException {
+			boolean match, ARecommendationContextCollection context,
+			double completeRate, int completeLOC, int targetLOC,
+			int errorCounter, String astid) throws SQLException {
 		Statement statement2 = database.createStatement();
 		statement2
 				.executeUpdate("INSERT INTO datapoint (run, nr, priority, "
-						+ "completenessel, completenessloc, foundloc, failuresinrow, iscorrect)"
-						+ " VALUES (" + runId + ", " + nr + ", " + supportValue
-						+ ", " + completeRate + ", "
-						+ (((double) completeLOC) / targetLOC) + ", "
-						+ completeLOC + ", " + errorCounter + ", "
-						+ (match ? "TRUE" : "FALSE") + ")");
+						+ "priorityts, priorityta, priorityss, "
+						+ "completenessel, completenessloc, foundloc, failuresinrow, iscorrect, astid)"
+						+ " VALUES ("
+						+ runId
+						+ ", "
+						+ nr
+						+ ", "
+						+ context.getSupportValue()
+						+ ", "
+						+ context.getSupportValue("TC")
+						+ ", "
+						+ context.getSupportValue("GR")
+						+ ", "
+						+ context.getSupportValue("TPF")
+						+ ", "
+						+ completeRate
+						+ ", "
+						+ (((double) completeLOC) / targetLOC)
+						+ ", "
+						+ completeLOC
+						+ ", "
+						+ errorCounter
+						+ ", "
+						+ (match ? "TRUE" : "FALSE") + ",'" + astid + "')");
 	}
 
 	private void writeSeeds(Connection database, int runId, Set<SeedInfo> seeds)
@@ -284,19 +450,6 @@ public class RunAutoEval {
 		statement2.executeUpdate(sql);
 
 		return runId;
-	}
-
-	private Connection connectToDatabase() throws SQLException,
-			ClassNotFoundException {
-		Class.forName("org.postgresql.Driver");
-
-		String url = "jdbc:postgresql://localhost/autoeval";
-		Properties props = new Properties();
-		props.setProperty("user", "dude");
-		props.setProperty("password", "supersecret");
-		// props.setProperty("ssl", "false");
-		return DriverManager.getConnection(url, props);
-
 	}
 
 	private int getCompleteLOC(ApplicationController lDB, IFeature color,
@@ -382,15 +535,6 @@ public class RunAutoEval {
 		}
 
 		return result;
-	}
-
-	private IFeature getFeature(String featureName, Set<IFeature> features) {
-		IFeature color = null;
-		for (IFeature f : features)
-			if (f.getName().equals(featureName))
-				color = f;
-		Assert.assertNotNull(color);
-		return color;
 	}
 
 	private Set<AElement> getTargetElements(ApplicationController lDB,
@@ -492,7 +636,13 @@ class MyRecommendation implements Comparable<MyRecommendation> {
 			return -1;
 		if (v2 > v1)
 			return 1;
-		return 0;
+		// take the bigger element
+		if (this.element.getLength() > o.element.getLength())
+			return -1;
+		if (this.element.getLength() < o.element.getLength())
+			return 1;
+		// finally use astid
+		return this.element.getId().compareTo(o.element.getId());
 	}
 
 	@Override
