@@ -23,8 +23,8 @@ public class AElementRecommendationManager implements Observer {
 	private Map<IFeature, Map<AElement, ARecommendationContextCollection>> element2Recommendation;
 
 	public static boolean USE_TYPESYSTEM = true;
-	public static boolean USE_TOPOLOGYANALYSIS = true;
-	public static boolean USE_SUBSTRINGCOMP = false;
+	public static boolean USE_TOPOLOGYANALYSIS =true;
+	public static boolean USE_SUBSTRINGCOMP = true;
 
 	private Set<AAbstractElementRecommender> elementRecommenders;
 	private Set<AAbstractFeatureRecommender> featureRecommenders;

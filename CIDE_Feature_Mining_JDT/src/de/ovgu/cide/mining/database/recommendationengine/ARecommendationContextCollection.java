@@ -63,6 +63,15 @@ public class ARecommendationContextCollection {
 
 		return supportValue;
 	}
+	
+	//special version for a specific recommender
+	public double getSupportValue(String recommenderKind) {
+		for (ARecommendationContext context : contexts) {
+			if (context.getRecommenderType().equals(recommenderKind))
+				return context.getSupportValue();
+		}
+		return 0;
+	}
 
 	public String getSupportReasons() {
 
@@ -86,5 +95,7 @@ public class ARecommendationContextCollection {
 
 		return reasons.substring(0, reasons.length() - 2);
 	}
+
+
 
 }

@@ -44,6 +44,8 @@ public class ARecommendationContext {
 	}
 
 	public double getSupportValue() {
+		if (!recommenderType.equals("TC"))
+			return supportValue * .9;
 		return supportValue;
 	}
 
