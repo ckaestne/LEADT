@@ -19,7 +19,7 @@ import de.ovgu.cide.features.IFeature;
 
 public class EvalHelper {
 	static IProject getProject() throws CoreException {
-		String projectName = "MobileMedia_Eval";
+		String projectName = "Prevayler_Eval";
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(
 				projectName);
 		if (!project.isOpen())

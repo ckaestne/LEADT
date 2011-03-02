@@ -47,7 +47,7 @@ public class RunAutoEval {
 			: "")
 			+ (AElementRecommendationManager.USE_TOPOLOGYANALYSIS ? "TA" : "")
 			+ (AElementRecommendationManager.USE_SUBSTRINGCOMP ? "SS" : "")
-			+ ".9";
+			+ (AElementRecommendationManager.USE_FOCUS_TS_09 ? ".9" : "");
 
 	static final boolean ISGREEDY = true;
 	static final int MAX_FAILURE = 50;
@@ -106,7 +106,25 @@ public class RunAutoEval {
 
 	}
 
-	private Set<SeedInfo> getSeeds(int nr) throws CoreException,
+	String[] featuresPrevayler = new String[] { "Snapshot", "Censor" /*"GZip", "Monitor",
+			"Replication",*/  };
+
+	Map<String, String[]> seedsPrevayler = new HashMap<String, String[]>();
+	{
+		seedsPrevayler.put("Censor", new String[] { "seed_Censor_1_1.log",
+				"seed_Censor_package.log" });
+		seedsPrevayler.put("GZip", new String[] { "seed_GZip_1_x.log",
+				"seed_GZip_package.log" });
+		seedsPrevayler.put("Monitor", new String[] { "seed_Monitor_1_1.log",
+				"seed_Monitor_package.log" });
+		seedsPrevayler.put("Replication", new String[] {
+				"seed_Replication_1_1.log", "seed_Replication_package.log" });
+		seedsPrevayler.put("Snapshot", new String[] { "seed_Snapshot_1_1.log",
+				"seed_Censor_package.log" });
+	}
+
+	private Set<SeedInfo> getSeeds(int nr, String[] features,
+			Map<String, String[]> seeds) throws CoreException,
 			FeatureModelNotFoundException {
 		Set<SeedInfo> seedInfos = new HashSet<SeedInfo>();
 		for (String f : features) {
@@ -117,14 +135,13 @@ public class RunAutoEval {
 	}
 
 	@Test
-	@Ignore
-	public void runDefault() throws Exception {
-		Set<SeedInfo> seedInfos = getSeeds(0);
+	public void runDefault0() throws Exception {
+		Set<SeedInfo> seedInfos = getSeeds(0, featuresPrevayler, seedsPrevayler);
 
 		IProject project = EvalHelper.getProject();
 		ApplicationController lDB = setupWorkspace(project, seedInfos);
 
-		for (String f : featuresAll) {
+		for (String f : featuresPrevayler) {
 			IFeature color = EvalHelper.getFeatureByName(f);
 			String targetAnnotationFile = getTargetFilename(color);
 			measureFeature(lDB, project, color, targetAnnotationFile,
@@ -134,6 +151,23 @@ public class RunAutoEval {
 	}
 
 	@Test
+	public void runDefault1() throws Exception {
+		Set<SeedInfo> seedInfos = getSeeds(1, featuresPrevayler, seedsPrevayler);
+
+		IProject project = EvalHelper.getProject();
+		ApplicationController lDB = setupWorkspace(project, seedInfos);
+
+		for (String f : featuresPrevayler) {
+			IFeature color = EvalHelper.getFeatureByName(f);
+			String targetAnnotationFile = getTargetFilename(color);
+			measureFeature(lDB, project, color, targetAnnotationFile,
+					seedInfos, ISGREEDY);
+		}
+
+	}
+
+	@Test
+	@Ignore
 	public void loadTargetStatistics() throws Exception {
 		// Set<SeedInfo> seedInfo = new HashSet<SeedInfo>();
 		// for (String f : featuresAll) {
@@ -144,7 +178,7 @@ public class RunAutoEval {
 		ApplicationController lDB = setupWorkspace(project,
 				new HashSet<SeedInfo>());
 
-		for (String f : featuresAll) {
+		for (String f : featuresPrevayler) {
 			IFeature color = EvalHelper.getFeatureByName(f);
 			String targetAnnotationFile = getTargetFilename(color);
 			Set<String> targetNodes = AutoEval.readElements(project
