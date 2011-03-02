@@ -44,7 +44,8 @@ public class ARecommendationContext {
 	}
 
 	public double getSupportValue() {
-		if (!recommenderType.equals("TC"))
+		if (AElementRecommendationManager.USE_FOCUS_TS_09
+				&& !recommenderType.equals("TC"))
 			return supportValue * .9;
 		return supportValue;
 	}

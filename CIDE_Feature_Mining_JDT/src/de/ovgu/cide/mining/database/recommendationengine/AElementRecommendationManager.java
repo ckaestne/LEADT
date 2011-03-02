@@ -25,6 +25,7 @@ public class AElementRecommendationManager implements Observer {
 	public static boolean USE_TYPESYSTEM = true;
 	public static boolean USE_TOPOLOGYANALYSIS =true;
 	public static boolean USE_SUBSTRINGCOMP = true;
+	public static boolean USE_FOCUS_TS_09 = true;
 
 	private Set<AAbstractElementRecommender> elementRecommenders;
 	private Set<AAbstractFeatureRecommender> featureRecommenders;
