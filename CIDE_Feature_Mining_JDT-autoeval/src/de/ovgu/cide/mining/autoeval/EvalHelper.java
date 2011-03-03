@@ -18,8 +18,7 @@ import de.ovgu.cide.features.FeatureModelNotFoundException;
 import de.ovgu.cide.features.IFeature;
 
 public class EvalHelper {
-	static IProject getProject() throws CoreException {
-		String projectName = "Prevayler_Eval";
+	static IProject getProject(String projectName) throws CoreException {
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(
 				projectName);
 		if (!project.isOpen())
@@ -29,23 +28,9 @@ public class EvalHelper {
 		return project;
 	}
 
-	static IFeature getFeatureByName(String name) throws CoreException,
-			FeatureModelNotFoundException {
-		IProject project = getProject();
-		Set<IFeature> features = FeatureModelManager.getInstance()
-				.getFeatureModel(project).getFeatures();
-		return getFeature(name, features);
-	}
 
-	private static IFeature getFeature(String featureName,
-			Set<IFeature> features) {
-		IFeature color = null;
-		for (IFeature f : features)
-			if (f.getName().equals(featureName))
-				color = f;
-		Assert.assertNotNull(color);
-		return color;
-	}
+
+
 
 	private static Connection connection = null;
 

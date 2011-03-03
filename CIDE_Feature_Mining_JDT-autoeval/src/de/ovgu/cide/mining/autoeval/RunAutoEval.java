@@ -68,125 +68,84 @@ public class RunAutoEval {
 	// measureOneFeatureDefault(project, color);
 	// }
 
-	String[] features = new String[] { "Copy_Media", "Count_and_Sort",
-			"Favourites", "SMS_Transfer", "Play_Music" };
-	String[] featuresAll = new String[] { "Copy_Media", "Count_and_Sort",
-			"Favourites", "SMS_Transfer", "Play_Music", "View_Photo",
-			"SMS_or_Copy" };
-
-	Map<String, String[]> seeds = new HashMap<String, String[]>();
-	{
-		seeds.put("Copy_Media", new String[] { "seed_Copy_Media_1_1.log",
-				"seed_Copy_Media_2_0961.log", "seed_Copy_Media_3_0694.log",
-				"seed_Copy_Media_4_0579.log", "seed_Copy_Media_5_0507.log",
-				"seed_Copy_Media_domain.log" });
-		seeds.put("Count_and_Sort", new String[] {
-				"seed_Count_and_Sort_1_1.log",
-				"seed_Count_and_Sort_2_0707.log",
-				"seed_Count_and_Sort_3_066.log",
-				"seed_Count_and_Sort_4_0577.log",
-				"seed_Count_and_Sort_5_0412.log",
-				"seed_Count_and_Sort_domain.log" });
-		seeds.put("Favourites", new String[] { "seed_Favourites_1_1.log",
-				"seed_Favourites_2_0875.log", "seed_Favourites_3_075.log",
-				"seed_Favourites_4_0438.log", "seed_Favourites_5_025.log",
-				"seed_Favourites_domain.log" });
-		seeds.put("Play_Music", new String[] { "seed_Play_Music_1_1.log",
-				"seed_Play_Music_2_08.log", "seed_Play_Music_3_08.log",
-				"seed_Play_Music_4_0707.log", "seed_Play_Music_5_0707.log",
-				"seed_Play_Music_domain.log" });
-		seeds
-				.put("SMS_Transfer", new String[] {
-						"seed_SMS_Transfer_2_0373.log",
-						"seed_SMS_Transfer_3_0323.log",
-						"seed_SMS_Transfer_4_0311.log",
-						"seed_SMS_Transfer_5_0308.log",
-						"seed_SMS_Transfer_6_308.log",
-						"seed_SMS_Transfer_domain.log" });
-
-	}
-
-	String[] featuresPrevayler = new String[] { "Snapshot", "Censor" /*"GZip", "Monitor",
-			"Replication",*/  };
-
-	Map<String, String[]> seedsPrevayler = new HashMap<String, String[]>();
-	{
-		seedsPrevayler.put("Censor", new String[] { "seed_Censor_1_1.log",
-				"seed_Censor_package.log" });
-		seedsPrevayler.put("GZip", new String[] { "seed_GZip_1_x.log",
-				"seed_GZip_package.log" });
-		seedsPrevayler.put("Monitor", new String[] { "seed_Monitor_1_1.log",
-				"seed_Monitor_package.log" });
-		seedsPrevayler.put("Replication", new String[] {
-				"seed_Replication_1_1.log", "seed_Replication_package.log" });
-		seedsPrevayler.put("Snapshot", new String[] { "seed_Snapshot_1_1.log",
-				"seed_Censor_package.log" });
-	}
-
-	private Set<SeedInfo> getSeeds(int nr, String[] features,
-			Map<String, String[]> seeds) throws CoreException,
-			FeatureModelNotFoundException {
+	private Set<SeedInfo> getSeeds(EvalProject project, int nr,
+			String[] features, Map<String, String[]> seeds)
+			throws CoreException, FeatureModelNotFoundException {
 		Set<SeedInfo> seedInfos = new HashSet<SeedInfo>();
 		for (String f : features) {
-			seedInfos.add(new SeedInfo(EvalHelper.getFeatureByName(f), seeds
+			seedInfos.add(new SeedInfo(project.getFeatureByName(f), seeds
 					.get(f)[nr]));
 		}
 		return seedInfos;
 	}
 
 	@Test
+	@Ignore
 	public void runDefault0() throws Exception {
-		Set<SeedInfo> seedInfos = getSeeds(0, featuresPrevayler, seedsPrevayler);
+		EvalProject project = new LampiroProject();
+		Set<SeedInfo> seedInfos = getSeeds(project, 0, project.getFeatures(),
+				project.getSeeds());
 
-		IProject project = EvalHelper.getProject();
-		ApplicationController lDB = setupWorkspace(project, seedInfos);
+		ApplicationController lDB = setupWorkspace(project.getProject(),
+				seedInfos);
 
-		for (String f : featuresPrevayler) {
-			IFeature color = EvalHelper.getFeatureByName(f);
+		for (String f : project.getFeatures()) {
+			IFeature color = project.getFeatureByName(f);
 			String targetAnnotationFile = getTargetFilename(color);
-			measureFeature(lDB, project, color, targetAnnotationFile,
-					seedInfos, ISGREEDY);
-		}
-
-	}
-
-	@Test
-	public void runDefault1() throws Exception {
-		Set<SeedInfo> seedInfos = getSeeds(1, featuresPrevayler, seedsPrevayler);
-
-		IProject project = EvalHelper.getProject();
-		ApplicationController lDB = setupWorkspace(project, seedInfos);
-
-		for (String f : featuresPrevayler) {
-			IFeature color = EvalHelper.getFeatureByName(f);
-			String targetAnnotationFile = getTargetFilename(color);
-			measureFeature(lDB, project, color, targetAnnotationFile,
-					seedInfos, ISGREEDY);
+			measureFeature(lDB, project.getProject(), color,
+					targetAnnotationFile, seedInfos, ISGREEDY);
 		}
 
 	}
 
 	@Test
 	@Ignore
+	public void runDefault1() throws Exception {
+		EvalProject project = new LampiroProject();
+		Set<SeedInfo> seedInfos = getSeeds(project, 1, project.getFeatures(),
+				project.getSeeds());
+
+		ApplicationController lDB = setupWorkspace(project.getProject(),
+				seedInfos);
+
+		for (String f : project.getFeatures()) {
+			IFeature color = project.getFeatureByName(f);
+			String targetAnnotationFile = getTargetFilename(color);
+			measureFeature(lDB, project.getProject(), color,
+					targetAnnotationFile, seedInfos, ISGREEDY);
+		}
+	}
+
+	@Test
 	public void loadTargetStatistics() throws Exception {
 		// Set<SeedInfo> seedInfo = new HashSet<SeedInfo>();
 		// for (String f : featuresAll) {
 		// IFeature color = EvalHelper.getFeatureByName(f);
 		// seedInfo.add(new SeedInfo(color, getTargetFilename(color)));
 		// }
-		IProject project = EvalHelper.getProject();
-		ApplicationController lDB = setupWorkspace(project,
+		EvalProject project = new LampiroProject();
+		ApplicationController lDB = setupWorkspace(project.getProject(),
 				new HashSet<SeedInfo>());
 
-		for (String f : featuresPrevayler) {
-			IFeature color = EvalHelper.getFeatureByName(f);
+		for (String f : project.getAllFeatures()) {
+			IFeature color = project.getFeatureByName(f);
 			String targetAnnotationFile = getTargetFilename(color);
 			Set<String> targetNodes = AutoEval.readElements(project
-					.getFile(targetAnnotationFile));
+					.getProject().getFile(targetAnnotationFile));
 			Set<AElement> targetElements = getTargetElements(lDB, color,
 					targetNodes);
-			calcTargetStatistics(color, targetElements);
+			calcTargetStatistics(color.getName(), targetElements);
 		}
+		// sum over all features
+		Set<AElement> targetElements = new HashSet<AElement>();
+		for (String f : project.getAllFeatures()) {
+			IFeature color = project.getFeatureByName(f);
+			String targetAnnotationFile = getTargetFilename(color);
+			Set<String> targetNodes = AutoEval.readElements(project
+					.getProject().getFile(targetAnnotationFile));
+			targetElements.addAll(getTargetElements(lDB, color, targetNodes));
+		}
+		calcTargetStatistics("AllFeatures", targetElements);
 	}
 
 	// @Test
@@ -250,9 +209,9 @@ public class RunAutoEval {
 		}
 	}
 
-	private void calcTargetStatistics(IFeature color,
+	private void calcTargetStatistics(String featurename,
 			Set<AElement> targetElements) {
-		System.out.println("Feature " + color.getName());
+		System.out.println("Feature " + featurename);
 
 		Set<Line> lines = new HashSet<Line>();
 		Set<Integer> files = new HashSet<Integer>();
@@ -282,30 +241,31 @@ public class RunAutoEval {
 
 	}
 
-	private void measureMobileMedia(String featureName, String seedFileName,
-			boolean isGreedy) throws Exception {
-		measureMobileMedia(featureName, new String[] { seedFileName }, isGreedy);
-	}
+	// private void measureMobileMedia(String featureName, String seedFileName,
+	// boolean isGreedy) throws Exception {
+	// measureMobileMedia(featureName, new String[] { seedFileName }, isGreedy);
+	// }
 
-	private void measureMobileMedia(String featureName, String[] seedFileNames,
-			boolean isGreedy) throws Exception {
-		IFeature color = EvalHelper.getFeatureByName(featureName);
-		Set<SeedInfo> seeds = new HashSet<SeedInfo>();
-		for (String seedFileName : seedFileNames)
-			seeds.add(new SeedInfo(color, seedFileName));
-		measureMobileMedia(featureName, seeds, isGreedy);
-	}
-
-	private void measureMobileMedia(String featureName, Set<SeedInfo> seeds,
-			boolean isGreedy) throws Exception {
-		IProject project = EvalHelper.getProject();
-		IFeature color = EvalHelper.getFeatureByName(featureName);
-
-		String targetAnnotationFile = getTargetFilename(color);
-		ApplicationController lDB = setupWorkspace(project, seeds);
-		measureFeature(lDB, project, color, targetAnnotationFile, seeds,
-				isGreedy);
-	}
+	// private void measureMobileMedia(String featureName, String[]
+	// seedFileNames,
+	// boolean isGreedy) throws Exception {
+	// IFeature color = EvalHelper.getFeatureByName(featureName);
+	// Set<SeedInfo> seeds = new HashSet<SeedInfo>();
+	// for (String seedFileName : seedFileNames)
+	// seeds.add(new SeedInfo(color, seedFileName));
+	// measureMobileMedia(featureName, seeds, isGreedy);
+	// }
+	//
+	// private void measureMobileMedia(String featureName, Set<SeedInfo> seeds,
+	// boolean isGreedy) throws Exception {
+	// IProject project = EvalHelper.getProject();
+	// IFeature color = EvalHelper.getFeatureByName(featureName);
+	//
+	// String targetAnnotationFile = getTargetFilename(color);
+	// ApplicationController lDB = setupWorkspace(project, seeds);
+	// measureFeature(lDB, project, color, targetAnnotationFile, seeds,
+	// isGreedy);
+	// }
 
 	private String getTargetFilename(IFeature color) {
 		String targetAnnotationFile = "target_" + color.getName() + ".log";
