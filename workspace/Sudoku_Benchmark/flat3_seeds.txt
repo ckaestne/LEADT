@@ -1,0 +1,11 @@
+Color: 5 statements in method update in GuiBoard
+
+Extended (stupid name, domain knowledge: class SetPossibilitiesList
+
+Generator field sGen in GenerateSudokuListener
+
+Solver: method solve in BoardManager
+
+States: getLoadStateListener in ListenerFactory
+
+Undo: getUndoListener in ListenerFactory

@@ -1,0 +1,13 @@
+seeds
+
+itunes:
+CompatibilityRssItunesItem3.java 1 statement in method setItunes .791
+
+iTunes (findet wenig)
+CompatibilityRssFeed3.java method init (darin 5 statements)
+
+Logging
+Class LogManager .857
+
+jsr75 = kein treffer
+file handling => handleOpen in URLHandler with .733

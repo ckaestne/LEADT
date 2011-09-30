@@ -1,0 +1,9 @@
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel:fragments/VariableDeclarationFragment:imageModel:name/SimpleName:imageModel
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel:fragments/VariableDeclarationFragment:imageModel
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel:type/SimpleType::lancs.mobilemedia.core.ui.datamodel.AlbumData
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel:type/SimpleType::lancs.mobilemedia.core.ui.datamodel.AlbumData:name/SimpleName:AlbumData
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel:modifiers/Modifier
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel:modifiers/Modifier/keyword
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel:type/SimpleType::lancs.mobilemedia.core.ui.datamodel.AlbumData:name/SimpleName:AlbumData/identifier
+//CompilationUnit[lancs.mobilemedia.core.ui.MainUIMidlet]:types/TypeDeclaration:MainUIMidlet:bodyDeclarations/FieldDeclaration:imageModel:fragments/VariableDeclarationFragment:imageModel:name/SimpleName:imageModel/identifier

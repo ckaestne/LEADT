@@ -1,0 +1,9 @@
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen:modifiers/Modifier/keyword
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen:fragments/VariableDeclarationFragment:mainscreen:name/SimpleName:mainscreen
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen:type/SimpleType::lancs.mobilemedia.core.ui.screens.SelectTypeOfMedia
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen:modifiers/Modifier
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen:fragments/VariableDeclarationFragment:mainscreen:name/SimpleName:mainscreen/identifier
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen:fragments/VariableDeclarationFragment:mainscreen
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen:type/SimpleType::lancs.mobilemedia.core.ui.screens.SelectTypeOfMedia:name/SimpleName:SelectTypeOfMedia/identifier
+//CompilationUnit[lancs.mobilemedia.core.ui.controller.ScreenSingleton]:types/TypeDeclaration:ScreenSingleton:bodyDeclarations/FieldDeclaration:mainscreen:type/SimpleType::lancs.mobilemedia.core.ui.screens.SelectTypeOfMedia:name/SimpleName:SelectTypeOfMedia

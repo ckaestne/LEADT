@@ -1,0 +1,184 @@
+INIT;11-03-04 08:42:55;Sudoku_Benchmark
+RECUP;11-03-04 08:42:58;updated recommendations;463
+SELREC;11-03-04 08:43:01;Field.java;299;17;0.4358823529411765
+SELREC;11-03-04 08:43:02;Gui.java;1340;25;0.3536470588235294
+RECUP;11-03-04 08:43:05;updated recommendations;90
+SELREC;11-03-04 08:43:06;GuiFieldPopupMenuListener.java;0;22;0.9
+NODE;11-03-04 08:43:39;GuiFieldPopupMenuListener.java;//CompilationUnit[GuiFieldPopupMenuListener]:imports/ImportDeclaration:java.awt.Color;0;22;[Feature:Color[7]]
+RECUP;11-03-04 08:43:39;updated recommendations;90
+NODE;11-03-04 08:43:44;GuiFieldPopupMenuListener.java;//CompilationUnit[GuiFieldPopupMenuListener]:imports/ImportDeclaration:javax.swing.BorderFactory;174;33;[Feature:Color[7]]
+RECUP;11-03-04 08:43:44;updated recommendations;89
+NODE;11-03-04 08:43:46;GuiFieldPopupMenuListener.java;//CompilationUnit[GuiFieldPopupMenuListener]:imports/ImportDeclaration:javax.swing.border.Border;305;33;[Feature:Color[7]]
+RECUP;11-03-04 08:43:46;updated recommendations;88
+SELREC;11-03-04 08:43:51;GuiFieldPopupMenuListener.java;1567;297;0.8142857142857143
+NODE;11-03-04 08:44:10;GuiFieldPopupMenuListener.java;//CompilationUnit[GuiFieldPopupMenuListener]:imports/ImportDeclaration:javax.swing.JOptionPane;240;31;[Feature:Solver[6]]
+RECUP;11-03-04 08:44:11;updated recommendations;88
+SELREC;11-03-04 08:44:20;GuiFieldPopupMenuListener.java;447;5;0.6425000000000001
+SELREC;11-03-04 08:44:27;GuiBoard.java;0;22;0.5625
+NODE;11-03-04 08:44:45;GuiBoard.java;//CompilationUnit[GuiBoard]:imports/ImportDeclaration:java.awt.Color;0;22;[Feature:Color[7]]
+NODE;11-03-04 08:44:45;GuiBoard.java;//CompilationUnit[GuiBoard]:imports/ImportDeclaration:java.awt.GridLayout;24;27;[Feature:Color[7]]
+RECUP;11-03-04 08:44:45;updated recommendations;92
+NODE;11-03-04 08:44:49;GuiBoard.java;//CompilationUnit[GuiBoard]:imports/ImportDeclaration:javax.swing.JLabel;55;26;[Feature:Color[7]]
+NODE;11-03-04 08:44:49;GuiBoard.java;//CompilationUnit[GuiBoard]:imports/ImportDeclaration:javax.swing.JPanel;83;26;[Feature:Color[7]]
+RECUP;11-03-04 08:44:49;updated recommendations;94
+SELREC;11-03-04 08:44:52;GuiBoard.java;1074;5;1.0
+NODE;11-03-04 08:45:04;GuiBoard.java;//CompilationUnit[GuiBoard]:imports/ImportDeclaration:java.awt.Color;0;22;[]
+NODE;11-03-04 08:45:04;GuiBoard.java;//CompilationUnit[GuiBoard]:imports/ImportDeclaration:java.awt.GridLayout;24;27;[]
+NODE;11-03-04 08:45:04;GuiBoard.java;//CompilationUnit[GuiBoard]:imports/ImportDeclaration:javax.swing.JLabel;55;26;[]
+NODE;11-03-04 08:45:04;GuiBoard.java;//CompilationUnit[GuiBoard]:imports/ImportDeclaration:javax.swing.JPanel;83;26;[]
+RECUP;11-03-04 08:45:04;updated recommendations;94
+SELREC;11-03-04 08:45:08;GuiBoard.java;1074;5;1.0
+RECUP;11-03-04 08:45:10;updated recommendations;463
+RECUP;11-03-04 08:45:10;updated recommendations;94
+SELREC;11-03-04 08:45:12;GuiBoard.java;1074;5;1.0
+SELREC;11-03-04 08:45:15;GuiBoard.java;395;10;0.9999999999999999
+SELREC;11-03-04 08:45:16;GuiBoard.java;885;6;0.9999999999999999
+SELREC;11-03-04 08:45:18;GuiBoard.java;143;6;0.9999999999999999
+SELREC;11-03-04 08:45:23;GuiFieldPopupMenuListener.java;1567;297;0.8142857142857143
+RECUP;11-03-04 08:45:35;updated recommendations;405
+SELREC;11-03-04 08:45:36;BoardManager.java;6843;11;1.0
+SELREC;11-03-04 08:46:12;BoardManager.java;6843;11;1.0
+SELREC;11-03-04 08:46:13;BoardManager.java;6843;11;1.0
+SELREC;11-03-04 08:46:30;BoardManager.java;6843;11;1.0
+SELREC;11-03-04 08:46:30;BoardManager.java;3534;12;1.0
+SELREC;11-03-04 08:46:31;BoardManager.java;6843;11;1.0
+SELREC;11-03-04 08:46:47;BoardManager.java;3534;12;1.0
+SELREC;11-03-04 08:46:48;BoardManager.java;6843;11;1.0
+INIT;11-03-04 08:47:53;Sudoku_Benchmark
+RECUP;11-03-04 08:47:58;updated recommendations;463
+RECUP;11-03-04 08:47:59;updated recommendations;88
+SELREC;11-03-04 08:48:03;Structure.java;222;26;0.4865625
+RECUP;11-03-04 08:48:07;updated recommendations;405
+SELREC;11-03-04 08:48:08;BoardManager.java;2850;62;0.9100621118012424
+SELREC;11-03-04 08:48:38;BoardManager.java;480;90;0.635776397515528
+SELREC;11-03-04 08:48:39;Field.java;2279;90;0.49304347826086964
+RECUP;11-03-04 08:48:40;updated recommendations;294
+SELREC;11-03-04 08:48:41;Gui.java;1105;20;0.9999999999999999
+NODE;11-03-04 08:49:09;Gui.java;//CompilationUnit[Gui]:types/TypeDeclaration:Gui:bodyDeclarations/MethodDeclaration:JMenuItem:createExitMenuItem:[];1579;387;[]
+NODE;11-03-04 08:49:32;Gui.java;//CompilationUnit[Gui]:types/TypeDeclaration:Gui:bodyDeclarations/MethodDeclaration:JMenuItem:createSolutionHintMenuItem:[];5385;368;[Feature:Solver[6]]
+RECUP;11-03-04 08:49:32;updated recommendations;291
+SELREC;11-03-04 08:49:36;BoardManager.java;2850;62;0.9091157556270096
+SELREC;11-03-04 08:49:43;Structure.java;254;134;0.9065112540192926
+SELREC;11-03-04 08:49:47;Gui.java;31;22;0.9
+NODE;11-03-04 08:50:04;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:javax.swing.JMenu;354;25;[Feature:Solver[6]]
+RECUP;11-03-04 08:50:04;updated recommendations;298
+NODE;11-03-04 08:50:06;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:javax.swing.JMenuItem;411;29;[Feature:Solver[6]]
+RECUP;11-03-04 08:50:06;updated recommendations;312
+NODE;11-03-04 08:50:17;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:java.awt.event.MouseEvent;223;33;[Feature:Solver[6]]
+NODE;11-03-04 08:50:17;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:java.awt.event.MouseListener;258;36;[Feature:Solver[6]]
+RECUP;11-03-04 08:50:17;updated recommendations;310
+NODE;11-03-04 08:50:19;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:java.awt.event.KeyEvent;154;31;[Feature:Solver[6]]
+NODE;11-03-04 08:50:19;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:java.awt.event.KeyListener;187;34;[Feature:Solver[6]]
+RECUP;11-03-04 08:50:20;updated recommendations;313
+NODE;11-03-04 08:50:34;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:javax.swing.JMenu;354;25;[]
+RECUP;11-03-04 08:50:34;updated recommendations;313
+NODE;11-03-04 08:50:36;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:javax.swing.JMenuItem;411;29;[]
+RECUP;11-03-04 08:50:36;updated recommendations;313
+NODE;11-03-04 08:50:43;Gui.java;//CompilationUnit[Gui]:imports/ImportDeclaration:java.awt.event.KeyEvent;154;31;[]
+RECUP;11-03-04 08:50:44;updated recommendations;313
+INIT;11-03-04 08:51:43;Sudoku_Benchmark
+RECUP;11-03-04 08:51:44;updated recommendations;405
+RECUP;11-03-04 08:51:46;updated recommendations;290
+SELREC;11-03-04 08:51:48;BoardManager.java;2850;62;0.9090594059405941
+SELREC;11-03-04 08:51:49;Structure.java;254;134;0.9063861386138613
+SELREC;11-03-04 08:51:58;Gui.java;31;22;0.9
+SELREC;11-03-04 08:51:59;Gui.java;326;26;0.9
+SELREC;11-03-04 08:52:01;LoadFileListener.java;140;31;0.9
+SELREC;11-03-04 08:52:02;Gui.java;326;26;0.9
+SELREC;11-03-04 08:52:14;LoadFileListener.java;140;31;0.9
+SELREC;11-03-04 08:52:28;Structure.java;98;26;0.8217391304347825
+SELREC;11-03-04 08:52:30;Field.java;1089;74;0.8154455445544554
+RECUP;11-03-04 08:52:37;updated recommendations;427
+SELREC;11-03-04 08:52:40;Guesser.java;954;13;1.0
+INIT;11-03-04 08:53:20;Sudoku_Benchmark
+RECUP;11-03-04 08:53:21;updated recommendations;427
+RECUP;11-03-04 08:53:22;updated recommendations;427
+RECUP;11-03-04 08:53:23;updated recommendations;427
+RECUP;11-03-04 08:53:23;updated recommendations;427
+SELREC;11-03-04 08:53:24;SudokuGenerator.java;1057;9;1.0
+INIT;11-03-04 08:53:59;Sudoku_Benchmark
+RECUP;11-03-04 08:54:00;updated recommendations;427
+RECUP;11-03-04 08:54:01;updated recommendations;427
+SELREC;11-03-04 08:54:02;BoardManager.java;4145;6;1.0
+INIT;11-03-04 08:54:37;Sudoku_Benchmark
+RECUP;11-03-04 08:54:38;updated recommendations;427
+RECUP;11-03-04 08:54:39;updated recommendations;427
+SELREC;11-03-04 08:54:40;BoardManager.java;919;14;1.0
+INIT;11-03-04 08:55:04;Sudoku_Benchmark
+RECUP;11-03-04 08:55:06;updated recommendations;249
+SELREC;11-03-04 08:55:07;BoardManager.java;919;14;1.0
+NODE;11-03-04 08:55:35;BoardManager.java;//CompilationUnit[BoardManager]:imports/ImportDeclaration:java.io.BufferedReader;0;30;[]
+NODE;11-03-04 08:55:38;BoardManager.java;//CompilationUnit[BoardManager]:imports/ImportDeclaration:java.io.FileReader;121;26;[]
+NODE;11-03-04 08:55:41;BoardManager.java;//CompilationUnit[BoardManager]:imports/ImportDeclaration:java.io.IOException;149;27;[]
+NODE;11-03-04 08:55:45;BoardManager.java;//CompilationUnit[BoardManager]:imports/ImportDeclaration:java.io.File;32;20;[]
+INIT;11-03-04 08:56:19;Sudoku_Benchmark
+RECUP;11-03-04 08:56:23;updated recommendations;248
+SELREC;11-03-04 08:56:24;BoardManager.java;2850;62;0.9093417721518987
+SELREC;11-03-04 08:56:25;BoardManager.java;2373;54;0.9080886075949368
+SELREC;11-03-04 08:56:28;Structure.java;254;134;0.9072911392405063
+SELREC;11-03-04 08:56:30;Gui.java;31;22;0.9
+SELREC;11-03-04 08:56:32;Gui.java;326;26;0.9
+SELREC;11-03-04 08:56:33;LoadFileListener.java;140;31;0.9
+SELREC;11-03-04 08:56:34;Structure.java;98;26;0.8217391304347825
+SELREC;11-03-04 08:56:35;Field.java;1089;74;0.816632911392405
+SELREC;11-03-04 08:56:37;Board.java;590;248;0.8154616530156366
+SELREC;11-03-04 08:56:38;Board.java;0;4956;0.7875
+SELREC;11-03-04 08:56:40;Board.java;590;248;0.8154616530156366
+SELREC;11-03-04 08:56:41;Board.java;0;4956;0.7875
+RECUP;11-03-04 08:56:47;updated recommendations;283
+SELREC;11-03-04 08:56:48;BoardManager.java;2850;62;0.9092957746478874
+SELREC;11-03-04 08:56:48;Structure.java;254;134;0.9067605633802818
+SELREC;11-03-04 08:56:49;Gui.java;31;22;0.9
+SELREC;11-03-04 08:56:49;Gui.java;326;26;0.9
+SELREC;11-03-04 08:56:49;LoadFileListener.java;140;31;0.9
+SELREC;11-03-04 08:56:50;LoadFileListener.java;140;31;0.9
+SELREC;11-03-04 08:56:50;Structure.java;98;26;0.8217391304347825
+SELREC;11-03-04 08:56:51;Field.java;1089;74;0.8160563380281689
+SELREC;11-03-04 08:56:51;Board.java;590;248;0.8144159072079535
+SELREC;11-03-04 08:56:52;Field.java;408;192;0.7830335861321777
+RECUP;11-03-04 08:57:06;updated recommendations;463
+NODE;11-03-04 08:58:54;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:thenStatement/Block[2]:statements/ExpressionStatement;1099;33;[Feature:Color[7]]
+NODE;11-03-04 08:58:54;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:thenStatement/Block[3]:statements/ExpressionStatement;1139;34;[Feature:Color[7]]
+NODE;11-03-04 08:58:54;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:thenStatement/Block[2]:statements/ExpressionStatement;1099;33;[Feature:Color[7]]
+NODE;11-03-04 08:58:54;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:thenStatement/Block[3]:statements/ExpressionStatement;1139;34;[Feature:Color[7]]
+RECUP;11-03-04 08:58:54;updated recommendations;463
+RECUP;11-03-04 08:58:55;updated recommendations;463
+NODE;11-03-04 08:58:57;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:elseStatement/IfStatement:thenStatement/Block[2]:statements/ExpressionStatement;1308;33;[Feature:Color[7]]
+NODE;11-03-04 08:58:57;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:elseStatement/IfStatement:thenStatement/Block[3]:statements/ExpressionStatement;1348;34;[Feature:Color[7]]
+NODE;11-03-04 08:58:57;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:elseStatement/IfStatement:thenStatement/Block[2]:statements/ExpressionStatement;1308;33;[Feature:Color[7]]
+NODE;11-03-04 08:58:57;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:elseStatement/IfStatement:thenStatement/Block[3]:statements/ExpressionStatement;1348;34;[Feature:Color[7]]
+RECUP;11-03-04 08:58:57;updated recommendations;463
+RECUP;11-03-04 08:58:58;updated recommendations;463
+NODE;11-03-04 08:58:59;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:elseStatement/IfStatement:elseStatement/Block[2]:statements/ExpressionStatement;1468;33;[Feature:Color[7]]
+NODE;11-03-04 08:59:00;GuiBoard.java;//CompilationUnit[GuiBoard]:types/TypeDeclaration:GuiBoard:bodyDeclarations/MethodDeclaration:void:update:[Board]:body/Block[0]:statements/ForStatement:body/Block[0]:statements/ForStatement:body/Block[3]:statements/IfStatement:elseStatement/IfStatement:elseStatement/Block[2]:statements/ExpressionStatement;1468;33;[Feature:Color[7]]
+RECUP;11-03-04 08:59:00;updated recommendations;463
+RECUP;11-03-04 08:59:00;updated recommendations;463
+NODE;11-03-04 08:59:49;SetPossibilitiesListener.java;//CompilationUnit[SetPossibilitiesListener];0;733;[Feature:Extended[3]]
+NODE;11-03-04 08:59:49;SetPossibilitiesListener.java;//CompilationUnit[SetPossibilitiesListener];0;733;[Feature:Extended[3]]
+RECUP;11-03-04 08:59:49;updated recommendations;463
+RECUP;11-03-04 08:59:50;updated recommendations;463
+NODE;11-03-04 09:00:40;GenerateSudokuListener.java;//CompilationUnit[GenerateSudokuListener]:types/TypeDeclaration:GenerateSudokuListener:bodyDeclarations/FieldDeclaration:sGen;178;31;[Feature:Generator[5]]
+NODE;11-03-04 09:00:41;GenerateSudokuListener.java;//CompilationUnit[GenerateSudokuListener]:types/TypeDeclaration:GenerateSudokuListener:bodyDeclarations/FieldDeclaration:sGen;178;31;[Feature:Generator[5]]
+RECUP;11-03-04 09:00:41;updated recommendations;463
+RECUP;11-03-04 09:00:41;updated recommendations;463
+RECUP;11-03-04 09:00:46;updated recommendations;88
+NODE;11-03-04 09:01:55;BoardManager.java;//CompilationUnit[BoardManager]:types/TypeDeclaration:BoardManager:bodyDeclarations/MethodDeclaration:List:solve:[Board];6822;573;[Feature:Generator[5]]
+NODE;11-03-04 09:01:56;BoardManager.java;//CompilationUnit[BoardManager]:types/TypeDeclaration:BoardManager:bodyDeclarations/MethodDeclaration:List:solve:[Board];6822;573;[Feature:Generator[5]]
+RECUP;11-03-04 09:01:56;updated recommendations;88
+RECUP;11-03-04 09:01:56;updated recommendations;88
+NODE;11-03-04 09:01:58;BoardManager.java;//CompilationUnit[BoardManager]:types/TypeDeclaration:BoardManager:bodyDeclarations/MethodDeclaration:List:solve:[Board];6822;573;[]
+NODE;11-03-04 09:01:58;BoardManager.java;//CompilationUnit[BoardManager]:types/TypeDeclaration:BoardManager:bodyDeclarations/MethodDeclaration:List:solve:[Board];6822;573;[]
+RECUP;11-03-04 09:01:58;updated recommendations;88
+RECUP;11-03-04 09:01:59;updated recommendations;88
+NODE;11-03-04 09:02:00;BoardManager.java;//CompilationUnit[BoardManager]:types/TypeDeclaration:BoardManager:bodyDeclarations/MethodDeclaration:List:solve:[Board];6822;573;[Feature:Solver[6]]
+NODE;11-03-04 09:02:00;BoardManager.java;//CompilationUnit[BoardManager]:types/TypeDeclaration:BoardManager:bodyDeclarations/MethodDeclaration:List:solve:[Board];6822;573;[Feature:Solver[6]]
+RECUP;11-03-04 09:02:00;updated recommendations;88
+RECUP;11-03-04 09:02:00;updated recommendations;88
+NODE;11-03-04 09:02:36;ListenerFactory.java;//CompilationUnit[ListenerFactory]:types/TypeDeclaration:ListenerFactory:bodyDeclarations/MethodDeclaration:ActionListener:getLoadStateListener:[];514;87;[Feature:States[4]]
+NODE;11-03-04 09:02:37;ListenerFactory.java;//CompilationUnit[ListenerFactory]:types/TypeDeclaration:ListenerFactory:bodyDeclarations/MethodDeclaration:ActionListener:getLoadStateListener:[];514;87;[Feature:States[4]]
+RECUP;11-03-04 09:02:37;updated recommendations;88
+RECUP;11-03-04 09:02:37;updated recommendations;88
+NODE;11-03-04 09:03:19;ListenerFactory.java;//CompilationUnit[ListenerFactory]:types/TypeDeclaration:ListenerFactory:bodyDeclarations/MethodDeclaration:ActionListener:getUndoListener:[];606;77;[Feature:Undo[8]]
+NODE;11-03-04 09:03:19;ListenerFactory.java;//CompilationUnit[ListenerFactory]:types/TypeDeclaration:ListenerFactory:bodyDeclarations/MethodDeclaration:ActionListener:getUndoListener:[];606;77;[Feature:Undo[8]]
+RECUP;11-03-04 09:03:19;updated recommendations;88
+RECUP;11-03-04 09:03:20;updated recommendations;88

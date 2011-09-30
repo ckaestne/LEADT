@@ -1,0 +1,7 @@
+TLS
+5. treffer mit .816
+startTLS in SocketStream
+
+Compression
+1. treffer mit 1 
+field compressed in SocketChannel

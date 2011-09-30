@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE project SYSTEM "annotations.dtd">
+<project name="prevayler">
+<file name=".classpath"/>
+<file name=".colors"/>
+<file name=".project"/>
+<file name="annotations.xml"/>
+<folder name="bin">
+<file name=".classpath"/>
+<file name=".colors"/>
+<file name=".project"/>
+<file name="annotations.xml"/>
+<folder name="lib">
+<file name="JavaMatch.license.txt"/>
+<file name="Log4j.license.txt"/>
+<file name="Skaringa.license.txt"/>
+<file name="XPP3.license.txt"/>
+<file name="XStream.license.txt"/>
+<file name="commons-logging-1.1.jar"/>
+<file name="commons-logging.license.txt"/>
+<file name="javamatch-0.2.jar"/>
+<file name="junit-3.8.1.jar"/>
+<file name="junit.about.html"/>
+<file name="log4j-1.2.13.jar"/>
+<file name="skaringa-r3p7.jar"/>
+<file name="xpp3_min-1.1.3_8.jar"/>
+<file name="xstream-1.1.3.jar"/>
+</folder>
+<file name="model.colors"/>
+<file name="model.m"/>
+<folder name="org">
+<file name="LocMetrics.css"/>
+<file name="LocMetrics.html"/>
+<file name="LocMetricsCommentWords.csv"/>
+<file name="LocMetricsFiles.csv"/>
+<file name="LocMetricsFolders.csv"/>
+<file name="LocMetricsPie.jpg"/>
+<file name="LocMetricsPie.png"/>
+<folder name="prevayler">
+<file name="Clock.class"/>
+<file name="Prevayler.class"/>
+<file name="PrevaylerFactory.class"/>
+<file name="Query.class"/>
+<file name="SureTransactionWithQuery.class"/>
+<file name="Transaction.class"/>
+<file name="TransactionWithQuery.class"/>
+<folder name="demos">
+<folder name="demo1">
+<file name="Main.class"/>
+<file name="NumberKeeper.class"/>
+<file name="NumberStorageTransaction.class"/>
+<file name="PrimeCalculator.class"/>
+</folder>
+<folder name="demo2">
+<file name="Main.class"/>
+<file name="MainReplica.class"/>
+<file name="MainReplicaServer.class"/>
+<file name="MainSkaringa.class"/>
+<file name="MainTransient.class"/>
+<file name="MainXStream$1.class"/>
+<file name="MainXStream.class"/>
+<folder name="business">
+<file name="Account$InvalidAmount.class"/>
+<file name="Account$InvalidHolder.class"/>
+<file name="Account.class"/>
+<file name="AccountEntry.class"/>
+<file name="AccountListener.class"/>
+<file name="Bank$1.class"/>
+<file name="Bank$AccountNotFound.class"/>
+<file name="Bank.class"/>
+<file name="BankListener.class"/>
+<folder name="transactions">
+<file name="AccountCreation.class"/>
+<file name="AccountDeletion.class"/>
+<file name="AccountTransaction.class"/>
+<file name="BankTransaction.class"/>
+<file name="Deposit.class"/>
+<file name="HolderChange.class"/>
+<file name="Transfer.class"/>
+<file name="Withdrawal.class"/>
+</folder>
+</folder>
+<folder name="gui">
+<file name="AccountEditFrame$DepositAction.class"/>
+<file name="AccountEditFrame$HolderListener.class"/>
+<file name="AccountEditFrame$TransferAction.class"/>
+<file name="AccountEditFrame$WithdrawAction.class"/>
+<file name="AccountEditFrame.class"/>
+<file name="AccountFrame.class"/>
+<file name="AllAccountsFrame$AccountCreation.class"/>
+<file name="AllAccountsFrame$AccountDeleteAction.class"/>
+<file name="AllAccountsFrame$AccountEditAction.class"/>
+<file name="AllAccountsFrame$SelectedAccountAction.class"/>
+<file name="AllAccountsFrame.class"/>
+<file name="BankFrame$1.class"/>
+<file name="BankFrame$RobustnessFrame.class"/>
+<file name="BankFrame.class"/>
+<file name="MatchFrame$1.class"/>
+<file name="MatchFrame.class"/>
+<file name="NewAccountFrame$OKAction.class"/>
+<file name="NewAccountFrame.class"/>
+<file name="RobustAction.class"/>
+<file name="TransferFrame$OKAction.class"/>
+<file name="TransferFrame.class"/>
+</folder>
+</folder>
+<folder name="scalability">
+<file name="Main.class"/>
+<file name="QueryConnection.class"/>
+<file name="QueryTestRun.class"/>
+<file name="Record.class"/>
+<file name="RecordIterator.class"/>
+<file name="ScalabilityTestRun$1.class"/>
+<file name="ScalabilityTestRun.class"/>
+<file name="ScalabilityTestSubject.class"/>
+<file name="TransactionConnection.class"/>
+<file name="TransactionTestRun.class"/>
+<folder name="jdbc">
+<file name="JDBCQueryConnection.class"/>
+<file name="JDBCQuerySubject.class"/>
+<file name="JDBCScalabilityConnection.class"/>
+<file name="JDBCScalabilitySubject.class"/>
+<file name="JDBCTransactionConnection.class"/>
+<file name="JDBCTransactionSubject.class"/>
+</folder>
+<folder name="prevayler">
+<file name="AllRecordsReplacement.class"/>
+<file name="PrevalenceTest$PrevalenceFilter.class"/>
+<file name="PrevalenceTest.class"/>
+<file name="PrevaylerQueryConnection.class"/>
+<file name="PrevaylerQuerySubject.class"/>
+<file name="PrevaylerScalabilitySubject.class"/>
+<file name="PrevaylerTransactionConnection.class"/>
+<file name="PrevaylerTransactionSubject.class"/>
+<file name="QuerySystem.class"/>
+<file name="ScalabilitySystem.class"/>
+<file name="TestTransaction.class"/>
+<file name="TransactionSystem.class"/>
+</folder>
+</folder>
+</folder>
+<folder name="foundation">
+<file name="Chunk.class"/>
+<file name="Chunking.class"/>
+<file name="Cool.class"/>
+<file name="DeepCopier$Receiver.class"/>
+<file name="DeepCopier.class"/>
+<file name="DurableInputStream.class"/>
+<file name="DurableOutputStream.class"/>
+<file name="FileLocker.class"/>
+<file name="FileManager.class"/>
+<file name="Guided.class"/>
+<file name="ObjectInputStreamWithClassLoader.class"/>
+<file name="StopWatch.class"/>
+<file name="Turn.class"/>
+<folder name="gzip">
+<file name="ContinuableGZIPInputStream.class"/>
+<file name="MultiMemberGZIPInputStream.class"/>
+<file name="MultiMemberGZIPOutputStream.class"/>
+<file name="NonCloseableOutputStream.class"/>
+</folder>
+<folder name="monitor">
+<file name="Log4jMonitor.class"/>
+<file name="LoggingMonitor.class"/>
+<file name="Monitor.class"/>
+<file name="NullMonitor.class"/>
+<file name="SimpleMonitor.class"/>
+</folder>
+<folder name="network">
+<file name="BaseNetworkImpl.class"/>
+<file name="Network.class"/>
+<file name="NetworkClientObjectReceiverImpl$1.class"/>
+<file name="NetworkClientObjectReceiverImpl.class"/>
+<file name="NetworkImpl.class"/>
+<file name="NetworkReceiverFactory.class"/>
+<file name="NetworkServerObjectReceiver.class"/>
+<file name="NetworkServerObjectReceiverImpl.class"/>
+<file name="NetworkSessionId.class"/>
+<file name="ObjectReceiver.class"/>
+<file name="ObjectServerSocket.class"/>
+<file name="ObjectServerSocketImpl.class"/>
+<file name="ObjectSocket.class"/>
+<file name="ObjectSocketImpl.class"/>
+<file name="OldNetwork.class"/>
+<file name="OldNetworkImpl.class"/>
+<file name="Service.class"/>
+<file name="SessionsManager.class"/>
+<file name="SessionsManagerImpl.class"/>
+<file name="StubbornClientReceiverImpl.class"/>
+<file name="StubbornNetwork.class"/>
+<file name="StubbornNetworkClientConnector.class"/>
+<file name="StubbornNetworkImpl.class"/>
+<file name="StubbornNetworkProxy.class"/>
+<file name="StubbornServerReceiverImpl.class"/>
+</folder>
+<folder name="serialization">
+<file name="JavaSerializer.class"/>
+<file name="Serializer.class"/>
+<file name="SkaringaSerializer.class"/>
+<file name="XStreamSerializer$1.class"/>
+<file name="XStreamSerializer.class"/>
+</folder>
+</folder>
+<folder name="implementation">
+<file name="Capsule.class"/>
+<file name="PrevalentSystemGuard.class"/>
+<file name="PrevaylerDirectory$1.class"/>
+<file name="PrevaylerDirectory$2.class"/>
+<file name="PrevaylerDirectory.class"/>
+<file name="PrevaylerImpl.class"/>
+<file name="TransactionCapsule.class"/>
+<file name="TransactionGuide.class"/>
+<file name="TransactionTimestamp.class"/>
+<file name="TransactionWithQueryCapsule.class"/>
+<folder name="clock">
+<file name="BrokenClock.class"/>
+<file name="MachineClock.class"/>
+<file name="PausableClock.class"/>
+</folder>
+<folder name="journal">
+<file name="Journal.class"/>
+<file name="PersistentJournal.class"/>
+<file name="TransientJournal.class"/>
+</folder>
+<folder name="publishing">
+<file name="AbstractPublisher.class"/>
+<file name="CentralPublisher.class"/>
+<file name="POBox.class"/>
+<file name="TransactionPublisher.class"/>
+<file name="TransactionSubscriber.class"/>
+<folder name="censorship">
+<file name="LiberalTransactionCensor.class"/>
+<file name="StrictTransactionCensor.class"/>
+<file name="TransactionCensor.class"/>
+</folder>
+</folder>
+<folder name="replication">
+<file name="ClientPublisher$1.class"/>
+<file name="ClientPublisher.class"/>
+<file name="ServerConnection$1.class"/>
+<file name="ServerConnection.class"/>
+<file name="ServerListener.class"/>
+</folder>
+<folder name="snapshot">
+<file name="GenericSnapshotManager.class"/>
+<file name="NullSnapshotManager.class"/>
+</folder>
+</folder>
+</folder>
+</folder>
+</folder>
+<folder name="lib">
+<file name="JavaMatch.license.txt"/>
+<file name="Log4j.license.txt"/>
+<file name="Skaringa.license.txt"/>
+<file name="XPP3.license.txt"/>
+<file name="XStream.license.txt"/>
+<file name="commons-logging-1.1.jar"/>
+<file name="commons-logging.license.txt"/>
+<file name="javamatch-0.2.jar"/>
+<file name="junit-3.8.1.jar"/>
+<file name="junit.about.html"/>
+<file name="log4j-1.2.13.jar"/>
+<file name="skaringa-r3p7.jar"/>
+<file name="xpp3_min-1.1.3_8.jar"/>
+<file name="xstream-1.1.3.jar"/>
+</folder>
+<file name="model.colors"/>
+<file name="model.m"/>
+<folder name="org">
+<file name="LocMetrics.css"/>
+<file name="LocMetrics.html"/>
+<file name="LocMetricsCommentWords.csv"/>
+<file name="LocMetricsFiles.csv"/>
+<file name="LocMetricsFolders.csv"/>
+<file name="LocMetricsPie.jpg"/>
+<file name="LocMetricsPie.png"/>
+<folder name="prevayler">
+<file name="Clock.java"/>
+<file name="Prevayler.java"/>
+<file name="PrevaylerFactory.java">
+<fragment length="48" offset="370">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="54" offset="419">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="51" offset="474">
+<feature>Replication</feature>
+</fragment>
+<fragment length="55" offset="526">
+<feature>Replication</feature>
+</fragment>
+<fragment length="83" offset="1308">
+<feature>Censor</feature>
+</fragment>
+<fragment length="82" offset="1392">
+<feature>Censor</feature>
+</fragment>
+<fragment length="76" offset="1475">
+<feature>Censor</feature>
+</fragment>
+<fragment length="64" offset="1552">
+<feature>Replication</feature>
+</fragment>
+<fragment length="63" offset="1617">
+<feature>Replication</feature>
+</fragment>
+<fragment length="68" offset="1681">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="65" offset="1750">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="31" offset="3096">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="49" offset="3167">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="28" offset="3293">
+<feature>Replication</feature>
+</fragment>
+<fragment length="29" offset="3323">
+<feature>Replication</feature>
+</fragment>
+<fragment length="38" offset="3354">
+<feature>Replication</feature>
+</fragment>
+<fragment length="30" offset="3394">
+<feature>Replication</feature>
+</fragment>
+<fragment length="56" offset="3426">
+<feature>Replication</feature>
+</fragment>
+<fragment length="25" offset="3485">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="145" offset="5797">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="37" offset="5945">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="37" offset="7365">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="512" offset="7653">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="536" offset="8168">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="238" offset="10005">
+<feature>Replication</feature>
+</fragment>
+<fragment length="125" offset="10246">
+<feature>Replication</feature>
+</fragment>
+<fragment length="129" offset="10374">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="75" offset="12491">
+<feature>Replication</feature>
+</fragment>
+<fragment length="126" offset="12569">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="136" offset="12698">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="138" offset="12837">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="655" offset="12978">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="59" offset="14148">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="87" offset="14244">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="80" offset="14334">
+<feature>Replication</feature>
+</fragment>
+<fragment length="166" offset="14417">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="106" offset="14899">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="125" offset="15005">
+<feature>Replication</feature>
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="3" offset="15130">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="150" offset="15133">
+<feature>Censor</feature>
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="3" offset="15283">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="125" offset="15353">
+<feature>Replication</feature>
+</fragment>
+<fragment length="218" offset="15535">
+<feature>Censor</feature>
+</fragment>
+<fragment length="20" offset="15805">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="98" offset="15874">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="253" offset="15972">
+<feature>Monitor</feature>
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="4" offset="16225">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="94" offset="16476">
+<feature>Replication</feature>
+</fragment>
+<fragment length="711" offset="16573">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="100" offset="17287">
+<feature>Monitor</feature>
+</fragment>
+</file>
+<file name="Query.java"/>
+<file name="SureTransactionWithQuery.java"/>
+<file name="Transaction.java"/>
+<file name="TransactionWithQuery.java"/>
+<folder name="demos">
+<folder name="demo1">
+<file name="Main.java"/>
+<file name="NumberKeeper.java"/>
+<file name="NumberStorageTransaction.java"/>
+<file name="PrimeCalculator.java"/>
+</folder>
+<folder name="demo2">
+<file name="Main.java"/>
+<file name="MainReplica.java">
+<fragment length="1346" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="MainReplicaServer.java">
+<fragment length="1064" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="MainSkaringa.java">
+<fragment length="785" offset="0">
+<feature>Snapshot</feature>
+</fragment>
+</file>
+<file name="MainTransient.java"/>
+<file name="MainXStream.java">
+<fragment length="1264" offset="0">
+<feature>Snapshot</feature>
+</fragment>
+</file>
+<folder name="business">
+<file name="Account.java"/>
+<file name="AccountEntry.java"/>
+<file name="AccountListener.java"/>
+<file name="Bank.java"/>
+<file name="BankListener.java"/>
+<folder name="transactions">
+<file name="AccountCreation.java"/>
+<file name="AccountDeletion.java"/>
+<file name="AccountTransaction.java"/>
+<file name="BankTransaction.java"/>
+<file name="Deposit.java"/>
+<file name="HolderChange.java"/>
+<file name="Transfer.java"/>
+<file name="Withdrawal.java"/>
+</folder>
+</folder>
+<folder name="gui">
+<file name="AccountEditFrame.java"/>
+<file name="AccountFrame.java"/>
+<file name="AllAccountsFrame.java"/>
+<file name="BankFrame.java"/>
+<file name="MatchFrame.java"/>
+<file name="NewAccountFrame.java"/>
+<file name="RobustAction.java"/>
+<file name="TransferFrame.java"/>
+</folder>
+</folder>
+<folder name="scalability">
+<file name="Main.java"/>
+<file name="QueryConnection.java"/>
+<file name="QueryTestRun.java"/>
+<file name="Record.java"/>
+<file name="RecordIterator.java"/>
+<file name="ScalabilityTestRun.java"/>
+<file name="ScalabilityTestSubject.java"/>
+<file name="TransactionConnection.java"/>
+<file name="TransactionTestRun.java"/>
+<folder name="jdbc">
+<file name="JDBCQueryConnection.java"/>
+<file name="JDBCQuerySubject.java"/>
+<file name="JDBCScalabilityConnection.java"/>
+<file name="JDBCScalabilitySubject.java"/>
+<file name="JDBCTransactionConnection.java"/>
+<file name="JDBCTransactionSubject.java"/>
+</folder>
+<folder name="prevayler">
+<file name="AllRecordsReplacement.java"/>
+<file name="PrevalenceTest.java"/>
+<file name="PrevaylerQueryConnection.java"/>
+<file name="PrevaylerQuerySubject.java"/>
+<file name="PrevaylerScalabilitySubject.java"/>
+<file name="PrevaylerTransactionConnection.java"/>
+<file name="PrevaylerTransactionSubject.java"/>
+<file name="QuerySystem.java"/>
+<file name="ScalabilitySystem.java"/>
+<file name="TestTransaction.java"/>
+<file name="TransactionSystem.java"/>
+</folder>
+</folder>
+</folder>
+<folder name="foundation">
+<file name="Chunk.java"/>
+<file name="Chunking.java"/>
+<file name="Cool.java"/>
+<file name="DeepCopier.java"/>
+<file name="DurableInputStream.java">
+<fragment length="48" offset="348">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="25" offset="744">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="113" offset="807">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="53" offset="2162">
+<feature>Monitor</feature>
+</fragment>
+</file>
+<file name="DurableOutputStream.java"/>
+<file name="FileLocker.java"/>
+<file name="FileManager.java"/>
+<file name="Guided.java"/>
+<file name="ObjectInputStreamWithClassLoader.java"/>
+<file name="StopWatch.java"/>
+<file name="Turn.java"/>
+<folder name="gzip">
+<file name="ContinuableGZIPInputStream.java">
+<fragment length="621" offset="0">
+<feature>GZip</feature>
+</fragment>
+</file>
+<file name="MultiMemberGZIPInputStream.java">
+<fragment length="1432" offset="0">
+<feature>GZip</feature>
+</fragment>
+</file>
+<file name="MultiMemberGZIPOutputStream.java">
+<fragment length="946" offset="0">
+<feature>GZip</feature>
+</fragment>
+</file>
+<file name="NonCloseableOutputStream.java">
+<fragment length="638" offset="0">
+<feature>GZip</feature>
+</fragment>
+</file>
+</folder>
+<folder name="monitor">
+<file name="Log4jMonitor.java">
+<fragment length="1274" offset="0">
+<feature>Monitor</feature>
+</fragment>
+</file>
+<file name="LoggingMonitor.java">
+<fragment length="1276" offset="0">
+<feature>Monitor</feature>
+</fragment>
+</file>
+<file name="Monitor.java">
+<fragment length="992" offset="0">
+<feature>Monitor</feature>
+</fragment>
+</file>
+<file name="NullMonitor.java">
+<fragment length="916" offset="0">
+<feature>Monitor</feature>
+</fragment>
+</file>
+<file name="SimpleMonitor.java">
+<fragment length="1010" offset="0">
+<feature>Monitor</feature>
+</fragment>
+</file>
+</folder>
+<folder name="network">
+<file name="BaseNetworkImpl.java">
+<fragment length="2822" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="Network.java">
+<fragment length="655" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="NetworkClientObjectReceiverImpl.java">
+<fragment length="2984" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="NetworkImpl.java">
+<fragment length="959" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="NetworkReceiverFactory.java">
+<fragment length="503" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="NetworkServerObjectReceiver.java">
+<fragment length="404" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="NetworkServerObjectReceiverImpl.java">
+<fragment length="1981" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="NetworkSessionId.java">
+<fragment length="1003" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="ObjectReceiver.java">
+<fragment length="547" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="ObjectServerSocket.java">
+<fragment length="529" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="ObjectServerSocketImpl.java">
+<fragment length="842" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="ObjectSocket.java">
+<fragment length="600" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="ObjectSocketImpl.java">
+<fragment length="1605" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="OldNetwork.java">
+<fragment length="603" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="OldNetworkImpl.java">
+<fragment length="748" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="Service.java">
+<fragment length="463" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="SessionsManager.java">
+<fragment length="522" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="SessionsManagerImpl.java">
+<fragment length="1000" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="StubbornClientReceiverImpl.java">
+<fragment length="5012" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="StubbornNetwork.java">
+<fragment length="467" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="StubbornNetworkClientConnector.java">
+<fragment length="221" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="StubbornNetworkImpl.java">
+<fragment length="1971" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="StubbornNetworkProxy.java">
+<fragment length="2830" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="StubbornServerReceiverImpl.java">
+<fragment length="3648" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+</folder>
+<folder name="serialization">
+<file name="JavaSerializer.java"/>
+<file name="Serializer.java"/>
+<file name="SkaringaSerializer.java"/>
+<file name="XStreamSerializer.java"/>
+</folder>
+</folder>
+<folder name="implementation">
+<file name="Capsule.java"/>
+<file name="PrevalentSystemGuard.java">
+<fragment length="68" offset="374">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="416" offset="3822">
+<feature>Snapshot</feature>
+</fragment>
+</file>
+<file name="PrevaylerDirectory.java"/>
+<file name="PrevaylerImpl.java">
+<fragment length="68" offset="658">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="37" offset="809">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="49" offset="878">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="885" offset="1026">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="71" offset="2177">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="120" offset="3997">
+<feature>Snapshot</feature>
+</fragment>
+<fragment length="91" offset="4700">
+<feature>Snapshot</feature>
+</fragment>
+</file>
+<file name="TransactionCapsule.java"/>
+<file name="TransactionGuide.java"/>
+<file name="TransactionTimestamp.java"/>
+<file name="TransactionWithQueryCapsule.java"/>
+<folder name="clock">
+<file name="BrokenClock.java"/>
+<file name="MachineClock.java"/>
+<file name="PausableClock.java"/>
+</folder>
+<folder name="journal">
+<file name="Journal.java"/>
+<file name="PersistentJournal.java">
+<fragment length="48" offset="547">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="25" offset="1357">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="819" offset="1424">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="114" offset="6607">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="120" offset="7979">
+<feature>Monitor</feature>
+</fragment>
+<fragment length="56" offset="8351">
+<feature>Monitor</feature>
+</fragment>
+</file>
+<file name="TransientJournal.java"/>
+</folder>
+<folder name="publishing">
+<file name="AbstractPublisher.java"/>
+<file name="CentralPublisher.java">
+<fragment length="76" offset="701">
+<feature>Censor</feature>
+</fragment>
+<fragment length="34" offset="913">
+<feature>Censor</feature>
+</fragment>
+<fragment length="127" offset="1453">
+<feature>Censor</feature>
+</fragment>
+<fragment length="27" offset="2557">
+<feature>Censor</feature>
+</fragment>
+</file>
+<file name="POBox.java"/>
+<file name="TransactionPublisher.java"/>
+<file name="TransactionSubscriber.java"/>
+<folder name="censorship">
+<file name="LiberalTransactionCensor.java">
+<fragment length="573" offset="0">
+<feature>Censor</feature>
+</fragment>
+</file>
+<file name="StrictTransactionCensor.java">
+<fragment length="2479" offset="0">
+<feature>Censor</feature>
+</fragment>
+</file>
+<file name="TransactionCensor.java">
+<fragment length="585" offset="0">
+<feature>Censor</feature>
+</fragment>
+</file>
+</folder>
+</folder>
+<folder name="replication">
+<file name="ClientPublisher.java">
+<fragment length="5168" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="ServerConnection.java">
+<fragment length="3303" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+<file name="ServerListener.java">
+<fragment length="1331" offset="0">
+<feature>Replication</feature>
+</fragment>
+</file>
+</folder>
+<folder name="snapshot">
+<file name="GenericSnapshotManager.java">
+<fragment length="3730" offset="0">
+<feature>Snapshot</feature>
+</fragment>
+</file>
+<file name="NullSnapshotManager.java">
+<fragment length="842" offset="0">
+<feature>Snapshot</feature>
+</fragment>
+</file>
+</folder>
+</folder>
+</folder>
+</folder>
+</project>

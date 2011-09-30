@@ -1,0 +1,17 @@
+INIT;11-03-01 10:20:39;Prevayler_Benchmark
+RECUP;11-03-01 10:20:40;updated recommendations;1761
+RECUP;11-03-01 10:20:41;updated recommendations;1761
+RECUP;11-03-01 10:20:42;updated recommendations;1761
+RECUP;11-03-01 10:20:42;updated recommendations;1761
+SELREC;11-03-01 10:20:44;StrictTransactionCensor.java;591;22;1.0
+NODE;11-03-01 10:21:25;PrevaylerDirectory.java;//CompilationUnit[org.prevayler.implementation.PrevaylerDirectory]:types/TypeDeclaration:PrevaylerDirectory:bodyDeclarations/FieldDeclaration:SNAPSHOT_SUFFIX_PATTERN;627;80;[]
+NODE;11-03-01 10:21:25;PrevaylerDirectory.java;//CompilationUnit[org.prevayler.implementation.PrevaylerDirectory]:types/TypeDeclaration:PrevaylerDirectory:bodyDeclarations/FieldDeclaration:SNAPSHOT_FILENAME_PATTERN;709;119;[]
+NODE;11-03-01 10:21:25;PrevaylerDirectory.java;//CompilationUnit[org.prevayler.implementation.PrevaylerDirectory]:types/TypeDeclaration:PrevaylerDirectory:bodyDeclarations/FieldDeclaration:SNAPSHOT_SUFFIX_PATTERN;627;80;[]
+NODE;11-03-01 10:21:25;PrevaylerDirectory.java;//CompilationUnit[org.prevayler.implementation.PrevaylerDirectory]:types/TypeDeclaration:PrevaylerDirectory:bodyDeclarations/FieldDeclaration:SNAPSHOT_FILENAME_PATTERN;709;119;[]
+RECUP;11-03-01 10:21:25;updated recommendations;1761
+SELREC;11-03-01 10:21:28;StrictTransactionCensor.java;591;22;1.0
+NODE;11-03-01 10:21:32;StrictTransactionCensor.java;//CompilationUnit[org.prevayler.implementation.publishing.censorship.StrictTransactionCensor]:imports/ImportDeclaration:org.prevayler.implementation.snapshot.GenericSnapshotManager;546;68;[Feature:Censor[3], Feature:Snapshot[5]]
+NODE;11-03-01 10:21:32;StrictTransactionCensor.java;//CompilationUnit[org.prevayler.implementation.publishing.censorship.StrictTransactionCensor]:imports/ImportDeclaration:org.prevayler.implementation.snapshot.GenericSnapshotManager;546;68;[Feature:Censor[3], Feature:Snapshot[5]]
+RECUP;11-03-01 10:21:32;updated recommendations;1761
+RECUP;11-03-01 10:21:32;updated recommendations;1760
+SELREC;11-03-01 10:21:35;PrevaylerDirectory.java;1511;23;1.0

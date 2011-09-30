@@ -1,0 +1,23 @@
+
+Folder,Files,LOC,SLOC-P,SLOC-L,MVG,BLOC,C&SLOC,CLOC,CWORD,HCLOC,HCWORD
+Total,54,20569,11285,8124,1617,1593,295,7691,35098,1420,8651
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src,54,20569,11285,8124,1617,1593,295,7691,35098,1420,8651
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\com,42,16678,9175,6657,1300,1273,265,6230,28972,1112,6691
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\com\substanceofcode,42,16678,9175,6657,1300,1273,265,6230,28972,1112,6691
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\com\substanceofcode\rssreader,30,12545,6662,4873,851,946,187,4937,22420,807,4770
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\com\substanceofcode\rssreader\businessentities,8,2856,1502,1084,233,266,18,1088,5294,200,1237
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\com\substanceofcode\rssreader\businesslogic,12,3289,1845,1302,298,263,21,1181,5611,304,1892
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\com\substanceofcode\rssreader\presentation,9,6400,3315,2487,320,417,148,2668,11515,303,1641
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\com\substanceofcode\utils,12,4133,2513,1784,449,327,78,1293,6552,305,1921
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\cz,12,3461,1776,1243,239,306,30,1379,5730,279,1769
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\cz\cacek,12,3461,1776,1243,239,306,30,1379,5730,279,1769
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\cz\cacek\ebook,12,3461,1776,1243,239,306,30,1379,5730,279,1769
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\cz\cacek\ebook\util,1,324,171,130,21,21,0,132,601,24,157
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\net,2,430,334,224,78,14,0,82,396,29,191
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\net\eiroca,2,430,334,224,78,14,0,82,396,29,191
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\net\eiroca\j2me,2,430,334,224,78,14,0,82,396,29,191
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\net\eiroca\j2me\RSSReader,2,430,334,224,78,14,0,82,396,29,191
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\net\eiroca\j2me\RSSReader\presentation,1,430,334,224,78,14,0,82,396,29,191
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\org,1,0,0,0,0,0,0,0,0,0,0
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\org\kablog,1,0,0,0,0,0,0,0,0,0,0
+C:\Users\ckaestne\Documents\uni\workspaces\cide2runtime\mobile rss reader\src\org\kablog\kgui,0,0,0,0,0,0,0,0,0,0,0

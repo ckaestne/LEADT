@@ -1,0 +1,1103 @@
+INIT;11-09-22 17:29:10;argouml
+RECUP;11-09-22 17:29:19;updated recommendations;37345
+SELREC;11-09-22 17:29:23;Main.java;10371;15;1.0
+SELREC;11-09-22 17:29:31;Main.java;7513;25;1.0
+SELREC;11-09-22 17:29:35;DiElement.java;1642;380;0.06349206349206349
+SELREC;11-09-22 17:29:37;UMLModelElementCommentDocument.java;3642;1;0.19047619047619047
+SELREC;11-09-22 17:29:39;ConfigurationHandler.java;1905;16959;0.07936507936507936
+SELREC;11-09-22 17:29:42;TabConstraints.java;11281;13318;0.06349206349206349
+SELREC;11-09-22 17:29:45;Main.java;17545;32;1.0
+SELREC;11-09-22 17:29:49;Main.java;4994;52;1.0
+NODE;11-09-22 17:29:53;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.util.logging.AwtExceptionHandler;4994;52;[Feature:Logging[1]]
+NODE;11-09-22 17:29:53;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.util.logging.AwtExceptionHandler;4994;52;[Feature:Logging[1]]
+SELREC;11-09-22 17:29:57;Main.java;7189;46;1.0
+RECUP;11-09-22 17:29:58;updated recommendations;37344
+NODE;11-09-22 17:30:02;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[6]:statements/ExpressionStatement;7189;47;[Feature:Logging[1]]
+NODE;11-09-22 17:30:02;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[6]:statements/ExpressionStatement;7189;47;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:02;updated recommendations;37344
+RECUP;11-09-22 17:30:07;updated recommendations;37342
+SELREC;11-09-22 17:30:08;Main.java;17085;37;1.0
+SELREC;11-09-22 17:30:10;Main.java;17226;43;1.0
+SELREC;11-09-22 17:30:21;Main.java;17226;43;1.0
+NODE;11-09-22 17:30:29;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:parameters/SingleVariableDeclaration:st;16987;14;[Feature:Logging[1]]
+NODE;11-09-22 17:30:30;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:parameters/SingleVariableDeclaration:st;16987;14;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:30;updated recommendations;37342
+NODE;11-09-22 17:30:33;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[1]:statements/ExpressionStatement;17085;38;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:34;updated recommendations;37346
+NODE;11-09-22 17:30:34;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[1]:statements/ExpressionStatement;17085;38;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:34;updated recommendations;37346
+NODE;11-09-22 17:30:38;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[4]:statements/ExpressionStatement;17226;44;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:38;updated recommendations;37343
+NODE;11-09-22 17:30:39;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[4]:statements/ExpressionStatement;17226;44;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:39;updated recommendations;37343
+NODE;11-09-22 17:30:43;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[6]:statements/ExpressionStatement;17470;26;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:43;updated recommendations;37340
+NODE;11-09-22 17:30:44;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[6]:statements/ExpressionStatement;17470;26;[Feature:Logging[1]]
+NODE;11-09-22 17:30:47;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[8]:statements/ExpressionStatement;17545;33;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:48;updated recommendations;37337
+NODE;11-09-22 17:30:48;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[8]:statements/ExpressionStatement;17545;33;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:48;updated recommendations;37337
+RECUP;11-09-22 17:30:53;updated recommendations;37334
+NODE;11-09-22 17:30:59;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[25]:statements/ExpressionStatement;19917;30;[Feature:Logging[1]]
+NODE;11-09-22 17:30:59;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[25]:statements/ExpressionStatement;19917;30;[Feature:Logging[1]]
+RECUP;11-09-22 17:30:59;updated recommendations;37334
+RECUP;11-09-22 17:31:05;updated recommendations;37331
+NODE;11-09-22 17:31:05;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[1]:statements/ExpressionStatement;21024;24;[Feature:Logging[1]]
+NODE;11-09-22 17:31:05;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[1]:statements/ExpressionStatement;21024;24;[Feature:Logging[1]]
+RECUP;11-09-22 17:31:05;updated recommendations;37331
+RECUP;11-09-22 17:31:11;updated recommendations;37329
+SELREC;11-09-22 17:31:16;Main.java;9881;23;1.0
+NODE;11-09-22 17:31:22;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[29]:statements/ExpressionStatement;9873;33;[Feature:Logging[1]]
+NODE;11-09-22 17:31:23;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[29]:statements/ExpressionStatement;9873;33;[Feature:Logging[1]]
+RECUP;11-09-22 17:31:23;updated recommendations;37329
+NODE;11-09-22 17:31:26;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[26]:statements/ExpressionStatement;9704;25;[Feature:Logging[1]]
+RECUP;11-09-22 17:31:26;updated recommendations;37327
+NODE;11-09-22 17:31:26;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[26]:statements/ExpressionStatement;9704;25;[Feature:Logging[1]]
+RECUP;11-09-22 17:31:26;updated recommendations;37327
+RECUP;11-09-22 17:31:32;updated recommendations;37325
+NODE;11-09-22 17:31:35;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/FieldDeclaration:LOG;5733;32;[Feature:Logging[1]]
+NODE;11-09-22 17:31:35;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/FieldDeclaration:LOG;5733;32;[Feature:Logging[1]]
+NODE;11-09-22 17:31:38;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/FieldDeclaration:DEFAULT_LOGGING_CONFIGURATION;5777;192;[Feature:Logging[1]]
+RECUP;11-09-22 17:31:39;updated recommendations;37338
+NODE;11-09-22 17:31:39;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/FieldDeclaration:DEFAULT_LOGGING_CONFIGURATION;5777;192;[Feature:Logging[1]]
+RECUP;11-09-22 17:31:39;updated recommendations;37338
+SELREC;11-09-22 17:31:44;Main.java;8084;18;1.0
+RECUP;11-09-22 17:31:45;updated recommendations;37351
+NODE;11-09-22 17:31:48;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[11]:statements/ExpressionStatement;8076;28;[Feature:Logging[1]]
+NODE;11-09-22 17:31:49;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[11]:statements/ExpressionStatement;8076;28;[Feature:Logging[1]]
+RECUP;11-09-22 17:31:49;updated recommendations;37351
+RECUP;11-09-22 17:31:54;updated recommendations;37349
+NODE;11-09-22 17:32:00;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[2]:statements/ExpressionStatement;6975;17;[Feature:Logging[1]]
+NODE;11-09-22 17:32:01;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[2]:statements/ExpressionStatement;6975;17;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:01;updated recommendations;37349
+NODE;11-09-22 17:32:04;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[4]:statements/ExpressionStatement;7056;21;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:04;updated recommendations;37347
+NODE;11-09-22 17:32:04;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[4]:statements/ExpressionStatement;7056;21;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:04;updated recommendations;37347
+NODE;11-09-22 17:32:06;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[7]:statements/ExpressionStatement;7326;25;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:06;updated recommendations;37345
+NODE;11-09-22 17:32:07;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[7]:statements/ExpressionStatement;7326;25;[Feature:Logging[1]]
+NODE;11-09-22 17:32:11;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[9]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;7513;26;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:11;updated recommendations;37343
+NODE;11-09-22 17:32:12;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[9]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;7513;26;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:12;updated recommendations;37343
+RECUP;11-09-22 17:32:18;updated recommendations;37341
+SELREC;11-09-22 17:32:36;Main.java;9018;23;1.0
+NODE;11-09-22 17:32:41;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[17]:statements/ExpressionStatement;9018;24;[Feature:Logging[1]]
+NODE;11-09-22 17:32:42;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[17]:statements/ExpressionStatement;9018;24;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:42;updated recommendations;37341
+RECUP;11-09-22 17:32:48;updated recommendations;37339
+NODE;11-09-22 17:32:49;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[19]:statements/ExpressionStatement;9165;23;[Feature:Logging[1]]
+NODE;11-09-22 17:32:49;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[19]:statements/ExpressionStatement;9165;23;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:50;updated recommendations;37339
+NODE;11-09-22 17:32:52;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[22]:statements/ExpressionStatement;9338;24;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:52;updated recommendations;37337
+NODE;11-09-22 17:32:53;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[22]:statements/ExpressionStatement;9338;24;[Feature:Logging[1]]
+RECUP;11-09-22 17:32:53;updated recommendations;37337
+RECUP;11-09-22 17:32:59;updated recommendations;37335
+SELREC;11-09-22 17:33:00;Main.java;33608;29;1.0
+NODE;11-09-22 17:33:15;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/Initializer;31686;2737;[Feature:Logging[1]]
+NODE;11-09-22 17:33:16;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/Initializer;31686;2737;[Feature:Logging[1]]
+RECUP;11-09-22 17:33:16;updated recommendations;37335
+SELREC;11-09-22 17:33:22;Main.java;33608;29;1.0
+RECUP;11-09-22 17:33:23;updated recommendations;37144
+SELREC;11-09-22 17:33:24;Main.java;22752;22;1.0
+NODE;11-09-22 17:33:29;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[7]:statements/ExpressionStatement;22752;23;[Feature:Logging[1]]
+NODE;11-09-22 17:33:29;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[7]:statements/ExpressionStatement;22752;23;[Feature:Logging[1]]
+RECUP;11-09-22 17:33:30;updated recommendations;37144
+SELREC;11-09-22 17:33:32;Main.java;2421;45;1.0
+RECUP;11-09-22 17:33:37;updated recommendations;37142
+NODE;11-09-22 17:33:38;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.apache.log4j.BasicConfigurator;2302;42;[Feature:Logging[1]]
+NODE;11-09-22 17:33:38;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.apache.log4j.Level;2346;30;[Feature:Logging[1]]
+NODE;11-09-22 17:33:38;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.apache.log4j.Logger;2378;31;[Feature:Logging[1]]
+NODE;11-09-22 17:33:38;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.apache.log4j.PropertyConfigurator;2421;45;[Feature:Logging[1]]
+NODE;11-09-22 17:33:38;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.apache.log4j.BasicConfigurator;2302;42;[Feature:Logging[1]]
+NODE;11-09-22 17:33:38;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.apache.log4j.Level;2346;30;[Feature:Logging[1]]
+NODE;11-09-22 17:33:38;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.apache.log4j.Logger;2378;31;[Feature:Logging[1]]
+NODE;11-09-22 17:33:38;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.apache.log4j.PropertyConfigurator;2421;45;[Feature:Logging[1]]
+RECUP;11-09-22 17:33:39;updated recommendations;37142
+SELREC;11-09-22 17:33:42;Main.java;2045;28;1.0
+RECUP;11-09-22 17:33:46;updated recommendations;37142
+NODE;11-09-22 17:33:47;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:java.util.Properties;2045;28;[Feature:Logging[1]]
+NODE;11-09-22 17:33:48;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:java.util.Properties;2045;28;[Feature:Logging[1]]
+SELREC;11-09-22 17:33:50;Main.java;2045;28;1.0
+SELREC;11-09-22 17:33:52;Main.java;1812;27;1.0
+SELREC;11-09-22 17:33:55;Main.java;1841;27;1.0
+RECUP;11-09-22 17:33:55;updated recommendations;37141
+NODE;11-09-22 17:33:59;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:java.io.IOException;1812;27;[Feature:Logging[1]]
+NODE;11-09-22 17:33:59;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:java.io.InputStream;1841;27;[Feature:Logging[1]]
+NODE;11-09-22 17:34:00;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:java.io.IOException;1812;27;[Feature:Logging[1]]
+NODE;11-09-22 17:34:00;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:java.io.InputStream;1841;27;[Feature:Logging[1]]
+SELREC;11-09-22 17:34:04;Main.java;6943;17;1.0
+RECUP;11-09-22 17:34:07;updated recommendations;37139
+NODE;11-09-22 17:34:08;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[1]:statements/VariableDeclarationStatement;6926;35;[Feature:Logging[1]]
+NODE;11-09-22 17:34:09;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[1]:statements/VariableDeclarationStatement;6926;35;[Feature:Logging[1]]
+SELREC;11-09-22 17:34:12;Main.java;20824;14;1.0
+NODE;11-09-22 17:34:15;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:parameters/SingleVariableDeclaration:st;20824;14;[Feature:Logging[1]]
+RECUP;11-09-22 17:34:15;updated recommendations;37138
+NODE;11-09-22 17:34:16;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:parameters/SingleVariableDeclaration:st;20824;14;[Feature:Logging[1]]
+RECUP;11-09-22 17:34:16;updated recommendations;37138
+SELREC;11-09-22 17:34:23;Main.java;10371;15;1.0
+RECUP;11-09-22 17:34:23;updated recommendations;37136
+NODE;11-09-22 17:34:31;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[35]:statements/ExpressionStatement;10267;13;[Feature:Logging[1]]
+NODE;11-09-22 17:34:31;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[36]:statements/ExpressionStatement;10294;46;[Feature:Logging[1]]
+NODE;11-09-22 17:34:31;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[37]:statements/ForStatement;10354;116;[Feature:Logging[1]]
+NODE;11-09-22 17:34:31;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[37]:statements/ForStatement:body/Block;10410;60;[Feature:Logging[1]]
+NODE;11-09-22 17:34:31;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[38]:statements/ExpressionStatement;10484;46;[Feature:Logging[1]]
+NODE;11-09-22 17:34:31;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[39]:statements/ExpressionStatement;10544;13;[Feature:Logging[1]]
+NODE;11-09-22 17:34:32;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[35]:statements/ExpressionStatement;10267;13;[Feature:Logging[1]]
+NODE;11-09-22 17:34:32;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[36]:statements/ExpressionStatement;10294;46;[Feature:Logging[1]]
+NODE;11-09-22 17:34:32;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[37]:statements/ForStatement;10354;116;[Feature:Logging[1]]
+NODE;11-09-22 17:34:32;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[37]:statements/ForStatement:body/Block;10410;60;[Feature:Logging[1]]
+NODE;11-09-22 17:34:32;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[38]:statements/ExpressionStatement;10484;46;[Feature:Logging[1]]
+NODE;11-09-22 17:34:32;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[39]:statements/ExpressionStatement;10544;13;[Feature:Logging[1]]
+RECUP;11-09-22 17:34:40;updated recommendations;37128
+NODE;11-09-22 17:34:47;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/TryStatement:body[body]/Block[0]:statements/ExpressionStatement;11049;91;[Feature:Logging[1]]
+NODE;11-09-22 17:34:48;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/TryStatement:body[body]/Block[0]:statements/ExpressionStatement;11049;91;[Feature:Logging[1]]
+RECUP;11-09-22 17:34:48;updated recommendations;37128
+SELREC;11-09-22 17:34:52;Main.java;5080;11;1.0
+NODE;11-09-22 17:34:56;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.util.logging.SimpleTimer;5048;44;[Feature:Logging[1]]
+RECUP;11-09-22 17:34:56;updated recommendations;37127
+NODE;11-09-22 17:34:56;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.util.logging.SimpleTimer;5048;44;[Feature:Logging[1]]
+SELREC;11-09-22 17:34:58;Main.java;38062;6;1.0
+RECUP;11-09-22 17:35:04;updated recommendations;37125
+NODE;11-09-22 17:35:06;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:PostLoad:bodyDeclarations/FieldDeclaration:LOG;38007;101;[Feature:Logging[1]]
+NODE;11-09-22 17:35:06;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:PostLoad:bodyDeclarations/FieldDeclaration:LOG;38007;101;[Feature:Logging[1]]
+RECUP;11-09-22 17:35:15;updated recommendations;37125
+NODE;11-09-22 17:35:17;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:PostLoad:bodyDeclarations/MethodDeclaration:void:run:[]:body/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/ExpressionStatement;38687;36;[Feature:Logging[1]]
+NODE;11-09-22 17:35:18;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:PostLoad:bodyDeclarations/MethodDeclaration:void:run:[]:body/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/ExpressionStatement;38687;36;[Feature:Logging[1]]
+RECUP;11-09-22 17:35:18;updated recommendations;37125
+NODE;11-09-22 17:35:21;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:PostLoad:bodyDeclarations/MethodDeclaration:void:run:[]:body/Block[1]:statements/EnhancedForStatement:body/Block[1]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/ExpressionStatement;39035;37;[Feature:Logging[1]]
+RECUP;11-09-22 17:35:21;updated recommendations;37124
+NODE;11-09-22 17:35:21;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:PostLoad:bodyDeclarations/MethodDeclaration:void:run:[]:body/Block[1]:statements/EnhancedForStatement:body/Block[1]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/ExpressionStatement;39035;37;[Feature:Logging[1]]
+NODE;11-09-22 17:35:29;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:LoadModules:bodyDeclarations/FieldDeclaration:LOG;39317;104;[Feature:Logging[1]]
+RECUP;11-09-22 17:35:29;updated recommendations;37123
+NODE;11-09-22 17:35:29;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:LoadModules:bodyDeclarations/FieldDeclaration:LOG;39317;104;[Feature:Logging[1]]
+NODE;11-09-22 17:35:33;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:LoadModules:bodyDeclarations/MethodDeclaration:void:huntForInternalModules:[]:body/Block[0]:statements/EnhancedForStatement:body/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/ExpressionStatement;40080;45;[Feature:Logging[1]]
+RECUP;11-09-22 17:35:33;updated recommendations;37123
+NODE;11-09-22 17:35:34;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:LoadModules:bodyDeclarations/MethodDeclaration:void:huntForInternalModules:[]:body/Block[0]:statements/EnhancedForStatement:body/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/ExpressionStatement;40080;45;[Feature:Logging[1]]
+RECUP;11-09-22 17:35:34;updated recommendations;37123
+NODE;11-09-22 17:35:37;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:LoadModules:bodyDeclarations/MethodDeclaration:void:run:[]:body/Block[1]:statements/ExpressionStatement;40428;32;[Feature:Logging[1]]
+NODE;11-09-22 17:35:38;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:LoadModules:bodyDeclarations/MethodDeclaration:void:run:[]:body/Block[1]:statements/ExpressionStatement;40428;32;[Feature:Logging[1]]
+SELREC;11-09-22 17:35:41;Main.java;40080;3;1.0
+SELREC;11-09-22 17:35:43;Main.java;38566;12;1.0
+RECUP;11-09-22 17:35:47;updated recommendations;37121
+SELREC;11-09-22 17:35:48;Main.java;38566;12;1.0
+RECUP;11-09-22 17:35:50;updated recommendations;0
+RECUP;11-09-22 17:35:53;updated recommendations;16208
+SELREC;11-09-22 17:35:55;Main.java;38902;12;1.0
+SELREC;11-09-22 17:35:56;Main.java;38902;12;1.0
+SELREC;11-09-22 17:36:06;Main.java;38902;12;1.0
+RECUP;11-09-22 17:36:07;updated recommendations;0
+RECUP;11-09-22 17:36:11;updated recommendations;16207
+SELREC;11-09-22 17:36:13;Main.java;7970;2;1.0
+NODE;11-09-22 17:36:16;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[10]:statements/VariableDeclarationStatement:fragments/VariableDeclarationFragment:pb:initializer/MethodInvocation:arguments/SimpleName:st[0];7970;2;[Feature:Logging[1]]
+NODE;11-09-22 17:36:17;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[10]:statements/VariableDeclarationStatement:fragments/VariableDeclarationFragment:pb:initializer/MethodInvocation:arguments/SimpleName:st[0];7970;2;[Feature:Logging[1]]
+SELREC;11-09-22 17:36:19;Main.java;8975;2;1.0
+NODE;11-09-22 17:36:21;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[16]:statements/ExpressionStatement:expression/MethodInvocation:arguments/SimpleName:st[0];8975;2;[Feature:Logging[1]]
+RECUP;11-09-22 17:36:21;updated recommendations;16206
+NODE;11-09-22 17:36:22;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[16]:statements/ExpressionStatement:expression/MethodInvocation:arguments/SimpleName:st[0];8975;2;[Feature:Logging[1]]
+SELREC;11-09-22 17:36:23;Main.java;10593;2;1.0
+NODE;11-09-22 17:36:26;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[40]:statements/ExpressionStatement;10593;10;[Feature:Logging[1]]
+RECUP;11-09-22 17:36:26;updated recommendations;16205
+NODE;11-09-22 17:36:27;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[40]:statements/ExpressionStatement;10593;10;[Feature:Logging[1]]
+SELREC;11-09-22 17:36:31;Main.java;10593;2;1.0
+RECUP;11-09-22 17:36:31;updated recommendations;16204
+SELREC;11-09-22 17:36:33;Main.java;20543;3;0.9999999999999999
+NODE;11-09-22 17:36:36;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:initModel:[]:body/Block[2]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;20543;61;[Feature:Logging[1]]
+NODE;11-09-22 17:36:36;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:initModel:[]:body/Block[2]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;20543;61;[Feature:Logging[1]]
+SELREC;11-09-22 17:36:37;Main.java;6861;3;0.9999999999999999
+NODE;11-09-22 17:36:39;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[0]:statements/ExpressionStatement;6861;29;[Feature:Logging[1]]
+NODE;11-09-22 17:36:40;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[0]:statements/ExpressionStatement;6861;29;[Feature:Logging[1]]
+SELREC;11-09-22 17:36:42;Main.java;20543;3;0.9999999999999999
+SELREC;11-09-22 17:36:44;Main.java;23616;3;0.9999999999999999
+RECUP;11-09-22 17:36:44;updated recommendations;16203
+NODE;11-09-22 17:36:46;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:String:getMostRecentProject:[]:body/Block[1]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;23616;36;[Feature:Logging[1]]
+NODE;11-09-22 17:36:47;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:String:getMostRecentProject:[]:body/Block[1]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;23616;36;[Feature:Logging[1]]
+RECUP;11-09-22 17:36:47;updated recommendations;16203
+RECUP;11-09-22 17:36:51;updated recommendations;16203
+NODE;11-09-22 17:36:56;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:String:getMostRecentProject:[]:body/Block[1]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:elseStatement/Block[0]:statements/ExpressionStatement;23910;88;[Feature:Logging[1]]
+NODE;11-09-22 17:36:56;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:String:getMostRecentProject:[]:body/Block[1]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:elseStatement/Block[0]:statements/ExpressionStatement;23910;88;[Feature:Logging[1]]
+RECUP;11-09-22 17:37:00;updated recommendations;16202
+NODE;11-09-22 17:37:02;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:URL:projectUrl:[String;URL]:body/Block[1]:statements/IfStatement:elseStatement/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/ExpressionStatement;25579;52;[Feature:Logging[1]]
+NODE;11-09-22 17:37:03;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:URL:projectUrl:[String;URL]:body/Block[1]:statements/IfStatement:elseStatement/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/ExpressionStatement;25579;52;[Feature:Logging[1]]
+RECUP;11-09-22 17:37:07;updated recommendations;16202
+SELREC;11-09-22 17:37:14;Main.java;25447;11;1.0
+SELREC;11-09-22 17:37:16;Main.java;25447;11;1.0
+RECUP;11-09-22 17:37:17;updated recommendations;0
+RECUP;11-09-22 17:37:21;updated recommendations;16198
+SELREC;11-09-22 17:37:22;Main.java;40259;226;0.7089201877934271
+SELREC;11-09-22 17:37:35;Main.java;40259;226;0.7089201877934271
+SELREC;11-09-22 17:37:38;Main.java;40259;226;0.7089201877934271
+RECUP;11-09-22 17:37:39;updated recommendations;0
+RECUP;11-09-22 17:37:40;updated recommendations;4170
+SELREC;11-09-22 17:37:41;Main.java;39163;1327;0.5
+SELREC;11-09-22 17:37:48;Main.java;39163;1327;0.5
+RECUP;11-09-22 17:37:50;updated recommendations;0
+RECUP;11-09-22 17:37:51;updated recommendations;4127
+SELREC;11-09-22 17:37:52;Main.java;2568;64;0.5
+SELREC;11-09-22 17:37:57;Main.java;2568;64;0.5
+SELREC;11-09-22 17:38:01;Main.java;2568;64;0.5
+RECUP;11-09-22 17:38:02;updated recommendations;0
+RECUP;11-09-22 17:38:03;updated recommendations;4126
+SELREC;11-09-22 17:38:04;Main.java;20316;33;0.5
+SELREC;11-09-22 17:38:06;Main.java;39729;13;0.5
+SELREC;11-09-22 17:38:08;Main.java;39729;13;0.5
+SELREC;11-09-22 17:38:09;Main.java;10886;11;0.5
+SELREC;11-09-22 17:38:10;Main.java;23186;84;0.4
+SELREC;11-09-22 17:38:11;Main.java;5130;32619;0.3333333333333333
+SELREC;11-09-22 17:38:13;Main.java;37774;1360;0.3333333333333333
+SELREC;11-09-22 17:38:15;Main.java;6542;4927;0.30952380952380953
+FILE;11-09-23 09:37:35;logging
+FILE;11-09-23 09:37:35;logging
+FILE;11-09-23 09:37:35;logging
+FILE;11-09-23 09:37:35;logging
+FILE;11-09-23 09:39:46;logging
+FILE;11-09-23 09:39:46;logging
+FILE;11-09-23 09:39:47;logging
+FILE;11-09-23 09:39:47;logging
+FILE;11-09-23 09:47:02;logging
+FILE;11-09-23 09:47:02;logging
+FILE;11-09-23 09:47:02;logging
+FILE;11-09-23 09:47:02;logging
+NODE;11-09-23 09:47:41;AwtExceptionHandler.java;//CompilationUnit[org.argouml.util.logging.AwtExceptionHandler];0;2526;[Feature:Logging[1]]
+NODE;11-09-23 09:47:42;AwtExceptionHandler.java;//CompilationUnit[org.argouml.util.logging.AwtExceptionHandler];0;2526;[Feature:Logging[1]]
+RECUP;11-09-23 09:47:43;updated recommendations;4126
+INIT;11-09-23 14:53:45;argouml
+RECUP;11-09-23 14:54:06;updated recommendations;0
+RECUP;11-09-23 14:54:08;updated recommendations;0
+NODE;11-09-23 14:54:23;AbstractCognitiveTranslator.java;//CompilationUnit[org.argouml.cognitive.AbstractCognitiveTranslator];0;2259;[Feature:Criticsm[2]]
+RECUP;11-09-23 14:54:24;updated recommendations;35282
+FILE;11-09-23 14:54:33;cognitive
+FILE;11-09-23 14:54:38;cognitive
+RECUP;11-09-23 14:54:48;updated recommendations;37064
+RECUP;11-09-23 14:54:52;updated recommendations;0
+RECUP;11-09-23 14:54:53;updated recommendations;0
+RECUP;11-09-23 14:54:55;updated recommendations;0
+RECUP;11-09-23 14:54:57;updated recommendations;35282
+INIT;11-09-23 14:57:02;argouml
+RECUP;11-09-23 15:03:36;updated recommendations;36060
+SELREC;11-09-23 15:03:52;ProfileCodeGeneration.java;2841;60;1.0
+NODE;11-09-23 15:04:20;Profile.java;//CompilationUnit[org.argouml.profile.Profile]:types/TypeDeclaration:Profile:bodyDeclarations/FieldDeclaration:critics;2255;115;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:critics;2136;53;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:crMissingClassName;2197;41;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:crDisambigClassName;2250;70;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:crNoTransitions;2328;62;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:crNoIncomingTransitions;2398;87;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:crNoOutgoingTransitions;2493;87;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:crCompoundConstructorNeeded;2673;58;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:clsNaming;2739;40;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:noTrans1;2791;111;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:42;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/FieldDeclaration:noTrans2;2910;111;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:04:43;updated recommendations;36061
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[0]:statements/ExpressionStatement;3260;66;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[1]:statements/ExpressionStatement;3338;114;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[2]:statements/ExpressionStatement;3464;89;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[3]:statements/ExpressionStatement;3577;41;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[4]:statements/ExpressionStatement;3666;23;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[5]:statements/ExpressionStatement;3699;39;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[6]:statements/ExpressionStatement;3748;33;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[7]:statements/ExpressionStatement;3791;33;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[8]:statements/ExpressionStatement;3834;34;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[9]:statements/ExpressionStatement;3878;36;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[10]:statements/ExpressionStatement;3924;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[11]:statements/ExpressionStatement;3972;29;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[12]:statements/ExpressionStatement;4032;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[13]:statements/ExpressionStatement;4080;41;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[14]:statements/ExpressionStatement;4131;36;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[15]:statements/ExpressionStatement;4177;34;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[16]:statements/ExpressionStatement;4221;37;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[17]:statements/ExpressionStatement;4268;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[18]:statements/ExpressionStatement;4316;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[19]:statements/ExpressionStatement;4364;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[20]:statements/ExpressionStatement;4412;37;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[21]:statements/ExpressionStatement;4459;43;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[22]:statements/ExpressionStatement;4512;44;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[23]:statements/ExpressionStatement;4566;44;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[24]:statements/ExpressionStatement;4620;45;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[25]:statements/ExpressionStatement;4675;44;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[26]:statements/ExpressionStatement;4833;39;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[27]:statements/ExpressionStatement;4882;47;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[28]:statements/ExpressionStatement;4947;42;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[29]:statements/ExpressionStatement;4999;45;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[30]:statements/ExpressionStatement;5054;43;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[31]:statements/ExpressionStatement;5107;47;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[32]:statements/ExpressionStatement;5164;44;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[33]:statements/ExpressionStatement;5218;47;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[34]:statements/ExpressionStatement;5293;22;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[35]:statements/ExpressionStatement;5325;22;[Feature:Criticsm[2]]
+NODE;11-09-23 15:04:58;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration]:types/TypeDeclaration:ProfileCodeGeneration:bodyDeclarations/MethodDeclaration:void:ProfileCodeGeneration:[ProfileGoodPractices]:body/Block[36]:statements/ExpressionStatement;5401;25;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:05:00;updated recommendations;36087
+NODE;11-09-23 15:05:10;ProfileCodeGeneration.java;//CompilationUnit[org.argouml.uml.cognitive.critics.ProfileCodeGeneration];0;5784;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:05:10;updated recommendations;36067
+SELREC;11-09-23 15:07:14;UMLWizard.java;2314;8;1.0
+SELREC;11-09-23 15:07:45;UMLWizard.java;2314;8;1.0
+NODE;11-09-23 15:08:15;UMLWizard.java;//CompilationUnit[org.argouml.uml.cognitive.critics.UMLWizard];0;3656;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:08:15;updated recommendations;36066
+SELREC;11-09-23 15:12:46;UMLWizard.java;2314;8;1.0
+SELREC;11-09-23 15:12:48;UMLCheckItem.java;2768;12;1.0
+NODE;11-09-23 15:12:54;UMLCheckItem.java;//CompilationUnit[org.argouml.uml.cognitive.checklist.UMLCheckItem];0;5376;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:12:54;updated recommendations;36070
+SELREC;11-09-23 15:12:55;UMLCheckItem.java;3211;18;1.0
+FILE;11-09-23 15:13:10;cognitive
+FILE;11-09-23 15:13:19;cognitive
+INIT;11-09-23 15:15:17;argouml
+RECUP;11-09-23 15:25:48;updated recommendations;30780
+SELREC;11-09-23 15:26:42;TodoListMemberFilePersister.java;3459;38;1.0
+NODE;11-09-23 15:27:11;TodoListMemberFilePersister.java;//CompilationUnit[org.argouml.persistence.TodoListMemberFilePersister];0;5298;[Feature:Criticsm[2]]
+SELREC;11-09-23 15:27:25;CrOCL.java;4436;19;1.0
+SELREC;11-09-23 15:27:25;CrOCL.java;4436;19;1.0
+NODE;11-09-23 15:27:45;CrOCL.java;//CompilationUnit[org.argouml.profile.internal.ocl.CrOCL];0;5404;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:27:46;updated recommendations;30752
+SELREC;11-09-23 15:27:59;CrConsiderFacade.java;2179;42;1.0
+SELREC;11-09-23 15:28:00;CrConsiderFacade.java;2179;42;1.0
+NODE;11-09-23 15:28:30;CrConsiderFacade.java;//CompilationUnit[org.argouml.pattern.cognitive.critics.CrConsiderFacade];0;2683;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:28:30;updated recommendations;30806
+NODE;11-09-23 15:28:50;CrConsiderSingleton.java;//CompilationUnit[org.argouml.pattern.cognitive.critics.CrConsiderSingleton];0;5932;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:28:51;updated recommendations;30788
+NODE;11-09-23 15:29:11;CrSingletonViolatedMissingStaticAttr.java;//CompilationUnit[org.argouml.pattern.cognitive.critics.CrSingletonViolatedMissingStaticAttr];0;5247;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:29:11;updated recommendations;30747
+NODE;11-09-23 15:29:32;CrSingletonViolatedOnlyPrivateConstructors.java;//CompilationUnit[org.argouml.pattern.cognitive.critics.CrSingletonViolatedOnlyPrivateConstructors];0;5310;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:29:32;updated recommendations;30712
+NODE;11-09-23 15:30:09;InitPatternCritics.java;//CompilationUnit[org.argouml.pattern.cognitive.critics.InitPatternCritics];0;3135;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:30:09;updated recommendations;30679
+SELREC;11-09-23 15:30:52;ActionNew.java;3470;26;1.0
+NODE;11-09-23 15:31:09;ActionNew.java;//CompilationUnit[org.argouml.ui.cmd.ActionNew]:types/TypeDeclaration:ActionNew:bodyDeclarations/MethodDeclaration:void:actionPerformed:[ActionEvent]:body/Block[6]:statements/ExpressionStatement;3431;29;[Feature:Criticsm[2]]
+NODE;11-09-23 15:31:09;ActionNew.java;//CompilationUnit[org.argouml.ui.cmd.ActionNew]:types/TypeDeclaration:ActionNew:bodyDeclarations/MethodDeclaration:void:actionPerformed:[ActionEvent]:body/Block[7]:statements/ExpressionStatement;3470;27;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:31:10;updated recommendations;30651
+NODE;11-09-23 15:31:27;ActionNew.java;//CompilationUnit[org.argouml.ui.cmd.ActionNew]:types/TypeDeclaration:ActionNew:bodyDeclarations/MethodDeclaration:void:actionPerformed:[ActionEvent]:body/Block[12]:statements/ExpressionStatement;3853;28;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:31:27;updated recommendations;30647
+SELREC;11-09-23 15:31:50;Main.java;21185;26;1.0
+NODE;11-09-23 15:31:59;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[2]:statements/ExpressionStatement;21146;29;[Feature:Criticsm[2]]
+NODE;11-09-23 15:31:59;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[3]:statements/ExpressionStatement;21185;27;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:31:59;updated recommendations;30645
+NODE;11-09-23 15:32:18;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[8]:statements/ExpressionStatement;22924;28;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:32:18;updated recommendations;30641
+SELREC;11-09-23 15:32:32;ProjectBrowser.java;56887;26;1.0
+SELREC;11-09-23 15:32:32;ProjectBrowser.java;56887;26;1.0
+NODE;11-09-23 15:32:44;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:boolean:loadProject:[File;boolean;ProgressMonitor]:body/Block[5]:statements/ExpressionStatement;56848;29;[Feature:Criticsm[2]]
+NODE;11-09-23 15:32:44;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:boolean:loadProject:[File;boolean;ProgressMonitor]:body/Block[6]:statements/ExpressionStatement;56887;27;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:32:44;updated recommendations;30639
+NODE;11-09-23 15:33:03;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:boolean:loadProject:[File;boolean;ProgressMonitor]:body/Block[9]:statements/IfStatement:thenStatement/Block[1]:statements/ExpressionStatement;57268;28;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:33:03;updated recommendations;30635
+NODE;11-09-23 15:33:39;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:boolean:loadProject:[File;boolean;ProgressMonitor]:body/Block[9]:statements/IfStatement:elseStatement/Block[3]:statements/TryStatement:finally/Block[0]:statements/TryStatement:body[body]/Block[7]:statements/ExpressionStatement;65729;28;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:33:39;updated recommendations;30633
+SELREC;11-09-23 15:33:58;UserDefinedProfile.java;15857;117;1.0
+NODE;11-09-23 15:34:17;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:CrOCL:generateCriticFromComment:[Object];12583;3645;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:34:17;updated recommendations;30631
+NODE;11-09-23 15:35:07;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:List<CrOCL>:getAllCritiquesInModel:[];19882;542;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:35:07;updated recommendations;30592
+SELREC;11-09-23 15:36:35;FigEdgeModelElement.java;14030;39;1.0
+NODE;11-09-23 15:37:02;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:Vector:getPopUpActions:[MouseEvent]:body/Block[6]:statements/IfStatement:thenStatement/Block[0]:statements/VariableDeclarationStatement;13940;53;[Feature:Criticsm[2]]
+NODE;11-09-23 15:37:02;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:Vector:getPopUpActions:[MouseEvent]:body/Block[6]:statements/IfStatement:thenStatement/Block[1]:statements/VariableDeclarationStatement;14007;63;[Feature:Criticsm[2]]
+NODE;11-09-23 15:37:02;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:Vector:getPopUpActions:[MouseEvent]:body/Block[6]:statements/IfStatement:thenStatement/Block[2]:statements/IfStatement;14084;1020;[Feature:Criticsm[2]]
+NODE;11-09-23 15:37:02;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:Vector:getPopUpActions:[MouseEvent]:body/Block[6]:statements/IfStatement:thenStatement/Block[2]:statements/IfStatement:thenStatement/Block;14123;981;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:37:02;updated recommendations;30583
+SELREC;11-09-23 15:37:23;FigEdgeModelElement.java;16982;41;1.0
+NODE;11-09-23 15:38:13;Clarifiable.java;//CompilationUnit[org.argouml.uml.diagram.ui.Clarifiable];0;2001;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:38:13;updated recommendations;30565
+SELREC;11-09-23 15:38:32;FigEdgeModelElement.java;17089;19;1.0
+NODE;11-09-23 15:38:41;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:void:paintClarifiers:[Graphics];16501;1613;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:38:41;updated recommendations;30575
+SELREC;11-09-23 15:38:59;FigEdgeModelElement.java;17089;19;1.0
+SELREC;11-09-23 15:39:00;FigEdgeModelElement.java;17668;19;1.0
+SELREC;11-09-23 15:39:02;FigEdgeModelElement.java;19283;19;1.0
+NODE;11-09-23 15:39:11;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:ToDoItem:hitClarifier:[int;int];18758;2235;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:39:11;updated recommendations;30559
+SELREC;11-09-23 15:39:26;FigEdgeModelElement.java;19761;19;1.0
+SELREC;11-09-23 15:39:30;FigEdgeModelElement.java;19176;41;1.0
+SELREC;11-09-23 15:39:32;FigEdgeModelElement.java;20082;35;1.0
+SELREC;11-09-23 15:39:33;FigNodeModelElement.java;23671;41;1.0
+SELREC;11-09-23 15:39:33;FigNodeModelElement.java;23671;41;1.0
+SELREC;11-09-23 15:39:35;FigNodeModelElement.java;23671;41;1.0
+NODE;11-09-23 15:39:49;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:Vector:getPopUpActions:[MouseEvent]:body/Block[7]:statements/IfStatement:thenStatement/Block[0]:statements/VariableDeclarationStatement;23579;55;[Feature:Criticsm[2]]
+NODE;11-09-23 15:39:49;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:Vector:getPopUpActions:[MouseEvent]:body/Block[7]:statements/IfStatement:thenStatement/Block[1]:statements/VariableDeclarationStatement;23648;65;[Feature:Criticsm[2]]
+NODE;11-09-23 15:39:49;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:Vector:getPopUpActions:[MouseEvent]:body/Block[7]:statements/IfStatement:thenStatement/Block[2]:statements/IfStatement;23727;990;[Feature:Criticsm[2]]
+NODE;11-09-23 15:39:49;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:Vector:getPopUpActions:[MouseEvent]:body/Block[7]:statements/IfStatement:thenStatement/Block[2]:statements/IfStatement:thenStatement/Block;23766;951;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:39:49;updated recommendations;30523
+SELREC;11-09-23 15:40:04;FigNodeModelElement.java;33222;41;1.0
+NODE;11-09-23 15:40:17;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:void:paintClarifiers:[Graphics];32345;1824;[Feature:Criticsm[2]]
+NODE;11-09-23 15:40:17;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:ToDoItem:hitClarifier:[int;int];34252;1999;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:40:17;updated recommendations;30505
+SELREC;11-09-23 15:40:32;FigNodeModelElement.java;33222;41;1.0
+SELREC;11-09-23 15:40:37;StartCritics.java;3919;23;1.0
+NODE;11-09-23 15:40:54;StartCritics.java;//CompilationUnit[org.argouml.application.StartCritics];0;5234;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:40:54;updated recommendations;30452
+SELREC;11-09-23 15:41:09;StartCritics.java;3999;23;1.0
+SELREC;11-09-23 15:41:36;StartCritics.java;4215;23;1.0
+SELREC;11-09-23 15:41:39;StartCritics.java;5075;23;1.0
+SELREC;11-09-23 15:41:41;TodoParser.java;8316;18;1.0
+NODE;11-09-23 15:41:47;TodoParser.java;//CompilationUnit[org.argouml.persistence.TodoParser];0;14025;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:41:47;updated recommendations;30341
+SELREC;11-09-23 15:42:01;SelectionMoveClarifiers.java;2316;47;1.0
+NODE;11-09-23 15:43:11;SelectionEdgeClarifiers.java;//CompilationUnit[org.argouml.uml.diagram.ui.SelectionEdgeClarifiers]:types/TypeDeclaration:SelectionEdgeClarifiers:bodyDeclarations/MethodDeclaration:void:paint:[Graphics]:body/Block[1]:statements/VariableDeclarationStatement;2616;99;[Feature:Criticsm[2]]
+NODE;11-09-23 15:43:11;SelectionEdgeClarifiers.java;//CompilationUnit[org.argouml.uml.diagram.ui.SelectionEdgeClarifiers]:types/TypeDeclaration:SelectionEdgeClarifiers:bodyDeclarations/MethodDeclaration:void:paint:[Graphics]:body/Block[2]:statements/IfStatement;2725;334;[Feature:Criticsm[2]]
+NODE;11-09-23 15:43:11;SelectionEdgeClarifiers.java;//CompilationUnit[org.argouml.uml.diagram.ui.SelectionEdgeClarifiers]:types/TypeDeclaration:SelectionEdgeClarifiers:bodyDeclarations/MethodDeclaration:void:paint:[Graphics]:body/Block[2]:statements/IfStatement:thenStatement/Block;2750;309;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:43:11;updated recommendations;30259
+SELREC;11-09-23 15:43:37;ProfileManagerImpl.java;18745;18;1.0
+NODE;11-09-23 15:43:57;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:applyConfiguration:[ProfileConfiguration]:body/Block[0]:statements/EnhancedForStatement;18396;228;[Feature:Criticsm[2]]
+NODE;11-09-23 15:43:57;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:applyConfiguration:[ProfileConfiguration]:body/Block[1]:statements/EnhancedForStatement;18644;229;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:43:57;updated recommendations;30255
+SELREC;11-09-23 15:44:19;Main.java;12637;404;1.0
+SELREC;11-09-23 15:44:32;Main.java;12637;404;1.0
+NODE;11-09-23 15:45:03;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:initTranslator:[]:body/Block[1]:statements/ExpressionStatement;12572;471;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:45:03;updated recommendations;30246
+SELREC;11-09-23 15:45:28;ShortcutMgr.java;2374;18;1.0
+NODE;11-09-23 15:45:36;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:imports/ImportDeclaration:org.argouml.cognitive.critics.ui.ActionOpenCritics;2282;58;[Feature:Criticsm[2]]
+NODE;11-09-23 15:45:36;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionAutoCritique;2342;51;[Feature:Criticsm[2]]
+NODE;11-09-23 15:45:36;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionOpenDecisions;2395;52;[Feature:Criticsm[2]]
+NODE;11-09-23 15:45:36;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionOpenGoals;2449;48;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:45:36;updated recommendations;30238
+SELREC;11-09-23 15:45:57;ShortcutMgr.java;30889;18;1.0
+NODE;11-09-23 15:46:09;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:types/TypeDeclaration:ShortcutMgr:bodyDeclarations/Initializer:body/Block[52]:statements/ExpressionStatement;30820;91;[Feature:Criticsm[2]]
+NODE;11-09-23 15:46:09;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:types/TypeDeclaration:ShortcutMgr:bodyDeclarations/Initializer:body/Block[53]:statements/ExpressionStatement;30921;92;[Feature:Criticsm[2]]
+NODE;11-09-23 15:46:09;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:types/TypeDeclaration:ShortcutMgr:bodyDeclarations/Initializer:body/Block[54]:statements/ExpressionStatement;31023;67;[Feature:Criticsm[2]]
+NODE;11-09-23 15:46:09;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:types/TypeDeclaration:ShortcutMgr:bodyDeclarations/Initializer:body/Block[55]:statements/ExpressionStatement;31100;71;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:46:10;updated recommendations;30231
+SELREC;11-09-23 15:46:25;FigEdgeModelElement.java;3142;18;1.0
+NODE;11-09-23 15:46:32;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.Designer;2945;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:46:32;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.Highlightable;2985;43;[Feature:Criticsm[2]]
+NODE;11-09-23 15:46:32;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.ToDoItem;3030;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:46:32;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.ToDoList;3070;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:46:32;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionGoToCritique;3110;51;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:46:32;updated recommendations;30227
+RECUP;11-09-23 15:47:30;updated recommendations;0
+NODE;11-09-23 15:47:34;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.cognitive.AbstractCognitiveTranslator;2711;57;[Feature:Criticsm[2]]
+NODE;11-09-23 15:47:34;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.cognitive.Designer;2770;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:47:34;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.cognitive.checklist.ui.InitCheckListUI;2810;58;[Feature:Criticsm[2]]
+NODE;11-09-23 15:47:34;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.cognitive.ui.InitCognitiveUI;2870;48;[Feature:Criticsm[2]]
+NODE;11-09-23 15:47:34;Main.java;//CompilationUnit[org.argouml.application.Main]:imports/ImportDeclaration:org.argouml.cognitive.ui.ToDoPane;2920;41;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:47:34;updated recommendations;30218
+RECUP;11-09-23 15:47:49;updated recommendations;0
+NODE;11-09-23 15:48:01;ProjectManager.java;//CompilationUnit[org.argouml.kernel.ProjectManager]:imports/ImportDeclaration:org.argouml.cognitive.Designer;2101;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:48:16;updated recommendations;0
+NODE;11-09-23 15:48:26;ResolvedCriticXMLHelper.java;//CompilationUnit[org.argouml.persistence.ResolvedCriticXMLHelper]:imports/ImportDeclaration:org.argouml.cognitive.ResolvedCritic;1786;44;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:48:41;updated recommendations;0
+NODE;11-09-23 15:48:44;ToDoItemXMLHelper.java;//CompilationUnit[org.argouml.persistence.ToDoItemXMLHelper]:imports/ImportDeclaration:org.argouml.cognitive.ToDoItem;1728;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:48:59;updated recommendations;0
+NODE;11-09-23 15:49:12;ProfileLoader.java;//CompilationUnit[org.argouml.profile.init.ProfileLoader]:imports/ImportDeclaration:org.argouml.cognitive.Critic;2191;36;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:49:26;updated recommendations;0
+NODE;11-09-23 15:49:40;PropPanelCritic.java;//CompilationUnit[org.argouml.profile.internal.ui.PropPanelCritic]:imports/ImportDeclaration:org.argouml.cognitive.Critic;1885;36;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:49:55;updated recommendations;0
+NODE;11-09-23 15:50:18;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:imports/ImportDeclaration:org.argouml.cognitive.Agency;2067;36;[Feature:Criticsm[2]]
+NODE;11-09-23 15:50:18;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:imports/ImportDeclaration:org.argouml.cognitive.Critic;2105;36;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:50:33;updated recommendations;0
+NODE;11-09-23 15:50:39;ProfileMeta.java;//CompilationUnit[org.argouml.profile.internal.ProfileMeta]:imports/ImportDeclaration:org.argouml.cognitive.Critic;1869;36;[Feature:Criticsm[2]]
+NODE;11-09-23 15:50:39;ProfileMeta.java;//CompilationUnit[org.argouml.profile.internal.ProfileMeta]:imports/ImportDeclaration:org.argouml.cognitive.ToDoItem;1907;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:50:54;updated recommendations;0
+NODE;11-09-23 15:51:18;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.cognitive.Critic;1875;36;[Feature:Criticsm[2]]
+NODE;11-09-23 15:51:18;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.cognitive.ToDoItem;1913;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:51:34;updated recommendations;0
+NODE;11-09-23 15:51:51;Profile.java;//CompilationUnit[org.argouml.profile.Profile]:imports/ImportDeclaration:org.argouml.cognitive.Critic;1820;36;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:52:05;updated recommendations;0
+NODE;11-09-23 15:52:09;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:imports/ImportDeclaration:org.argouml.cognitive.Critic;2267;36;[Feature:Criticsm[2]]
+NODE;11-09-23 15:52:09;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:imports/ImportDeclaration:org.argouml.cognitive.Decision;2305;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:52:09;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:imports/ImportDeclaration:org.argouml.cognitive.ToDoItem;2345;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:52:09;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:imports/ImportDeclaration:org.argouml.cognitive.Translator;2385;40;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:52:24;updated recommendations;0
+NODE;11-09-23 15:52:33;ActionNew.java;//CompilationUnit[org.argouml.ui.cmd.ActionNew]:imports/ImportDeclaration:org.argouml.cognitive.Designer;1882;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:52:48;updated recommendations;0
+NODE;11-09-23 15:52:51;ActionSelectAll.java;//CompilationUnit[org.argouml.ui.cmd.ActionSelectAll]:imports/ImportDeclaration:org.argouml.cognitive.Translator;1711;40;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:53:06;updated recommendations;0
+NODE;11-09-23 15:53:09;ActionSelectInvert.java;//CompilationUnit[org.argouml.ui.cmd.ActionSelectInvert]:imports/ImportDeclaration:org.argouml.cognitive.Translator;1714;40;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:53:24;updated recommendations;0
+NODE;11-09-23 15:53:32;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:imports/ImportDeclaration:org.argouml.cognitive.critics.ui.ActionOpenCritics;2332;58;[Feature:Criticsm[2]]
+NODE;11-09-23 15:53:32;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionAutoCritique;2392;51;[Feature:Criticsm[2]]
+NODE;11-09-23 15:53:32;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionOpenDecisions;2445;52;[Feature:Criticsm[2]]
+NODE;11-09-23 15:53:32;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionOpenGoals;2499;48;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:53:47;updated recommendations;0
+NODE;11-09-23 15:53:55;GoCriticsToCritic.java;//CompilationUnit[org.argouml.ui.explorer.rules.GoCriticsToCritic]:imports/ImportDeclaration:org.argouml.cognitive.CompoundCritic;1839;44;[Feature:Criticsm[2]]
+NODE;11-09-23 15:53:55;GoCriticsToCritic.java;//CompilationUnit[org.argouml.ui.explorer.rules.GoCriticsToCritic]:imports/ImportDeclaration:org.argouml.cognitive.Critic;1885;36;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:54:09;updated recommendations;0
+NODE;11-09-23 15:54:12;GoProfileToCritics.java;//CompilationUnit[org.argouml.ui.explorer.rules.GoProfileToCritics]:imports/ImportDeclaration:org.argouml.cognitive.Critic;1843;36;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:54:27;updated recommendations;0
+NODE;11-09-23 15:54:30;Clarifier.java;//CompilationUnit[org.argouml.ui.Clarifier]:imports/ImportDeclaration:org.argouml.cognitive.ToDoItem;1736;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:54:45;updated recommendations;0
+NODE;11-09-23 15:54:49;DisplayTextTree.java;//CompilationUnit[org.argouml.ui.DisplayTextTree]:imports/ImportDeclaration:org.argouml.cognitive.ToDoItem;2100;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:54:49;DisplayTextTree.java;//CompilationUnit[org.argouml.ui.DisplayTextTree]:imports/ImportDeclaration:org.argouml.cognitive.ToDoList;2140;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:55:04;updated recommendations;0
+NODE;11-09-23 15:55:08;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:imports/ImportDeclaration:org.argouml.cognitive.Designer;3343;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:55:23;updated recommendations;0
+NODE;11-09-23 15:55:38;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.Designer;3085;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:55:38;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.Highlightable;3125;43;[Feature:Criticsm[2]]
+NODE;11-09-23 15:55:38;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.ToDoItem;3170;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:55:38;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.ToDoList;3210;38;[Feature:Criticsm[2]]
+NODE;11-09-23 15:55:38;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionGoToCritique;3250;51;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:55:53;updated recommendations;0
+NODE;11-09-23 15:55:59;ImportCommon.java;//CompilationUnit[org.argouml.uml.reveng.ImportCommon]:imports/ImportDeclaration:org.argouml.cognitive.Designer;2077;38;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:56:14;updated recommendations;0
+NODE;11-09-23 15:56:24;TabProps.java;//CompilationUnit[org.argouml.uml.ui.TabProps]:imports/ImportDeclaration:org.argouml.cognitive.Critic;2046;36;[Feature:Criticsm[2]]
+RECUP;11-09-23 15:56:39;updated recommendations;0
+RECUP;11-09-23 16:06:03;updated recommendations;30157
+SELREC;11-09-23 16:10:42;ToDoItemXMLHelper.java;2878;37;1.0
+NODE;11-09-23 16:10:50;ToDoItemXMLHelper.java;//CompilationUnit[org.argouml.persistence.ToDoItemXMLHelper];0;4497;[Feature:Criticsm[2]]
+SELREC;11-09-23 16:11:05;ToDoItemXMLHelper.java;3672;20;1.0
+SELREC;11-09-23 16:11:08;ToDoItemXMLHelper.java;3672;20;1.0
+SELREC;11-09-23 16:11:09;ToDoItemXMLHelper.java;4043;40;1.0
+SELREC;11-09-23 16:11:11;ToDoItemXMLHelper.java;4434;40;1.0
+SELREC;11-09-23 16:11:12;UserDefinedProfile.java;8434;77;1.0
+SELREC;11-09-23 16:12:17;UserDefinedProfile.java;8434;77;1.0
+NODE;11-09-23 16:12:29;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:void:finishLoading:[]:body/Block[1]:statements/EnhancedForStatement:body/Block[0]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:elseStatement/Block;8345;209;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:12:29;updated recommendations;30126
+SELREC;11-09-23 16:12:44;SelectionMoveClarifiers.java;2316;47;1.0
+NODE;11-09-23 16:12:57;SelectionMoveClarifiers.java;//CompilationUnit[org.argouml.uml.diagram.ui.SelectionMoveClarifiers]:types/TypeDeclaration:SelectionMoveClarifiers:bodyDeclarations/MethodDeclaration:void:paint:[Graphics]:body/Block[0]:statements/ExpressionStatement;2316;48;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:12:57;updated recommendations;30123
+SELREC;11-09-23 16:13:29;DisplayTextTree.java;5547;32;1.0
+NODE;11-09-23 16:13:39;DisplayTextTree.java;//CompilationUnit[org.argouml.ui.DisplayTextTree]:types/TypeDeclaration:DisplayTextTree:bodyDeclarations/MethodDeclaration:String:convertValueToText:[Object;boolean;boolean;boolean;int;boolean]:body/Block[0]:statements/IfStatement;5494;97;[Feature:Criticsm[2]]
+NODE;11-09-23 16:13:39;DisplayTextTree.java;//CompilationUnit[org.argouml.ui.DisplayTextTree]:types/TypeDeclaration:DisplayTextTree:bodyDeclarations/MethodDeclaration:String:convertValueToText:[Object;boolean;boolean;boolean;int;boolean]:body/Block[0]:statements/IfStatement:thenStatement/Block;5525;66;[Feature:Criticsm[2]]
+NODE;11-09-23 16:13:39;DisplayTextTree.java;//CompilationUnit[org.argouml.ui.DisplayTextTree]:types/TypeDeclaration:DisplayTextTree:bodyDeclarations/MethodDeclaration:String:convertValueToText:[Object;boolean;boolean;boolean;int;boolean]:body/Block[1]:statements/IfStatement;5601;115;[Feature:Criticsm[2]]
+NODE;11-09-23 16:13:39;DisplayTextTree.java;//CompilationUnit[org.argouml.ui.DisplayTextTree]:types/TypeDeclaration:DisplayTextTree:bodyDeclarations/MethodDeclaration:String:convertValueToText:[Object;boolean;boolean;boolean;int;boolean]:body/Block[1]:statements/IfStatement:thenStatement/Block;5632;84;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:13:39;updated recommendations;30120
+SELREC;11-09-23 16:13:53;FigNodeModelElement.java;36961;18;1.0
+NODE;11-09-23 16:15:10;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:String:getTipString:[MouseEvent]:body/Block[0]:statements/VariableDeclarationStatement;36653;51;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:15:10;updated recommendations;30116
+SELREC;11-09-23 16:15:32;FigEdgeModelElement.java;11969;18;1.0
+NODE;11-09-23 16:15:39;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:String:getTipString:[MouseEvent]:body/Block[0]:statements/VariableDeclarationStatement;11661;51;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:15:39;updated recommendations;30113
+NODE;11-09-23 16:15:57;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:String:getTipString:[MouseEvent]:body/Block[2]:statements/IfStatement:thenStatement/Block;11948;51;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:15:57;updated recommendations;30110
+NODE;11-09-23 16:17:58;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:String:getTipString:[MouseEvent]:body/Block[3]:statements/IfStatement;11879;167;[Feature:Criticsm[2]]
+NODE;11-09-23 16:17:58;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:bodyDeclarations/MethodDeclaration:String:getTipString:[MouseEvent]:body/Block[3]:statements/IfStatement:thenStatement/Block;11973;73;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:17:59;updated recommendations;30108
+SELREC;11-09-23 16:18:15;FigAssociationEnd.java;8720;24;1.0
+NODE;11-09-23 16:18:22;FigAssociationEnd.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigAssociationEnd]:types/TypeDeclaration:FigAssociationEnd:bodyDeclarations/MethodDeclaration:void:paintClarifiers:[Graphics];8525;227;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:18:22;updated recommendations;30109
+SELREC;11-09-23 16:18:37;FigTransition.java;12808;24;1.0
+NODE;11-09-23 16:18:41;FigTransition.java;//CompilationUnit[org.argouml.uml.diagram.state.ui.FigTransition]:types/TypeDeclaration:FigTransition:bodyDeclarations/MethodDeclaration:void:paintClarifiers:[Graphics];12700;140;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:18:41;updated recommendations;30110
+SELREC;11-09-23 16:18:56;FigAssociation.java;19750;24;1.0
+NODE;11-09-23 16:19:28;FigAssociation.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigAssociation]:types/TypeDeclaration:FigAssociation:bodyDeclarations/MethodDeclaration:void:paintClarifiers:[Graphics];19470;312;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:19:28;updated recommendations;30109
+SELREC;11-09-23 16:20:20;FigAssociation.java;19750;24;1.0
+SELREC;11-09-23 16:20:21;ImportCommon.java;16865;45;1.0
+NODE;11-09-23 16:20:29;ImportCommon.java;//CompilationUnit[org.argouml.uml.reveng.ImportCommon]:types/TypeDeclaration:ImportCommon:bodyDeclarations/MethodDeclaration:void:doImport:[ProgressMonitor]:body/Block[8]:statements/VariableDeclarationStatement;16748;69;[Feature:Criticsm[2]]
+NODE;11-09-23 16:20:29;ImportCommon.java;//CompilationUnit[org.argouml.uml.reveng.ImportCommon]:types/TypeDeclaration:ImportCommon:bodyDeclarations/MethodDeclaration:void:doImport:[ProgressMonitor]:body/Block[9]:statements/IfStatement;16827;95;[Feature:Criticsm[2]]
+NODE;11-09-23 16:20:29;ImportCommon.java;//CompilationUnit[org.argouml.uml.reveng.ImportCommon]:types/TypeDeclaration:ImportCommon:bodyDeclarations/MethodDeclaration:void:doImport:[ProgressMonitor]:body/Block[9]:statements/IfStatement:thenStatement/Block;16850;72;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:20:29;updated recommendations;30112
+NODE;11-09-23 16:20:45;ImportCommon.java;//CompilationUnit[org.argouml.uml.reveng.ImportCommon]:types/TypeDeclaration:ImportCommon:bodyDeclarations/MethodDeclaration:void:doImport:[ProgressMonitor]:body/Block[10]:statements/TryStatement:finally/Block[0]:statements/IfStatement;17143;102;[Feature:Criticsm[2]]
+NODE;11-09-23 16:20:45;ImportCommon.java;//CompilationUnit[org.argouml.uml.reveng.ImportCommon]:types/TypeDeclaration:ImportCommon:bodyDeclarations/MethodDeclaration:void:doImport:[ProgressMonitor]:body/Block[10]:statements/TryStatement:finally/Block[0]:statements/IfStatement:thenStatement/Block;17166;79;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:20:45;updated recommendations;30105
+SELREC;11-09-23 16:21:09;ProfileManagerImpl.java;11617;5;1.0
+NODE;11-09-23 16:21:17;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:registerProfile:[Profile]:body/Block[0]:statements/IfStatement:thenStatement/Block[0]:statements/IfStatement:thenStatement/Block[1]:statements/EnhancedForStatement;11379;264;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:21:17;updated recommendations;30100
+SELREC;11-09-23 16:21:37;ProfileManagerImpl.java;11617;5;1.0
+SELREC;11-09-23 16:21:39;SelectionNodeClarifiers2.java;4530;11;1.0
+NODE;11-09-23 16:21:58;SelectionNodeClarifiers2.java;//CompilationUnit[org.argouml.uml.diagram.ui.SelectionNodeClarifiers2]:types/TypeDeclaration:SelectionNodeClarifiers2:bodyDeclarations/MethodDeclaration:void:paint:[Graphics]:body/Block[0]:statements/VariableDeclarationStatement;4235;64;[Feature:Criticsm[2]]
+NODE;11-09-23 16:21:58;SelectionNodeClarifiers2.java;//CompilationUnit[org.argouml.uml.diagram.ui.SelectionNodeClarifiers2]:types/TypeDeclaration:SelectionNodeClarifiers2:bodyDeclarations/MethodDeclaration:void:paint:[Graphics]:body/Block[1]:statements/IfStatement;4309;278;[Feature:Criticsm[2]]
+NODE;11-09-23 16:21:58;SelectionNodeClarifiers2.java;//CompilationUnit[org.argouml.uml.diagram.ui.SelectionNodeClarifiers2]:types/TypeDeclaration:SelectionNodeClarifiers2:bodyDeclarations/MethodDeclaration:void:paint:[Graphics]:body/Block[1]:statements/IfStatement:thenStatement/Block;4346;241;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:21:58;updated recommendations;30090
+SELREC;11-09-23 16:22:13;FigEdgeModelElement.java;5737;11;1.0
+NODE;11-09-23 16:22:21;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:superInterfaceTypes/SimpleType::org.argouml.uml.diagram.ui.Clarifiable;5737;11;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:22:21;updated recommendations;30087
+NODE;11-09-23 16:22:52;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:types/TypeDeclaration:FigEdgeModelElement:superInterfaceTypes/SimpleType::org.argouml.cognitive.Highlightable;5658;13;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:22:52;updated recommendations;30086
+SELREC;11-09-23 16:23:11;GoCriticsToCritic.java;3080;14;1.0
+SELREC;11-09-23 16:23:12;GoCriticsToCritic.java;2909;14;1.0
+NODE;11-09-23 16:23:38;GoCriticsToCritic.java;//CompilationUnit[org.argouml.ui.explorer.rules.GoCriticsToCritic];0;4306;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:23:39;updated recommendations;30085
+SELREC;11-09-23 16:24:01;GoCriticsToCritic.java;2909;14;1.0
+SELREC;11-09-23 16:24:06;ProfileUML.java;2667;19;1.0
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrAssocNameConflict;2626;61;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrAttrNameConflict;2689;60;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrCircularAssocClass;2751;62;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrCircularInheritance;2815;63;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrClassMustBeAbstract;2880;63;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrCrossNamespaceAssoc;2945;63;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrDupParamName;3010;56;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrDupRoleNames;3068;56;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrFinalSubclassed;3126;59;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrForkOutgoingTransition;3187;66;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrIllegalGeneralization;3255;65;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInterfaceAllPublic;3322;62;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInterfaceOperOnly;3386;61;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInvalidBranch;3449;57;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInvalidFork;3508;55;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInvalidHistory;3565;58;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInvalidInitial;3625;58;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInvalidJoin;3685;55;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInvalidJoinTriggerOrGuard;3742;69;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInvalidPseudoStateTrigger;3813;69;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrInvalidSynch;3884;56;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrJoinIncomingTransition;3942;66;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrMultiComposite;4010;58;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrMultipleAgg;4070;55;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrMultipleDeepHistoryStates;4127;69;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrMultipleShallowHistoryStates;4198;72;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrNWayAgg;4272;51;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrNameConflict;4325;56;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrNameConflictAC;4383;58;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrNameConfusion;4443;57;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrOppEndConflict;4502;58;[Feature:Criticsm[2]]
+NODE;11-09-23 16:24:13;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.CrOppEndVsAttr;4562;56;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:24:14;updated recommendations;30076
+NODE;11-09-23 16:24:32;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:imports/ImportDeclaration:org.argouml.profile.internal.ocl.CrOCL;2437;46;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:24:32;updated recommendations;30012
+NODE;11-09-23 16:25:06;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:types/TypeDeclaration:ProfileUML:bodyDeclarations/MethodDeclaration:void:ProfileUML:[]:body/Block[6]:statements/ExpressionStatement;5943;26;[Feature:Criticsm[2]]
+NODE;11-09-23 16:25:06;ProfileUML.java;//CompilationUnit[org.argouml.profile.internal.ProfileUML]:types/TypeDeclaration:ProfileUML:bodyDeclarations/MethodDeclaration:void:loadWellFormednessRules:[];6081;6907;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:25:06;updated recommendations;30010
+SELREC;11-09-23 16:25:40;ProfileMeta.java;3929;474;1.0
+NODE;11-09-23 16:25:48;ProfileMeta.java;//CompilationUnit[org.argouml.profile.internal.ProfileMeta]:types/TypeDeclaration:ProfileMeta:bodyDeclarations/MethodDeclaration:void:ProfileMeta:[]:body/Block[5]:statements/ExpressionStatement;3642;26;[Feature:Criticsm[2]]
+NODE;11-09-23 16:25:48;ProfileMeta.java;//CompilationUnit[org.argouml.profile.internal.ProfileMeta]:types/TypeDeclaration:ProfileMeta:bodyDeclarations/MethodDeclaration:void:loadWellFormednessRules:[];3776;2741;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:25:49;updated recommendations;29861
+SELREC;11-09-23 16:26:03;ProfileMeta.java;4536;1265;1.0
+SELREC;11-09-23 16:26:10;ProfileMeta.java;3933;5;1.0
+SELREC;11-09-23 16:26:11;ProfilePropPanelFactory.java;2099;5;1.0
+NODE;11-09-23 16:26:27;ProfilePropPanelFactory.java;//CompilationUnit[org.argouml.profile.internal.ui.ProfilePropPanelFactory];0;2227;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:26:27;updated recommendations;29824
+SELREC;11-09-23 16:26:42;ProfileMeta.java;3830;6;1.0
+SELREC;11-09-23 16:26:45;ProfileLoader.java;9864;6;1.0
+NODE;11-09-23 16:26:58;ProfileLoader.java;//CompilationUnit[org.argouml.profile.init.ProfileLoader]:types/TypeDeclaration:ProfileLoader:bodyDeclarations/MethodDeclaration:Set<Critic>:loadJavaCriticsForProfile:[Attributes;ClassLoader];9107;1880;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:26:58;updated recommendations;29825
+NODE;11-09-23 16:27:29;ProfileLoader.java;//CompilationUnit[org.argouml.profile.init.ProfileLoader]:types/TypeDeclaration:ProfileLoader:bodyDeclarations/MethodDeclaration:void:loadProfilesFromJarFile:[Manifest;File;ClassLoader]:body/Block[2]:statements/EnhancedForStatement:body/Block[1]:statements/IfStatement:thenStatement/Block[0]:statements/TryStatement:body[body]/Block[1]:statements/VariableDeclarationStatement;6378;96;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:27:29;updated recommendations;29815
+NODE;11-09-23 16:27:51;ProfileLoader.java;//CompilationUnit[org.argouml.profile.init.ProfileLoader]:types/TypeDeclaration:ProfileLoader:bodyDeclarations/MethodDeclaration:void:loadProfilesFromJarFile:[Manifest;File;ClassLoader]:body/Block[2]:statements/EnhancedForStatement:body/Block[1]:statements/IfStatement:thenStatement/Block[0]:statements/TryStatement:body[body]/Block[5]:statements/VariableDeclarationStatement:fragments/VariableDeclarationFragment:udp:initializer/ClassInstanceCreation:arguments/SimpleName:critics[2];7187;7;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:27:51;updated recommendations;29811
+NODE;11-09-23 16:28:10;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:void:UserDefinedProfile:[String;URL;Set<Critic>;Set<String>]:parameters/SingleVariableDeclaration:critics;6403;19;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:28:10;updated recommendations;29811
+NODE;11-09-23 16:28:42;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:void:UserDefinedProfile:[String;URL;Set<Critic>;Set<String>]:body/Block[3]:statements/ExpressionStatement;7126;25;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:28:42;updated recommendations;29809
+NODE;11-09-23 16:29:33;Profile.java;//CompilationUnit[org.argouml.profile.Profile]:types/TypeDeclaration:Profile:bodyDeclarations/MethodDeclaration:void:setCritics:[Set<Critic>];5652;158;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:29:33;updated recommendations;29809
+NODE;11-09-23 16:30:02;Profile.java;//CompilationUnit[org.argouml.profile.Profile]:types/TypeDeclaration:Profile:bodyDeclarations/MethodDeclaration:Set<Critic>:getCritics:[];5171;144;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:30:02;updated recommendations;29807
+SELREC;11-09-23 16:30:54;PropPanelCritic.java;3997;6;1.0
+NODE;11-09-23 16:31:09;PropPanelCritic.java;//CompilationUnit[org.argouml.profile.internal.ui.PropPanelCritic];0;4967;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:31:09;updated recommendations;29806
+SELREC;11-09-23 16:31:33;UserDefinedProfile.java;11994;17;1.0
+NODE;11-09-23 16:31:37;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:void:finishLoading:[]:body/Block[4]:statements/VariableDeclarationStatement;11970;42;[Feature:Criticsm[2]]
+NODE;11-09-23 16:31:37;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:void:finishLoading:[]:body/Block[5]:statements/ExpressionStatement;12030;43;[Feature:Criticsm[2]]
+NODE;11-09-23 16:31:37;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:void:finishLoading:[]:body/Block[6]:statements/ExpressionStatement;12083;27;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:31:37;updated recommendations;29782
+SELREC;11-09-23 16:31:58;UserDefinedProfile.java;12083;26;1.0
+SELREC;11-09-23 16:32:01;ProfileMeta.java;2375;5;1.0
+NODE;11-09-23 16:32:04;ProfileMeta.java;//CompilationUnit[org.argouml.profile.internal.ProfileMeta]:imports/ImportDeclaration:org.argouml.profile.internal.ocl.CrOCL;2335;46;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:32:04;updated recommendations;29776
+SELREC;11-09-23 16:32:33;TabProps.java;7717;6;1.0
+SELREC;11-09-23 16:33:59;TabProps.java;13573;6;1.0
+SELREC;11-09-23 16:34:10;UserDefinedProfile.java;16399;6;1.0
+NODE;11-09-23 16:34:34;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:String:str2KnowledgeType:[String];16236;1241;[Feature:Criticsm[2]]
+RECUP;11-09-23 16:34:34;updated recommendations;29774
+SELREC;11-09-23 16:35:11;TabProps.java;13573;6;1.0
+SELREC;11-09-23 16:35:13;PerspectiveManager.java;3727;17;1.0
+INIT;11-09-23 16:44:45;argouml
+RECUP;11-09-23 16:57:24;updated recommendations;29684
+SELREC;11-09-23 18:25:08;FigEdgeModelElement.java;4037;9;1.0
+NODE;11-09-23 18:25:15;FigEdgeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigEdgeModelElement]:imports/ImportDeclaration:org.argouml.ui.Clarifier;4015;32;[Feature:Criticsm[2]]
+SELREC;11-09-23 18:25:30;FigNodeModelElement.java;4080;9;1.0
+INIT;11-09-23 18:29:48;argouml
+RECUP;11-09-23 18:40:01;updated recommendations;29680
+SELREC;11-09-26 11:18:20;PerspectiveManager.java;18178;17;1.0
+NODE;11-09-26 11:18:31;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[22]:statements/ExpressionStatement;18084;53;[Feature:Criticsm[2]]
+NODE;11-09-26 11:18:31;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[23]:statements/ExpressionStatement;18147;52;[Feature:Criticsm[2]]
+SELREC;11-09-26 11:19:13;PerspectiveManager.java;23244;17;1.0
+NODE;11-09-26 11:19:21;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[77]:statements/ExpressionStatement;23154;51;[Feature:Criticsm[2]]
+NODE;11-09-26 11:19:21;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[78]:statements/ExpressionStatement;23215;50;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:19:21;updated recommendations;29678
+SELREC;11-09-26 11:19:35;PerspectiveManager.java;22178;17;1.0
+NODE;11-09-26 11:19:40;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[64]:statements/ExpressionStatement;22084;53;[Feature:Criticsm[2]]
+NODE;11-09-26 11:19:40;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[65]:statements/ExpressionStatement;22147;52;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:19:40;updated recommendations;29676
+NODE;11-09-26 11:19:59;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[86]:statements/ExpressionStatement;23996;58;[Feature:Criticsm[2]]
+NODE;11-09-26 11:19:59;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[87]:statements/ExpressionStatement;24064;57;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:19:59;updated recommendations;29674
+NODE;11-09-26 11:20:16;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[96]:statements/ExpressionStatement;24882;55;[Feature:Criticsm[2]]
+NODE;11-09-26 11:20:16;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[97]:statements/ExpressionStatement;24947;54;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:20:16;updated recommendations;29672
+NODE;11-09-26 11:20:52;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[123]:statements/ExpressionStatement;27287;57;[Feature:Criticsm[2]]
+NODE;11-09-26 11:20:52;PerspectiveManager.java;//CompilationUnit[org.argouml.ui.explorer.PerspectiveManager]:types/TypeDeclaration:PerspectiveManager:bodyDeclarations/MethodDeclaration:Collection<ExplorerPerspective>:getDefaultPerspectives:[]:body/Block[124]:statements/ExpressionStatement;27354;56;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:20:53;updated recommendations;29670
+SELREC;11-09-26 11:21:18;ProfileManagerImpl.java;2715;21;1.0
+NODE;11-09-26 11:21:32;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.ProfileCodeGeneration;2674;63;[Feature:Criticsm[2]]
+NODE;11-09-26 11:21:32;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:imports/ImportDeclaration:org.argouml.uml.cognitive.critics.ProfileGoodPractices;2739;62;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:21:32;updated recommendations;29668
+NODE;11-09-26 11:21:55;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/FieldDeclaration:profileGoodPractices;4152;50;[Feature:Criticsm[2]]
+NODE;11-09-26 11:21:55;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/FieldDeclaration:profileCodeGeneration;4254;52;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:21:56;updated recommendations;29664
+NODE;11-09-26 11:22:14;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:ProfileManagerImpl:[]:body/Block[0]:statements/TryStatement:body[body]/Block[3]:statements/ExpressionStatement;4738;50;[Feature:Criticsm[2]]
+NODE;11-09-26 11:22:14;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:ProfileManagerImpl:[]:body/Block[0]:statements/TryStatement:body[body]/Block[4]:statements/ExpressionStatement;4802;94;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:22:14;updated recommendations;29667
+NODE;11-09-26 11:22:38;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:ProfileManagerImpl:[]:body/Block[0]:statements/TryStatement:body[body]/Block[8]:statements/ExpressionStatement;5291;38;[Feature:Criticsm[2]]
+NODE;11-09-26 11:22:38;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:ProfileManagerImpl:[]:body/Block[0]:statements/TryStatement:body[body]/Block[9]:statements/ExpressionStatement;5343;39;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:22:39;updated recommendations;29660
+NODE;11-09-26 11:22:58;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:loadDefaultProfilesfromConfiguration:[]:body/Block[0]:statements/IfStatement:thenStatement/Block[2]:statements/IfStatement:thenStatement/Block[1]:statements/ExpressionStatement;6429;43;[Feature:Criticsm[2]]
+NODE;11-09-26 11:22:58;ProfileManagerImpl.java;//CompilationUnit[org.argouml.profile.internal.ProfileManagerImpl]:types/TypeDeclaration:ProfileManagerImpl:bodyDeclarations/MethodDeclaration:void:loadDefaultProfilesfromConfiguration:[]:body/Block[0]:statements/IfStatement:thenStatement/Block[2]:statements/IfStatement:thenStatement/Block[2]:statements/ExpressionStatement;6490;44;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:22:58;updated recommendations;29658
+SELREC;11-09-26 11:23:19;InitProfileSubsystem.java;1807;23;1.0
+NODE;11-09-26 11:23:23;InitProfileSubsystem.java;//CompilationUnit[org.argouml.profile.init.InitProfileSubsystem]:imports/ImportDeclaration:org.argouml.profile.internal.ui.ProfilePropPanelFactory;1768;63;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:23:23;updated recommendations;29656
+NODE;11-09-26 11:23:49;InitProfileSubsystem.java;//CompilationUnit[org.argouml.profile.init.InitProfileSubsystem]:types/TypeDeclaration:InitProfileSubsystem:bodyDeclarations/MethodDeclaration:void:init:[]:body/Block[1]:statements/VariableDeclarationStatement;2777;57;[Feature:Criticsm[2]]
+NODE;11-09-26 11:23:49;InitProfileSubsystem.java;//CompilationUnit[org.argouml.profile.init.InitProfileSubsystem]:types/TypeDeclaration:InitProfileSubsystem:bodyDeclarations/MethodDeclaration:void:init:[]:body/Block[2]:statements/ExpressionStatement;2844;53;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:23:49;updated recommendations;29655
+SELREC;11-09-26 11:24:05;XmiFilePersister.java;13206;38;1.0
+NODE;11-09-26 11:24:20;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parseXmiExtensions:[Project]:body/Block[0]:statements/IfStatement:elseStatement/Block;13173;84;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:24:20;updated recommendations;29656
+NODE;11-09-26 11:25:17;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/FieldDeclaration:todoString;2979;26;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:25:17;updated recommendations;29652
+NODE;11-09-26 11:25:37;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parseXmiExtensions:[Project]:body/Block[2]:statements/IfStatement;14144;635;[Feature:Criticsm[2]]
+NODE;11-09-26 11:25:37;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parseXmiExtensions:[Project]:body/Block[2]:statements/IfStatement:thenStatement/Block;14168;521;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:25:37;updated recommendations;29657
+NODE;11-09-26 11:26:21;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:imports/ImportDeclaration:org.argouml.uml.cognitive.ProjectMemberTodoList;2375;55;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:26:21;updated recommendations;29650
+NODE;11-09-26 11:26:44;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parse:[String;String]:body/Block[0]:statements/IfStatement:elseStatement/IfStatement:elseStatement/IfStatement;12179;84;[Feature:Criticsm[2]]
+NODE;11-09-26 11:26:44;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parse:[String;String]:body/Block[0]:statements/IfStatement:elseStatement/IfStatement:elseStatement/IfStatement:thenStatement/Block;12205;58;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:26:44;updated recommendations;29649
+SELREC;11-09-26 11:27:02;ProjectManager.java;2419;21;1.0
+NODE;11-09-26 11:27:10;ProjectManager.java;//CompilationUnit[org.argouml.kernel.ProjectManager]:types/TypeDeclaration:ProjectManager:bodyDeclarations/MethodDeclaration:void:createDefaultDiagrams:[Project]:body/Block[5]:statements/ExpressionStatement;14008;75;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:27:11;updated recommendations;29648
+NODE;11-09-26 11:31:08;ProjectManager.java;//CompilationUnit[org.argouml.kernel.ProjectManager]:imports/ImportDeclaration:org.argouml.uml.cognitive.ProjectMemberTodoList;2386;55;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:31:08;updated recommendations;29644
+SELREC;11-09-26 11:31:39;ProjectManager.java;2419;21;1.0
+SELREC;11-09-26 11:31:42;MemberList.java;2046;21;1.0
+NODE;11-09-26 11:31:48;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:imports/ImportDeclaration:org.argouml.uml.cognitive.ProjectMemberTodoList;2013;55;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:31:48;updated recommendations;29642
+NODE;11-09-26 11:32:10;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:boolean:add:[ProjectMember]:body/Block[0]:statements/IfStatement:elseStatement/IfStatement:thenStatement/Block;4701;163;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:32:10;updated recommendations;29641
+NODE;11-09-26 11:32:40;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:boolean:add:[ProjectMember]:body/Block[1]:statements/IfStatement;4652;208;[Feature:Criticsm[2]]
+NODE;11-09-26 11:32:40;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:boolean:add:[ProjectMember]:body/Block[1]:statements/IfStatement:thenStatement/Block;4697;163;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:32:40;updated recommendations;29641
+SELREC;11-09-26 11:33:11;AbstractFilePersister.java;2435;21;1.0
+NODE;11-09-26 11:33:15;AbstractFilePersister.java;//CompilationUnit[org.argouml.persistence.AbstractFilePersister]:imports/ImportDeclaration:org.argouml.uml.cognitive.ProjectMemberTodoList;2402;55;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:33:16;updated recommendations;29640
+NODE;11-09-26 11:33:37;AbstractFilePersister.java;//CompilationUnit[org.argouml.persistence.AbstractFilePersister]:types/TypeDeclaration:AbstractFilePersister:bodyDeclarations/Initializer:body/Block[2]:statements/ExpressionStatement;3821;107;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:33:37;updated recommendations;29639
+SELREC;11-09-26 11:34:36;ProjectImpl.java;9653;21;1.0
+NODE;11-09-26 11:34:41;ProjectImpl.java;//CompilationUnit[org.argouml.kernel.ProjectImpl]:types/TypeDeclaration:ProjectImpl:bodyDeclarations/MethodDeclaration:void:addTodoMember:[ProjectMemberTodoList];9567;429;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:34:41;updated recommendations;29637
+NODE;11-09-26 11:36:39;ProjectImpl.java;//CompilationUnit[org.argouml.kernel.ProjectImpl]:types/TypeDeclaration:ProjectImpl:bodyDeclarations/MethodDeclaration:void:addMember:[Object]:body/Block[2]:statements/IfStatement;10605;325;[Feature:Criticsm[2]]
+NODE;11-09-26 11:36:39;ProjectImpl.java;//CompilationUnit[org.argouml.kernel.ProjectImpl]:types/TypeDeclaration:ProjectImpl:bodyDeclarations/MethodDeclaration:void:addMember:[Object]:body/Block[2]:statements/IfStatement:thenStatement/Block;10645;285;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:36:39;updated recommendations;29639
+NODE;11-09-26 11:37:03;ProjectImpl.java;//CompilationUnit[org.argouml.kernel.ProjectImpl]:imports/ImportDeclaration:org.argouml.uml.cognitive.ProjectMemberTodoList;2765;55;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:37:03;updated recommendations;29635
+SELREC;11-09-26 11:37:22;ResolvedCriticXMLHelper.java;2232;14;1.0
+NODE;11-09-26 11:37:27;ResolvedCriticXMLHelper.java;//CompilationUnit[org.argouml.persistence.ResolvedCriticXMLHelper];0;3771;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:37:27;updated recommendations;29634
+SELREC;11-09-26 11:37:42;ActionSelectAll.java;2214;22;1.0
+NODE;11-09-26 11:38:58;ActionSelectAll.java;//CompilationUnit[org.argouml.ui.cmd.ActionSelectAll]:imports/ImportDeclaration:org.argouml.i18n.Translator;1711;35;[]
+SELREC;11-09-26 11:39:19;ResolvedCriticXMLHelper.java;2232;14;1.0
+SELREC;11-09-26 11:39:21;ActionSelectAll.java;2214;22;1.0
+SELREC;11-09-26 11:39:23;FigNodeModelElement.java;36850;4;1.0
+SELREC;11-09-26 11:40:58;FigNodeModelElement.java;36961;4;1.0
+SELREC;11-09-26 11:41:00;ActionSelectAll.java;2194;43;1.0
+SELREC;11-09-26 11:41:07;ProjectBrowser.java;39370;1;1.0
+NODE;11-09-26 11:41:12;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:propertyChange:[PropertyChangeEvent]:body/Block[0]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:thenStatement/Block[1]:statements/ExpressionStatement;39343;30;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:41:12;updated recommendations;29619
+SELREC;11-09-26 11:41:41;ProjectManager.java;15307;4;1.0
+NODE;11-09-26 11:41:45;ProjectManager.java;//CompilationUnit[org.argouml.kernel.ProjectManager]:types/TypeDeclaration:ProjectManager:bodyDeclarations/MethodDeclaration:void:setSaveAction:[Action]:body/Block[1]:statements/ExpressionStatement;15284;29;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:41:45;updated recommendations;29616
+SELREC;11-09-26 11:42:11;ActionSelectInvert.java;2215;28;1.0
+NODE;11-09-26 11:42:20;ActionSelectInvert.java;//CompilationUnit[org.argouml.ui.cmd.ActionSelectInvert]:imports/ImportDeclaration:org.argouml.cognitive.Translator;1714;40;[]
+SELREC;11-09-26 11:42:42;FigNodeModelElement.java;36850;4;1.0
+SELREC;11-09-26 11:43:45;FigNodeModelElement.java;36961;4;1.0
+NODE;11-09-26 11:44:04;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:superInterfaceTypes/SimpleType::org.argouml.cognitive.Highlightable;5876;13;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:44:04;updated recommendations;29613
+NODE;11-09-26 11:44:45;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:String:getTipString:[MouseEvent]:body/Block[2]:statements/IfStatement;32499;128;[Feature:Criticsm[2]]
+NODE;11-09-26 11:44:45;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:bodyDeclarations/MethodDeclaration:String:getTipString:[MouseEvent]:body/Block[2]:statements/IfStatement:thenStatement/Block;32585;42;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:44:45;updated recommendations;29613
+SELREC;11-09-26 11:45:10;ActionSelectAll.java;2194;43;1.0
+SELREC;11-09-26 11:45:13;ActionSelectInvert.java;2195;49;1.0
+SELREC;11-09-26 11:45:16;Main.java;35631;6;1.0
+NODE;11-09-26 11:45:22;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeGUI:[SplashScreen]:body/Block[1]:statements/ExpressionStatement;35606;33;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:45:23;updated recommendations;29613
+NODE;11-09-26 11:47:19;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/FieldDeclaration:todoPane;8213;219;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:47:19;updated recommendations;29610
+NODE;11-09-26 11:48:09;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:createPanels:[SplashScreen;JPanel]:body/Block[5]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;18510;127;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:48:09;updated recommendations;29618
+NODE;11-09-26 11:48:26;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:createPanels:[SplashScreen;JPanel]:body/Block[6]:statements/ExpressionStatement;18709;26;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:48:26;updated recommendations;29619
+NODE;11-09-26 11:48:47;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:Component:assemblePanels:[]:body/Block[2]:statements/ExpressionStatement;18953;39;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:48:47;updated recommendations;29618
+NODE;11-09-26 11:49:43;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:restorePanelSizes:[]:body/Block[5]:statements/IfStatement;26404;200;[Feature:Criticsm[2]]
+NODE;11-09-26 11:49:43;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:restorePanelSizes:[]:body/Block[5]:statements/IfStatement:thenStatement/Block;26426;178;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:49:43;updated recommendations;29619
+NODE;11-09-26 11:50:20;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:saveScreenConfiguration:[]:body/Block[4]:statements/IfStatement;34889;148;[Feature:Criticsm[2]]
+NODE;11-09-26 11:50:20;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:saveScreenConfiguration:[]:body/Block[4]:statements/IfStatement:thenStatement/Block;34911;126;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:50:20;updated recommendations;29620
+NODE;11-09-26 11:50:48;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:JPanel:getTodoPane:[];42471;135;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:50:48;updated recommendations;29619
+NODE;11-09-26 11:51:39;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:ProjectBrowser:[String;SplashScreen;boolean;JPanel]:parameters/SingleVariableDeclaration:leftBottomPane;9786;21;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:51:40;updated recommendations;29617
+NODE;11-09-26 11:52:08;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:createPanels:[SplashScreen;JPanel]:parameters/SingleVariableDeclaration:leftBottomPane;17477;21;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:52:08;updated recommendations;29619
+NODE;11-09-26 11:52:43;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:ProjectBrowser:[String;SplashScreen;boolean;JPanel]:body/Block[6]:statements/ExpressionStatement:expression/MethodInvocation:arguments/SimpleName:leftBottomPane[1];10203;14;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:52:43;updated recommendations;29618
+SELREC;11-09-26 11:53:16;ProjectBrowser.java;9171;4;1.0
+NODE;11-09-26 11:53:20;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:ProjectBrowser:[]:body/Block[0]:statements/ConstructorInvocation:arguments/NullLiteral[3];9171;4;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:53:20;updated recommendations;29617
+SELREC;11-09-26 11:53:42;ProjectBrowser.java;9171;4;1.0
+SELREC;11-09-26 11:53:43;ActionSelectAll.java;2214;22;1.0
+SELREC;11-09-26 11:53:45;ProjectBrowser.java;9171;4;1.0
+NODE;11-09-26 11:53:55;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:ProjectBrowser:makeInstance:[SplashScreen;boolean;JPanel]:body/Block[0]:statements/ReturnStatement:expression/ClassInstanceCreation:arguments/SimpleName:leftBottomPane[3];16974;14;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:53:55;updated recommendations;29616
+NODE;11-09-26 11:54:18;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:ProjectBrowser:makeInstance:[SplashScreen;boolean;JPanel]:parameters/SingleVariableDeclaration:leftBottomPane;16860;21;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:54:19;updated recommendations;29615
+NODE;11-09-26 11:55:08;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeGUI:[SplashScreen]:body/Block[3]:statements/VariableDeclarationStatement:fragments/VariableDeclarationFragment:pb:initializer/MethodInvocation:arguments/SimpleName:todoPanel[2];35773;9;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:55:08;updated recommendations;29615
+NODE;11-09-26 11:55:32;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeGUI:[SplashScreen]:body/Block[0]:statements/VariableDeclarationStatement;35491;17;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:55:32;updated recommendations;29614
+SELREC;11-09-26 11:56:03;ActionSelectAll.java;2214;22;1.0
+SELREC;11-09-26 11:56:08;ActionSelectInvert.java;2215;28;1.0
+SELREC;11-09-26 11:56:11;FigNodeModelElement.java;36850;4;1.0
+SELREC;11-09-26 11:56:18;ActionSelectAll.java;2194;43;1.0
+SELREC;11-09-26 11:56:22;FigNodeModelElement.java;36961;18;0.9999999999999999
+SELREC;11-09-26 11:56:25;GenericArgoMenuBar.java;36759;24;0.9999999999999999
+NODE;11-09-26 11:56:40;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:types/TypeDeclaration:GenericArgoMenuBar:bodyDeclarations/MethodDeclaration:void:initMenuCritique:[];36300;1392;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:56:40;updated recommendations;29615
+NODE;11-09-26 11:57:07;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:types/TypeDeclaration:GenericArgoMenuBar:bodyDeclarations/MethodDeclaration:void:initMenus:[]:body/Block[6]:statements/ExpressionStatement;10832;19;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:57:07;updated recommendations;29609
+SELREC;11-09-26 11:57:27;FigNodeModelElement.java;36961;18;0.9999999999999999
+SELREC;11-09-26 11:57:29;GenericArgoMenuBar.java;10832;18;0.9999999999999999
+SELREC;11-09-26 11:57:30;FigNodeModelElement.java;6032;11;0.9999999999999999
+NODE;11-09-26 11:57:42;FigNodeModelElement.java;//CompilationUnit[org.argouml.uml.diagram.ui.FigNodeModelElement]:types/TypeDeclaration:FigNodeModelElement:superInterfaceTypes/SimpleType::org.argouml.uml.diagram.ui.Clarifiable;5917;11;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:57:42;updated recommendations;29608
+SELREC;11-09-26 11:58:24;UserDefinedProfile.java;2579;5;0.9999999999999999
+NODE;11-09-26 11:58:31;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:imports/ImportDeclaration:org.argouml.profile.internal.ocl.CrOCL;2539;46;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:58:31;updated recommendations;29608
+SELREC;11-09-26 11:58:56;FigNodeModelElement.java;5971;13;0.9999999999999999
+SELREC;11-09-26 11:59:01;Main.java;19359;15;0.9999999999999999
+NODE;11-09-26 11:59:05;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[23]:statements/ExpressionStatement;19324;54;[Feature:Criticsm[2]]
+NODE;11-09-26 11:59:05;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:ProjectBrowser:initializeSubsystems:[SimpleTimer;SplashScreen]:body/Block[24]:statements/ExpressionStatement;19388;54;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:59:05;updated recommendations;29606
+SELREC;11-09-26 11:59:40;Main.java;19359;15;0.9999999999999999
+SELREC;11-09-26 11:59:41;Main.java;19423;15;0.9999999999999999
+SELREC;11-09-26 11:59:47;Main.java;9771;12;0.9999999999999999
+NODE;11-09-26 11:59:54;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[26]:statements/ExpressionStatement;9704;25;[Feature:Logging[1], Feature:Criticsm[2]]
+NODE;11-09-26 11:59:54;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[27]:statements/VariableDeclarationStatement;9743;43;[Feature:Criticsm[2]]
+NODE;11-09-26 11:59:54;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[28]:statements/ExpressionStatement;9800;37;[Feature:Criticsm[2]]
+RECUP;11-09-26 11:59:55;updated recommendations;29604
+SELREC;11-09-26 12:00:16;ActionSelectAll.java;2194;10;0.9999999999999999
+SELREC;11-09-26 12:00:19;UserDefinedProfile.java;2761;11;0.9999999999999999
+NODE;11-09-26 12:00:24;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:imports/ImportDeclaration:org.argouml.uml.cognitive.UMLDecision;2728;45;[Feature:Criticsm[2]]
+RECUP;11-09-26 12:00:24;updated recommendations;29602
+SELREC;11-09-26 12:01:08;Main.java;35666;9;0.9999999999999999
+SELREC;11-09-26 12:01:10;FigEdgeModelElement.java;11494;13;0.9319102128420678
+SELREC;11-09-26 12:01:17;FigEdgeModelElement.java;11494;13;0.9319102128420678
+RECUP;11-09-26 12:01:18;updated recommendations;29600
+SELREC;11-09-26 12:01:42;ProfileManagerImpl.java;18217;23;0.9317331425505275
+SELREC;11-09-26 12:01:48;ProjectBrowser.java;31157;576;0.9109998211411195
+NODE;11-09-26 12:01:55;ProjectBrowser.java;//CompilationUnit[org.argouml.ui.ProjectBrowser]:types/TypeDeclaration:ProjectBrowser:bodyDeclarations/MethodDeclaration:void:setToDoItem:[Object];31157;576;[Feature:Criticsm[2]]
+RECUP;11-09-26 12:01:55;updated recommendations;12827
+INIT;11-09-26 12:04:18;argouml
+RECUP;11-09-26 12:15:10;updated recommendations;29585
+SELREC;11-09-26 17:46:48;FigEdgeModelElement.java;11494;13;0.9319138670478914
+SELREC;11-09-26 18:57:22;FigEdgeModelElement.java;11494;13;0.9319138670478914
+SELREC;11-09-26 18:57:38;DetailsPane.java;7370;670;0.9110167977126518
+NODE;11-09-26 18:58:30;DetailsPane.java;//CompilationUnit[org.argouml.ui.DetailsPane]:types/TypeDeclaration:DetailsPane:bodyDeclarations/MethodDeclaration:boolean:setToDoItem:[Object];7370;670;[Feature:Criticsm[2]]
+RECUP;11-09-26 18:58:30;updated recommendations;12815
+RECUP;11-09-26 19:03:38;updated recommendations;12816
+SELREC;11-09-26 19:05:34;CollectionUtil.java;2427;408;0.916278361925844
+SELREC;11-09-26 19:05:51;OclInterpreter.java;4104;340;0.91612064194798
+NODE;11-09-26 19:05:57;OclInterpreter.java;//CompilationUnit[org.argouml.profile.internal.ocl.OclInterpreter]:types/TypeDeclaration:OclInterpreter:bodyDeclarations/MethodDeclaration:Set<Object>:getCriticizedDesignMaterials:[];4104;340;[Feature:Criticsm[2]]
+SELREC;11-09-26 19:06:40;GenDescendantClasses.java;2277;142;0.9160791366906474
+NODE;11-09-26 19:07:11;GenDescendantClasses.java;//CompilationUnit[org.argouml.uml.GenDescendantClasses];0;3303;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:07:11;updated recommendations;12817
+RECUP;11-09-26 19:12:21;updated recommendations;12812
+SELREC;11-09-26 19:16:01;ComputeDesignMaterials.java;3634;145;0.9161506622516556
+NODE;11-09-26 19:16:07;ComputeDesignMaterials.java;//CompilationUnit[org.argouml.profile.internal.ocl.ComputeDesignMaterials]:types/TypeDeclaration:ComputeDesignMaterials:bodyDeclarations/MethodDeclaration:Set<Object>:getCriticizedDesignMaterials:[];3634;145;[Feature:Criticsm[2]]
+SELREC;11-09-26 19:17:08;ComputeDesignMaterials.java;3634;145;0.9161506622516556
+NODE;11-09-26 19:17:32;ComputeDesignMaterials.java;//CompilationUnit[org.argouml.profile.internal.ocl.ComputeDesignMaterials];0;3786;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:17:32;updated recommendations;12812
+NODE;11-09-26 19:18:09;OclInterpreter.java;//CompilationUnit[org.argouml.profile.internal.ocl.OclInterpreter];0;4451;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:18:09;updated recommendations;12809
+SELREC;11-09-26 19:18:31;FigEdgeModelElement.java;21663;218;0.9153070215695274
+SELREC;11-09-26 19:19:07;PredicateGefWrapper.java;2482;151;0.9150757228086279
+SELREC;11-09-26 19:19:49;TreeModelComposite.java;3622;660;0.914885727397889
+SELREC;11-09-26 19:19:58;TreeModelComposite.java;3280;217;0.9148692060578246
+SELREC;11-09-26 19:19:58;UserDefinedProfile.java;20444;621;0.9148361633776961
+SELREC;11-09-26 19:20:13;UserDefinedProfile.java;20444;621;0.9148361633776961
+NODE;11-09-26 19:20:19;UserDefinedProfile.java;//CompilationUnit[org.argouml.profile.UserDefinedProfile]:types/TypeDeclaration:UserDefinedProfile:bodyDeclarations/MethodDeclaration:Collection<Object>:getAllCommentsInModel:[Collection];20444;621;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:20:19;updated recommendations;12815
+SELREC;11-09-26 19:20:36;ApplicationVersion.java;2203;636;0.9146553775743708
+NODE;11-09-26 19:20:43;ApplicationVersion.java;//CompilationUnit[org.argouml.application.helpers.ApplicationVersion]:types/TypeDeclaration:ApplicationVersion:bodyDeclarations/MethodDeclaration:String:getManualForCritic:[];2203;636;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:20:43;updated recommendations;12816
+SELREC;11-09-26 19:21:03;TreeModelComposite.java;2849;334;0.9145679012345678
+SELREC;11-09-26 19:21:05;UMLTreeCellRenderer.java;2995;1801;0.9145432098765433
+SELREC;11-09-26 19:21:08;ModelManagementHelper.java;10455;1962;0.9144362139917694
+SELREC;11-09-26 19:21:16;GenCompositeClasses2.java;2349;139;0.9143786008230452
+SELREC;11-09-26 19:21:25;Facade.java;43090;438;0.9143045267489712
+SELREC;11-09-26 19:21:29;XMLElement.java;3297;121;0.9142469135802469
+SELREC;11-09-26 19:21:32;TreeModelComposite.java;2698;54;0.9142304526748971
+SELREC;11-09-26 19:21:33;OperationsCompartmentContainer.java;2238;107;0.9141810699588476
+SELREC;11-09-26 19:21:40;ProjectBrowser.java;31743;1166;0.9141810699588476
+SELREC;11-09-26 19:22:04;ItemUID.java;5653;551;0.9141563786008231
+SELREC;11-09-26 19:22:08;Project.java;14299;484;0.9140246913580248
+SELREC;11-09-26 19:22:10;Facade.java;35756;205;0.9137613168724279
+SELREC;11-09-26 19:22:16;PredicateGefWrapper.java;2098;272;0.9122469135802469
+SELREC;11-09-26 19:22:23;TreeModelSupport.java;2928;2245;0.9118683127572017
+SELREC;11-09-26 19:22:37;TodoTokenTable.java;4311;96;0.9115720164609054
+NODE;11-09-26 19:22:46;TodoTokenTable.java;//CompilationUnit[org.argouml.persistence.TodoTokenTable];0;5247;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:22:46;updated recommendations;12814
+SELREC;11-09-26 19:23:07;OffenderXMLHelper.java;2179;459;0.9115502742230347
+NODE;11-09-26 19:23:21;OffenderXMLHelper.java;//CompilationUnit[org.argouml.persistence.OffenderXMLHelper];0;2829;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:23:21;updated recommendations;12996
+SELREC;11-09-26 19:23:46;ShortcutMgr.java;11082;35;0.907180159016986
+SELREC;11-09-26 19:24:03;ShortcutMgr.java;11082;35;0.907180159016986
+NODE;11-09-26 19:24:21;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:types/TypeDeclaration:ShortcutMgr:bodyDeclarations/FieldDeclaration:ACTION_AUTO_CRITIQUE;10679;106;[Feature:Criticsm[2]]
+NODE;11-09-26 19:24:21;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:types/TypeDeclaration:ShortcutMgr:bodyDeclarations/FieldDeclaration:ACTION_OPEN_DECISIONS;10793;109;[Feature:Criticsm[2]]
+NODE;11-09-26 19:24:21;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:types/TypeDeclaration:ShortcutMgr:bodyDeclarations/FieldDeclaration:ACTION_OPEN_GOALS;10910;97;[Feature:Criticsm[2]]
+NODE;11-09-26 19:24:21;ShortcutMgr.java;//CompilationUnit[org.argouml.ui.cmd.ShortcutMgr]:types/TypeDeclaration:ShortcutMgr:bodyDeclarations/FieldDeclaration:ACTION_OPEN_CRITICS;11015;103;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:24:21;updated recommendations;12993
+SELREC;11-09-26 19:24:49;Argo.java;5066;84;0.9064645370871683
+SELREC;11-09-26 19:25:03;Argo.java;5066;84;0.9064645370871683
+NODE;11-09-26 19:25:08;Argo.java;//CompilationUnit[org.argouml.application.api.Argo]:types/TypeDeclaration:Argo:bodyDeclarations/FieldDeclaration:KEY_SCREEN_SOUTHWEST_WIDTH;4973;178;[Feature:Criticsm[2]]
+RECUP;11-09-26 19:25:08;updated recommendations;13022
+SELREC;11-09-26 19:25:23;ComputeTriggers.java;1826;510;0.9
+SELREC;11-09-26 19:25:40;CoreFactory.java;22547;604;0.91122770671951
+SELREC;11-09-26 19:25:41;PerspectiveSupport.java;4358;166;0.9112358133669608
+SELREC;11-09-26 19:25:44;ExtensionMechanismsFactory.java;4128;274;0.9112358133669608
+SELREC;11-09-26 19:25:49;CollectionUtil.java;2427;408;0.9161079084849576
+SELREC;11-09-26 19:26:05;CollectionUtil.java;2427;408;0.9161079084849576
+RECUP;11-09-26 19:26:10;updated recommendations;13043
+RECUP;11-09-26 19:33:39;updated recommendations;20341
+SELREC;11-09-27 11:30:34;TreeModelSupport.java;9454;927;0.9
+SELREC;11-09-27 11:30:46;ModelManagementHelper.java;10455;1962;0.9
+SELREC;11-09-27 11:30:50;TreeModelComposite.java;2849;334;0.9
+SELREC;11-09-27 11:30:52;Facade.java;43090;438;0.9
+SELREC;11-09-27 11:30:56;ItemUID.java;5653;551;0.9
+SELREC;11-09-27 11:31:00;FigEdgeModelElement.java;21663;218;0.9
+SELREC;11-09-27 11:31:03;OperationsCompartmentContainer.java;2238;107;0.9
+SELREC;11-09-27 11:55:21;TreeModelComposite.java;2698;54;0.9
+SELREC;11-09-27 11:55:24;ProjectBrowser.java;31743;1166;0.9
+SELREC;11-09-27 11:58:15;UMLTreeCellRenderer.java;2995;1801;0.9
+SELREC;11-09-27 11:58:22;ComputeTriggers.java;2218;113;0.9
+SELREC;11-09-27 11:58:58;ComputeTriggers.java;2218;113;0.9
+SELREC;11-09-27 11:59:16;Facade.java;30105;211;0.9
+SELREC;11-09-27 11:59:20;Facade.java;35756;205;0.9
+SELREC;11-09-27 11:59:24;PerspectiveSupport.java;4358;166;0.9
+SELREC;11-09-27 11:59:41;ProjectBrowser.java;6112;9;0.9
+SELREC;11-09-27 11:59:46;GenericArgoMenuBar.java;7876;8;0.9
+NODE;11-09-27 12:00:06;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:types/TypeDeclaration:GenericArgoMenuBar:bodyDeclarations/FieldDeclaration:critique;7813;72;[Feature:Criticsm[2]]
+SELREC;11-09-27 12:00:43;FigNodeModelElement.java;32122;13;0.9
+SELREC;11-09-27 12:00:45;FigAssociationEnd.java;1685;25;0.9
+SELREC;11-09-27 12:00:56;SelectionEdgeClarifiers.java;1696;35;0.9
+SELREC;11-09-27 12:01:01;ProfileMeta.java;2610;7;0.9
+SELREC;11-09-27 12:01:09;ProfileMeta.java;2610;7;0.9
+SELREC;11-09-27 12:01:23;Facade.java;22600;253;0.7460526315789473
+SELREC;11-09-27 12:01:29;UndoableAction.java;2526;82;0.7000000000000001
+SELREC;11-09-27 12:01:39;OCLEvaluator.java;2171;2840;0.6
+SELREC;11-09-27 12:02:38;XmiFilePersister.java;1820;27;0.45
+RECUP;11-09-27 12:07:42;updated recommendations;20349
+NODE;11-09-27 14:18:20;GenDescendantClasses.java;//CompilationUnit[org.argouml.uml.GenDescendantClasses];0;3303;[]
+RECUP;11-09-27 14:25:54;updated recommendations;20349
+INIT;11-09-30 14:44:34;argouml
+RECUP;11-09-30 14:45:58;updated recommendations;28
+SELREC;11-09-30 14:46:00;OldZargoFilePersister.java;5892;26;1.0
+SELREC;11-09-30 14:46:11;TabConstraints.java;9631;76;1.0
+SELREC;11-09-30 14:47:38;OldZargoFilePersister.java;5908;9;1.0
+FILE;11-09-30 14:48:09;ocl
+FILE;11-09-30 14:48:10;ocl
+NODE;11-09-30 14:48:21;CriticOclEvaluator.java;//CompilationUnit[org.argouml.ocl.CriticOclEvaluator];0;3606;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:48:21;updated recommendations;28
+SELREC;11-09-30 14:48:25;TabConstraints.java;2241;7;1.0
+NODE;11-09-30 14:49:23;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/FieldDeclaration:todoList;3909;39;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:49:24;updated recommendations;40
+NODE;11-09-30 14:49:41;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:boolean:remove:[Object]:body/Block[4]:statements/IfStatement;5782;312;[Feature:Criticsm[2]]
+NODE;11-09-30 14:49:41;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:boolean:remove:[Object]:body/Block[4]:statements/IfStatement:thenStatement/Block;5806;288;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:49:41;updated recommendations;39
+NODE;11-09-30 14:49:46;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:List<ProjectMember>:buildOrderedMemberList:[]:body/Block[4]:statements/IfStatement;7810;67;[Feature:Criticsm[2]]
+NODE;11-09-30 14:49:46;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:List<ProjectMember>:buildOrderedMemberList:[]:body/Block[4]:statements/IfStatement:thenStatement/Block;7832;45;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:49:46;updated recommendations;37
+NODE;11-09-30 14:49:52;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:int:size:[]:body/Block[2]:statements/IfStatement;8589;55;[Feature:Criticsm[2]]
+NODE;11-09-30 14:49:52;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:int:size:[]:body/Block[2]:statements/IfStatement:thenStatement/Block;8611;33;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:49:52;updated recommendations;36
+NODE;11-09-30 14:49:55;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:boolean:contains:[Object]:body/Block[0]:statements/IfStatement;8821;62;[Feature:Criticsm[2]]
+NODE;11-09-30 14:49:55;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:boolean:contains:[Object]:body/Block[0]:statements/IfStatement:thenStatement/Block;8845;38;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:49:56;updated recommendations;35
+NODE;11-09-30 14:49:59;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:void:clear:[]:body/Block[2]:statements/IfStatement;9406;66;[Feature:Criticsm[2]]
+NODE;11-09-30 14:49:59;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:void:clear:[]:body/Block[2]:statements/IfStatement:thenStatement/Block;9428;44;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:50:00;updated recommendations;33
+NODE;11-09-30 14:50:10;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:ProjectMember:get:[int]:body/Block[1]:statements/IfStatement:thenStatement/Block[0]:statements/IfStatement;10030;72;[Feature:Criticsm[2]]
+NODE;11-09-30 14:50:10;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:ProjectMember:get:[int]:body/Block[1]:statements/IfStatement:thenStatement/Block[0]:statements/IfStatement:thenStatement/Block;10052;50;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:50:10;updated recommendations;31
+NODE;11-09-30 14:51:47;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:ProjectMember[]:toArray:[]:body/Block[4]:statements/IfStatement;10736;71;[Feature:Criticsm[2]]
+NODE;11-09-30 14:51:47;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:ProjectMember[]:toArray:[]:body/Block[4]:statements/IfStatement:thenStatement/Block;10758;49;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:51:47;updated recommendations;29
+NODE;11-09-30 14:51:53;MemberList.java;//CompilationUnit[org.argouml.kernel.MemberList]:types/TypeDeclaration:MemberList:bodyDeclarations/MethodDeclaration:void:setTodoList:[AbstractProjectMember];10949;296;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:51:53;updated recommendations;29
+RECUP;11-09-30 14:52:00;updated recommendations;29
+SELREC;11-09-30 14:52:02;MemberList.java;11242;6;1.0
+INIT;11-09-30 14:56:07;argouml
+RECUP;11-09-30 14:56:13;updated recommendations;34
+SELREC;11-09-30 14:56:14;OCLEvaluator.java;2696;27;1.0
+SELREC;11-09-30 14:56:30;GenericArgoMenuBar.java;36759;24;1.0
+FILE;11-09-30 14:57:04;ocl
+RECUP;11-09-30 14:57:05;updated recommendations;34
+RECUP;11-09-30 14:57:05;updated recommendations;34
+RECUP;11-09-30 14:57:06;updated recommendations;34
+NODE;11-09-30 14:57:07;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:types/TypeDeclaration:GenericArgoMenuBar:bodyDeclarations/MethodDeclaration:void:initMenuCritique:[];36300;1392;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:57:07;updated recommendations;23
+FILE;11-09-30 14:57:08;ocl
+NODE;11-09-30 14:57:38;AbstractFilePersister.java;//CompilationUnit[org.argouml.persistence.AbstractFilePersister]:imports/ImportDeclaration:org.argouml.uml.cognitive.ProjectMemberTodoList;2402;55;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:57:39;updated recommendations;23
+NODE;11-09-30 14:57:45;ResolvedCriticXMLHelper.java;//CompilationUnit[org.argouml.persistence.ResolvedCriticXMLHelper];0;3771;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:57:45;updated recommendations;23
+NODE;11-09-30 14:57:48;ToDoItemXMLHelper.java;//CompilationUnit[org.argouml.persistence.ToDoItemXMLHelper];0;4497;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:57:49;updated recommendations;23
+NODE;11-09-30 14:57:57;TodoListMemberFilePersister.java;//CompilationUnit[org.argouml.persistence.TodoListMemberFilePersister];0;5298;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:57:57;updated recommendations;23
+NODE;11-09-30 14:58:00;TodoParser.java;//CompilationUnit[org.argouml.persistence.TodoParser];0;14025;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:58:00;updated recommendations;23
+NODE;11-09-30 14:58:05;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:imports/ImportDeclaration:org.argouml.uml.cognitive.ProjectMemberTodoList;2375;55;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:58:06;updated recommendations;23
+NODE;11-09-30 14:58:10;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parse:[String;String]:body/Block[0]:statements/IfStatement:elseStatement/IfStatement:elseStatement/IfStatement;12179;84;[Feature:Criticsm[2]]
+NODE;11-09-30 14:58:10;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parse:[String;String]:body/Block[0]:statements/IfStatement:elseStatement/IfStatement:elseStatement/IfStatement:thenStatement/Block;12205;58;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:58:10;updated recommendations;23
+NODE;11-09-30 14:58:14;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parseXmiExtensions:[Project]:body/Block[0]:statements/IfStatement:elseStatement/Block;13173;84;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:58:14;updated recommendations;23
+NODE;11-09-30 14:58:20;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parseXmiExtensions:[Project]:body/Block[2]:statements/IfStatement;14144;635;[Feature:Criticsm[2]]
+NODE;11-09-30 14:58:20;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/MethodDeclaration:void:parseXmiExtensions:[Project]:body/Block[2]:statements/IfStatement:thenStatement/Block;14168;521;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:58:21;updated recommendations;23
+NODE;11-09-30 14:58:26;XmiFilePersister.java;//CompilationUnit[org.argouml.persistence.XmiFilePersister]:types/TypeDeclaration:XmiFilePersister:bodyDeclarations/FieldDeclaration:todoString;2979;26;[Feature:Criticsm[2]]
+RECUP;11-09-30 14:58:26;updated recommendations;23
+NODE;11-09-30 15:00:03;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:imports/ImportDeclaration:org.argouml.cognitive.critics.ui.ActionOpenCritics;2332;58;[Feature:Criticsm[2]]
+NODE;11-09-30 15:00:03;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionAutoCritique;2392;51;[Feature:Criticsm[2]]
+NODE;11-09-30 15:00:03;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionOpenDecisions;2445;52;[Feature:Criticsm[2]]
+NODE;11-09-30 15:00:03;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:imports/ImportDeclaration:org.argouml.cognitive.ui.ActionOpenGoals;2499;48;[Feature:Criticsm[2]]
+RECUP;11-09-30 15:00:03;updated recommendations;19
+NODE;11-09-30 15:00:08;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:types/TypeDeclaration:GenericArgoMenuBar:bodyDeclarations/MethodDeclaration:void:initMenus:[]:body/Block[6]:statements/ExpressionStatement;10832;19;[Feature:Criticsm[2]]
+RECUP;11-09-30 15:00:08;updated recommendations;18
+SELREC;11-09-30 15:00:56;OCLEvaluator.java;2696;27;1.0
+INIT;11-09-30 15:04:41;argouml
+RECUP;11-09-30 15:04:59;updated recommendations;0
+RECUP;11-09-30 15:05:10;updated recommendations;0
+RECUP;11-09-30 15:05:11;updated recommendations;0
+RECUP;11-09-30 15:05:12;updated recommendations;0
+RECUP;11-09-30 15:05:14;updated recommendations;0
+RECUP;11-09-30 15:05:14;updated recommendations;0
+RECUP;11-09-30 15:05:15;updated recommendations;0
+RECUP;11-09-30 15:05:15;updated recommendations;0
+RECUP;11-09-30 15:05:15;updated recommendations;0
+NODE;11-09-30 15:05:21;Uml14ModelInterpreter.java;//CompilationUnit[org.argouml.profile.internal.ocl.uml14.Uml14ModelInterpreter]:imports/ImportDeclaration:org.apache.log4j.Logger;1790;31;[Feature:Logging[1]]
+RECUP;11-09-30 15:05:21;updated recommendations;2
+NODE;11-09-30 15:05:24;Uml14ModelInterpreter.java;//CompilationUnit[org.argouml.profile.internal.ocl.uml14.Uml14ModelInterpreter]:imports/ImportDeclaration:org.apache.log4j.Logger;1790;31;[]
+RECUP;11-09-30 15:05:24;updated recommendations;2
+RECUP;11-09-30 15:05:26;updated recommendations;0
+INIT;11-09-30 15:08:39;argouml
+RECUP;11-09-30 15:09:37;updated recommendations;619
+SELREC;11-09-30 15:13:12;CollectionUtil.java;1704;1134;0.9
+SELREC;11-09-30 15:13:15;ComputeTriggers.java;1826;510;0.9
+SELREC;11-09-30 15:13:40;GenericArgoMenuBar.java;7876;8;0.9
+NODE;11-09-30 15:13:44;GenericArgoMenuBar.java;//CompilationUnit[org.argouml.ui.cmd.GenericArgoMenuBar]:types/TypeDeclaration:GenericArgoMenuBar:bodyDeclarations/FieldDeclaration:critique;7813;72;[Feature:Criticsm[2]]
+RECUP;11-09-30 15:14:12;updated recommendations;618
+SELREC;11-09-30 15:16:49;ComputeTriggers.java;2218;113;0.9
+RECUP;11-09-30 15:16:52;updated recommendations;23
+SELREC;11-09-30 15:16:53;Main.java;39731;13;0.45
+RECUP;11-09-30 15:17:06;updated recommendations;618
+NODE;11-09-30 15:17:55;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/FieldDeclaration:LOG;5733;32;[]
+NODE;11-09-30 15:18:05;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[0]:statements/ExpressionStatement;6861;29;[]
+NODE;11-09-30 15:18:12;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[35]:statements/ExpressionStatement;10267;13;[]
+NODE;11-09-30 15:18:12;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[36]:statements/ExpressionStatement;10294;46;[]
+NODE;11-09-30 15:18:12;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[37]:statements/ForStatement;10354;116;[]
+NODE;11-09-30 15:18:12;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[37]:statements/ForStatement:body/Block;10410;60;[]
+NODE;11-09-30 15:18:12;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[38]:statements/ExpressionStatement;10484;46;[]
+NODE;11-09-30 15:18:12;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:body[body]/Block[39]:statements/ExpressionStatement;10544;13;[]
+NODE;11-09-30 15:18:16;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:main:[String[]]:body/Block[0]:statements/TryStatement:catchClauses/CatchClause[0]:body/Block[0]:statements/TryStatement:body[body]/Block[0]:statements/ExpressionStatement;11049;91;[]
+NODE;11-09-30 15:18:22;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:initModel:[]:body/Block[2]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;20543;61;[]
+NODE;11-09-30 15:18:24;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[1]:statements/ExpressionStatement;21024;24;[]
+NODE;11-09-30 15:18:25;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:void:openProject:[SimpleTimer;SplashScreen;ProjectBrowser;URL]:body/Block[1]:statements/ExpressionStatement;21024;24;[Feature:Logging[1]]
+RECUP;11-09-30 15:18:39;updated recommendations;23
+RECUP;11-09-30 15:18:39;updated recommendations;0
+NODE;11-09-30 15:18:43;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:String:getMostRecentProject:[]:body/Block[1]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:thenStatement/Block[0]:statements/ExpressionStatement;23616;36;[]
+NODE;11-09-30 15:18:45;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:String:getMostRecentProject:[]:body/Block[1]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:elseStatement/Block;23891;122;[Feature:Logging[1]]
+RECUP;11-09-30 15:18:58;updated recommendations;0
+NODE;11-09-30 15:19:12;Main.java;//CompilationUnit[org.argouml.application.Main]:types/TypeDeclaration:Main:bodyDeclarations/MethodDeclaration:String:getMostRecentProject:[]:body/Block[1]:statements/IfStatement:thenStatement/Block[1]:statements/IfStatement:elseStatement/Block;23891;122;[]
+RECUP;11-09-30 15:19:27;updated recommendations;0
