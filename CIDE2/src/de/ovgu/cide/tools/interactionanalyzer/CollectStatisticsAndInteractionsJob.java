@@ -110,7 +110,7 @@ public class CollectStatisticsAndInteractionsJob extends
 				 * collect general statistics
 				 * 
 				 * annotation counts only if neither parent nor previous sibling
-				 * already has it
+				 * already has it (exception: annotations on files always count as annotation)
 				 */
 				@Override
 				public boolean visit(IASTNode node) {
@@ -120,6 +120,8 @@ public class CollectStatisticsAndInteractionsJob extends
 					if (node.getParent() != null)
 						ownColors.removeAll(source.getColorManager().getColors(
 								node.getParent()));
+					else 
+						ownColors.addAll(source.getColorManager().getColors(node));
 					if (!ownColors.isEmpty()) {
 						IASTNode previousSibling = findPreviousSibling(node);
 						if (previousSibling == null
