@@ -50,9 +50,3 @@ The source code and case studies are available in LEADT's github repository.
 
 
 
-
-
-
-
-for more informations, including publications on LEADT, see
-http://www.informatik.uni-marburg.de/~kaestner/leadt/
